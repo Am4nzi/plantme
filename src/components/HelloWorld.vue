@@ -98,9 +98,6 @@
 export default {
   name: "HelloWorld",
   created() {
-    console.log("this works");
-
-
     fetch('http://localhost:3000/plantsdata')
       .then(response => response.json())
       .then(data => {

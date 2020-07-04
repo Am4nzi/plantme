@@ -4,9 +4,11 @@
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="10" lg="10">
-            <v-card class="elevation-12" >
+            <v-card class="elevation-12">
               <!--START                V-STEPPER-->
-              <v-stepper class="blue-grey elevation-0 rounded-tl-sm rounded-t4-sm rounded-bl-0 rounded-br-0 lighten-5">
+              <v-stepper
+                class="blue-grey elevation-0 rounded-tl-sm rounded-t4-sm rounded-bl-0 rounded-br-0 lighten-5"
+              >
                 <v-stepper-header>
                   <v-stepper-step complete editable step="1">
                     Select campaign settings
@@ -28,10 +30,19 @@
                 <v-item-group mandatory>
                   <v-container>
                     <v-row>
-                      <v-col v-for="n in 6" :key="n" cols="12" xs="12" sm="6" md="4" lg="2" xl="2">
+                      <v-col
+                        v-for="n in 6"
+                        :key="n"
+                        cols="12"
+                        xs="12"
+                        sm="6"
+                        md="4"
+                        lg="2"
+                        xl="2"
+                      >
                         <v-item v-slot:default="{ active, toggle }">
                           <v-card
-                                  :color="active ? 'primary' : ''"
+                            :color="active ? 'primary' : ''"
                             class="mx-auto"
                             max-width="300"
                             @click="toggle"
@@ -44,10 +55,7 @@
                               Size
                             </v-card-title>
                             <v-scroll-y-transition>
-                              <div
-                                v-if="active"
-                              >
-                              </div>
+                              <div v-if="active"></div>
                             </v-scroll-y-transition>
                           </v-card>
                         </v-item>
@@ -89,9 +97,19 @@
 <script>
 export default {
   name: "HelloWorld",
+  created() {
+    console.log("this works");
 
+
+    fetch('http://localhost:3000/plantsdata')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data) // Prints result from `response.json()` in getRequest
+      })
+      .catch(error => console.error(error))
+  },
   data: () => ({
-    show: false,
+    show: false
   })
 };
 </script>

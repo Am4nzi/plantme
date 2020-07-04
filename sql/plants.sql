@@ -1,4 +1,17 @@
 DROP TABLE IF EXISTS plants;
+DROP TABLE IF EXISTS plantsizemenu;
+
+CREATE TABLE plantsizemenu (
+    id SERIAL primary key,
+    plantSize VARCHAR(255) not null,
+    image VARCHAR not null
+);
+
+INSERT INTO plantsizemenu (plantSize, image) VALUES ('Small', 'https://images.unsplash.com/photo-1565964450731-27a34da777a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');
+INSERT INTO plantsizemenu (plantSize, image) VALUES ('Medium', 'https://images.unsplash.com/photo-1567748157439-651aca2ff064?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');
+INSERT INTO plantsizemenu (plantSize, image) VALUES ('Large', 'https://images.unsplash.com/photo-1565964450731-27a34da777a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');
+INSERT INTO plantsizemenu (plantSize, image) VALUES ('Extra Large', 'https://images.unsplash.com/photo-1567748157439-651aca2ff064?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');
+INSERT INTO plantsizemenu (plantSize, image) VALUES ('Any Size', 'https://images.unsplash.com/photo-1565964450731-27a34da777a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');
 
 CREATE TABLE plants (
     id SERIAL primary key,

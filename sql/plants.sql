@@ -7,11 +7,16 @@ CREATE TABLE plantsizemenu (
     image VARCHAR not null
 );
 
-INSERT INTO plantsizemenu (plantSize, image) VALUES ('Small', 'https://images.unsplash.com/photo-1565964450731-27a34da777a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');
-INSERT INTO plantsizemenu (plantSize, image) VALUES ('Medium', 'https://images.unsplash.com/photo-1567748157439-651aca2ff064?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');
-INSERT INTO plantsizemenu (plantSize, image) VALUES ('Large', 'https://images.unsplash.com/photo-1565964450731-27a34da777a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');
-INSERT INTO plantsizemenu (plantSize, image) VALUES ('Extra Large', 'https://images.unsplash.com/photo-1567748157439-651aca2ff064?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');
-INSERT INTO plantsizemenu (plantSize, image) VALUES ('Any Size', 'https://images.unsplash.com/photo-1565964450731-27a34da777a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80');
+INSERT INTO plantsizemenu (plantSize, image) VALUES ('Small', 'https://images.unsplash.com/photo-1521907554502-7440e4702fc3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80');
+INSERT INTO plantsizemenu (plantSize, image) VALUES ('Medium', 'https://images.unsplash.com/photo-1554842863-766951f51658?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80');
+INSERT INTO plantsizemenu (plantSize, image) VALUES ('Large', 'https://images.unsplash.com/photo-1562771968-1e10d4eee4d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80');
+INSERT INTO plantsizemenu (plantSize, image) VALUES ('Extra Large', 'https://images.unsplash.com/photo-1511382686815-a9a670f0a512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80');
+INSERT INTO plantsizemenu (plantSize, image) VALUES ('Any Size', 'https://images.unsplash.com/photo-1561025980-f825ee7290c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1265&q=80');
+
+
+
+
+
 
 CREATE TABLE plants (
     id SERIAL primary key,

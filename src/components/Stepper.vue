@@ -25,6 +25,11 @@
 <script>
 export default {
   name: "Stepper",
-  props: ['stepperText'],
+  computed: {
+    stepperText() {
+      console.log(this.$store.state.stepperText)
+      return this.$store.state.stepperText;
+    }
+  }
 };
 </script>

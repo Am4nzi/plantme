@@ -1,6 +1,5 @@
 <template>
   <v-container>
-<!--    <h1>{{ headingText }}</h1>-->
     <Heading />
     <v-row>
       <v-col
@@ -42,7 +41,6 @@ export default {
     Heading
   },
   data: () => ({
-    headingText: "Select Size",
     menu: {
       plantSizeData: [],
       expandInfo: {

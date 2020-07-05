@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Light Level Menu</h1>
+    <Heading />
     <v-row>
       <v-col
         v-for="item in menu.plantSizeData"
@@ -34,8 +34,12 @@
 </template>
 
 <script>
+  import Heading from "../components/Heading";
 export default {
   name: "plantSize",
+  components: {
+    Heading
+  },
   data: () => ({
     headingText: "Select Size",
     menu: {

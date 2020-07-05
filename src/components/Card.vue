@@ -1,6 +1,6 @@
 <template>
   <v-card class="elevation-12">
-    <Stepper :stepperText="stepperText" />
+    <Stepper />
     <v-card-text>
       <v-item-group mandatory>
         <router-view :headingText="menu.headingText"/>

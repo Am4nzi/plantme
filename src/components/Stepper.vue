@@ -27,7 +27,6 @@ export default {
   name: "Stepper",
   computed: {
     stepperText() {
-      console.log(this.$store.state.stepperText)
       return this.$store.state.stepperText;
     }
   }

@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <Layout />
+<!--    <Layout />-->
+    <router-view />
   </v-app>
 </template>
 
 <script>
-  import Layout from "./views/Layout"
 
 export default {
   name: "App",
@@ -18,9 +18,6 @@ export default {
       .catch(error => console.error(error));
     this.$store.dispatch('updateMenuHeadingText', this.menuHeadingText);
       this.$store.dispatch('updateStepperText', this.stepperText);
-  },
-  components: {
-    Layout,
   },
 
   data: () => ({

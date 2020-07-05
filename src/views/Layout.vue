@@ -6,23 +6,7 @@
           <v-col cols="12" sm="8" md="10" lg="10">
             <v-card class="elevation-12">
               <!--START                V-STEPPER-->
-              <v-stepper
-                class="blue-grey elevation-0 rounded-tl-sm rounded-t4-sm rounded-bl-0 rounded-br-0 lighten-5"
-              >
-                <v-stepper-header>
-                  <v-stepper-step complete editable step="1">
-                    Select campaign settings
-                  </v-stepper-step>
-                  <v-divider></v-divider>
-                  <v-stepper-step complete step="2"
-                    >Create an ad group</v-stepper-step
-                  >
-                  <v-divider></v-divider>
-                  <v-stepper-step step="3" editable>
-                    Create an ad
-                  </v-stepper-step>
-                </v-stepper-header>
-              </v-stepper>
+              <Stepper :stepperText="stepperText"/>
               <!--END               V-STEPPER-->
               <v-card-text>
                 <h1>Select Size</h1>
@@ -31,7 +15,7 @@
                   <v-container>
                     <v-row>
                       <v-col
-                        v-for="n in sizeMenuData"
+                        v-for="n in menu.plantSizeData"
                         :key="n.id"
                         cols="12"
                         xs="12"
@@ -62,28 +46,7 @@
                 </v-item-group>
                 <!--END                V-ITEM GROUP-->
               </v-card-text>
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn icon @click="show = !show">
-                  <v-icon>{{
-                    show ? "mdi-chevron-up" : "mdi-chevron-down"
-                  }}</v-icon>
-                </v-btn>
-              </v-card-actions>
-              <v-expand-transition>
-                <div v-show="show">
-                  <v-divider></v-divider>
-                  <v-card-text>
-                    <Menu />
-                    I'm a thing. But, like most politicians, he promised more
-                    than he could deliver. You won't have time for sleeping,
-                    soldier, not with all the bed making you'll be doing. Then
-                    we'll go with that data file! Hey, you add a one and two
-                    zeros to that or we walk! You're going to do his laundry?
-                    I've got to find a way to escape.
-                  </v-card-text>
-                </div>
-              </v-expand-transition>
+              <ExpandTransition :text="menu.expandInfo.plantSize"/>
             </v-card>
           </v-col>
         </v-row>
@@ -94,26 +57,39 @@
 
 <script>
 // @ is an alias to /src
-import Menu from "@/components/Menu.vue";
+import ExpandTransition from '../components/ExpandTransition';
+import Stepper from "../components/Stepper"
 
 export default {
   name: "Layout",
   components: {
-    Menu
+    ExpandTransition,
+    Stepper,
   },
   created() {
     fetch('http://localhost:3000/sizemenudata')
       .then(response => response.json())
       .then(data => {
         console.log(data) // Prints result from `response.json()` in getRequest
-        this.sizeMenuData = data;
-        console.log('sizeMenuData: ', this.sizeMenuData[0].image);
+        this.menu.plantSizeData = data;
+        console.log('sizeMenuData: ', this.menu.plantSizeData[0].image);
       })
       .catch(error => console.error(error))
   },
   data: () => ({
+    menu: {
+      plantSizeData: [],
+      expandInfo: {
+        plantSize: 'Dummy Text'
+      }
+    },
     show: false,
-    sizeMenuData: []
+    stepperText: {
+      step01: 'Plant Size',
+      step02: 'Light Level',
+      step03: 'Ease of Care',
+      step04: 'Pet Safe?'
+    }
   })
 };
 </script>

@@ -31,8 +31,8 @@
                   <v-container>
                     <v-row>
                       <v-col
-                        v-for="n in 6"
-                        :key="n"
+                        v-for="n in sizeMenuData"
+                        :key="n.id"
                         cols="12"
                         xs="12"
                         sm="6"
@@ -47,12 +47,9 @@
                             max-width="300"
                             @click="toggle"
                           >
-                            <v-img
-                              src="https://source.unsplash.com/random/600x800"
-                              height="200px"
-                            ></v-img>
+                            <v-img :src="n.image" height="200px"></v-img>
                             <v-card-title>
-                              Size
+                              {{ n.plantsize }}
                             </v-card-title>
                             <v-scroll-y-transition>
                               <div v-if="active"></div>
@@ -77,6 +74,7 @@
                 <div v-show="show">
                   <v-divider></v-divider>
                   <v-card-text>
+                    <Menu />
                     I'm a thing. But, like most politicians, he promised more
                     than he could deliver. You won't have time for sleeping,
                     soldier, not with all the bed making you'll be doing. Then
@@ -95,18 +93,27 @@
 </template>
 
 <script>
+// @ is an alias to /src
+import Menu from "@/components/Menu.vue";
+
 export default {
-  name: "HelloWorld",
+  name: "Layout",
+  components: {
+    Menu
+  },
   created() {
-    fetch('http://localhost:3000/plantsdata')
+    fetch('http://localhost:3000/sizemenudata')
       .then(response => response.json())
       .then(data => {
         console.log(data) // Prints result from `response.json()` in getRequest
+        this.sizeMenuData = data;
+        console.log('sizeMenuData: ', this.sizeMenuData[0].image);
       })
       .catch(error => console.error(error))
   },
   data: () => ({
-    show: false
+    show: false,
+    sizeMenuData: []
   })
 };
 </script>

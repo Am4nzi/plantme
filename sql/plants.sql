@@ -13,11 +13,6 @@ INSERT INTO plantsizemenu (plantSize, image) VALUES ('Large', 'https://images.un
 INSERT INTO plantsizemenu (plantSize, image) VALUES ('Extra Large', 'https://images.unsplash.com/photo-1511382686815-a9a670f0a512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80');
 INSERT INTO plantsizemenu (plantSize, image) VALUES ('Any Size', 'https://images.unsplash.com/photo-1561025980-f825ee7290c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1265&q=80');
 
-
-
-
-
-
 CREATE TABLE plants (
     id SERIAL primary key,
 		plantName VARCHAR(255) not null,

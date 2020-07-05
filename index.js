@@ -9,7 +9,9 @@ app.use(cors())
 
 app.use(bodyParser.json());
 
-app.get("/plantsdata", db.getData);
+// app.get("/plantsdata", db.getPlantsData);
+
+app.get("/sizemenudata", db.getSizeMenuData);
 
 app.get("/", (request, response) => {
   response.json({ info: "Node.js, Express, and Postgres API" });

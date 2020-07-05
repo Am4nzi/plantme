@@ -4,8 +4,20 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
+  state: {
+    menus: {
+      plantSize: [],
+    }
+  },
+  mutations: {
+    setPlantSizeMenu(state, plantSizeData) {
+      state.menus.plantSize = plantSizeData;
+    }
+  },
+  actions: {
+    updatePlantSizeMenu({ commit }, plantSizeData) {
+      commit('setPlantSizeMenu', plantSizeData);
+    },
+  },
   modules: {}
 });

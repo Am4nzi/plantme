@@ -3,7 +3,7 @@
     <Stepper />
     <v-card-text>
       <v-item-group mandatory>
-        <router-view :headingText="menu.headingText"/>
+        <router-view/>
       </v-item-group>
     </v-card-text>
     <ExpandTransition :text="menu.expandInfo.plantSize" />
@@ -24,7 +24,6 @@ export default {
       expandInfo: {
         plantSize: "Dummy Text"
       },
-      headingText: 'Select Size'
     },
   }),
   methods: {

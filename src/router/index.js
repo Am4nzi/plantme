@@ -2,15 +2,14 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Layout from "../views/Layout.vue";
 import Card from '../components/Card';
-import PlantSizeMenu from "../views/PlantSizeMenu";
-import LightLevelMenu from "../views/LightLevelMenu";
+import Menu from "../views/Menu";
+// import LightLevelMenu from "../views/LightLevelMenu";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Layout",
     component: Layout,
     children: [
       {
@@ -19,11 +18,27 @@ const routes = [
         children: [
           {
             path: "/",
-            component: PlantSizeMenu
+            redirect: '/plant-size',
           },
           {
-            path: "/lightlevel",
-            component: LightLevelMenu
+            path: "/plant-size",
+            name: 'PlantSizeMenu',
+            component: Menu,
+          },
+          {
+            path: "/light-level",
+            name: 'LightLevelMenu',
+            component: Menu
+          },
+          {
+            path: "/ease-of-Care",
+            name: 'EaseOfCareMenu',
+            component: Menu
+          },
+          {
+            path: "/pet-safe-menu",
+            name: 'PetSafeMenu',
+            component: Menu
           }
         ]
       }

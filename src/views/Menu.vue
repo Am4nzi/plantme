@@ -3,7 +3,7 @@
     <Heading />
     <v-row>
       <v-col
-        v-for="item in menu.plantSizeData"
+        v-for="item in currentMenuData"
         :key="item.id"
         cols="12"
         xs="12"
@@ -21,7 +21,7 @@
           >
             <v-img :src="item.image" height="200px"></v-img>
             <v-card-title>
-              {{ item.plantsize }}
+              {{ item.cardtitle }}
             </v-card-title>
             <v-scroll-y-transition>
               <div v-if="active"></div>
@@ -48,13 +48,10 @@ export default {
       }
     }
   }),
-  created() {
-    fetch("http://localhost:3000/sizemenudata")
-      .then(response => response.json())
-      .then(data => {
-        this.menu.plantSizeData = data;
-      })
-      .catch(error => console.error(error));
-  }
+  computed: {
+    currentMenuData() {
+      return this.$store.state.menus.currentMenu;
+      }
+    }
 };
 </script>

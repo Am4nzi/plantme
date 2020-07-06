@@ -1,9 +1,9 @@
 <template>
   <v-container>
     <Heading />
-    <v-row>
+    <v-row class="justify-space-around">
       <v-col
-        v-for="item in menu.plantSizeData"
+        v-for="item in lightLevelData"
         :key="item.id"
         cols="12"
         xs="12"
@@ -11,17 +11,18 @@
         md="4"
         lg="2"
         xl="2"
+        class="d-flex justify-sm-space-between"
       >
         <v-item v-slot:default="{ active, toggle }">
           <v-card
             :color="active ? 'primary' : ''"
             class="mx-auto"
-            max-width="300"
+            max-width="200"
             @click="toggle"
           >
             <v-img :src="item.image" height="200px"></v-img>
             <v-card-title>
-              {{ item.plantsize }}
+              {{ item.lightlevel }}
             </v-card-title>
             <v-scroll-y-transition>
               <div v-if="active"></div>
@@ -49,13 +50,11 @@ export default {
       }
     }
   }),
-  created() {
-    fetch("http://localhost:3000/sizemenudata")
-      .then(response => response.json())
-      .then(data => {
-        this.menu.plantSizeData = data;
-      })
-      .catch(error => console.error(error));
+  computed: {
+    lightLevelData() {
+      console.log('this.$store.state.lightLevel: ', this.$store.state.menus.lightLevel);
+      return this.$store.state.menus.lightLevel;
+    }
   }
 };
 </script>

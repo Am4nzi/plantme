@@ -16,10 +16,10 @@ export default new Vuex.Store({
       petSafe: []
     },
     menuSelection: {
-      plantSize: '',
-      lightLevel: '',
-      easeOfCare: '',
-      petSafe: ''
+      plantSize: [],
+      lightLevel: [],
+      easeOfCare: [],
+      petSafe: []
     }
   },
   mutations: {
@@ -89,13 +89,13 @@ export default new Vuex.Store({
       commit('setPlantMenuSelection', plantSizeMenuSelection);
     },
     updateLightLevelMenuSelection({ commit }, lightLevelMenuSelection) {
-      commit('setPlantMenuSelection', lightLevelMenuSelection);
+      commit('setLightLevelMenuSelection', lightLevelMenuSelection);
     },
     updateEaseOfCareMenuSelection({ commit }, easeOfCareMenuSelection) {
-      commit('setPlantMenuSelection', easeOfCareMenuSelection);
+      commit('setEaseOfCareMenuSelection', easeOfCareMenuSelection);
     },
     updatePetSafeMenuSelection({ commit }, petSafeMenuSelection) {
-      commit('setPlantMenuSelection', petSafeMenuSelection);
+      commit('setPetSafeMenuSelection', petSafeMenuSelection);
     },
   },
   modules: {}

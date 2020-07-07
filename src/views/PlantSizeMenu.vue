@@ -19,7 +19,6 @@
             class="mx-auto"
             max-width="300"
             @click="toggle(); selectItem(item);"
-            ref="myRef"
           >
             <v-img :src="item.image" height="200px"></v-img>
             <v-card-title>
@@ -60,7 +59,7 @@ export default {
   methods: {
     selectItem(i) {
       this.activeItem = i;
-      console.log('this.activeItem.cardTitle: ', this.activeItem.cardtitle)
+      this.$store.dispatch("updatePlantSizeMenuSelection", this.activeItem.cardtitle);
     },
   }
 };

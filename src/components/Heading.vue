@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ headingText }}</h1>
+  <h1 class="teal--text">{{ headingText }}</h1>
 </template>
 
 <script>
@@ -12,3 +12,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  h1 {
+    font-family: roc-grotesk, sans-serif;
+    font-size: 3rem;
+  }
+</style>

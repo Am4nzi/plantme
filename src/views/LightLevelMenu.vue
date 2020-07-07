@@ -4,7 +4,9 @@
           :mandatory="mandatory"
   >
     <v-container>
-      <Heading />
+      <v-row class="justify-space-around mt-8 mb-8">
+        <Heading />
+      </v-row>
       <v-row class="justify-space-around">
         <v-col
           v-for="item in lightLevelMenuData"
@@ -19,7 +21,7 @@
         >
           <v-item v-slot:default="{ active, toggle }">
             <v-card
-              :color="active ? 'primary' : ''"
+              :color="active ? 'teal' : ''"
               class="mx-auto"
               max-width="300"
               @click="
@@ -70,14 +72,12 @@ export default {
   },
   mounted() {
     if (this.getPreviousSelection) {
-      console.log('this.previouselection): ', this.getPreviousSelection)
       this.selected = this.getPreviousSelection[1];
     }
   },
   methods: {
     selectItem(card) {
       this.activeItem = card;
-      console.log(this.selected);
       this.$store.dispatch("updateLightLevelMenuSelection", [card.cardtitle, this.selected]);
     }
   }

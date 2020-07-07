@@ -13,6 +13,7 @@ export default {
     fetch("http://localhost:3000/sizemenudata")
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         this.$store.dispatch("updatePlantSizeMenu", data);
         this.$store.dispatch("updateCurrentMenu", data);
       })
@@ -39,3 +40,11 @@ export default {
   }
 };
 </script>
+<style>
+/*Import roc-grotesk from adobe fonts*/
+@import url("https://use.typekit.net/ega7mjw.css");
+
+  .v-application {
+    background-color: red;
+  }
+</style>

@@ -1,8 +1,11 @@
 <template>
   <v-item-group v-model="selected" :mandatory="mandatory">
     <v-container>
-      <Heading />
+      <v-row class="justify-space-around mt-8 mb-8">
+        <Heading />
+      </v-row>
       <v-row class="justify-space-around">
+
         <v-col
           v-for="item in plantSizeMenuData"
           :key="item.id"
@@ -16,7 +19,7 @@
         >
           <v-item v-slot:default="{ active, toggle }">
             <v-card
-              :color="active ? 'primary' : ''"
+              :color="active ? 'teal' : ''"
               class="mx-auto"
               max-width="300"
               @click="
@@ -55,7 +58,7 @@ export default {
       expandInfo: {
         plantSize: "Dummy Text"
       }
-    },
+    }
   }),
   computed: {
     plantSizeMenuData() {

@@ -1,23 +1,14 @@
 <template>
-  <v-app>
+  <v-app style="background-color: #FFFCED;">
     <v-main>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="10" lg="10">
             <!--    <Card.vue />-->
-            <router-view :menuIndex="menuIndex"/>
+            <router-view :menuIndex="menuIndex" />
             <v-row align="center" justify="end">
               <div>
-                <v-btn @click="prevStep" x-large color="success" dark
-                  >Prev</v-btn
-                >
-              </div>
-            </v-row>
-            <v-row align="center" justify="end">
-              <div>
-                <v-btn @click="nextStep" x-large color="success" dark
-                  >Next</v-btn
-                >
+                <v-btn @click="nextStep" x-large color="teal" dark>Next</v-btn>
               </div>
             </v-row>
           </v-col>
@@ -34,16 +25,28 @@ export default {
   name: "Layout",
   data: () => ({
     menuHeadingText: {
-      plantSize: "Plant Size",
-      lightLevel: "Light Level",
+      plantSize: "Select Preferred Plant Size",
+      lightLevel: "Select Light Level",
       easeOfCare: "Ease of Care",
       petSafe: "Pet Safe?"
     },
     stepperText: {
-      step01: "Plant Size",
-      step02: "Light Level",
-      step03: "Ease of Care",
-      step04: "Pet Safe?"
+      step01: {
+        id: 1,
+        label: "Plant Size"
+      },
+      step02: {
+        id: 2,
+        label: "Light Level"
+      },
+      step03: {
+        id: 3,
+        label: "Ease of Care"
+      },
+      step04: {
+        id: 4,
+        label: "Pet Safe?"
+      }
     }
   }),
   computed: {
@@ -74,17 +77,6 @@ export default {
     this.$store.dispatch("updateMenuIndex", 1);
   },
   methods: {
-    prevStep() {
-      const nextRoute = this.getNextRoute();
-      if (nextRoute === "PlantSizeMenu") {
-        this.$store.dispatch("updateCurrentMenu", this.plantSizeMenu);
-      }
-      this.$store.dispatch(
-        "updateMenuHeadingText",
-        this.menuHeadingText.plantSize
-      );
-      this.$router.push("plant-size");
-    },
     nextStep() {
       const nextRoute = this.getNextRoute();
       if (nextRoute === "LightLevelMenu") {

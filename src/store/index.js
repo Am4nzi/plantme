@@ -14,6 +14,12 @@ export default new Vuex.Store({
       lightLevel: [],
       easeOfCare: [],
       petSafe: []
+    },
+    menuSelection: {
+      plantSize: '',
+      lightLevel: '',
+      easeOfCare: '',
+      petSafe: ''
     }
   },
   mutations: {
@@ -40,6 +46,18 @@ export default new Vuex.Store({
     },
     setStepperText(state, stepperText) {
       state.stepperText = stepperText;
+    },
+    setPlantMenuSelection(state, plantSizeMenuSelection) {
+      state.menuSelection.plantSize = plantSizeMenuSelection;
+    },
+    setLightLevelMenuSelection(state, lightLevelMenuSelection) {
+      state.menuSelection.lightLevel = lightLevelMenuSelection;
+    },
+    setEaseOfCareMenuSelection(state, easeOfCareMenuSelection) {
+      state.menuSelection.easeOfCare = easeOfCareMenuSelection;
+    },
+    setPetSafeMenuSelection(state, petSafeMenuSelection) {
+      state.menuSelection.petSafe = petSafeMenuSelection;
     }
   },
   actions: {
@@ -66,6 +84,18 @@ export default new Vuex.Store({
     },
     updateStepperText({ commit }, setStepperText) {
       commit('setStepperText', setStepperText);
+    },
+    updatePlantSizeMenuSelection({ commit }, plantSizeMenuSelection) {
+      commit('setPlantMenuSelection', plantSizeMenuSelection);
+    },
+    updateLightLevelMenuSelection({ commit }, lightLevelMenuSelection) {
+      commit('setPlantMenuSelection', lightLevelMenuSelection);
+    },
+    updateEaseOfCareMenuSelection({ commit }, easeOfCareMenuSelection) {
+      commit('setPlantMenuSelection', easeOfCareMenuSelection);
+    },
+    updatePetSafeMenuSelection({ commit }, petSafeMenuSelection) {
+      commit('setPlantMenuSelection', petSafeMenuSelection);
     },
   },
   modules: {}

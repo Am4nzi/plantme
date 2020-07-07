@@ -3,8 +3,9 @@
     <Heading />
     <v-row class="justify-space-around">
       <v-col
-        v-for="item in currentMenuData"
+        v-for="item in plantSizeMenuData"
         :key="item.id"
+        :class="{ active: item === activeItem}"
         cols="12"
         xs="12"
         sm="6"
@@ -17,7 +18,8 @@
             :color="active ? 'primary' : ''"
             class="mx-auto"
             max-width="300"
-            @click="toggle"
+            @click="toggle(); selectItem(item);"
+            ref="myRef"
           >
             <v-img :src="item.image" height="200px"></v-img>
             <v-card-title>
@@ -41,6 +43,7 @@ export default {
     Heading
   },
   data: () => ({
+    activeItem: null,
     menu: {
       plantSizeData: [],
       expandInfo: {
@@ -50,24 +53,15 @@ export default {
     titles: false
   }),
   computed: {
-    currentMenuData() {
-      console.log(this.$store.state.menus.currentMenu.length);
-      return this.$store.state.menus.currentMenu;
+    plantSizeMenuData() {
+      return this.$store.state.menus.plantSize;
     },
-    computeStylingForFiveItems() {
-      if (this.$store.state.menus.currentMenu.length === 5) {
-        return true;
-      } else {
-        return false;
-      }
+  },
+  methods: {
+    selectItem(i) {
+      this.activeItem = i;
+      console.log('this.activeItem.cardTitle: ', this.activeItem.cardtitle)
     },
-    computeStylingForLessThanFiveItems() {
-      if (!this.$store.state.menus.currentMenu.length) {
-        return false;
-      } else {
-        return true;
-      }
-    }
   }
 };
 </script>

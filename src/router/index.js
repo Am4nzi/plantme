@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Layout from "../views/Layout.vue";
 import Card from '../components/Card';
-import Menu from "../views/Menu";
+import PlantSizeMenu from "../views/PlantSizeMenu";
 import LightLevelMenu from "../views/LightLevelMenu";
 import EaseOfCareMenu from "../views/EaseOfCareMenu";
 import PetSafeMenu from "../views/PetSafeMenu";
@@ -25,7 +25,7 @@ const routes = [
           {
             path: "/plant-size",
             name: 'PlantSizeMenu',
-            component: Menu,
+            component: PlantSizeMenu,
           },
           {
             path: "/light-level",

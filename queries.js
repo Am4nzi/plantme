@@ -17,21 +17,27 @@ const getPlantsData = (request, response) => {
 };
 
 const getSizeMenuData = (request, response) => {
-  pool.query("SELECT * FROM plantSizeMenu ORDER BY id ASC", (error, results) => {
-    if (error) {
-      throw error;
+  pool.query(
+    "SELECT * FROM plantSizeMenu ORDER BY id ASC",
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
     }
-    response.status(200).json(results.rows);
-  });
+  );
 };
 
 const getLightLevelMenuData = (request, response) => {
-  pool.query("SELECT * FROM lightlevelmenu ORDER BY id ASC", (error, results) => {
-    if (error) {
-      throw error;
+  pool.query(
+    "SELECT * FROM lightlevelmenu ORDER BY id ASC",
+    (error, results) => {
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
     }
-    response.status(200).json(results.rows);
-  });
+  );
 };
 
 const getEaseOfCareMenuData = (request, response) => {

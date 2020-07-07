@@ -3,7 +3,9 @@ import VueRouter from "vue-router";
 import Layout from "../views/Layout.vue";
 import Card from '../components/Card';
 import Menu from "../views/Menu";
-// import LightLevelMenu from "../views/LightLevelMenu";
+import LightLevelMenu from "../views/LightLevelMenu";
+import EaseOfCareMenu from "../views/EaseOfCareMenu";
+import PetSafeMenu from "../views/PetSafeMenu";
 
 Vue.use(VueRouter);
 
@@ -28,17 +30,17 @@ const routes = [
           {
             path: "/light-level",
             name: 'LightLevelMenu',
-            component: Menu
+            component: LightLevelMenu
           },
           {
             path: "/ease-of-Care",
             name: 'EaseOfCareMenu',
-            component: Menu
+            component: EaseOfCareMenu
           },
           {
             path: "/pet-safe-menu",
             name: 'PetSafeMenu',
-            component: Menu
+            component: PetSafeMenu
           }
         ]
       }

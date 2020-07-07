@@ -3,13 +3,13 @@
     <Heading />
     <v-row class="justify-space-around">
       <v-col
-        v-for="item in lightLevelMenu"
+        v-for="item in easeOfCareMenu"
         :key="item.id"
         cols="12"
         xs="12"
         sm="6"
         md="4"
-        lg="2"
+        lg="4"
         xl="2"
       >
         <v-item v-slot:default="{ active, toggle }">
@@ -36,7 +36,7 @@
 <script>
 import Heading from "../components/Heading";
 export default {
-  name: "LightLevelMenu",
+  name: "EaseOfCareMenu",
   components: {
     Heading
   },
@@ -50,8 +50,8 @@ export default {
     titles: false
   }),
   computed: {
-    lightLevelMenu() {
-      return this.$store.state.menus.lightLevel;
+    easeOfCareMenu() {
+      return this.$store.state.menus.easeOfCare;
     },
   }
 };

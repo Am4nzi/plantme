@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     stepperText: {},
     menus: {
+      index: '',
       headingText: {},
       currentMenu: [],
       plantSize: [],
@@ -18,6 +19,9 @@ export default new Vuex.Store({
   mutations: {
     setCurrentMenu(state, currentMenuData) {
       state.menus.currentMenu = currentMenuData;
+    },
+    setMenuIndex(state, menuIndex) {
+      state.menus.index = menuIndex;
     },
     setMenuHeadingText(state, headingText) {
       state.menus.headingText = headingText;
@@ -39,6 +43,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    updateMenuIndex({ commit }, menuIndex) {
+      commit('setMenuIndex', menuIndex);
+    },
     updateCurrentMenu({ commit }, currentMenuData) {
       commit('setCurrentMenu', currentMenuData);
     },

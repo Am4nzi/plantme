@@ -4,7 +4,8 @@
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="10" lg="10">
-            <router-view />
+            <!--    <Card.vue />-->
+            <router-view :menuIndex="menuIndex"/>
             <v-row align="center" justify="end">
               <div>
                 <v-btn @click="prevStep" x-large color="success" dark
@@ -38,46 +39,74 @@ export default {
       easeOfCare: "Ease of Care",
       petSafe: "Pet Safe?"
     },
+    stepperText: {
+      step01: "Plant Size",
+      step02: "Light Level",
+      step03: "Ease of Care",
+      step04: "Pet Safe?"
+    }
   }),
   computed: {
-    PlantSizeMenu() {
+    plantSizeMenu() {
       return this.$store.state.menus.plantSize;
     },
-    LightLevelMenu() {
+    lightLevelMenu() {
       return this.$store.state.menus.lightLevel;
     },
-    EaseOfCareMenu() {
+    easeOfCareMenu() {
       return this.$store.state.menus.easeOfCare;
     },
-    PetSafeMenu() {
+    petSafeMenu() {
       return this.$store.state.menus.petSafe;
     },
+    //TODO Delete this
+    menuIndex() {
+      return this.$store.state.menus.index;
+    }
   },
-  created () {
-    console.log('this.$route:', this.$route);
+  created() {
+    this.$store.dispatch(
+      "updateMenuHeadingText",
+      this.menuHeadingText.plantSize
+    );
+    this.$store.dispatch("updateStepperText", this.stepperText);
+    //Set initial menu index as 1
+    this.$store.dispatch("updateMenuIndex", 1);
   },
   methods: {
     prevStep() {
       const nextRoute = this.getNextRoute();
-      if (nextRoute === 'PlantSizeMenu') {
-        this.$store.dispatch("updateCurrentMenu", this.PlantSizeMenu);
+      if (nextRoute === "PlantSizeMenu") {
+        this.$store.dispatch("updateCurrentMenu", this.plantSizeMenu);
       }
-      this.$store.dispatch("updateMenuHeadingText", this.menuHeadingText.plantSize);
+      this.$store.dispatch(
+        "updateMenuHeadingText",
+        this.menuHeadingText.plantSize
+      );
       this.$router.push("plant-size");
     },
     nextStep() {
       const nextRoute = this.getNextRoute();
-      if (nextRoute === 'LightLevelMenu') {
-        this.$store.dispatch("updateMenuHeadingText", this.menuHeadingText.lightLevel);
-        this.$store.dispatch("updateCurrentMenu", this.LightLevelMenu);
+      if (nextRoute === "LightLevelMenu") {
+        this.$store.dispatch(
+          "updateMenuHeadingText",
+          this.menuHeadingText.lightLevel
+        );
+        this.$store.dispatch("updateMenuIndex", 2);
       }
-      if (nextRoute === 'EaseOfCareMenu') {
-        this.$store.dispatch("updateMenuHeadingText", this.menuHeadingText.easeOfCare);
-        this.$store.dispatch("updateCurrentMenu", this.EaseOfCareMenu);
+      if (nextRoute === "EaseOfCareMenu") {
+        this.$store.dispatch(
+          "updateMenuHeadingText",
+          this.menuHeadingText.easeOfCare
+        );
+        this.$store.dispatch("updateMenuIndex", 3);
       }
-      if (nextRoute === 'PetSafeMenu') {
-        this.$store.dispatch("updateMenuHeadingText", this.menuHeadingText.petSafe);
-        this.$store.dispatch("updateCurrentMenu", this.PetSafeMenu);
+      if (nextRoute === "PetSafeMenu") {
+        this.$store.dispatch(
+          "updateMenuHeadingText",
+          this.menuHeadingText.petSafe
+        );
+        this.$store.dispatch("updateMenuIndex", 4);
       }
       this.$router.push({ name: nextRoute });
     },

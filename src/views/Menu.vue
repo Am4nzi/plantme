@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <Heading />
-    <v-row>
+    <v-row class="justify-space-around">
       <v-col
         v-for="item in currentMenuData"
         :key="item.id"
@@ -36,7 +36,7 @@
 <script>
 import Heading from "../components/Heading";
 export default {
-  name: "plantSize",
+  name: "PlantSizeMenu",
   components: {
     Heading
   },
@@ -46,12 +46,28 @@ export default {
       expandInfo: {
         plantSize: "Dummy Text"
       }
-    }
+    },
+    titles: false
   }),
   computed: {
     currentMenuData() {
+      console.log(this.$store.state.menus.currentMenu.length);
       return this.$store.state.menus.currentMenu;
+    },
+    computeStylingForFiveItems() {
+      if (this.$store.state.menus.currentMenu.length === 5) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    computeStylingForLessThanFiveItems() {
+      if (!this.$store.state.menus.currentMenu.length) {
+        return false;
+      } else {
+        return true;
       }
     }
+  }
 };
 </script>

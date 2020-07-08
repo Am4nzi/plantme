@@ -3,6 +3,17 @@ DROP TABLE IF EXISTS plantSizeMenu;
 DROP TABLE IF EXISTS lightLevelMenu;
 DROP TABLE IF EXISTS easeOfCareMenu;
 DROP TABLE IF EXISTS petSafeMenu;
+DROP TABLE IF EXISTS menuTitles;
+
+CREATE TABLE menuTitles (
+		id SERIAL primary key,
+		menuTitle VARCHAR(255) not null
+);
+
+INSERT INTO menuTitles (menuTitle) VALUES ('Select Plant Size');
+INSERT INTO menuTitles (menuTitle) VALUES ('Select Light Level');
+INSERT INTO menuTitles (menuTitle) VALUES ('Select Ease of Care');
+INSERT INTO menuTitles (menuTitle) VALUES ('Select Pet Safe Requirement');
 
 CREATE TABLE plantSizeMenu (
     id SERIAL primary key,

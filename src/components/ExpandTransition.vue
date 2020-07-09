@@ -26,7 +26,7 @@
               v-for="(value, key) in getExpansionPanelText.guide"
               :key="value"
               class="ml-10"
-              cols="12"
+              cols="10"
               xs="12"
               sm="6"
               md="4"

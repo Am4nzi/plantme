@@ -4,30 +4,31 @@
       <v-row class="justify-space-around mt-8 mb-8">
         <Heading />
       </v-row>
-      <v-row class="justify-space-around">
+      <v-row class="justify-center ml-16 mr-16">
         <v-col
           v-for="item in petSafeMenuData"
           :key="item.id"
           class="{ active: item === activeItem }"
           cols="12"
           xs="12"
-          sm="6"
+          sm="12"
           md="4"
           lg="4"
-          xl="2"
+          xl="4"
         >
           <v-item v-slot:default="{ active, toggle }">
             <v-card
               :color="active ? 'teal' : ''"
+              outlined
               class="mx-auto"
-              max-width="300"
+              max-width="350"
               @click="
                 toggle();
                 selectItem(item);
               "
             >
               <v-img :src="item.image" height="200px"></v-img>
-              <v-card-title>
+              <v-card-title :class="active ? 'white--text' : ''">
                 {{ item.cardtitle }}
               </v-card-title>
               <v-scroll-y-transition>
@@ -54,9 +55,6 @@ export default {
     activeItem: null,
     menu: {
       plantSizeData: [],
-      expandInfo: {
-        plantSize: "Dummy Text"
-      }
     },
   }),
   computed: {
@@ -64,22 +62,23 @@ export default {
       return this.$store.state.menus.petSafe;
     },
     getPreviousSelection() {
-      return this.$store.state.menuSelection.petSafe;
+      return this.$store.state.menuSelections.menuSelection.petSafe;
+    },
+    getExpansionPanelText() {
+      return this.$store.state.menuSelections.expansionPanelText;
     }
   },
   mounted() {
     if (this.getPreviousSelection) {
       this.selected = this.getPreviousSelection[1];
     }
+    console.log('getExpansionPanelText: ', this.getExpansionPanelText)
   },
   methods: {
     selectItem(card) {
       this.activeItem = card;
-      console.log(this.selected);
-      this.$store.dispatch("updatePetSafeMenuSelection", [
-        card.cardtitle,
-        this.selected
-      ]);
+      this.mandatory = true;
+      this.$store.commit('setPetSafeMenuSelection', [card.cardtitle, this.selected]);
     }
   }
 };

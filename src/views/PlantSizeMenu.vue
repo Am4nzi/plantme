@@ -5,7 +5,6 @@
         <Heading />
       </v-row>
       <v-row class="justify-space-around">
-
         <v-col
           v-for="item in plantSizeMenuData"
           :key="item.id"
@@ -20,6 +19,7 @@
           <v-item v-slot:default="{ active, toggle }">
             <v-card
               :color="active ? 'teal' : ''"
+              outlined
               class="mx-auto"
               max-width="300"
               @click="
@@ -28,7 +28,7 @@
               "
             >
               <v-img :src="item.image" height="200px"></v-img>
-              <v-card-title>
+              <v-card-title :class="active ? 'white--text' : ''">
                 {{ item.cardtitle }}
               </v-card-title>
               <v-scroll-y-transition>
@@ -65,8 +65,8 @@ export default {
       return this.$store.state.menus.plantSize;
     },
     getPreviousSelection() {
-      return this.$store.state.menuSelection.plantSize;
-    }
+      return this.$store.state.menuSelections.menuSelection.plantSize;
+    },
   },
   mounted() {
     if (this.getPreviousSelection) {
@@ -76,11 +76,8 @@ export default {
   methods: {
     selectItem(card) {
       this.activeItem = card;
-      console.log(this.selected);
-      this.$store.dispatch("updatePlantSizeMenuSelection", [
-        card.cardtitle,
-        this.selected
-      ]);
+      this.mandatory = true;
+      this.$store.commit('setPlantSizeMenuSelection', [card.cardtitle, this.selected]);
     }
   }
 };

@@ -1,8 +1,10 @@
 <template>
-  <v-app>
-    <!--    <Layout.vue />-->
-    <router-view />
-  </v-app>
+  <div>
+    <v-app>
+      <!--    <Layout.vue />-->
+      <router-view />
+    </v-app>
+  </div>
 </template>
 
 <script>
@@ -13,9 +15,7 @@ export default {
     fetch("http://localhost:3000/sizemenudata")
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         this.$store.dispatch("updatePlantSizeMenu", data);
-        this.$store.dispatch("updateCurrentMenu", data);
       })
       .catch(error => console.error(error));
     fetch("http://localhost:3000/lightlevelmenudata")
@@ -36,15 +36,26 @@ export default {
         this.$store.dispatch("updatePetSafeMenu", data);
       })
       .catch(error => console.error(error));
-    this.$store.dispatch("updateMenuHeadingText", this.menuHeadingText);
   }
 };
 </script>
 <style>
-/*Import roc-grotesk from adobe fonts*/
+/*Import roc-grotesk and sofia-pro from adobe fonts*/
 @import url("https://use.typekit.net/ega7mjw.css");
 
-  .v-application {
-    background-color: red;
-  }
+h1 {
+  font-family: roc-grotesk, sans-serif;
+  font-size: 3rem;
+}
+h2 {
+  font-family: roc-grotesk, sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+}
+ul,
+p,
+div {
+  font-family: sofia-pro, sans-serif;
+  font-size: 1.2rem;
+}
 </style>

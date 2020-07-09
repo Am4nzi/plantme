@@ -1,10 +1,8 @@
 <template>
-  <v-card class="elevation-12">
+  <v-card outlined>
     <Stepper />
-    <v-card-text>
       <router-view />
-    </v-card-text>
-    <ExpandTransition :text="menu.expandInfo.plantSize" />
+    <ExpandTransition/>
   </v-card>
 </template>
 
@@ -17,13 +15,6 @@ export default {
   components: {
     ExpandTransition,
     Stepper
-  },
-  data: () => ({
-    menu: {
-      expandInfo: {
-        plantSize: "Dummy Text"
-      }
-    }
-  }),
+  }
 };
 </script>

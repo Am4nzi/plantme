@@ -14,30 +14,34 @@
         >
           {{ stepperText.step01.label }}
         </v-stepper-step>
-        <v-divider></v-divider>
+        <v-divider
+          :color="toggleLightLevelEditable ? 'teal' : false"
+        ></v-divider>
         <v-stepper-step
           color="teal"
-          editable
+          :editable="toggleLightLevelEditable ? true : false"
           step="2"
           :complete="menuIndex > 2"
           @click="navigateToLightLevelMenu"
         >
           {{ stepperText.step02.label }}
         </v-stepper-step>
-        <v-divider></v-divider>
+        <v-divider
+          :color="toggleEaseOfCareEditable ? 'teal' : false"
+        ></v-divider>
         <v-stepper-step
           color="teal"
-          editable
+          :editable="toggleEaseOfCareEditable ? true : false"
           step="3"
           :complete="menuIndex > 3"
           @click="navigateToEaseOfCareMenu"
         >
           {{ stepperText.step03.label }}
         </v-stepper-step>
-        <v-divider></v-divider>
+        <v-divider :color="togglePetSafeEditable ? 'teal' : false"></v-divider>
         <v-stepper-step
           color="teal"
-          editable
+          :editable="togglePetSafeEditable ? true : false"
           step="4"
           :complete="menuIndex > 4"
           @click="navigateToPetSafeMenu"
@@ -54,30 +58,60 @@ export default {
   name: "Stepper",
   data() {
     return {
+      toggleEnableEditSteps: {
+        lightLevel: false,
+        easeOfCare: false,
+        petSafe: false
+      },
       e1: this.menuIndex,
       menuHeadingText: {
         plantSize: "Select Preferred Plant Size",
         lightLevel: "Select Light Level",
         easeOfCare: "Ease of Care",
         petSafe: "Pet Safe?"
-      },
+      }
     };
   },
   computed: {
+    toggleLightLevelEditable() {
+      if (
+        this.$store.state.menu.indexNumber === 2 ||
+        this.$store.state.menu.indexNumber === 3 ||
+        this.$store.state.menu.indexNumber === 4
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    toggleEaseOfCareEditable() {
+      if (
+        this.$store.state.menu.indexNumber === 3 ||
+        this.$store.state.menu.indexNumber === 4
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    togglePetSafeEditable() {
+      if (this.$store.state.menu.indexNumber === 4) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     stepperText() {
       return this.$store.state.stepperText;
     },
-    menuIndex2() {
-      return this.$store.state.menus.index;
-    },
     menuIndex: {
-      get: function () {
-        return this.$store.state.menus.index;
+      get: function() {
+        return this.$store.state.menu.indexNumber;
       },
-      set: function (menuIndex) {
-        return menuIndex;
-      },
-    },
+      set: function(newValue) {
+        return newValue;
+      }
+    }
   },
   mounted() {
     this.e1 = this.menuIndex;
@@ -85,40 +119,36 @@ export default {
   methods: {
     navigateToPlantSizeMenu() {
       this.e1 = 1;
-      this.$store.dispatch("updateMenuIndex", 1);
-      this.$store.dispatch(
-        "updateMenuHeadingText",
-        this.menuHeadingText.plantSize
-      );
+      this.$store.commit("setMenuIndex", 1);
+      this.$store.commit("setMenuTitle", this.menuHeadingText.plantSize);
       this.$router.push("plant-size");
     },
     navigateToLightLevelMenu() {
-      this.e1 = 2;
-      this.$store.dispatch("updateMenuIndex", 2);
-      this.$store.dispatch(
-        "updateMenuHeadingText",
-        this.menuHeadingText.lightLevel
-      );
-      this.$router.push("light-level");
+      if (this.$store.state.menuSelections.menuSelection.plantSize[0]) {
+        this.toggleEnableEditSteps.lightLevel = true;
+        this.e1 = 2;
+        this.$store.commit("setMenuIndex", 2);
+        this.$store.commit("setMenuTitle", this.menuHeadingText.lightLevel);
+        this.$router.push("light-level");
+      }
     },
     navigateToEaseOfCareMenu() {
-      this.e1 = 3;
-      this.$store.dispatch("updateMenuIndex", 3);
-      this.$store.dispatch(
-        "updateMenuHeadingText",
-        this.menuHeadingText.easeOfCare
-      );
-      console.log("this.menuIndex: ", this.menuIndex);
-      this.$router.push("ease-of-care");
+      if (this.$store.state.menuSelections.menuSelection.lightLevel[0]) {
+        this.toggleEnableEditSteps.easeOfCare = true;
+        this.e1 = 3;
+        this.$store.commit("setMenuIndex", 3);
+        this.$store.commit("setMenuTitle", this.menuHeadingText.easeOfCare);
+        this.$router.push("ease-of-care");
+      }
     },
     navigateToPetSafeMenu() {
-      this.e1 = 4;
-      this.$store.dispatch("updateMenuIndex", 4);
-      this.$store.dispatch(
-        "updateMenuHeadingText",
-        this.menuHeadingText.petSafe
-      );
-      this.$router.push("pet-safe-menu");
+      if (this.$store.state.menuSelections.menuSelection.easeOfCare[0]) {
+        this.toggleEnableEditSteps.petSafe = true;
+        this.e1 = 4;
+        this.$store.commit("setMenuIndex", 4);
+        this.$store.commit("setMenuTitle", this.menuHeadingText.petSafe);
+        this.$router.push("pet-safe-menu");
+      }
     }
   }
 };

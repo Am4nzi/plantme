@@ -1,34 +1,28 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+//createPersistedState preserves state on refresh
+import createPersistedState from "vuex-persistedstate";
+
+//Data that requires persistence is stored seperate in below modules
+import menu from './modules/menu';
+import menuSelections from './modules/menuSelections';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
     stepperText: {},
     menus: {
-      index: '',
-      headingText: {},
       currentMenu: [],
       plantSize: [],
       lightLevel: [],
       easeOfCare: [],
       petSafe: []
     },
-    menuSelection: {
-      plantSize: [],
-      lightLevel: [],
-      easeOfCare: [],
-      petSafe: []
-    }
+    expansionPanelText: {}
   },
   mutations: {
-    setCurrentMenu(state, currentMenuData) {
-      state.menus.currentMenu = currentMenuData;
-    },
-    setMenuIndex(state, menuIndex) {
-      state.menus.index = menuIndex;
-    },
     setMenuHeadingText(state, headingText) {
       state.menus.headingText = headingText;
     },
@@ -47,26 +41,11 @@ export default new Vuex.Store({
     setStepperText(state, stepperText) {
       state.stepperText = stepperText;
     },
-    setPlantMenuSelection(state, plantSizeMenuSelection) {
-      state.menuSelection.plantSize = plantSizeMenuSelection;
+    setExpansionPanelText(state, expansionPanelText) {
+      state.expansionPanelText = expansionPanelText;
     },
-    setLightLevelMenuSelection(state, lightLevelMenuSelection) {
-      state.menuSelection.lightLevel = lightLevelMenuSelection;
-    },
-    setEaseOfCareMenuSelection(state, easeOfCareMenuSelection) {
-      state.menuSelection.easeOfCare = easeOfCareMenuSelection;
-    },
-    setPetSafeMenuSelection(state, petSafeMenuSelection) {
-      state.menuSelection.petSafe = petSafeMenuSelection;
-    }
   },
   actions: {
-    updateMenuIndex({ commit }, menuIndex) {
-      commit('setMenuIndex', menuIndex);
-    },
-    updateCurrentMenu({ commit }, currentMenuData) {
-      commit('setCurrentMenu', currentMenuData);
-    },
     updateMenuHeadingText({ commit }, headingText) {
       commit('setMenuHeadingText', headingText);
     },
@@ -85,18 +64,13 @@ export default new Vuex.Store({
     updateStepperText({ commit }, setStepperText) {
       commit('setStepperText', setStepperText);
     },
-    updatePlantSizeMenuSelection({ commit }, plantSizeMenuSelection) {
-      commit('setPlantMenuSelection', plantSizeMenuSelection);
-    },
-    updateLightLevelMenuSelection({ commit }, lightLevelMenuSelection) {
-      commit('setLightLevelMenuSelection', lightLevelMenuSelection);
-    },
-    updateEaseOfCareMenuSelection({ commit }, easeOfCareMenuSelection) {
-      commit('setEaseOfCareMenuSelection', easeOfCareMenuSelection);
-    },
-    updatePetSafeMenuSelection({ commit }, petSafeMenuSelection) {
-      commit('setPetSafeMenuSelection', petSafeMenuSelection);
+    updateExpansionPanelText({ commit }, expansionPanelText) {
+      commit('setExpansionPanelText', expansionPanelText);
     },
   },
-  modules: {}
+  modules: {
+    menu,
+    menuSelections
+  },
+  plugins: [createPersistedState()]
 });

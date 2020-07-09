@@ -22,6 +22,7 @@
           <v-item v-slot:default="{ active, toggle }">
             <v-card
               :color="active ? 'teal' : ''"
+              outlined
               class="mx-auto"
               max-width="300"
               @click="
@@ -30,7 +31,7 @@
               "
             >
               <v-img :src="item.image" height="200px"></v-img>
-              <v-card-title>
+              <v-card-title :class="active ? 'white--text' : ''">
                 {{ item.cardtitle }}
               </v-card-title>
               <v-scroll-y-transition>
@@ -67,7 +68,7 @@ export default {
       return this.$store.state.menus.lightLevel;
     },
     getPreviousSelection() {
-      return this.$store.state.menuSelection.lightLevel;
+      return this.$store.state.menuSelections.menuSelection.lightLevel;
     }
   },
   mounted() {
@@ -78,7 +79,8 @@ export default {
   methods: {
     selectItem(card) {
       this.activeItem = card;
-      this.$store.dispatch("updateLightLevelMenuSelection", [card.cardtitle, this.selected]);
+      this.mandatory = true;
+      this.$store.commit('setLightLevelMenuSelection', [card.cardtitle, this.selected]);
     }
   }
 };

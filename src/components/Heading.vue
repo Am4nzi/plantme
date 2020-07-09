@@ -7,15 +7,14 @@ export default {
   name: "Heading",
   computed: {
     headingText() {
-      return this.$store.state.menus.headingText;
+      return this.$store.state.menu.menuTitle;
     }
-  }
+  },
 };
 </script>
 
-<style scoped>
+<style>
   h1 {
-    font-family: roc-grotesk, sans-serif;
-    font-size: 3rem;
+    text-align: center;
   }
 </style>

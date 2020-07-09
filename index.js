@@ -17,6 +17,8 @@ app.get("/easeofcaremenudata", db.getEaseOfCareMenuData);
 
 app.get("/petsafemenudata", db.getPetSafeMenuData);
 
+app.get("/menuTitles", db.getMenuTitles);
+
 app.get("/", (request, response) => {
   response.json({ info: "Node.js, Express, and Postgres API" });
 });

@@ -9,12 +9,12 @@ export default {
     headingText() {
       return this.$store.state.menu.menuTitle;
     }
-  },
+  }
 };
 </script>
 
 <style>
-  h1 {
-    text-align: center;
-  }
+h1 {
+  text-align: center;
+}
 </style>

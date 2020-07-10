@@ -1,8 +1,5 @@
 <template>
-  <v-item-group
-          v-model="selected"
-          :mandatory="mandatory"
-  >
+  <v-item-group v-model="selected" :mandatory="mandatory">
     <v-container>
       <v-row class="justify-space-around mt-8 mb-8">
         <Heading />
@@ -61,7 +58,7 @@ export default {
       expandInfo: {
         plantSize: "Dummy Text"
       }
-    },
+    }
   }),
   computed: {
     lightLevelMenuData() {
@@ -80,7 +77,10 @@ export default {
     selectItem(card) {
       this.activeItem = card;
       this.mandatory = true;
-      this.$store.commit('setLightLevelMenuSelection', [card.cardtitle, this.selected]);
+      this.$store.commit("setLightLevelMenuSelection", [
+        card.cardtitle,
+        this.selected
+      ]);
     }
   }
 };

@@ -66,7 +66,7 @@ export default {
     },
     getPreviousSelection() {
       return this.$store.state.menuSelections.menuSelection.plantSize;
-    },
+    }
   },
   mounted() {
     if (this.getPreviousSelection) {
@@ -77,7 +77,10 @@ export default {
     selectItem(card) {
       this.activeItem = card;
       this.mandatory = true;
-      this.$store.commit('setPlantSizeMenuSelection', [card.cardtitle, this.selected]);
+      this.$store.commit("setPlantSizeMenuSelection", [
+        card.cardtitle,
+        this.selected
+      ]);
     }
   }
 };

@@ -100,13 +100,6 @@ export default {
           return "SomethingWentWrong";
       }
     }
-  },
-  mounted() {
-    console.log(
-      "getExpansionPanelText.heading",
-      this.getExpansionPanelText.heading
-    );
-    // console.log("getMenuIndex", this.getMenuIndex);
   }
 };
 </script>

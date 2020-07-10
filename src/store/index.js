@@ -5,8 +5,8 @@ import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 
 //Data that requires persistence is stored seperate in below modules
-import menu from './modules/menu';
-import menuSelections from './modules/menuSelections';
+import menu from "./modules/menu";
+import menuSelections from "./modules/menuSelections";
 
 Vue.use(Vuex);
 
@@ -43,30 +43,30 @@ export default new Vuex.Store({
     },
     setExpansionPanelText(state, expansionPanelText) {
       state.expansionPanelText = expansionPanelText;
-    },
+    }
   },
   actions: {
     updateMenuHeadingText({ commit }, headingText) {
-      commit('setMenuHeadingText', headingText);
+      commit("setMenuHeadingText", headingText);
     },
     updatePetSafeMenu({ commit }, petSafeData) {
-      commit('setPetSafeMenu', petSafeData);
+      commit("setPetSafeMenu", petSafeData);
     },
     updatePlantSizeMenu({ commit }, plantSizeData) {
-      commit('setPlantSizeMenu', plantSizeData);
+      commit("setPlantSizeMenu", plantSizeData);
     },
     updateLightLevelMenu({ commit }, lightLevelData) {
-      commit('setLightLevelMenu', lightLevelData);
+      commit("setLightLevelMenu", lightLevelData);
     },
     updateEaseOfCareMenu({ commit }, easeOfCareData) {
-      commit('setEaseOfCareMenu', easeOfCareData);
+      commit("setEaseOfCareMenu", easeOfCareData);
     },
     updateStepperText({ commit }, setStepperText) {
-      commit('setStepperText', setStepperText);
+      commit("setStepperText", setStepperText);
     },
     updateExpansionPanelText({ commit }, expansionPanelText) {
-      commit('setExpansionPanelText', expansionPanelText);
-    },
+      commit("setExpansionPanelText", expansionPanelText);
+    }
   },
   modules: {
     menu,

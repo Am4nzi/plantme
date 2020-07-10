@@ -1,8 +1,8 @@
 <template>
   <v-card outlined>
     <Stepper />
-      <router-view />
-    <ExpandTransition/>
+    <router-view />
+    <ExpandTransition />
   </v-card>
 </template>
 

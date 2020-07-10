@@ -54,8 +54,8 @@ export default {
     selected: null,
     activeItem: null,
     menu: {
-      plantSizeData: [],
-    },
+      plantSizeData: []
+    }
   }),
   computed: {
     petSafeMenuData() {
@@ -72,13 +72,15 @@ export default {
     if (this.getPreviousSelection) {
       this.selected = this.getPreviousSelection[1];
     }
-    console.log('getExpansionPanelText: ', this.getExpansionPanelText)
   },
   methods: {
     selectItem(card) {
       this.activeItem = card;
       this.mandatory = true;
-      this.$store.commit('setPetSafeMenuSelection', [card.cardtitle, this.selected]);
+      this.$store.commit("setPetSafeMenuSelection", [
+        card.cardtitle,
+        this.selected
+      ]);
     }
   }
 };

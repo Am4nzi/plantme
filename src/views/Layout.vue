@@ -85,7 +85,7 @@ export default {
         }
       },
       easeOfCare: {
-        heading: 'Ease of Care Guide',
+        heading: "Ease of Care Guide",
         guide: `Plants don't live indoors by choice, and all require some maintenance if they are to thrive in this
         unnatural habitat, however, each has their own specific requirements. Some need more water than others, some
         require more pruning, whilst others are fussy about temperature. Taking all these factors into account,
@@ -93,7 +93,7 @@ export default {
         to keep them happy and healthy.`
       },
       petSafe: {
-        heading: 'Pet Safety Guide',
+        heading: "Pet Safety Guide",
         guide: `Certain species of indoor plants can be toxic to pets, either through ingestion or even simply
         by brushing up against them. This filter has been tailored to cats and dogs, so if you plan on putting your
         new plant in a room where your furry friends often roam, make sure to select the 'Safe' option.`
@@ -147,7 +147,6 @@ export default {
       this.$store.commit("setPetSafeMenuSelection", [null, null]);
     },
     getNextRoute() {
-      console.log("toggleActivateButton: ", this.toggleActivateButton);
       const { name } = this.$route;
       switch (name) {
         case "PlantSizeMenu":

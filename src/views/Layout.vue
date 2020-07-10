@@ -134,8 +134,7 @@ export default {
             !this.$store.state.menuSelections.menuSelection.petSafe[0]
           );
         default:
-          alert("Something went wrong !!!");
-          return "SomethingWentWrong";
+          return "Error in toggleActivateButton";
       }
     }
   },

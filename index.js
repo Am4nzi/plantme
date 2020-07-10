@@ -23,6 +23,8 @@ app.get("/", (request, response) => {
   response.json({ info: "Node.js, Express, and Postgres API" });
 });
 
+app.use(express.static('dist'))
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Listening on ${port}`);

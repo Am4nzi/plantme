@@ -96,7 +96,6 @@ export default {
         case 4:
           return this.$store.state.expansionPanelText.petSafe;
         default:
-          alert("Something went wrong !!!");
           return "SomethingWentWrong";
       }
     }

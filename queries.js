@@ -50,7 +50,7 @@ const getLightLevelMenuData = (request, response) => {
 };
 
 const getEaseOfCareMenuData = (request, response) => {
-  pool.query("SELECT * FROM easeofcare ORDER BY id ASC", (error, results) => {
+  pool.query("SELECT * FROM easeOfCareMenu ORDER BY id ASC", (error, results) => {
     if (error) {
       throw error;
     }
@@ -59,7 +59,7 @@ const getEaseOfCareMenuData = (request, response) => {
 };
 
 const getPetSafeMenuData = (request, response) => {
-  pool.query("SELECT * FROM petsafe ORDER BY id ASC", (error, results) => {
+  pool.query("SELECT * FROM petSafeMenu ORDER BY id ASC", (error, results) => {
     if (error) {
       throw error;
     }

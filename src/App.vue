@@ -24,7 +24,7 @@ export default {
         this.$store.dispatch("updateLightLevelMenu", data);
       })
       .catch(error => console.error(error));
-    fetch("http://localhost:3000/easeofcaremenudata")
+      fetch("http://localhost:3000/easeofcaremenudata")
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updateEaseOfCareMenu", data);

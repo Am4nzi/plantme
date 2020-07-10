@@ -2,18 +2,17 @@
   <v-card outlined>
     <Stepper />
     <router-view />
-    <ExpandTransition />
+    <ExpansionPanel />
   </v-card>
 </template>
 
 <script>
-import ExpandTransition from "../components/ExpandTransition";
+import ExpansionPanel from "./ExpansionPanel";
 import Stepper from "../components/Stepper";
 export default {
   name: "Card",
-  props: ["menuIndex"],
   components: {
-    ExpandTransition,
+    ExpansionPanel,
     Stepper
   }
 };

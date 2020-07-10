@@ -4,7 +4,7 @@ import Vuex from "vuex";
 //createPersistedState preserves state on refresh
 import createPersistedState from "vuex-persistedstate";
 
-//Data that requires persistence is stored seperate in below modules
+//Data that requires persistence is stored separately in below modules
 import menu from "./modules/menu";
 import menuSelections from "./modules/menuSelections";
 

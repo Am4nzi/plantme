@@ -19,10 +19,10 @@ const mutations = {
   },
   setPetSafeMenuSelection(state, value) {
     state.menuSelection.petSafe = value;
-  },
+  }
 };
 
 export default {
   state,
   mutations
-}
+};

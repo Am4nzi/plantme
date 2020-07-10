@@ -12,10 +12,11 @@
     <v-expand-transition>
       <div v-show="show">
         <v-divider></v-divider>
+        <!--        Conditionally render different elements depending on current view-->
         <v-card-text
           v-if="
-            getExpansionPanelText.heading == 'Size Guide' ||
-              getExpansionPanelText.heading == 'Light Level Guide'
+            getExpansionPanelText.heading === 'Size Guide' ||
+              getExpansionPanelText.heading === 'Light Level Guide'
           "
         >
           <h2 class="teal--text mb-1 mt-4 ml-10">
@@ -50,8 +51,8 @@
         </v-card-text>
         <div
           v-else-if="
-            getExpansionPanelText.heading == 'Ease of Care Guide' ||
-              getExpansionPanelText.heading == 'Pet Safety Guide'
+            getExpansionPanelText.heading === 'Ease of Care Guide' ||
+              getExpansionPanelText.heading === 'Pet Safety Guide'
           "
         >
           <h2 class="teal--text mb-1 mt-4 ml-14">
@@ -59,8 +60,7 @@
           </h2>
           <p
             class="mb-1 mt-4 ml-14 mb-8"
-            style="max-width: 75%; text-align: justify;
-  text-justify: inter-word;"
+            style="max-width: 75%; text-align: justify; text-justify: inter-word;"
           >
             {{ getExpansionPanelText.guide }}
           </p>
@@ -72,14 +72,9 @@
 
 <script>
 export default {
-  name: "ExpandTransition",
+  name: "ExpansionPanel",
   data: () => ({
-    show: false,
-    object: {
-      title: "How to do lists in Vue",
-      author: "Jane Doe",
-      publishedAt: "2016-04-10"
-    }
+    show: false
   }),
   computed: {
     getMenuIndex() {
@@ -96,13 +91,9 @@ export default {
         case 4:
           return this.$store.state.expansionPanelText.petSafe;
         default:
-          return "SomethingWentWrong";
+          return "Error in getExpansionPanelText() /ExpansionPanel.vue";
       }
     }
   }
 };
 </script>
-<style>
-/*Import roc-grotesk and sofia-pro from adobe fonts*/
-@import url("https://use.typekit.net/ega7mjw.css");
-</style>

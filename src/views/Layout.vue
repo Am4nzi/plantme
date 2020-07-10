@@ -7,9 +7,6 @@
             <!--    <Card.vue />-->
             <router-view />
             <v-row align="center" justify="end">
-              <!--              <div>-->
-              <!--                <v-btn @click="clearState" x-large color="teal">Clear</v-btn>-->
-              <!--              </div>-->
               <div class="mt-6 mr-4">
                 <v-btn
                   @click="nextStep"
@@ -31,12 +28,9 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
 export default {
   name: "Layout",
   data: () => ({
-    disableButton: true,
     menuHeadingText: {
       plantSize: "Select Preferred Plant Size",
       lightLevel: "Select Light Level",
@@ -101,19 +95,16 @@ export default {
     }
   }),
   created() {
+    //Immediately dispatch static content to store, which can be rendered in any child component
     this.$store.dispatch(
       "updateMenuHeadingText",
       this.menuHeadingText.plantSize
     );
     this.$store.dispatch("updateStepperText", this.stepperText);
     this.$store.dispatch("updateExpansionPanelText", this.expansionPanelText);
-    if (!this.$store.state.menuSelections.menuSelection.plantSize[0]) {
-      this.disableButton = true;
-    } else {
-      this.disableButton = false;
-    }
   },
   computed: {
+    //If no user selection for current view exists in store, function returns false and button is disabled
     toggleActivateButton() {
       const { name } = this.$route;
       switch (name) {
@@ -134,17 +125,11 @@ export default {
             !this.$store.state.menuSelections.menuSelection.petSafe[0]
           );
         default:
-          return "Error in toggleActivateButton";
+          return "Error in toggleActivateButton /Layout.vue";
       }
     }
   },
   methods: {
-    clearState() {
-      this.$store.commit("setPlantSizeMenuSelection", [null, null]);
-      this.$store.commit("setLightLevelMenuSelection", [null, null]);
-      this.$store.commit("setEaseOfCareMenuSelection", [null, null]);
-      this.$store.commit("setPetSafeMenuSelection", [null, null]);
-    },
     getNextRoute() {
       const { name } = this.$route;
       switch (name) {

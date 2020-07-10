@@ -1,4 +1,5 @@
 <template>
+  <!--    v-item-group component documentation: https://vuetifyjs.com/en/components/item-groups//-->
   <v-item-group v-model="selected" :mandatory="mandatory">
     <v-container>
       <v-row class="justify-space-around mt-8 mb-8">
@@ -8,7 +9,7 @@
         <v-col
           v-for="item in petSafeMenuData"
           :key="item.id"
-          class="{ active: item === activeItem }"
+          :class="{ active: item === activeItem }"
           cols="12"
           xs="12"
           sm="12"
@@ -69,11 +70,13 @@ export default {
     }
   },
   mounted() {
+    //Previous selection remains active if user navigates to a view they've already visited
     if (this.getPreviousSelection) {
       this.selected = this.getPreviousSelection[1];
     }
   },
   methods: {
+    //Handle card selection and storing value in state
     selectItem(card) {
       this.activeItem = card;
       this.mandatory = true;

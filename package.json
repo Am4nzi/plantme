@@ -16,10 +16,10 @@
     "nodemon": "^2.0.4",
     "pg": "^8.2.1",
     "vue": "^2.6.11",
+    "vue-meta": "^2.4.0",
     "vue-router": "^3.2.0",
     "vuetify": "^2.2.11",
     "vuex": "^3.4.0",
-    "vuex-persist": "^2.2.0",
     "vuex-persistedstate": "^3.0.1"
   },
   "devDependencies": {

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!--    Stepper component documentation: https://vuetifyjs.com/en/components/steppers/-->
     <v-stepper
       class="blue-grey elevation-0 rounded-tl-sm rounded-t4-sm rounded-bl-0 rounded-br-0 lighten-5"
       v-model="menuIndex"
@@ -63,7 +64,6 @@ export default {
         easeOfCare: false,
         petSafe: false
       },
-      e1: this.menuIndex,
       menuHeadingText: {
         plantSize: "Select Preferred Plant Size",
         lightLevel: "Select Light Level",
@@ -108,17 +108,13 @@ export default {
       get: function() {
         return this.$store.state.menu.indexNumber;
       },
-      set: function(newValue) {
-        return newValue;
+      set: function(indexNumber) {
+        return indexNumber;
       }
     }
   },
-  mounted() {
-    this.e1 = this.menuIndex;
-  },
   methods: {
     navigateToPlantSizeMenu() {
-      this.e1 = 1;
       this.$store.commit("setMenuIndex", 1);
       this.$store.commit("setMenuTitle", this.menuHeadingText.plantSize);
       this.$router.push("plant-size");
@@ -126,7 +122,6 @@ export default {
     navigateToLightLevelMenu() {
       if (this.$store.state.menuSelections.menuSelection.plantSize[0]) {
         this.toggleEnableEditSteps.lightLevel = true;
-        this.e1 = 2;
         this.$store.commit("setMenuIndex", 2);
         this.$store.commit("setMenuTitle", this.menuHeadingText.lightLevel);
         this.$router.push("light-level");
@@ -135,7 +130,6 @@ export default {
     navigateToEaseOfCareMenu() {
       if (this.$store.state.menuSelections.menuSelection.lightLevel[0]) {
         this.toggleEnableEditSteps.easeOfCare = true;
-        this.e1 = 3;
         this.$store.commit("setMenuIndex", 3);
         this.$store.commit("setMenuTitle", this.menuHeadingText.easeOfCare);
         this.$router.push("ease-of-care");
@@ -144,7 +138,6 @@ export default {
     navigateToPetSafeMenu() {
       if (this.$store.state.menuSelections.menuSelection.easeOfCare[0]) {
         this.toggleEnableEditSteps.petSafe = true;
-        this.e1 = 4;
         this.$store.commit("setMenuIndex", 4);
         this.$store.commit("setMenuTitle", this.menuHeadingText.petSafe);
         this.$router.push("pet-safe-menu");

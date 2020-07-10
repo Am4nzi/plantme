@@ -9,9 +9,23 @@
 
 <script>
 export default {
+  //Set Meta information via vue-meta plugin https://vue-meta.nuxtjs.org/
+  metaInfo: {
+    title: "PlantMe",
+    titleTemplate:
+      "%s - PlantMe helps you choose your next houseplant. Filter by size, light requirements, ease of care and pet safety",
+    htmlAttrs: {
+      lang: "en"
+    },
+    meta: [
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" }
+    ]
+  },
   name: "App",
   // Set Vuex menu state values from plantsdb
   created() {
+    this.$store.commit("setMenuIndex", 1);
     fetch("http://localhost:3000/sizemenudata")
       .then(response => response.json())
       .then(data => {
@@ -24,7 +38,7 @@ export default {
         this.$store.dispatch("updateLightLevelMenu", data);
       })
       .catch(error => console.error(error));
-      fetch("http://localhost:3000/easeofcaremenudata")
+    fetch("http://localhost:3000/easeofcaremenudata")
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updateEaseOfCareMenu", data);

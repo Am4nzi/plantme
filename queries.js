@@ -7,15 +7,6 @@ const pool = new Pool({
   port: 5432
 });
 
-const getPlantsData = (request, response) => {
-  pool.query("SELECT * FROM plants ORDER BY id ASC", (error, results) => {
-    if (error) {
-      throw error;
-    }
-    response.status(200).json(results.rows);
-  });
-};
-
 const getMenuTitles = (request, response) => {
   pool.query("SELECT * FROM menuTitles ORDER BY id ASC", (error, results) => {
     if (error) {
@@ -69,7 +60,6 @@ const getPetSafeMenuData = (request, response) => {
 
 module.exports = {
   getMenuTitles,
-  getPlantsData,
   getSizeMenuData,
   getLightLevelMenuData,
   getEaseOfCareMenuData,

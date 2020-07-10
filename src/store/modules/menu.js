@@ -1,6 +1,6 @@
 const state = {
   indexNumber: null,
-  menuTitle: '',
+  menuTitle: ""
 };
 
 const mutations = {
@@ -9,10 +9,10 @@ const mutations = {
   },
   setMenuTitle(state, value) {
     state.menuTitle = value;
-  },
+  }
 };
 
 export default {
   state,
   mutations
-}
+};

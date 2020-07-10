@@ -16,31 +16,31 @@ export default {
       "%s - PlantMe helps you choose your next houseplant. Filter by size, light requirements, ease of care and pet safety",
     htmlAttrs: {
       lang: "en"
-    },
+    }
   },
   name: "App",
   // Set Vuex menu state values from plantsdb
   created() {
     this.$store.commit("setMenuIndex", 1);
-    fetch("http://localhost:3000/sizemenudata")
+    fetch(`${process.env.DATABASE_URL} || "http://localhost:3000"/sizemenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updatePlantSizeMenu", data);
       })
       .catch(error => console.error(error));
-    fetch("http://localhost:3000/lightlevelmenudata")
+    fetch(`${process.env.DATABASE_URL} || "http://localhost:3000"/lightlevelmenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updateLightLevelMenu", data);
       })
       .catch(error => console.error(error));
-    fetch("http://localhost:3000/easeofcaremenudata")
+    fetch(`${process.env.DATABASE_URL} || "http://localhost:3000"/easeofcaremenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updateEaseOfCareMenu", data);
       })
       .catch(error => console.error(error));
-    fetch("http://localhost:3000/petsafemenudata")
+    fetch(`${process.env.DATABASE_URL} || "http://localhost:3000"/petsafemenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updatePetSafeMenu", data);

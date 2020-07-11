@@ -13,34 +13,35 @@ export default {
   metaInfo: {
     title: "PlantMe",
     titleTemplate:
-      "%s - PlantMe helps you choose your next houseplant. Filter by size, light requirements, ease of care and pet safety",
+      "%s",
     htmlAttrs: {
       lang: "en"
     }
   },
   name: "App",
   // Set Vuex menu state values from plantsdb
+  // `${process.env.DATABASE_URL} || "http://localhost:3000"/sizemenudata`)
   created() {
     this.$store.commit("setMenuIndex", 1);
-    fetch(`${process.env.DATABASE_URL} || "http://localhost:3000"/sizemenudata`)
+    fetch(`${process.env.DATABASE_URL}/sizemenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updatePlantSizeMenu", data);
       })
       .catch(error => console.error(error));
-    fetch(`${process.env.DATABASE_URL} || "http://localhost:3000"/lightlevelmenudata`)
+    fetch(`${process.env.DATABASE_URL}/lightlevelmenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updateLightLevelMenu", data);
       })
       .catch(error => console.error(error));
-    fetch(`${process.env.DATABASE_URL} || "http://localhost:3000"/easeofcaremenudata`)
+    fetch(`${process.env.DATABASE_URL}/easeofcaremenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updateEaseOfCareMenu", data);
       })
       .catch(error => console.error(error));
-    fetch(`${process.env.DATABASE_URL} || "http://localhost:3000"/petsafemenudata`)
+    fetch(`${process.env.DATABASE_URL}/petsafemenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updatePetSafeMenu", data);

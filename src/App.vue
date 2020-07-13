@@ -8,7 +8,6 @@
 </template>
 
 <script>
-require("dotenv").config();
 export default {
   //Set Meta information via vue-meta plugin https://vue-meta.nuxtjs.org/
   metaInfo: {
@@ -22,27 +21,31 @@ export default {
   name: "App",
   // Set Vuex menu state values from plantsdb
   created() {
-    console.log("DATABASE_URL: ", process.env.TEST_ENV);
+    const plantSizeDataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
+    const lightLevelDataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
+    const easeOfCareDataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
+    const petSafeSataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
+
     this.$store.commit("setMenuIndex", 1);
-    fetch(`http://localhost:3000/sizemenudata`)
+    fetch(`${plantSizeDataUrl}/sizemenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updatePlantSizeMenu", data);
       })
       .catch(error => console.error(error));
-    fetch("http://localhost:3000/lightlevelmenudata")
+    fetch(`${lightLevelDataUrl}/lightlevelmenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updateLightLevelMenu", data);
       })
       .catch(error => console.error(error));
-    fetch("http://localhost:3000/easeofcaremenudata")
+    fetch(`${easeOfCareDataUrl}/easeofcaremenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updateEaseOfCareMenu", data);
       })
       .catch(error => console.error(error));
-    fetch("http://localhost:3000/petsafemenudata")
+    fetch(`${petSafeSataUrl}/petsafemenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updatePetSafeMenu", data);

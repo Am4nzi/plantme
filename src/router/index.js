@@ -7,7 +7,6 @@ import PlantSizeMenu from "../views/PlantSizeMenu";
 import LightLevelMenu from "../views/LightLevelMenu";
 import EaseOfCareMenu from "../views/EaseOfCareMenu";
 import PetSafeMenu from "../views/PetSafeMenu";
-require('dotenv').config();
 
 Vue.use(VueRouter);
 Vue.use(VueMeta);

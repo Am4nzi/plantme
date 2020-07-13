@@ -8,40 +8,41 @@
 </template>
 
 <script>
+require("dotenv").config();
 export default {
   //Set Meta information via vue-meta plugin https://vue-meta.nuxtjs.org/
   metaInfo: {
     title: "PlantMe",
     titleTemplate:
-      "%s",
+      "%s - PlantMe helps you choose your next houseplant. Filter by size, light requirements, ease of care and pet safety",
     htmlAttrs: {
       lang: "en"
     }
   },
   name: "App",
   // Set Vuex menu state values from plantsdb
-  // `${process.env.DATABASE_URL} || "http://localhost:3000"/sizemenudata`)
   created() {
+    console.log("DATABASE_URL: ", process.env.TEST_ENV);
     this.$store.commit("setMenuIndex", 1);
-    fetch(`${process.env.DATABASE_URL}/sizemenudata`)
+    fetch(`http://localhost:3000/sizemenudata`)
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updatePlantSizeMenu", data);
       })
       .catch(error => console.error(error));
-    fetch(`${process.env.DATABASE_URL}/lightlevelmenudata`)
+    fetch("http://localhost:3000/lightlevelmenudata")
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updateLightLevelMenu", data);
       })
       .catch(error => console.error(error));
-    fetch(`${process.env.DATABASE_URL}/easeofcaremenudata`)
+    fetch("http://localhost:3000/easeofcaremenudata")
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updateEaseOfCareMenu", data);
       })
       .catch(error => console.error(error));
-    fetch(`${process.env.DATABASE_URL}/petsafemenudata`)
+    fetch("http://localhost:3000/petsafemenudata")
       .then(response => response.json())
       .then(data => {
         this.$store.dispatch("updatePetSafeMenu", data);

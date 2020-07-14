@@ -8,6 +8,12 @@
 </template>
 
 <script>
+import Vue from 'vue';
+const axios = require("axios");
+import VueAxios from 'vue-axios'
+
+Vue.use(VueAxios, axios)
+
 export default {
   //Set Meta information via vue-meta plugin https://vue-meta.nuxtjs.org/
   metaInfo: {
@@ -23,6 +29,45 @@ export default {
   created() {
 
     this.$store.commit("setMenuIndex", 1);
+
+    console.log('this.$store: ', this.$store);
+
+    Vue.axios
+      .get(`/api/sizemenudata`)
+      .then(response => {
+        this.$store.dispatch("updatePlantSizeMenu", response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+
+    Vue.axios
+      .get(`/api/lightlevelmenudata`)
+      .then(response => {
+        this.$store.dispatch("updateLightLevelMenu", response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+    Vue.axios
+      .get(`/api/easeofcaremenudata`)
+      .then(response => {
+        this.$store.dispatch("updateEaseOfCareMenu", response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+    Vue.axios
+      .get(`/api/petsafemenudata`)
+      .then(response => {
+        this.$store.dispatch("updatePetSafeMenu", response.data);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
 
       // fetch(`${plantSizeDataUrl}/sizemenudata`)
       //   .then(response => response.json())

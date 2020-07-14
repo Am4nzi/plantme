@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue from "vue";
 const axios = require("axios");
-import VueAxios from 'vue-axios'
+import VueAxios from "vue-axios";
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 
 export default {
   //Set Meta information via vue-meta plugin https://vue-meta.nuxtjs.org/
@@ -28,8 +28,15 @@ export default {
   // Set Vuex menu state values from plantsdb
   created() {
     this.$store.commit("setMenuIndex", 1);
+
+    let dataBaseUrl = "";
+
+    if (window.location.href.includes("localhost")) {
+      dataBaseUrl = "http://localhost:3000/api";
+    } else dataBaseUrl = "/api";
+
     Vue.axios
-      .get(`/api/sizemenudata`)
+      .get(`${dataBaseUrl}/sizemenudata`)
       .then(response => {
         this.$store.dispatch("updatePlantSizeMenu", response.data);
       })
@@ -37,9 +44,8 @@ export default {
         console.log(error);
       });
 
-
     Vue.axios
-      .get(`/api/lightlevelmenudata`)
+      .get(`${dataBaseUrl}/lightlevelmenudata`)
       .then(response => {
         this.$store.dispatch("updateLightLevelMenu", response.data);
       })
@@ -48,7 +54,7 @@ export default {
       });
 
     Vue.axios
-      .get(`/api/easeofcaremenudata`)
+      .get(`${dataBaseUrl}/easeofcaremenudata`)
       .then(response => {
         this.$store.dispatch("updateEaseOfCareMenu", response.data);
       })
@@ -57,7 +63,7 @@ export default {
       });
 
     Vue.axios
-      .get(`/api/petsafemenudata`)
+      .get(`${dataBaseUrl}/petsafemenudata`)
       .then(response => {
         this.$store.dispatch("updatePetSafeMenu", response.data);
       })

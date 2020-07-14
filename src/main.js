@@ -9,9 +9,16 @@ import VueAxios from 'vue-axios'
 
 Vue.use(VueAxios, axios)
 
-const baseURL = 'http://localhost:3000';
-if (typeof baseURL !== 'undefined') {
-  Vue.axios.defaults.baseURL = baseURL;
+const localServerUrl = 'http://localhost:3000';
+
+const herokuServerUrl = process.env.VUE_APP_DATABASE_URL;
+
+if (typeof localServerUrl !== 'undefined') {
+  Vue.axios.defaults.baseURL = localServerUrl;
+}
+
+if (window.location.href === "https://plantme.herokuapp.com/") {
+  Vue.axios.defaults.baseURL = herokuServerUrl;
 }
 
 Vue.axios

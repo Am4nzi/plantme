@@ -95,7 +95,8 @@ div {
 
 @media (max-width:600px) {
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
+    line-height: 1.3;
   }
   h2 {
     line-height: 1.1;

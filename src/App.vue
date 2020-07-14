@@ -27,11 +27,7 @@ export default {
   name: "App",
   // Set Vuex menu state values from plantsdb
   created() {
-
     this.$store.commit("setMenuIndex", 1);
-
-    console.log('this.$store: ', this.$store);
-
     Vue.axios
       .get(`/api/sizemenudata`)
       .then(response => {
@@ -68,31 +64,6 @@ export default {
       .catch(function(error) {
         console.log(error);
       });
-
-      // fetch(`${plantSizeDataUrl}/sizemenudata`)
-      //   .then(response => response.json())
-      //   .then(data => {
-      //     this.$store.dispatch("updatePlantSizeMenu", data);
-      //   })
-      //   .catch(error => console.error(error));
-      // fetch(`${lightLevelDataUrl}/lightlevelmenudata`)
-      //   .then(response => response.json())
-      //   .then(data => {
-      //     this.$store.dispatch("updateLightLevelMenu", data);
-      //   })
-      //   .catch(error => console.error(error));
-      // fetch(`${easeOfCareDataUrl}/easeofcaremenudata`)
-      //   .then(response => response.json())
-      //   .then(data => {
-      //     this.$store.dispatch("updateEaseOfCareMenu", data);
-      //   })
-      //   .catch(error => console.error(error));
-      // fetch(`${petSafeSataUrl}/petsafemenudata`)
-      //   .then(response => response.json())
-      //   .then(data => {
-      //     this.$store.dispatch("updatePetSafeMenu", data);
-      //   })
-      //   .catch(error => console.error(error));
   }
 };
 </script>

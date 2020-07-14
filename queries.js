@@ -1,11 +1,22 @@
 const { Client } = require("pg");
 
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false
+//   }
+// });
+
 const client = new Client({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  connectionString:
+    process.env.DATABASE_URL ||
+    "postgresql://postgres:password@localhost:5432/plantsdb",
+  ssl: process.env.DATABASE_URL ? true : false
 });
+
+// const client = new Client({
+//   connectionString: process.env.DATABASE_URL
+// });
 
 client.connect();
 
@@ -40,15 +51,13 @@ const getEaseOfCareMenuData = (request, response) => {
 };
 
 const getPetSafeMenuData = (request, response) => {
-  client.query(
-    "SELECT * FROM petSafeMenu ORDER BY id ASC", (err, results) => {
+  client.query("SELECT * FROM petSafeMenu ORDER BY id ASC", (err, results) => {
     if (err) throw err;
     response.status(200).json(results.rows);
   });
 };
 
 module.exports = {
-  // getMenuTitles,
   getSizeMenuData,
   getLightLevelMenuData,
   getEaseOfCareMenuData,

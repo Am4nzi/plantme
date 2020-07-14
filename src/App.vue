@@ -24,30 +24,30 @@ export default {
 
     this.$store.commit("setMenuIndex", 1);
 
-    //   fetch(`${plantSizeDataUrl}/sizemenudata`)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       this.$store.dispatch("updatePlantSizeMenu", data);
-    //     })
-    //     .catch(error => console.error(error));
-    //   fetch(`${lightLevelDataUrl}/lightlevelmenudata`)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       this.$store.dispatch("updateLightLevelMenu", data);
-    //     })
-    //     .catch(error => console.error(error));
-    //   fetch(`${easeOfCareDataUrl}/easeofcaremenudata`)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       this.$store.dispatch("updateEaseOfCareMenu", data);
-    //     })
-    //     .catch(error => console.error(error));
-    //   fetch(`${petSafeSataUrl}/petsafemenudata`)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //       this.$store.dispatch("updatePetSafeMenu", data);
-    //     })
-    //     .catch(error => console.error(error));
+      // fetch(`${plantSizeDataUrl}/sizemenudata`)
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     this.$store.dispatch("updatePlantSizeMenu", data);
+      //   })
+      //   .catch(error => console.error(error));
+      // fetch(`${lightLevelDataUrl}/lightlevelmenudata`)
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     this.$store.dispatch("updateLightLevelMenu", data);
+      //   })
+      //   .catch(error => console.error(error));
+      // fetch(`${easeOfCareDataUrl}/easeofcaremenudata`)
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     this.$store.dispatch("updateEaseOfCareMenu", data);
+      //   })
+      //   .catch(error => console.error(error));
+      // fetch(`${petSafeSataUrl}/petsafemenudata`)
+      //   .then(response => response.json())
+      //   .then(data => {
+      //     this.$store.dispatch("updatePetSafeMenu", data);
+      //   })
+      //   .catch(error => console.error(error));
   }
 };
 </script>

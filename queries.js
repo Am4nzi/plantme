@@ -1,59 +1,54 @@
-const Pool = require("pg").Pool;
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: "localhost",
-  database: "plantsdb",
-  password: process.env.DB_PASSWORD,
-  port: 5432
+const { Client } = require("pg");
+
+const client = new Client({
+  connectionString:
+    process.env.DATABASE_URL ||
+    "postgresql://postgres:password@localhost:5432/plantsdb",
+  ssl: process.env.DATABASE_URL ? true : false
 });
 
+client.connect();
+
 const getMenuTitles = (request, response) => {
-  pool.query("SELECT * FROM menuTitles ORDER BY id ASC", (error, results) => {
-    if (error) {
-      throw error;
-    }
+  client.query("SELECT * FROM menuTitles ORDER BY id ASC", (err, results) => {
+    if (err) throw err;
     response.status(200).json(results.rows);
   });
 };
 
 const getSizeMenuData = (request, response) => {
-  pool.query(
+  client.query(
     "SELECT * FROM plantSizeMenu ORDER BY id ASC",
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
+    (err, results) => {
+      if (err) throw err;
       response.status(200).json(results.rows);
     }
   );
 };
 
 const getLightLevelMenuData = (request, response) => {
-  pool.query(
+  client.query(
     "SELECT * FROM lightlevelmenu ORDER BY id ASC",
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
+    (err, results) => {
+      if (err) throw err;
       response.status(200).json(results.rows);
     }
   );
 };
 
 const getEaseOfCareMenuData = (request, response) => {
-  pool.query("SELECT * FROM easeOfCareMenu ORDER BY id ASC", (error, results) => {
-    if (error) {
-      throw error;
+  client.query(
+    "SELECT * FROM easeOfCareMenu ORDER BY id ASC",
+    (err, results) => {
+      if (err) throw err;
+      response.status(200).json(results.rows);
     }
-    response.status(200).json(results.rows);
-  });
+  );
 };
 
 const getPetSafeMenuData = (request, response) => {
-  pool.query("SELECT * FROM petSafeMenu ORDER BY id ASC", (error, results) => {
-    if (error) {
-      throw error;
-    }
+  client.query("SELECT * FROM petSafeMenu ORDER BY id ASC", (err, results) => {
+    if (err) throw err;
     response.status(200).json(results.rows);
   });
 };

@@ -2,7 +2,8 @@ const express = require("express");
 const serveStatic = require("serve-static");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const db = require("./queries");
+
+const db = (require("./queries"));
 
 const app = express();
 
@@ -24,7 +25,8 @@ app.get("/menuTitles", db.getMenuTitles);
 
 app.use(express.static("dist"));
 
-const port = process.env.PORT || 3000;
+const port = 3000;
+
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });

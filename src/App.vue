@@ -8,7 +8,6 @@
 </template>
 
 <script>
-const axios = require("axios");
 export default {
   //Set Meta information via vue-meta plugin https://vue-meta.nuxtjs.org/
   metaInfo: {
@@ -22,50 +21,8 @@ export default {
   name: "App",
   // Set Vuex menu state values from plantsdb
   created() {
-    const databaseURL =
-      process.env.VUE_APP_DATABASE_URL || "http://localhost:3000";
-    // const lightLevelDataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
-    // const easeOfCareDataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
-    // const petSafeSataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
 
     this.$store.commit("setMenuIndex", 1);
-
-    axios
-      .get(`${databaseURL}/sizemenudata`)
-      .then(response => {
-        console.log("RESPONSE PLANT SIZE: ", response.data);
-        this.$store.dispatch("updatePlantSizeMenu", response.data);
-      })
-      .catch(function(error) {
-        console.error(error);
-      });
-
-    axios
-      .get(`${databaseURL}/lightlevelmenudata`)
-      .then(response => {
-        this.$store.dispatch("updateLightLevelMenu", response.data);
-      })
-      .catch(function(error) {
-        console.error(error);
-      });
-
-    axios
-      .get(`${databaseURL}/easeofcaremenudata`)
-      .then(response => {
-        this.$store.dispatch("updateEaseOfCareMenu", response.data);
-      })
-      .catch(function(error) {
-        console.error(error);
-      });
-
-    axios
-      .get(`${databaseURL}/petsafemenudata`)
-      .then(response => {
-        this.$store.dispatch("updatePetSafeMenu", response.data);
-      })
-      .catch(function(error) {
-        console.error(error);
-      });
 
     //   fetch(`${plantSizeDataUrl}/sizemenudata`)
     //     .then(response => response.json())

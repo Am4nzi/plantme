@@ -92,4 +92,16 @@ div {
   font-family: sofia-pro, sans-serif;
   font-size: 1.2rem;
 }
+
+@media (max-width:600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    line-height: 1.1;
+  }
+  p {
+    text-align: left !important;
+  }
+}
 </style>

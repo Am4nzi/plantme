@@ -2,11 +2,12 @@ const { Client } = require("pg");
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
-  ssl: process.env.DATABASE_URL ? true : false
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 client.connect();
-
 
 const getSizeMenuData = (request, response) => {
   client.query(
@@ -27,7 +28,7 @@ const getLightLevelMenuData = (request, response) => {
     }
   );
 };
-//
+
 const getEaseOfCareMenuData = (request, response) => {
   client.query(
     "SELECT * FROM easeOfCareMenu ORDER BY id ASC",

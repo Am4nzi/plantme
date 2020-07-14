@@ -10,7 +10,7 @@ import VueAxios from 'vue-axios'
 Vue.use(VueAxios, axios)
 
 Vue.axios
-  .get(`http://localhost:3000/api/sizemenudata`)
+  .get(`/api/sizemenudata`)
   .then(response => {
     this.$store.dispatch("updatePlantSizeMenu", response.data);
   })
@@ -19,7 +19,7 @@ Vue.axios
   });
 
 Vue.axios
-  .get(`http://localhost:3000/api/lightlevelmenudata`)
+  .get(`/api/lightlevelmenudata`)
   .then(response => {
     this.$store.dispatch("updateLightLevelMenu", response.data);
   })
@@ -28,7 +28,7 @@ Vue.axios
   });
 
 Vue.axios
-  .get(`http://localhost:3000/api/easeofcaremenudata`)
+  .get(`/api/easeofcaremenudata`)
   .then(response => {
     this.$store.dispatch("updateEaseOfCareMenu", response.data);
   })
@@ -37,7 +37,7 @@ Vue.axios
   });
 
 Vue.axios
-  .get(`http://localhost:3000/api/petsafemenudata`)
+  .get(`/api/petsafemenudata`)
   .then(response => {
     this.$store.dispatch("updatePetSafeMenu", response.data);
   })

@@ -11,17 +11,18 @@ Vue.use(VueAxios, axios)
 
 Vue.axios
   .get(`/api/sizemenudata`)
-  .then(response => {
-    this.store.dispatch("updatePlantSizeMenu", response.data);
+  .then(function(response) {
+    this.$store.dispatch("updatePlantSizeMenu", response.data);
   })
   .catch(function(error) {
     console.log(error);
   });
 
+
 Vue.axios
   .get(`/api/lightlevelmenudata`)
-  .then(response => {
-    this.store.dispatch("updateLightLevelMenu", response.data);
+  .then(function(response) {
+    this.$store.dispatch("updateLightLevelMenu", response.data);
   })
   .catch(function(error) {
     console.log(error);
@@ -29,8 +30,8 @@ Vue.axios
 
 Vue.axios
   .get(`/api/easeofcaremenudata`)
-  .then(response => {
-    this.store.dispatch("updateEaseOfCareMenu", response.data);
+  .then(function(response) {
+    this.$store.dispatch("updateEaseOfCareMenu", response.data);
   })
   .catch(function(error) {
     console.log(error);
@@ -38,8 +39,8 @@ Vue.axios
 
 Vue.axios
   .get(`/api/petsafemenudata`)
-  .then(response => {
-    this.store.dispatch("updatePetSafeMenu", response.data);
+  .then(function(response) {
+    this.$store.dispatch("updatePetSafeMenu", response.data);
   })
   .catch(function(error) {
     console.log(error);

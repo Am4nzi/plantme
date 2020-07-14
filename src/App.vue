@@ -8,6 +8,7 @@
 </template>
 
 <script>
+const axios = require("axios");
 export default {
   //Set Meta information via vue-meta plugin https://vue-meta.nuxtjs.org/
   metaInfo: {
@@ -21,36 +22,75 @@ export default {
   name: "App",
   // Set Vuex menu state values from plantsdb
   created() {
-    const plantSizeDataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
-    const lightLevelDataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
-    const easeOfCareDataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
-    const petSafeSataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
+    const databaseURL =
+      process.env.VUE_APP_DATABASE_URL || "http://localhost:3000";
+    // const lightLevelDataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
+    // const easeOfCareDataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
+    // const petSafeSataUrl = process.env.VUE_APP_DATABASE_URL || 'http://localhost:3000';
 
     this.$store.commit("setMenuIndex", 1);
-    fetch(`${plantSizeDataUrl}/sizemenudata`)
-      .then(response => response.json())
-      .then(data => {
-        this.$store.dispatch("updatePlantSizeMenu", data);
+
+    axios
+      .get(`${databaseURL}/sizemenudata`)
+      .then(response => {
+        console.log("RESPONSE PLANT SIZE: ", response.data);
+        this.$store.dispatch("updatePlantSizeMenu", response.data);
       })
-      .catch(error => console.error(error));
-    fetch(`${lightLevelDataUrl}/lightlevelmenudata`)
-      .then(response => response.json())
-      .then(data => {
-        this.$store.dispatch("updateLightLevelMenu", data);
+      .catch(function(error) {
+        console.error(error);
+      });
+
+    axios
+      .get(`${databaseURL}/lightlevelmenudata`)
+      .then(response => {
+        this.$store.dispatch("updateLightLevelMenu", response.data);
       })
-      .catch(error => console.error(error));
-    fetch(`${easeOfCareDataUrl}/easeofcaremenudata`)
-      .then(response => response.json())
-      .then(data => {
-        this.$store.dispatch("updateEaseOfCareMenu", data);
+      .catch(function(error) {
+        console.error(error);
+      });
+
+    axios
+      .get(`${databaseURL}/easeofcaremenudata`)
+      .then(response => {
+        this.$store.dispatch("updateEaseOfCareMenu", response.data);
       })
-      .catch(error => console.error(error));
-    fetch(`${petSafeSataUrl}/petsafemenudata`)
-      .then(response => response.json())
-      .then(data => {
-        this.$store.dispatch("updatePetSafeMenu", data);
+      .catch(function(error) {
+        console.error(error);
+      });
+
+    axios
+      .get(`${databaseURL}/petsafemenudata`)
+      .then(response => {
+        this.$store.dispatch("updatePetSafeMenu", response.data);
       })
-      .catch(error => console.error(error));
+      .catch(function(error) {
+        console.error(error);
+      });
+
+    //   fetch(`${plantSizeDataUrl}/sizemenudata`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       this.$store.dispatch("updatePlantSizeMenu", data);
+    //     })
+    //     .catch(error => console.error(error));
+    //   fetch(`${lightLevelDataUrl}/lightlevelmenudata`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       this.$store.dispatch("updateLightLevelMenu", data);
+    //     })
+    //     .catch(error => console.error(error));
+    //   fetch(`${easeOfCareDataUrl}/easeofcaremenudata`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       this.$store.dispatch("updateEaseOfCareMenu", data);
+    //     })
+    //     .catch(error => console.error(error));
+    //   fetch(`${petSafeSataUrl}/petsafemenudata`)
+    //     .then(response => response.json())
+    //     .then(data => {
+    //       this.$store.dispatch("updatePetSafeMenu", data);
+    //     })
+    //     .catch(error => console.error(error));
   }
 };
 </script>

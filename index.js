@@ -5,7 +5,8 @@ const cors = require("cors");
 const db = require("./queries");
 
 const app = express();
-app.use(serveStatic(__dirname + "/dist"));
+
+app.use(serveStatic(__dirname + "/src"));
 
 app.use(cors());
 

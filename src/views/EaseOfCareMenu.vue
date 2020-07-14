@@ -5,7 +5,7 @@
       <v-row class="justify-space-around mt-8 mb-8">
         <Heading />
       </v-row>
-      <v-row class="justify-space-between ml-16 mr-16">
+      <v-row class="justify-space-between ml-xl-16 mr-xl-16">
         <v-col
           v-for="item in easeOfCareMenuData"
           :key="item.id"

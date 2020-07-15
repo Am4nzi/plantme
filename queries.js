@@ -3,7 +3,9 @@ const Pool = require("pg").Pool;
 
 let connection;
 
-if (process.env.DATABASE_URL !== "postgres://garethsmith") {
+console.log(process.env)
+
+if (process.env.DATABASE_URL !== `postgres://${process.env.USER}`) {
   connection = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: {

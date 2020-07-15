@@ -23,8 +23,6 @@ app.get("/api/easeofcaremenudata", db.getEaseOfCareMenuData);
 
 app.get("/api/petsafemenudata", db.getPetSafeMenuData);
 
-// app.get("/menuTitles", db.getMenuTitles);
-
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {

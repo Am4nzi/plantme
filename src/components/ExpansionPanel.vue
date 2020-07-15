@@ -19,17 +19,17 @@
               getExpansionPanelText.heading === 'Light Level Guide'
           "
         >
-          <h2 class="teal--text mb-1 mt-4 ml-10">
+          <h2 class="teal--text">
             {{ getExpansionPanelText.heading }}
           </h2>
           <v-row class="justify-left">
             <v-col
               v-for="(value, key) in getExpansionPanelText.guide"
               :key="value"
-              class="ml-10"
+              class="infoCards"
               cols="10"
               xs="12"
-              sm="6"
+              sm="4"
               md="4"
               lg="2"
               xl="2"
@@ -55,11 +55,11 @@
               getExpansionPanelText.heading === 'Pet Safety Guide'
           "
         >
-          <h2 class="teal--text mb-1 mt-4 ml-14">
+          <h2 class="teal--text h2-no-cards">
             {{ getExpansionPanelText.heading }}
           </h2>
           <p
-            class="mb-1 mt-4 ml-14 mb-8"
+            class="infoParagraphs"
             style="max-width: 75%; text-align: justify; text-justify: inter-word;"
           >
             {{ getExpansionPanelText.guide }}
@@ -97,3 +97,35 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+h2 {
+  margin-left: 40px;
+  margin-bottom: 4px;
+  margin-top: 16px;
+}
+
+.infoCards,
+.infoParagraphs {
+  margin-left: 40px;
+}
+
+@media (max-width: 600px) {
+  h2 {
+    margin-left: 18px;
+  }
+
+  .h2-no-cards {
+    margin-left: 29px;
+    margin-top: 32px;
+  }
+
+  .infoCards {
+    margin-left: 18px;
+  }
+
+  .infoParagraphs {
+    margin: 15px 0 30px 30px;
+  }
+}
+</style>

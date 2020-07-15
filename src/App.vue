@@ -38,7 +38,6 @@ export default {
       dataBaseUrl = "http://localhost:3000/api";
     } else dataBaseUrl = "/api";
 
-
     Vue.axios
       .get(`${dataBaseUrl}/sizemenudata`)
       .then(response => {
@@ -97,7 +96,7 @@ div {
   font-size: 1.2rem;
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
   h1 {
     font-size: 2.4rem;
     line-height: 1.3;

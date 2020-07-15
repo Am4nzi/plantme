@@ -3,9 +3,9 @@ const Pool = require("pg").Pool;
 
 let connection;
 
-console.log(process.env)
-
-if (process.env.DATABASE_URL !== `postgres://${process.env.USER}`) {
+//Use Heroku Postgres DB if local username is not present
+//Otherwise, use local Postgres DB
+if (process.env.USER !== "garethsmith") {
   connection = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -19,7 +19,8 @@ if (process.env.DATABASE_URL !== `postgres://${process.env.USER}`) {
     host: "localhost",
     database: "plantsdb",
     password: process.env.PWD,
-    port: 5432
+    port: 5432,
+    ssl: process.env.DATABASE_URL ? true : false
   });
 }
 

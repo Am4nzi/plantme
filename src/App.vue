@@ -33,7 +33,7 @@ export default {
 
     if (window.location.href.includes("localhost")) {
       dataBaseUrl = "http://localhost:3000/api";
-    } else dataBaseUrl = "/api";
+    } else dataBaseUrl = `${process.env.VUE_APP_DATABASE_URL}/api`;
 
     Vue.axios
       .get(`${dataBaseUrl}/sizemenudata`)

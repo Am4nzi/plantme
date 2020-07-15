@@ -1,19 +1,9 @@
 const { Client } = require("pg");
 const Pool = require("pg").Pool;
-//
-// const client = new Client({
-//   connectionString:
-//     process.env.DATABASE_URL ||
-//     "postgresql://postgres:password@localhost:5432/plantsdb",
-//   ssl: process.env.DATABASE_URL ? true : false
-// });
-//
-// client.connect();
 
 let connection;
 
 if (process.env.DATABASE_URL !== "postgres://garethsmith") {
-  console.log("got here1: ", process.env.DATABASE_URL);
   connection = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: {
@@ -22,12 +12,11 @@ if (process.env.DATABASE_URL !== "postgres://garethsmith") {
   });
   connection.connect();
 } else {
-  console.log("got here2");
   connection = new Pool({
-    user: "garethsmith",
+    user: process.env.USER,
     host: "localhost",
     database: "plantsdb",
-    password: "password",
+    password: process.env.PWD,
     port: 5432
   });
 }

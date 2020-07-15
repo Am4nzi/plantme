@@ -1,10 +1,17 @@
 const { Client } = require("pg");
 
+// const client = new Client({
+//   connectionString:
+//     process.env.DATABASE_URL ||
+//     "postgresql://postgres:password@localhost:5432/plantsdb",
+//   ssl: process.env.DATABASE_URL ? true : false
+// });
+
 const client = new Client({
-  connectionString:
-    process.env.DATABASE_URL ||
-    "postgresql://postgres:password@localhost:5432/plantsdb",
-  ssl: process.env.DATABASE_URL ? true : false
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 client.connect();

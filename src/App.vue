@@ -32,7 +32,7 @@ export default {
     let dataBaseUrl = "";
 
     if (window.location.href.includes("localhost")) {
-      dataBaseUrl = "http://localhost:3000/api";
+      dataBaseUrl = "/api";
     } else dataBaseUrl = `${process.env.VUE_APP_DATABASE_URL}/api`;
 
     Vue.axios

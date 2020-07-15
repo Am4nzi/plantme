@@ -36,17 +36,8 @@ export default {
 
     if (window.location.href.includes("localhost")) {
       dataBaseUrl = "http://localhost:3000/api";
-    } else dataBaseUrl = `/api`;
+    } else dataBaseUrl = "/api";
 
-    axios
-      .get("api/sizemenudata")
-      .then(function(results) {
-        this.sizeMenuData = results.data;
-        console.log('this.sizeMenuData: ',this.sizeMenuData);
-      })
-      .catch(err => {
-        console.log("Error in mounted in script.js", err);
-      });
 
     Vue.axios
       .get(`${dataBaseUrl}/sizemenudata`)

@@ -33,7 +33,7 @@ export default {
 
     if (window.location.href.includes("localhost")) {
       dataBaseUrl = "http://localhost:3000/api";
-    } else dataBaseUrl = `${process.env.DATABASE_URL}/api`;
+    } else dataBaseUrl = `https://plantme.herokuapp.com/api`;
 
     Vue.axios
       .get(`${dataBaseUrl}/sizemenudata`)

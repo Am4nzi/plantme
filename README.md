@@ -38,8 +38,6 @@ https://plantme.herokuapp.com/
 -   Node.js
 -   Express
 -   PostgreSQL
--   Axios
--   SocketsIO
 
 ### 3rd party
 

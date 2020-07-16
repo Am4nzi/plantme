@@ -5,10 +5,6 @@ const cors = require("cors");
 
 const db = require("./queries");
 
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname + '/index.html'));
-});
-
 app.use(express.static(__dirname + "/dist/"));
 
 app.use(cors());

@@ -5,7 +5,9 @@
       <v-row class="justify-space-around mt-8 mb-8">
         <Heading />
       </v-row>
-      <v-row class="justify-xl-space-around justify-lg-space-between justify-md-start justify-sm-start justify-xs-start">
+      <v-row
+        class="justify-xl-space-around justify-lg-space-between justify-md-start justify-sm-start justify-xs-start"
+      >
         <v-col
           v-for="item in lightLevelMenuData"
           :key="item.id"
@@ -29,7 +31,10 @@
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
-              <v-card-title :class="active ? 'white--text' : ''" style="word-break: keep-all; height: 95px;">
+              <v-card-title
+                :class="active ? 'white--text' : ''"
+                style="word-break: keep-all; height: 95px;"
+              >
                 {{ item.cardtitle }}
               </v-card-title>
               <v-scroll-y-transition>

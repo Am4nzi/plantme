@@ -32,8 +32,8 @@ export default {
   name: "Layout",
   data: () => ({
     menuHeadingText: {
-      plantSize: "Select Plant Size",
-      lightLevel: "Select Light Level",
+      plantSize: "Plant Size",
+      lightLevel: "Light Level",
       easeOfCare: "Ease of Care",
       petSafe: "Pet Safe?"
     },

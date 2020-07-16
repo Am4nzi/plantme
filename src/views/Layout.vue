@@ -96,10 +96,7 @@ export default {
   }),
   created() {
     //Immediately dispatch static content to store, which can be rendered in any child component
-    this.$store.dispatch(
-      "updateMenuHeadingText",
-      this.menuHeadingText.plantSize
-    );
+    this.$store.commit("setMenuTitle", this.menuHeadingText.plantSize);
     this.$store.dispatch("updateStepperText", this.stepperText);
     this.$store.dispatch("updateExpansionPanelText", this.expansionPanelText);
   },

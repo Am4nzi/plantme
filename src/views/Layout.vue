@@ -32,7 +32,7 @@ export default {
   name: "Layout",
   data: () => ({
     menuHeadingText: {
-      plantSize: "Select Preferred Plant Size",
+      plantSize: "Select Plant Size",
       lightLevel: "Select Light Level",
       easeOfCare: "Ease of Care",
       petSafe: "Pet Safe?"

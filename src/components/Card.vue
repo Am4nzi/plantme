@@ -1,6 +1,7 @@
 <template>
   <v-card outlined>
     <Stepper :class="{ fixed: hasScrolled }" />
+    <!--    Menu views-->
     <router-view />
     <ExpansionPanel />
   </v-card>
@@ -40,6 +41,11 @@ export default {
 </script>
 
 <style>
+.card-image {
+  width: 100%;
+  height: 200px !important;
+}
+
 @media (max-width: 600px) {
   .fixed {
     position: fixed;
@@ -47,6 +53,15 @@ export default {
     width: 100%;
     top: 0;
     left: 0;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 130px !important;
+  }
+
+  .card-title {
+    height: 95px;
   }
 }
 </style>

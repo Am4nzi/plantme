@@ -5,12 +5,12 @@
       <v-row class="justify-space-around mt-8 mb-8">
         <Heading />
       </v-row>
-      <v-row class="justify-space-between ml-xl-16 mr-xl-16">
+      <v-row class="justify-xl-space-around justify-lg-space-between justify-md-start justify-sm-start justify-xs-start ml-xl-16 mr-xl-16">
         <v-col
           v-for="item in easeOfCareMenuData"
           :key="item.id"
           :class="{ active: item === activeItem }"
-          cols="12"
+          cols="6"
           xs="12"
           sm="6"
           md="4"
@@ -28,8 +28,8 @@
                 selectItem(item);
               "
             >
-              <v-img :src="item.image" height="200px"></v-img>
-              <v-card-title :class="active ? 'white--text' : ''">
+              <v-img :src="item.image" class="card-image"></v-img>
+              <v-card-title :class="active ? 'white--text' : ''" style="word-break: keep-all;">
                 {{ item.cardtitle }}
               </v-card-title>
               <v-scroll-y-transition>

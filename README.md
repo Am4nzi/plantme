@@ -52,11 +52,12 @@ https://plantme.herokuapp.com/
 
 ## Installation
 
-1. `git clone git@github.com:Am4nzi/plantme.git`
-2. `npm i` to install dependencies
-3. `node index.js` to run the server
-4. `npm run serve` to run the app in development mode
-5.  Navigate to `http://localhost:8080/`
+1. Clone repo: `git clone git@github.com:Am4nzi/plantme.git`
+2. Run `npm i` to install dependencies
+3.  Install Postgres, create a database called `plantsdb` and insert contents of `/sql/plants.sql` e.g. `psql -d plantsdb -f plants.sql`
+4. Run `node index.js` to start the server
+5. Run `npm run serve` to start the app in development mode
+6.  Navigate to `http://localhost:8080/`
 
 ## Todos
 

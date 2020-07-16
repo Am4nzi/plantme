@@ -5,7 +5,7 @@ let connection;
 
 //Use Heroku Postgres DB if local username is not present
 //Otherwise, use local Postgres DB
-if (process.env.USER !== process.env.USER) {
+if (process.env.USER !== "garethsmith") {
   connection = new Client({
     connectionString: process.env.DATABASE_URL,
     ssl: {

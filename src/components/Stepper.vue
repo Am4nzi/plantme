@@ -1,4 +1,4 @@
-<template>
+<template class="fixed">
   <div>
     <!--    Stepper component documentation: https://vuetifyjs.com/en/components/steppers/-->
     <v-stepper

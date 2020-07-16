@@ -20,7 +20,8 @@ export default new Vuex.Store({
       easeOfCare: [],
       petSafe: []
     },
-    expansionPanelText: {}
+    expansionPanelText: {},
+    hasScrolled: null
   },
   mutations: {
     setMenuHeadingText(state, headingText) {
@@ -43,6 +44,9 @@ export default new Vuex.Store({
     },
     setExpansionPanelText(state, expansionPanelText) {
       state.expansionPanelText = expansionPanelText;
+    },
+    setHasScrolled(state, scrollStatus) {
+      state.hasScrolled = scrollStatus;
     }
   },
   actions: {
@@ -66,6 +70,9 @@ export default new Vuex.Store({
     },
     updateExpansionPanelText({ commit }, expansionPanelText) {
       commit("setExpansionPanelText", expansionPanelText);
+    },
+    updateHasScrolled({ commit }, scrollStatus) {
+      commit("setHasScrolled", scrollStatus);
     }
   },
   modules: {

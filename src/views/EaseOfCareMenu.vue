@@ -27,7 +27,7 @@
               max-width="375"
               @click="
                 toggle();
-                selectItem(item);
+                selectItem(item, 'setEaseOfCareMenuSelection');
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
@@ -69,24 +69,13 @@ export default {
   }),
   computed: {
     ...mapGetters(["getMenuData"]),
-    ...mapGetters(["getPreviousMenuSelection"]),
+    ...mapGetters(["getPreviousMenuSelection"])
   },
   mounted() {
     this.menu.easeOfCareData = this.getMenuData.easeOfCare;
     //Previous selection remains active if user navigates to a view they've already visited
     if (this.getPreviousMenuSelection.easeOfCare) {
       this.selected = this.getPreviousMenuSelection.easeOfCare[1];
-    }
-  },
-  methods: {
-    //Handle card selection and storing value in state
-    selectItem(card) {
-      this.activeItem = card;
-      this.mandatory = true;
-      this.$store.commit("setEaseOfCareMenuSelection", [
-        card.cardtitle,
-        this.selected
-      ]);
     }
   }
 };

@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     hasScrolled() {
-      return this.$store.getters.getHasScrolled
+      return this.$store.getters.getHasScrolled;
     }
   }
 };

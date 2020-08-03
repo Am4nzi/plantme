@@ -11,6 +11,9 @@
 import Vue from "vue";
 const axios = require("axios");
 import VueAxios from "vue-axios";
+import selectItem from "./mixins/selectItem";
+
+Vue.mixin(selectItem);
 
 Vue.use(VueAxios, axios);
 
@@ -18,18 +21,18 @@ export default {
   //Set Meta information via vue-meta plugin https://vue-meta.nuxtjs.org/
   metaInfo: {
     title: "PlantMe",
-    titleTemplate:
-      "%s - Houseplants made easy",
+    titleTemplate: "%s - Houseplants made easy",
     htmlAttrs: {
       lang: "en"
     }
   },
   name: "App",
   created() {
-    this.$store.dispatch('updatePlantSizeMenu');
-    this.$store.dispatch('updateLightLevelMenu');
-    this.$store.dispatch('updateEaseOfCareMenu');
-    this.$store.dispatch('updatePetSafeMenu');
+    console.log("selectItem: ", selectItem);
+    this.$store.dispatch("updatePlantSizeMenu");
+    this.$store.dispatch("updateLightLevelMenu");
+    this.$store.dispatch("updateEaseOfCareMenu");
+    this.$store.dispatch("updatePetSafeMenu");
   }
 };
 </script>

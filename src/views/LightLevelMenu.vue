@@ -27,7 +27,7 @@
               max-width="300"
               @click="
                 toggle();
-                selectItem(item);
+                selectItem(item, 'setLightLevelMenuSelection');
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
@@ -69,24 +69,13 @@ export default {
   }),
   computed: {
     ...mapGetters(["getMenuData"]),
-    ...mapGetters(["getPreviousMenuSelection"]),
+    ...mapGetters(["getPreviousMenuSelection"])
   },
   mounted() {
     this.menu.lightLevelData = this.getMenuData.lightLevel;
     //Previous selection remains active if user navigates to a view they've already visited
     if (this.getPreviousMenuSelection.lightLevel) {
       this.selected = this.getPreviousMenuSelection.lightLevel[1];
-    }
-  },
-  methods: {
-    //Handle card selection and storing value in state
-    selectItem(card) {
-      this.activeItem = card;
-      this.mandatory = true;
-      this.$store.commit("setLightLevelMenuSelection", [
-        card.cardtitle,
-        this.selected
-      ]);
     }
   }
 };

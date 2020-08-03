@@ -27,7 +27,7 @@
               max-width="350"
               @click="
                 toggle();
-                selectItem(item);
+                selectItem(item, 'setPetSafeMenuSelection');
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
@@ -66,24 +66,13 @@ export default {
   }),
   computed: {
     ...mapGetters(["getMenuData"]),
-    ...mapGetters(["getPreviousMenuSelection"]),
+    ...mapGetters(["getPreviousMenuSelection"])
   },
   mounted() {
     this.menu.petSafeData = this.getMenuData.petSafe;
     //Previous selection remains active if user navigates to a view they've already visited
     if (this.getPreviousMenuSelection.petSafe) {
       this.selected = this.getPreviousMenuSelection.petSafe[1];
-    }
-  },
-  methods: {
-    //Handle card selection and storing value in state
-    selectItem(card) {
-      this.activeItem = card;
-      this.mandatory = true;
-      this.$store.commit("setPetSafeMenuSelection", [
-        card.cardtitle,
-        this.selected
-      ]);
     }
   }
 };

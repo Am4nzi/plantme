@@ -28,7 +28,7 @@
               height="100%"
               @click="
                 toggle();
-                selectItem(item);
+                selectItem(item, 'setPlantSizeMenuSelection');
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
@@ -63,7 +63,7 @@ export default {
     activeItem: null,
     menu: {
       plantSizeData: [],
-      previousSelection: '',
+      previousSelection: "",
       expandInfo: {
         plantSize: "Dummy Text"
       }
@@ -72,27 +72,16 @@ export default {
   computed: {
     ...mapGetters(["getMenuData"]),
     // eslint-disable-next-line vue/return-in-computed-property
-    getPreviousMenuSelection () {
-        return this.$store.getters.getPreviousMenuSelection
+    getPreviousMenuSelection() {
+      return this.$store.getters.getPreviousMenuSelection;
     }
   },
   mounted() {
-    this.menu.plantSizeData = this.getMenuData.plantSize;
-    //Previous selection remains active if user navigates to a view they've already visited
     if (this.getPreviousMenuSelection.plantSize) {
-      this.selected = this.getPreviousMenuSelection.plantSize[1];
-    };
-  },
-  methods: {
-    //Handle card selection and storing value in state
-    selectItem(card) {
-      this.activeItem = card;
-      this.mandatory = true;
-      this.$store.commit("setPlantSizeMenuSelection", [
-        card.cardtitle,
-        this.selected
-      ]);
+      this.menu.plantSizeData = this.getMenuData.plantSize;
     }
+    //Previous selection remains active if user navigates to a view they've already visited
+    this.selected = this.getPreviousMenuSelection.plantSize[1];
   }
 };
 </script>

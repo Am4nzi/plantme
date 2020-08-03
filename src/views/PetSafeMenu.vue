@@ -9,7 +9,7 @@
         class="justify-xl-center justify-lg-center justify-md-center justify-sm-start justify-xs-start ml-xl-16 mr-xl-16"
       >
         <v-col
-          v-for="item in petSafeMenuData"
+          v-for="item in menu.petSafeData"
           :key="item.id"
           :class="{ active: item === activeItem }"
           cols="6"
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+const mapGetters = require("vuex")["mapGetters"];
 import Heading from "../components/Heading";
 export default {
   name: "PetSafeMenu",
@@ -60,24 +61,18 @@ export default {
     selected: null,
     activeItem: null,
     menu: {
-      plantSizeData: []
+      petSafeData: []
     }
   }),
   computed: {
-    petSafeMenuData() {
-      return this.$store.state.menus.petSafe;
-    },
-    getPreviousSelection() {
-      return this.$store.state.menuSelections.menuSelection.petSafe;
-    },
-    getExpansionPanelText() {
-      return this.$store.state.menuSelections.expansionPanelText;
-    }
+    ...mapGetters(["getMenuData"]),
+    ...mapGetters(["getPreviousMenuSelection"]),
   },
   mounted() {
+    this.menu.petSafeData = this.getMenuData.petSafe;
     //Previous selection remains active if user navigates to a view they've already visited
-    if (this.getPreviousSelection) {
-      this.selected = this.getPreviousSelection[1];
+    if (this.getPreviousMenuSelection.petSafe) {
+      this.selected = this.getPreviousMenuSelection.petSafe[1];
     }
   },
   methods: {

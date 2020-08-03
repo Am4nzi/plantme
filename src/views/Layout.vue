@@ -28,6 +28,7 @@
 </template>
 
 <script>
+const mapGetters = require("vuex")["mapGetters"];
 export default {
   name: "Layout",
   data: () => ({
@@ -101,25 +102,26 @@ export default {
     this.$store.dispatch("updateExpansionPanelText", this.expansionPanelText);
   },
   computed: {
+    ...mapGetters(["getPreviousMenuSelection"]),
     //If no user selection for current view exists in store, function returns false and button is disabled
     toggleActivateButton() {
       const { name } = this.$route;
       switch (name) {
         case "PlantSizeMenu":
           return Boolean(
-            !this.$store.state.menuSelections.menuSelection.plantSize[0]
+            !this.getPreviousMenuSelection.plantSize[0]
           );
         case "LightLevelMenu":
           return Boolean(
-            !this.$store.state.menuSelections.menuSelection.lightLevel[0]
+            !this.getPreviousMenuSelection.lightLevel[0]
           );
         case "EaseOfCareMenu":
           return Boolean(
-            !this.$store.state.menuSelections.menuSelection.easeOfCare[0]
+            !this.getPreviousMenuSelection.easeOfCare[0]
           );
         case "PetSafeMenu":
           return Boolean(
-            !this.$store.state.menuSelections.menuSelection.petSafe[0]
+            !this.getPreviousMenuSelection.petSafe[0]
           );
         default:
           return "Error in toggleActivateButton /Layout.vue";

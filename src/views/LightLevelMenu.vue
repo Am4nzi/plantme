@@ -9,7 +9,7 @@
         class="justify-xl-space-around justify-lg-space-between justify-md-start justify-sm-start justify-xs-start"
       >
         <v-col
-          v-for="item in lightLevelMenuData"
+          v-for="item in this.menu.lightLevelData"
           :key="item.id"
           :class="{ active: item === activeItem }"
           cols="6"
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+const mapGetters = require("vuex")["mapGetters"];
 import Heading from "../components/Heading";
 export default {
   name: "LightLevelMenu",
@@ -60,24 +61,21 @@ export default {
     selected: null,
     activeItem: null,
     menu: {
-      plantSizeData: [],
+      lightLevelData: [],
       expandInfo: {
         plantSize: "Dummy Text"
       }
     }
   }),
   computed: {
-    lightLevelMenuData() {
-      return this.$store.state.menus.lightLevel;
-    },
-    getPreviousSelection() {
-      return this.$store.state.menuSelections.menuSelection.lightLevel;
-    }
+    ...mapGetters(["getMenuData"]),
+    ...mapGetters(["getPreviousMenuSelection"]),
   },
   mounted() {
+    this.menu.lightLevelData = this.getMenuData.lightLevel;
     //Previous selection remains active if user navigates to a view they've already visited
-    if (this.getPreviousSelection) {
-      this.selected = this.getPreviousSelection[1];
+    if (this.getPreviousMenuSelection.lightLevel) {
+      this.selected = this.getPreviousMenuSelection.lightLevel[1];
     }
   },
   methods: {

@@ -9,7 +9,7 @@
         class="justify-xl-space-around justify-lg-space-between justify-md-start justify-sm-start justify-xs-start"
       >
         <v-col
-          v-for="item in plantSizeMenuData"
+          v-for="item in menu.plantSizeData"
           :key="item.id"
           :class="{ active: item === activeItem }"
           cols="6"
@@ -50,6 +50,7 @@
 </template>
 
 <script>
+const mapGetters = require("vuex")["mapGetters"];
 import Heading from "../components/Heading";
 export default {
   name: "PlantSizeMenu",
@@ -62,24 +63,27 @@ export default {
     activeItem: null,
     menu: {
       plantSizeData: [],
+      previousSelection: '',
       expandInfo: {
         plantSize: "Dummy Text"
       }
     }
   }),
   computed: {
-    plantSizeMenuData() {
-      return this.$store.state.menus.plantSize;
-    },
-    getPreviousSelection() {
-      return this.$store.state.menuSelections.menuSelection.plantSize;
+    ...mapGetters(["getMenuData"]),
+    // eslint-disable-next-line vue/return-in-computed-property
+    getPreviousMenuSelection () {
+      if (this.$store.getters.getPreviousMenuSelection.plantSize) {
+        return this.$store.getters.getPreviousMenuSelection
+      }
     }
   },
   mounted() {
+    this.menu.plantSizeData = this.getMenuData.plantSize;
     //Previous selection remains active if user navigates to a view they've already visited
-    if (this.getPreviousSelection) {
-      this.selected = this.getPreviousSelection[1];
-    }
+    if (this.getPreviousMenuSelection.plantSize) {
+      this.selected = this.getPreviousMenuSelection.plantSize[1];
+    };
   },
   methods: {
     //Handle card selection and storing value in state

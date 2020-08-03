@@ -9,7 +9,7 @@
         class="justify-xl-space-around justify-lg-space-between justify-md-start justify-sm-start justify-xs-start ml-xl-16 mr-xl-16"
       >
         <v-col
-          v-for="item in easeOfCareMenuData"
+          v-for="item in this.menu.easeOfCareData"
           :key="item.id"
           :class="{ active: item === activeItem }"
           cols="6"
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+const mapGetters = require("vuex")["mapGetters"];
 import Heading from "../components/Heading";
 export default {
   name: "EaseOfCareMenu",
@@ -60,24 +61,21 @@ export default {
     selected: null,
     activeItem: null,
     menu: {
-      plantSizeData: [],
+      easeOfCareData: [],
       expandInfo: {
         plantSize: "Dummy Text"
       }
     }
   }),
   computed: {
-    easeOfCareMenuData() {
-      return this.$store.state.menus.easeOfCare;
-    },
-    getPreviousSelection() {
-      return this.$store.state.menuSelections.menuSelection.easeOfCare;
-    }
+    ...mapGetters(["getMenuData"]),
+    ...mapGetters(["getPreviousMenuSelection"]),
   },
   mounted() {
+    this.menu.easeOfCareData = this.getMenuData.easeOfCare;
     //Previous selection remains active if user navigates to a view they've already visited
-    if (this.getPreviousSelection) {
-      this.selected = this.getPreviousSelection[1];
+    if (this.getPreviousMenuSelection.easeOfCare) {
+      this.selected = this.getPreviousMenuSelection.easeOfCare[1];
     }
   },
   methods: {

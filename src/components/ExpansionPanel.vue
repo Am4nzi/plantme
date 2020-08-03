@@ -78,18 +78,18 @@ export default {
   }),
   computed: {
     getMenuIndex() {
-      return this.$store.state.menu.indexNumber;
+      return this.$store.getters.getMenuIndexNumber;
     },
     getExpansionPanelText() {
       switch (this.getMenuIndex) {
         case 1:
-          return this.$store.state.expansionPanelText.plantSize;
+          return this.$store.getters.getExpansionPanelText.plantSize;
         case 2:
-          return this.$store.state.expansionPanelText.lightLevel;
+          return this.$store.getters.getExpansionPanelText.lightLevel;
         case 3:
-          return this.$store.state.expansionPanelText.easeOfCare;
+          return this.$store.getters.getExpansionPanelText.easeOfCare;
         case 4:
-          return this.$store.state.expansionPanelText.petSafe;
+          return this.$store.getters.getExpansionPanelText.petSafe;
         default:
           return "Error in getExpansionPanelText() /ExpansionPanel.vue";
       }

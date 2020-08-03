@@ -9,10 +9,10 @@ export default {
   name: "Heading",
   computed: {
     headingText() {
-      return this.$store.state.menu.menuTitle;
+      return this.$store.getters.getMenuTitle;
     },
     hasScrolled() {
-      return this.$store.state.hasScrolled;
+      return this.$store.getters.getHasScrolled;
     }
   }
 };

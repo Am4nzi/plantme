@@ -73,11 +73,14 @@ export default {
     };
   },
   computed: {
+    menuIndexNumber() {
+      return this.$store.getters.getMenuIndexNumber;
+    },
     toggleLightLevelEditable() {
       if (
-        this.$store.state.menu.indexNumber === 2 ||
-        this.$store.state.menu.indexNumber === 3 ||
-        this.$store.state.menu.indexNumber === 4
+        this.menuIndexNumber === 2 ||
+        this.menuIndexNumber === 3 ||
+        this.menuIndexNumber === 4
       ) {
         return true;
       } else {
@@ -86,8 +89,8 @@ export default {
     },
     toggleEaseOfCareEditable() {
       if (
-        this.$store.state.menu.indexNumber === 3 ||
-        this.$store.state.menu.indexNumber === 4
+        this.menuIndexNumber === 3 ||
+        this.menuIndexNumber === 4
       ) {
         return true;
       } else {
@@ -95,18 +98,18 @@ export default {
       }
     },
     togglePetSafeEditable() {
-      if (this.$store.state.menu.indexNumber === 4) {
+      if (this.menuIndexNumber === 4) {
         return true;
       } else {
         return false;
       }
     },
     stepperText() {
-      return this.$store.state.stepperText;
+      return this.$store.getters.getStepperText;
     },
     menuIndex: {
       get: function() {
-        return this.$store.state.menu.indexNumber;
+        return this.menuIndexNumber;
       },
       set: function(indexNumber) {
         return indexNumber;

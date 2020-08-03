@@ -23,6 +23,29 @@ export default new Vuex.Store({
     expansionPanelText: {},
     hasScrolled: null
   },
+  getters: {
+    getExpansionPanelText: function(state) {
+      return state.expansionPanelText;
+    },
+    getMenuData: function(state) {
+      return state.menus;
+    },
+    getMenuIndexNumber: function(state) {
+      return state.menu.indexNumber;
+    },
+    getMenuTitle: function(state) {
+      return state.menu.menuTitle;
+    },
+    getPreviousMenuSelection: function(state) {
+      return state.menuSelections.menuSelection;
+    },
+    getHasScrolled: function(state) {
+      return state.hasScrolled;
+    },
+    getStepperText: function(state) {
+      return state.stepperText;
+    },
+  },
   mutations: {
     setMenuHeadingText(state, headingText) {
       state.menus.headingText = headingText;

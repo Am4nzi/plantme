@@ -10,6 +10,12 @@ import menuSelections from "./modules/menuSelections";
 
 Vue.use(Vuex);
 
+let dataBaseUrl = "";
+
+if (window.location.href.includes("localhost")) {
+  dataBaseUrl = "http://localhost:3000/api";
+} else dataBaseUrl = "/api";
+
 export default new Vuex.Store({
   state: {
     stepperText: {},
@@ -44,7 +50,7 @@ export default new Vuex.Store({
     },
     getStepperText: function(state) {
       return state.stepperText;
-    },
+    }
   },
   mutations: {
     setMenuHeadingText(state, headingText) {
@@ -53,14 +59,14 @@ export default new Vuex.Store({
     setLightLevelMenu(state, lightLevelData) {
       state.menus.lightLevel = lightLevelData;
     },
-    setPetSafeMenu(state, petSafeData) {
-      state.menus.petSafe = petSafeData;
-    },
     setPlantSizeMenu(state, plantSizeData) {
       state.menus.plantSize = plantSizeData;
     },
     setEaseOfCareMenu(state, easeOfCareData) {
       state.menus.easeOfCare = easeOfCareData;
+    },
+    setPetSafeMenu(state, petSafeData) {
+      state.menus.petSafe = petSafeData;
     },
     setStepperText(state, stepperText) {
       state.stepperText = stepperText;
@@ -73,20 +79,55 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    updateMenuIndex: context => {
+      context.commit("setMenuIndex", 1);
+    },
     updateMenuHeadingText({ commit }, headingText) {
       commit("setMenuHeadingText", headingText);
     },
-    updatePetSafeMenu({ commit }, petSafeData) {
-      commit("setPetSafeMenu", petSafeData);
+    updatePlantSizeMenu: context => {
+      Vue.axios
+        .get(`${dataBaseUrl}/sizemenudata`)
+        .then(response => {
+          let plantSizeData = response.data;
+          context.commit("setPlantSizeMenu", plantSizeData);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
-    updatePlantSizeMenu({ commit }, plantSizeData) {
-      commit("setPlantSizeMenu", plantSizeData);
+    updateLightLevelMenu: context => {
+      Vue.axios
+        .get(`${dataBaseUrl}/lightlevelmenudata`)
+        .then(response => {
+          let lightLevelData = response.data;
+          context.commit("setLightLevelMenu", lightLevelData);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
-    updateLightLevelMenu({ commit }, lightLevelData) {
-      commit("setLightLevelMenu", lightLevelData);
+    updateEaseOfCareMenu: context => {
+      Vue.axios
+        .get(`${dataBaseUrl}/easeofcaremenudata`)
+        .then(response => {
+          let easeOfCareData = response.data;
+          context.commit("setEaseOfCareMenu", easeOfCareData);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
-    updateEaseOfCareMenu({ commit }, easeOfCareData) {
-      commit("setEaseOfCareMenu", easeOfCareData);
+    updatePetSafeMenu: context => {
+      Vue.axios
+        .get(`${dataBaseUrl}/petsafemenudata`)
+        .then(response => {
+          let petSafeData = response.data;
+          context.commit("setPetSafeMenu", petSafeData);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
     updateStepperText({ commit }, setStepperText) {
       commit("setStepperText", setStepperText);

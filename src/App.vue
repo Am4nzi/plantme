@@ -19,60 +19,17 @@ export default {
   metaInfo: {
     title: "PlantMe",
     titleTemplate:
-      "%s - PlantMe helps you choose your next houseplant. Filter by size, light requirements, ease of care and pet safety",
+      "%s - Houseplants made easy",
     htmlAttrs: {
       lang: "en"
     }
   },
   name: "App",
-  data: () => ({
-    sizeMenuData: {}
-  }),
-  // Set Vuex menu state values from plantsdb
   created() {
-    this.$store.commit("setMenuIndex", 1);
-
-    let dataBaseUrl = "";
-
-    if (window.location.href.includes("localhost")) {
-      dataBaseUrl = "http://localhost:3000/api";
-    } else dataBaseUrl = "/api";
-
-    Vue.axios
-      .get(`${dataBaseUrl}/sizemenudata`)
-      .then(response => {
-        this.$store.dispatch("updatePlantSizeMenu", response.data);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-    Vue.axios
-      .get(`${dataBaseUrl}/lightlevelmenudata`)
-      .then(response => {
-        this.$store.dispatch("updateLightLevelMenu", response.data);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-    Vue.axios
-      .get(`${dataBaseUrl}/easeofcaremenudata`)
-      .then(response => {
-        this.$store.dispatch("updateEaseOfCareMenu", response.data);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-    Vue.axios
-      .get(`${dataBaseUrl}/petsafemenudata`)
-      .then(response => {
-        this.$store.dispatch("updatePetSafeMenu", response.data);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    this.$store.dispatch('updatePlantSizeMenu');
+    this.$store.dispatch('updateLightLevelMenu');
+    this.$store.dispatch('updateEaseOfCareMenu');
+    this.$store.dispatch('updatePetSafeMenu');
   }
 };
 </script>

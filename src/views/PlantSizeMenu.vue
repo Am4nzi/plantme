@@ -73,9 +73,7 @@ export default {
     ...mapGetters(["getMenuData"]),
     // eslint-disable-next-line vue/return-in-computed-property
     getPreviousMenuSelection () {
-      if (this.$store.getters.getPreviousMenuSelection.plantSize) {
         return this.$store.getters.getPreviousMenuSelection
-      }
     }
   },
   mounted() {

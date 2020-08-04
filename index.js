@@ -13,6 +13,8 @@ app.use(bodyParser.json());
 
 app.get("/api/menutitles", db.getMenuTitles);
 
+app.get("/api/guidetitles", db.getGuideTitles);
+
 app.get("/api/sizemenudata", db.getSizeMenuData);
 
 app.get("/api/lightlevelmenudata", db.getLightLevelMenuData);

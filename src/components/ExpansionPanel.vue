@@ -15,7 +15,7 @@
         <!--        Conditionally render different elements depending on current view-->
         <v-card-text>
           <h2 class="teal--text">
-            {{ getGuideText.heading }}
+            {{ getGuideTitles }}
           </h2>
           <v-row class="justify-left">
             <v-col

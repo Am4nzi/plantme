@@ -76,10 +76,7 @@ export default {
     activeItem: null,
     menu: {
       plantSizeData: [],
-      previousSelection: "",
-      expandInfo: {
-        plantSize: "Dummy Text"
-      }
+      previousSelection: ""
     }
   }),
   computed: {

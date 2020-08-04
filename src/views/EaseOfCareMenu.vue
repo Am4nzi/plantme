@@ -61,10 +61,7 @@ export default {
     selected: null,
     activeItem: null,
     menu: {
-      easeOfCareData: [],
-      expandInfo: {
-        plantSize: "Dummy Text"
-      }
+      easeOfCareData: []
     }
   }),
   computed: {

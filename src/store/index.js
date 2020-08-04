@@ -18,7 +18,6 @@ if (window.location.href.includes("localhost")) {
 
 export default new Vuex.Store({
   state: {
-    expansionPanelText: {},
     hasScrolled: null,
     menus: {
       currentMenu: [],
@@ -26,14 +25,12 @@ export default new Vuex.Store({
       lightLevel: [],
       easeOfCare: [],
       petSafe: [],
-      guideText: {}
+      guideText: [],
+      guideTitles: []
     },
     stepperText: []
   },
   getters: {
-    getExpansionPanelText: function(state) {
-      return state.expansionPanelText;
-    },
     getHasScrolled: function(state) {
       return state.hasScrolled;
     },
@@ -60,14 +57,14 @@ export default new Vuex.Store({
     setEaseOfCareMenu(state, easeOfCareData) {
       state.menus.easeOfCare = easeOfCareData;
     },
-    setExpansionPanelText(state, expansionPanelText) {
-      state.expansionPanelText = expansionPanelText;
-    },
     setHasScrolled(state, scrollStatus) {
       state.hasScrolled = scrollStatus;
     },
     setGuideText(state, guideText) {
       state.menus.guideText = guideText;
+    },
+    setGuideTitles(state, guideTitles) {
+      state.menus.guideTitles = guideTitles;
     },
     setLightLevelMenu(state, lightLevelData) {
       state.menus.lightLevel = lightLevelData;
@@ -89,9 +86,6 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    updateExpansionPanelText({ commit }, expansionPanelText) {
-      commit("setExpansionPanelText", expansionPanelText);
-    },
     updateGuideText({ commit }, guideText) {
       commit("setGuideText", guideText);
     },
@@ -154,6 +148,18 @@ export default new Vuex.Store({
         .then(response => {
           let menuTitles = response.data;
           context.commit("setMenuTitles", menuTitles);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    updateGuideTitles: context => {
+      Vue.axios
+        .get(`${dataBaseUrl}/guideTitles`)
+        .then(response => {
+          let guideTitles = response.data;
+          console.log("guideTitles: ", guideTitles);
+          context.commit("setGuideTitles", guideTitles);
         })
         .catch(function(error) {
           console.log(error);

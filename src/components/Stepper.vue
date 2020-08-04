@@ -55,6 +55,7 @@
 </template>
 
 <script>
+const mapGetters = require("vuex")["mapGetters"];
 export default {
   name: "Stepper",
   data() {
@@ -73,6 +74,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["getMenuData"]),
     menuIndexNumber() {
       return this.$store.getters.getMenuIndexNumber;
     },
@@ -88,10 +90,7 @@ export default {
       }
     },
     toggleEaseOfCareEditable() {
-      if (
-        this.menuIndexNumber === 3 ||
-        this.menuIndexNumber === 4
-      ) {
+      if (this.menuIndexNumber === 3 || this.menuIndexNumber === 4) {
         return true;
       } else {
         return false;

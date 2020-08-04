@@ -30,6 +30,16 @@ const getMenuTitles = (request, response) => {
   );
 };
 
+const getGuideTitles = (request, response) => {
+  connection.query(
+    "SELECT * FROM guideTitles ORDER BY id ASC",
+    (err, results) => {
+      if (err) throw err;
+      response.status(200).json(results.rows);
+    }
+  );
+};
+
 const getSizeMenuData = (request, response) => {
   connection.query(
     "SELECT * FROM plantsizemenu ORDER BY id ASC",
@@ -82,6 +92,7 @@ const getStepperText = (request, response) => {
 
 module.exports = {
   getMenuTitles,
+  getGuideTitles,
   getSizeMenuData,
   getLightLevelMenuData,
   getEaseOfCareMenuData,

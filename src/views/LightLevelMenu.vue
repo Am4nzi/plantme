@@ -74,9 +74,6 @@ export default {
     activeItem: null,
     menu: {
       lightLevelData: [],
-      expandInfo: {
-        plantSize: "Dummy Text"
-      }
     }
   }),
   computed: {

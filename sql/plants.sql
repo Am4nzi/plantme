@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS lightLevelMenu;
 DROP TABLE IF EXISTS easeOfCareMenu;
 DROP TABLE IF EXISTS petSafeMenu;
 DROP TABLE IF EXISTS menuTitles;
+DROP TABLE IF EXISTS guideTitles;
 DROP TABLE IF EXISTS stepperText;
 
 CREATE TABLE menuTitles (
@@ -11,10 +12,18 @@ CREATE TABLE menuTitles (
 		menuTitle VARCHAR(255) not null
 );
 
-INSERT INTO menuTitles (menuTitle) VALUES ('Select Plant Size');
-INSERT INTO menuTitles (menuTitle) VALUES ('Select Light Level');
-INSERT INTO menuTitles (menuTitle) VALUES ('Select Ease of Care');
-INSERT INTO menuTitles (menuTitle) VALUES ('Select Pet Safe Requirement');
+INSERT INTO menuTitles (menuTitle) VALUES ('Plant Size');
+INSERT INTO menuTitles (menuTitle) VALUES ('Light Level');
+INSERT INTO menuTitles (menuTitle) VALUES ('Ease of Care');
+INSERT INTO menuTitles (menuTitle) VALUES ('Pet Safe Requirement');
+
+CREATE TABLE guideTitles (
+		id SERIAL primary key,
+		guideTitle VARCHAR(255) not null
+);
+
+INSERT INTO guideTitles (guideTitle) VALUES ('Size Guide');
+INSERT INTO guideTitles (guideTitle) VALUES ('Light Level Guide');
 
 CREATE TABLE plantSizeMenu (
     id SERIAL primary key,

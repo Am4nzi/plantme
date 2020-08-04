@@ -11,7 +11,7 @@
 import Vue from "vue";
 const axios = require("axios");
 import VueAxios from "vue-axios";
-import guideText from "./mixins/guideText";
+import guideText from "./mixins/getGuideTitles";
 import menuIndex from "./mixins/menuIndex";
 import selectItem from "./mixins/selectItem";
 
@@ -38,6 +38,7 @@ export default {
     this.$store.dispatch("updateMenuEaseOfCare");
     this.$store.dispatch("updateMenuPetSafe");
     this.$store.dispatch("updateStepperText");
+    this.$store.dispatch("updateGuideTitles");
   }
 };
 </script>

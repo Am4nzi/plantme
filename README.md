@@ -20,10 +20,6 @@ Currently, only the menu selection is complete, with the results page still to b
 
 - An expansion panel is used to hide extra information so as to note impact the simple, minimal UI. The user can open this panel upon request.
 
-## Demo
-
-https://plantme.herokuapp.com/
-
 ## Technology used
 
 ### Front-end

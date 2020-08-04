@@ -73,7 +73,7 @@ export default {
     selected: null,
     activeItem: null,
     menu: {
-      lightLevelData: [],
+      lightLevelData: []
     }
   }),
   computed: {

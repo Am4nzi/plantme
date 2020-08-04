@@ -1,24 +1,24 @@
 const state = {
   menuSelection: {
-    plantSize: [],
-    lightLevel: [],
     easeOfCare: [],
-    petSafe: []
+    lightLevel: [],
+    petSafe: [],
+    plantSize: []
   }
 };
 
 const mutations = {
-  setPlantSizeMenuSelection(state, value) {
-    state.menuSelection.plantSize = value;
+  setEaseOfCareMenuSelection(state, value) {
+    state.menuSelection.easeOfCare = value;
   },
   setLightLevelMenuSelection(state, value) {
     state.menuSelection.lightLevel = value;
   },
-  setEaseOfCareMenuSelection(state, value) {
-    state.menuSelection.easeOfCare = value;
-  },
   setPetSafeMenuSelection(state, value) {
     state.menuSelection.petSafe = value;
+  },
+  setPlantSizeMenuSelection(state, value) {
+    state.menuSelection.plantSize = value;
   }
 };
 

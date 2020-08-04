@@ -28,10 +28,10 @@ export default {
   },
   name: "App",
   created() {
-    this.$store.dispatch("updatePlantSizeMenu");
-    this.$store.dispatch("updateLightLevelMenu");
-    this.$store.dispatch("updateEaseOfCareMenu");
-    this.$store.dispatch("updatePetSafeMenu");
+    this.$store.dispatch("updateMenuPlantSize");
+    this.$store.dispatch("updateMenuLightLevel");
+    this.$store.dispatch("updateMenuEaseOfCare");
+    this.$store.dispatch("updateMenuPetSafe");
   }
 };
 </script>

@@ -32,11 +32,24 @@
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
+
               <v-card-title
                 :class="active ? 'white--text' : ''"
                 style="word-break: keep-all;"
               >
                 {{ item.cardtitle }}
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-icon
+                      class="ml-1 mt-1 close-button"
+                      size="x-large"
+                      v-bind="attrs"
+                      v-on="on"
+                      >mdi-information</v-icon
+                    >
+                  </template>
+                  <span>Tooltip</span>
+                </v-tooltip>
               </v-card-title>
               <v-scroll-y-transition>
                 <div v-if="active"></div>

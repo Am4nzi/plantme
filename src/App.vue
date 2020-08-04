@@ -12,8 +12,10 @@ import Vue from "vue";
 const axios = require("axios");
 import VueAxios from "vue-axios";
 import selectItem from "./mixins/selectItem";
+import guideText from "./mixins/guideText";
 
 Vue.mixin(selectItem);
+Vue.mixin(guideText);
 
 Vue.use(VueAxios, axios);
 

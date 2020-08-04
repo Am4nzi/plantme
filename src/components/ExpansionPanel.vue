@@ -15,16 +15,16 @@
         <!--        Conditionally render different elements depending on current view-->
         <v-card-text
           v-if="
-            getExpansionPanelText.heading === 'Size Guide' ||
-              getExpansionPanelText.heading === 'Light Level Guide'
+            getGuideText.heading === 'Size Guide' ||
+              getGuideText.heading === 'Light Level Guide'
           "
         >
           <h2 class="teal--text">
-            {{ getExpansionPanelText.heading }}
+            {{ getGuideText.heading }}
           </h2>
           <v-row class="justify-left">
             <v-col
-              v-for="(value, key) in getExpansionPanelText.guide"
+              v-for="(value, key) in getGuideText.guide"
               :key="value"
               class="infoCards"
               cols="10"
@@ -51,18 +51,18 @@
         </v-card-text>
         <div
           v-else-if="
-            getExpansionPanelText.heading === 'Ease of Care Guide' ||
-              getExpansionPanelText.heading === 'Pet Safety Guide'
+            getGuideText.heading === 'Ease of Care Guide' ||
+              getGuideText.heading === 'Pet Safety Guide'
           "
         >
           <h2 class="teal--text h2-no-cards">
-            {{ getExpansionPanelText.heading }}
+            {{ getGuideText.heading }}
           </h2>
           <p
             class="infoParagraphs"
             style="max-width: 75%; text-align: justify; text-justify: inter-word;"
           >
-            {{ getExpansionPanelText.guide }}
+            {{ getGuideText.guide }}
           </p>
         </div>
       </div>
@@ -79,20 +79,6 @@ export default {
   computed: {
     getMenuIndex() {
       return this.$store.getters.getMenuIndexNumber;
-    },
-    getExpansionPanelText() {
-      switch (this.getMenuIndex) {
-        case 1:
-          return this.$store.getters.getExpansionPanelText.plantSize;
-        case 2:
-          return this.$store.getters.getExpansionPanelText.lightLevel;
-        case 3:
-          return this.$store.getters.getExpansionPanelText.easeOfCare;
-        case 4:
-          return this.$store.getters.getExpansionPanelText.petSafe;
-        default:
-          return "Error in getExpansionPanelText() /ExpansionPanel.vue";
-      }
     }
   }
 };

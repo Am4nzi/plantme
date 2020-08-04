@@ -1,6 +1,7 @@
 const state = {
   indexNumber: null,
-  menuTitle: ""
+  menuTitle: "",
+  menuTitles: []
 };
 
 const mutations = {

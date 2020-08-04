@@ -13,7 +13,7 @@
           :complete="menuIndex > 1"
           @click="navigateToPlantSizeMenu"
         >
-          {{ stepperText.step01.label }}
+          {{ stepperText[0].text }}
         </v-stepper-step>
         <v-divider
           :color="toggleLightLevelEditable ? 'teal' : false"
@@ -25,7 +25,7 @@
           :complete="menuIndex > 2"
           @click="navigateToLightLevelMenu"
         >
-          {{ stepperText.step02.label }}
+          {{ stepperText[1].text }}
         </v-stepper-step>
         <v-divider
           :color="toggleEaseOfCareEditable ? 'teal' : false"
@@ -37,7 +37,7 @@
           :complete="menuIndex > 3"
           @click="navigateToEaseOfCareMenu"
         >
-          {{ stepperText.step03.label }}
+          {{ stepperText[2].text }}
         </v-stepper-step>
         <v-divider :color="togglePetSafeEditable ? 'teal' : false"></v-divider>
         <v-stepper-step
@@ -47,7 +47,7 @@
           :complete="menuIndex > 4"
           @click="navigateToPetSafeMenu"
         >
-          {{ stepperText.step04.label }}
+          {{ stepperText[3].text }}
         </v-stepper-step>
       </v-stepper-header>
     </v-stepper>

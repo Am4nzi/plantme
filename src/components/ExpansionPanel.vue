@@ -13,19 +13,14 @@
       <div v-show="show">
         <v-divider></v-divider>
         <!--        Conditionally render different elements depending on current view-->
-        <v-card-text
-          v-if="
-            getGuideText.heading === 'Size Guide' ||
-              getGuideText.heading === 'Light Level Guide'
-          "
-        >
+        <v-card-text>
           <h2 class="teal--text">
             {{ getGuideText.heading }}
           </h2>
           <v-row class="justify-left">
             <v-col
-              v-for="(value, key) in getGuideText.guide"
-              :key="value"
+              v-for="value in getGuideData"
+              :key="value.id"
               class="infoCards"
               cols="10"
               xs="12"
@@ -38,44 +33,39 @@
                 <v-card-title
                   style="font-family: sofia-pro, sans-serif !important"
                   class="text-h6 custom-font-sofia-pro"
-                  v-text="key"
+                  v-text="value.cardtitle"
                 ></v-card-title>
                 <v-card-subtitle
                   style="font-family: sofia-pro, sans-serif !important"
                   class="text-subtitle-1 custom-font-sofia-pro"
-                  v-text="value"
+                  v-text="value.guideinfo"
                 ></v-card-subtitle>
               </v-card>
             </v-col>
           </v-row>
         </v-card-text>
-        <div
-          v-else-if="
-            getGuideText.heading === 'Ease of Care Guide' ||
-              getGuideText.heading === 'Pet Safety Guide'
-          "
-        >
-          <h2 class="teal--text h2-no-cards">
-            {{ getGuideText.heading }}
-          </h2>
-          <p
-            class="infoParagraphs"
-            style="max-width: 75%; text-align: justify; text-justify: inter-word;"
-          >
-            {{ getGuideText.guide }}
-          </p>
-        </div>
       </div>
     </v-expand-transition>
   </div>
 </template>
 
 <script>
+const mapGetters = require("vuex")["mapGetters"];
 export default {
   name: "ExpansionPanel",
   data: () => ({
     show: false
   }),
+  computed: {
+    ...mapGetters(["getMenuData"]),
+    getGuideData() {
+      if (this.getMenuIndex === 1) {
+        return this.getMenuData.plantSize;
+      } else {
+        return this.getMenuData.lightLevel;
+      }
+    }
+  }
 };
 </script>
 

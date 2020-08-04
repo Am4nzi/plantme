@@ -11,6 +11,8 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
+app.get("/api/menutitles", db.getMenuTitles);
+
 app.get("/api/sizemenudata", db.getSizeMenuData);
 
 app.get("/api/lightlevelmenudata", db.getLightLevelMenuData);
@@ -18,6 +20,8 @@ app.get("/api/lightlevelmenudata", db.getLightLevelMenuData);
 app.get("/api/easeofcaremenudata", db.getEaseOfCareMenuData);
 
 app.get("/api/petsafemenudata", db.getPetSafeMenuData);
+
+app.get("/api/steppertext", db.getStepperText);
 
 const port = process.env.PORT || 3000;
 

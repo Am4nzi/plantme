@@ -20,6 +20,16 @@ connection = new Pool({
 //   }
 // }
 
+const getMenuTitles = (request, response) => {
+  connection.query(
+    "SELECT * FROM menuTitles ORDER BY id ASC",
+    (err, results) => {
+      if (err) throw err;
+      response.status(200).json(results.rows);
+    }
+  );
+};
+
 const getSizeMenuData = (request, response) => {
   connection.query(
     "SELECT * FROM plantsizemenu ORDER BY id ASC",
@@ -60,9 +70,21 @@ const getPetSafeMenuData = (request, response) => {
   );
 };
 
+const getStepperText = (request, response) => {
+  connection.query(
+    "SELECT * FROM stepperText ORDER BY id ASC",
+    (err, results) => {
+      if (err) throw err;
+      response.status(200).json(results.rows);
+    }
+  );
+};
+
 module.exports = {
+  getMenuTitles,
   getSizeMenuData,
   getLightLevelMenuData,
   getEaseOfCareMenuData,
-  getPetSafeMenuData
+  getPetSafeMenuData,
+  getStepperText
 };

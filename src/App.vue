@@ -32,10 +32,12 @@ export default {
   },
   name: "App",
   created() {
+    this.$store.dispatch("updateMenuTitles");
     this.$store.dispatch("updateMenuPlantSize");
     this.$store.dispatch("updateMenuLightLevel");
     this.$store.dispatch("updateMenuEaseOfCare");
     this.$store.dispatch("updateMenuPetSafe");
+    this.$store.dispatch("updateStepperText");
   }
 };
 </script>

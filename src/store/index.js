@@ -25,9 +25,10 @@ export default new Vuex.Store({
       plantSize: [],
       lightLevel: [],
       easeOfCare: [],
-      petSafe: []
+      petSafe: [],
+      guideText: {}
     },
-    stepperText: {}
+    stepperText: []
   },
   getters: {
     getExpansionPanelText: function(state) {
@@ -44,6 +45,9 @@ export default new Vuex.Store({
     },
     getMenuTitle: function(state) {
       return state.menu.menuTitle;
+    },
+    getMenuTitles: function(state) {
+      return state.menu.menuTitles;
     },
     getPreviousMenuSelection: function(state) {
       return state.menuSelections.menuSelection;
@@ -62,11 +66,17 @@ export default new Vuex.Store({
     setHasScrolled(state, scrollStatus) {
       state.hasScrolled = scrollStatus;
     },
+    setGuideText(state, guideText) {
+      state.menus.guideText = guideText;
+    },
     setLightLevelMenu(state, lightLevelData) {
       state.menus.lightLevel = lightLevelData;
     },
     setMenuHeadingText(state, headingText) {
       state.menus.headingText = headingText;
+    },
+    setMenuTitles(state, menuTitles) {
+      state.menu.menuTitles = menuTitles;
     },
     setPetSafeMenu(state, petSafeData) {
       state.menus.petSafe = petSafeData;
@@ -81,6 +91,9 @@ export default new Vuex.Store({
   actions: {
     updateExpansionPanelText({ commit }, expansionPanelText) {
       commit("setExpansionPanelText", expansionPanelText);
+    },
+    updateGuideText({ commit }, guideText) {
+      commit("setGuideText", guideText);
     },
     updateHasScrolled({ commit }, scrollStatus) {
       commit("setHasScrolled", scrollStatus);
@@ -135,8 +148,27 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
-    updateStepperText({ commit }, setStepperText) {
-      commit("setStepperText", setStepperText);
+    updateMenuTitles: context => {
+      Vue.axios
+        .get(`${dataBaseUrl}/menutitles`)
+        .then(response => {
+          let menuTitles = response.data;
+          context.commit("setMenuTitles", menuTitles);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    updateStepperText: context => {
+      Vue.axios
+        .get(`${dataBaseUrl}/steppertext`)
+        .then(response => {
+          let stepperText = response.data;
+          context.commit("setStepperText", stepperText);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   },
   modules: {

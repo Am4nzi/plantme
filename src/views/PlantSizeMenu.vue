@@ -38,17 +38,17 @@
                 style="word-break: keep-all;"
               >
                 {{ item.cardtitle }}
-                <v-tooltip bottom>
+                <v-tooltip right>
                   <template v-slot:activator="{ on, attrs }">
                     <v-icon
-                      class="ml-1 mt-1 close-button"
+                      class="ml-1 mt-1 close-button d-none d-sm-flex"
                       size="x-large"
                       v-bind="attrs"
                       v-on="on"
                       >mdi-information</v-icon
                     >
                   </template>
-                  <span>Tooltip</span>
+                  <span>{{ item.guideinfo }}</span>
                 </v-tooltip>
               </v-card-title>
               <v-scroll-y-transition>

@@ -1,9 +1,9 @@
 <template>
-  <v-card outlined>
+  <v-card outlined class="pb-sm-4">
     <Stepper :class="{ fixed: hasScrolled }" />
     <!--    Menu views-->
     <router-view />
-    <ExpansionPanel />
+    <ExpansionPanel class="d-sm-none"/>
   </v-card>
 </template>
 

@@ -11,11 +11,13 @@
 import Vue from "vue";
 const axios = require("axios");
 import VueAxios from "vue-axios";
-import selectItem from "./mixins/selectItem";
 import guideText from "./mixins/guideText";
+import menuIndex from "./mixins/menuIndex";
+import selectItem from "./mixins/selectItem";
 
-Vue.mixin(selectItem);
 Vue.mixin(guideText);
+Vue.mixin(menuIndex);
+Vue.mixin(selectItem);
 
 Vue.use(VueAxios, axios);
 

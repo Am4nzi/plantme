@@ -76,11 +76,6 @@ export default {
   data: () => ({
     show: false
   }),
-  computed: {
-    getMenuIndex() {
-      return this.$store.getters.getMenuIndexNumber;
-    }
-  }
 };
 </script>
 

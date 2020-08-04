@@ -1,4 +1,4 @@
-const Pool = require("pg").Pool;
+// const Pool = require("pg").Pool;
 
 let connection;
 
@@ -10,6 +10,10 @@ let connection;
 //   port: 5432,
 //   ssl: process.env.DATABASE_URL ? true : false
 // });
+
+const dotenv = require('dotenv');
+dotenv.config();
+console.log(`Your port is ${process.env.DATABASE_URL}`)
 
 // Comment out above and uncomment below if uploading to Heroku
 const { Client } = require("pg");

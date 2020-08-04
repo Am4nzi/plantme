@@ -61,4 +61,5 @@ https://plantme.herokuapp.com/
 
 - Develop results page
 - Enable text compression to improve performance
-- Find a solution to unused Vuetify CSS which is bloating load speeds
+- Use PurgeCSS unused Vuetify CSS which is bloating load speeds 
+- Move all data to a database, possibly use noSQL instead of Postgres for easier object-orientated structuring

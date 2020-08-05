@@ -3,7 +3,7 @@
     <v-main>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
-          <v-col cols="12" sm="12" md="10" lg="10">
+          <v-col cols="12" sm="12" md="11" lg="11" xl="10">
             <!--    <Card.vue />-->
             <router-view />
             <v-row align="center" justify="end">

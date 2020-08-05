@@ -2,7 +2,7 @@
   <v-card outlined class="pb-sm-4">
     <Stepper :class="{ fixed: hasScrolled }" />
     <!--    Menu views-->
-    <router-view />
+    <router-view/>
     <ExpansionPanel v-if="getMenuIndex < 3" class="d-sm-none" />
   </v-card>
 </template>

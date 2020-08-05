@@ -28,14 +28,22 @@ export default {
     titleTemplate: "%s - Houseplants made easy",
     htmlAttrs: {
       lang: "en"
-    }
+    },
+    meta: [
+      { charset: "utf-8" },
+      {
+        name: "viewport",
+        content:
+          "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui"
+      }
+    ]
   },
   name: "App",
   created() {
     this.$store.dispatch("updateMenuTitles");
     this.$store.dispatch("updateMenuPlantSize");
     this.$store.commit("setMenuIndex", 1);
-    this.$store.commit("setMenuTitle", 'Plant Size');
+    this.$store.commit("setMenuTitle", "Plant Size");
     this.$store.dispatch("updateGuideTitles");
     this.$store.dispatch("updateStepperText");
     this.$store.dispatch("updateMenuLightLevel");

@@ -11,7 +11,7 @@ let connection;
 //   ssl: process.env.DATABASE_URL ? true : false
 // });
 
-Comment out above and uncomment below if uploading to Heroku
+// Comment out above and uncomment below if uploading to Heroku
 const { Client } = require("pg");
 connection = new Client({
   connectionString: process.env.DATABASE_URL,

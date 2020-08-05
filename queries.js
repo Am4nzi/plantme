@@ -2,9 +2,6 @@
 
 let connection;
 
-// const dotenv = require('dotenv');
-// dotenv.config();
-//
 // connection = new Pool({
 //   user: process.env.USER,
 //   host: "localhost",
@@ -22,6 +19,8 @@ connection = new Client({
     rejectUnauthorized: false
   }
 });
+
+connection.connect();
 
 const getMenuTitles = (request, response) => {
   connection.query(

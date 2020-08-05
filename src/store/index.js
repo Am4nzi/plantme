@@ -158,7 +158,6 @@ export default new Vuex.Store({
         .get(`${dataBaseUrl}/guideTitles`)
         .then(response => {
           let guideTitles = response.data;
-          console.log("guideTitles: ", guideTitles);
           context.commit("setGuideTitles", guideTitles);
         })
         .catch(function(error) {

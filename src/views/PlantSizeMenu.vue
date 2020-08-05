@@ -9,7 +9,7 @@
         class="justify-xl-space-around justify-lg-space-between justify-md-start justify-sm-start justify-xs-start"
       >
         <v-col
-          v-for="item in menu.plantSizeData"
+          v-for="item in getMenuData.plantSize"
           :key="item.id"
           :class="{ active: item === activeItem }"
           cols="6"
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-const mapGetters = require("vuex")["mapGetters"];
+// const mapGetters = require("vuex")["mapGetters"];
 import Heading from "../components/Heading";
 export default {
   name: "PlantSizeMenu",
@@ -79,17 +79,23 @@ export default {
       previousSelection: ""
     }
   }),
+  async created() {
+    this.menu.plantSizeData = this.getMenuData.plantSize;
+  },
   computed: {
-    ...mapGetters(["getMenuData"]),
+    getMenuData() {
+      return this.$store.getters.getMenuData;
+    },
+    // ...mapGetters(["getMenuData"]),
     // eslint-disable-next-line vue/return-in-computed-property
     getPreviousMenuSelection() {
       return this.$store.getters.getPreviousMenuSelection;
     }
   },
   mounted() {
-    if (this.getPreviousMenuSelection.plantSize) {
-      this.menu.plantSizeData = this.getMenuData.plantSize;
-    }
+    // if (this.getPreviousMenuSelection.plantSize) {
+    //   this.menu.plantSizeData = this.getMenuData.plantSize;
+    // }
     //Previous selection remains active if user navigates to a view they've already visited
     this.selected = this.getPreviousMenuSelection.plantSize[1];
   }

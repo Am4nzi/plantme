@@ -48,7 +48,7 @@
               <v-img :src="item.image" class="card-image"></v-img>
               <v-card-title
                 :class="active ? 'white--text' : ''"
-                style="word-break: keep-all; height: 95px;"
+                style="word-break: keep-all;"
               >
                 {{ item.cardtitle }}
               </v-card-title>

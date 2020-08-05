@@ -38,14 +38,15 @@ export default {
 </script>
 <style>
 /*Import roc-grotesk and sofia-pro from adobe fonts*/
-@import url("https://use.typekit.net/ega7mjw.css");
+@import url("https://use.typekit.net/qso6ymh.css");
 
 h1 {
-  font-family: roc-grotesk, sans-serif;
-  font-size: 3rem;
+  font-family: operetta-12, serif;
+  font-weight: 700;
+  font-size: 3.6rem;
 }
 h2 {
-  font-family: roc-grotesk, sans-serif;
+  font-family: operetta-12, serif;
   font-size: 2rem;
   font-weight: 600;
 }

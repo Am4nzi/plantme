@@ -12,10 +12,10 @@ CREATE TABLE menuTitles (
 		menuTitle VARCHAR(255) not null
 );
 
-INSERT INTO menuTitles (menuTitle) VALUES ('Plant Size');
-INSERT INTO menuTitles (menuTitle) VALUES ('Light Level');
-INSERT INTO menuTitles (menuTitle) VALUES ('Ease of Care');
-INSERT INTO menuTitles (menuTitle) VALUES ('Pet Safe Requirement');
+INSERT INTO menuTitles (menuTitle) VALUES ('Select Plant Size');
+INSERT INTO menuTitles (menuTitle) VALUES ('Select Light Level');
+INSERT INTO menuTitles (menuTitle) VALUES ('Select Care Level');
+INSERT INTO menuTitles (menuTitle) VALUES ('Pet Safe?');
 
 CREATE TABLE guideTitles (
 		id SERIAL primary key,

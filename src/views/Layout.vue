@@ -1,5 +1,6 @@
 <template>
-  <v-app style="background-color: #FFFCED;">
+  <!--  <v-app style="background-color: #E8F5E9;" class="bg">-->
+  <v-app class="bg">
     <v-main>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
@@ -11,9 +12,8 @@
                 <v-btn
                   @click="nextStep"
                   x-large
-                  depressed
-                  color="teal"
-                  class="white--text mr-n1 rounded"
+                  color="#e4beb7"
+                  class="black--text mr-n1 rounded"
                   :disabled="toggleActivateButton"
                   >Next</v-btn
                 >
@@ -51,12 +51,12 @@ export default {
       }
     }
   },
-  // mounted() {
-  //   if (this.getMenuIndex === 1) {
-  //     this.$store.commit("setMenuTitle", this.getMenuTitles[0].menutitle);
-  //     this.$router.push({ name: 'PlantSizeMenu' })
-  //   }
-  // },
+  mounted() {
+    if (this.getMenuIndex === 1) {
+      this.$store.commit("setMenuTitle", this.getMenuTitles[0].menutitle);
+      this.$router.push({ name: "PlantSizeMenu" });
+    }
+  },
   methods: {
     getNextRoute() {
       const { name } = this.$route;
@@ -91,3 +91,24 @@ export default {
   }
 };
 </script>
+
+<style>
+.bg {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.bg:before {
+  content: "";
+  display: block;
+  width: 905px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0px 0px 1033px 595px;
+  border-color: transparent transparent #C4F5E1 transparent;
+  position: absolute;
+  right: 0px;
+}
+</style>

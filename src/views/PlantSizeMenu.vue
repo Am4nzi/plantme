@@ -12,7 +12,7 @@
              pa-sm-4
              pl-2 pr-2"
     >
-      <v-row class="justify-space-around mt-4 mb-4">
+      <v-row class="justify-space-around mb-4">
         <Heading />
       </v-row>
       <v-row
@@ -36,7 +36,7 @@
         >
           <v-item v-slot:default="{ active, toggle }">
             <v-card
-              :color="active ? 'teal' : ''"
+              :color="active ? '#fcc7b8' : ''"
               outlined
               class="mx-auto"
               max-width="300"
@@ -48,8 +48,6 @@
               <v-img :src="item.image" class="card-image"></v-img>
 
               <v-card-title
-                class="font-weight-bold"
-                :class="active ? 'white--text' : ''"
                 style="word-break: keep-all;"
               >
                 {{ item.cardtitle }}

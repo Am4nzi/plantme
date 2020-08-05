@@ -1,5 +1,5 @@
 <template>
-  <v-card outlined class="pb-sm-4">
+  <v-card elevation="14" class="pb-sm-4">
     <Stepper :class="{ fixed: hasScrolled }" />
     <!--    Menu views-->
     <router-view/>

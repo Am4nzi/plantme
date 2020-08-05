@@ -2,12 +2,12 @@
   <div>
     <!--    Stepper component documentation: https://vuetifyjs.com/en/components/steppers/-->
     <v-stepper
-      class="blue-grey elevation-0 rounded-tl-sm rounded-t4-sm rounded-bl-0 rounded-br-0 lighten-5"
+      class="white elevation-0 rounded-tl-sm rounded-t4-sm rounded-bl-0 rounded-br-0 lighten-5"
       v-model="menuIndex"
     >
       <v-stepper-header>
         <v-stepper-step
-          color="teal"
+          color="grey darken-3"
           editable
           step="1"
           :complete="menuIndex > 1"
@@ -16,10 +16,10 @@
           {{ stepperText[0].text }}
         </v-stepper-step>
         <v-divider
-          :color="toggleLightLevelEditable ? 'teal' : false"
+          :color="toggleLightLevelEditable ? 'grey' : false"
         ></v-divider>
         <v-stepper-step
-          color="teal"
+          color="grey darken-3"
           :editable="toggleLightLevelEditable ? true : false"
           step="2"
           :complete="menuIndex > 2"
@@ -28,10 +28,10 @@
           {{ stepperText[1].text }}
         </v-stepper-step>
         <v-divider
-          :color="toggleEaseOfCareEditable ? 'teal' : false"
+          :color="toggleEaseOfCareEditable ? 'grey' : false"
         ></v-divider>
         <v-stepper-step
-          color="teal"
+          color="grey darken-3"
           :editable="toggleEaseOfCareEditable ? true : false"
           step="3"
           :complete="menuIndex > 3"
@@ -39,9 +39,9 @@
         >
           {{ stepperText[2].text }}
         </v-stepper-step>
-        <v-divider :color="togglePetSafeEditable ? 'teal' : false"></v-divider>
+        <v-divider :color="togglePetSafeEditable ? 'grey' : false"></v-divider>
         <v-stepper-step
-          color="teal"
+          color="grey darken-3"
           :editable="togglePetSafeEditable ? true : false"
           step="4"
           :complete="menuIndex > 4"

@@ -1,6 +1,6 @@
 <template>
   <div :class="{ addMargin: hasScrolled }">
-    <h1 class="teal--text">{{ TitleText }}</h1>
+    <h1 class="grey--text text--darken-3">{{ TitleText }}</h1>
   </div>
 </template>
 

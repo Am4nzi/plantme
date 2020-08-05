@@ -34,11 +34,13 @@ export default {
   created() {
     this.$store.dispatch("updateMenuTitles");
     this.$store.dispatch("updateMenuPlantSize");
+    this.$store.commit("setMenuIndex", 1);
+    this.$store.commit("setMenuTitle", 'Plant Size');
+    this.$store.dispatch("updateGuideTitles");
+    this.$store.dispatch("updateStepperText");
     this.$store.dispatch("updateMenuLightLevel");
     this.$store.dispatch("updateMenuEaseOfCare");
     this.$store.dispatch("updateMenuPetSafe");
-    this.$store.dispatch("updateStepperText");
-    this.$store.dispatch("updateGuideTitles");
   }
 };
 </script>

@@ -51,6 +51,12 @@ export default {
       }
     }
   },
+  mounted() {
+    if (this.getMenuIndex === 1) {
+      this.$store.commit("setMenuTitle", this.getMenuTitles[0].menutitle);
+      this.$router.push({ name: 'PlantSizeMenu' })
+    }
+  },
   methods: {
     getNextRoute() {
       const { name } = this.$route;

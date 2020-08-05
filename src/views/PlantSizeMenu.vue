@@ -1,19 +1,31 @@
 <template>
   <!--    v-item-group component documentation: https://vuetifyjs.com/en/components/item-groups//-->
   <v-item-group v-model="selected" :mandatory="mandatory">
-    <v-container fluid ma-0 pa-0 fill-height class="pl-xl-8 pr-xl-8 pb-xl-6 pb-lg-6 pa-md-4 pa-sm-4">
+    <v-container
+      fluid
+      fill-height
+      class="pl-xl-8 
+             pr-xl-8
+             pb-xl-6
+             pb-lg-6
+             pa-md-4
+             pa-sm-4
+             pl-2 pr-2"
+    >
       <v-row class="justify-space-around mt-8 mb-8">
         <Heading />
       </v-row>
       <v-row
-        class="justify-xl-space-around justify-lg-space-around justify-md-start justify-sm-start justify-xs-start
-        ma-2 ma-sm-0 ma-md-0 ma-lg-0 ma-xl-0"
+        class="justify-xl-space-around
+        justify-lg-space-around
+        justify-md-start
+        justify-sm-start
+        justify-xs-start"
         dense
       >
         <v-col
           v-for="item in getMenuData.plantSize"
           :key="item.id"
-          class="mb-2"
           :class="{ active: item === activeItem }"
           cols="6"
           xs="12"
@@ -21,7 +33,6 @@
           md="4"
           lg="2"
           xl="2"
-          full-width
         >
           <v-item v-slot:default="{ active, toggle }">
             <v-card
@@ -29,7 +40,6 @@
               outlined
               class="mx-auto"
               max-width="300"
-              height="100%"
               @click="
                 toggle();
                 selectItem(item, 'setPlantSizeMenuSelection');

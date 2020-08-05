@@ -1,30 +1,45 @@
 <template>
   <!--    v-item-group component documentation: https://vuetifyjs.com/en/components/item-groups//-->
   <v-item-group v-model="selected" :mandatory="mandatory">
-    <v-container>
+    <v-container
+      fluid
+      fill-height
+      class="pl-xl-8
+            pr-xl-8
+            pb-xl-6
+            pb-lg-6
+            pa-md-4
+            pa-sm-4
+            pl-2 pr-2"
+    >
       <v-row class="justify-space-around mt-8 mb-8">
         <Heading />
       </v-row>
       <v-row
-        class="justify-xl-space-around justify-lg-space-between justify-md-start justify-sm-start justify-xs-start ml-xl-16 mr-xl-16"
+        class="justify-xl-center
+        justify-lg-center
+        justify-md-center
+        justify-sm-center
+        justify-xs-start"
+        dense
       >
         <v-col
           v-for="item in this.menu.easeOfCareData"
           :key="item.id"
           :class="{ active: item === activeItem }"
           cols="6"
-          xs="12"
-          sm="6"
+          xs="10"
+          sm="4"
           md="4"
-          lg="4"
-          xl="4"
+          lg="3"
+          xl="3"
         >
           <v-item v-slot:default="{ active, toggle }">
             <v-card
               :color="active ? 'teal' : ''"
               outlined
               class="mx-auto"
-              max-width="375"
+              max-width="300"
               @click="
                 toggle();
                 selectItem(item, 'setEaseOfCareMenuSelection');

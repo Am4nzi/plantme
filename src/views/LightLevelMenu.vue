@@ -1,12 +1,27 @@
 <template>
   <!--    v-item-group component documentation: https://vuetifyjs.com/en/components/item-groups//-->
   <v-item-group v-model="selected" :mandatory="mandatory">
-    <v-container>
+    <v-container
+      fluid
+      fill-height
+      class="pl-xl-8 
+            pr-xl-8
+            pb-xl-6
+            pb-lg-6
+            pa-md-4 
+            pa-sm-4
+            pl-2 pr-2"
+    >
       <v-row class="justify-space-around mt-8 mb-8">
         <Heading />
       </v-row>
       <v-row
-        class="justify-xl-space-around justify-lg-space-between justify-md-start justify-sm-start justify-xs-start"
+        class="justify-xl-space-around
+        justify-lg-space-around
+        justify-md-start
+        justify-sm-start
+        justify-xs-start"
+        dense
       >
         <v-col
           v-for="item in this.menu.lightLevelData"
@@ -33,7 +48,7 @@
               <v-img :src="item.image" class="card-image"></v-img>
               <v-card-title
                 :class="active ? 'white--text' : ''"
-                style="word-break: keep-all; height: 95px;"
+                style="word-break: keep-all;"
               >
                 {{ item.cardtitle }}
                 <v-tooltip bottom>

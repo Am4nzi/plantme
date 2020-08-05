@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import VueMeta from "vue-meta";
 import Layout from "../views/Layout.vue";
 import Card from "../components/Card";
 import PlantSizeMenu from "../views/PlantSizeMenu";
@@ -9,7 +8,6 @@ import EaseOfCareMenu from "../views/EaseOfCareMenu";
 import PetSafeMenu from "../views/PetSafeMenu";
 
 Vue.use(VueRouter);
-Vue.use(VueMeta);
 
 const routes = [
   {

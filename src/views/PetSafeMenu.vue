@@ -7,10 +7,9 @@
       class="pl-xl-16
             pr-xl-16
             pl-lg-16
-            pr-lg-16
-            "
+            pr-lg-16"
     >
-      <v-row class="justify-space-around mt-8 mb-8">
+      <v-row class="justify-space-around mt-4 mb-4">
         <Heading />
       </v-row>
       <v-row

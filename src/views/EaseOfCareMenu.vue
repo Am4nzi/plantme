@@ -12,7 +12,7 @@
             pa-sm-4
             pl-2 pr-2"
     >
-      <v-row class="justify-space-around mt-8 mb-8">
+      <v-row class="justify-space-around mt-4 mb-4">
         <Heading />
       </v-row>
       <v-row

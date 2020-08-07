@@ -64,7 +64,7 @@ export default {
         lightLevel: false,
         easeOfCare: false,
         petSafe: false
-      },
+      }
     };
   },
   computed: {
@@ -98,11 +98,8 @@ export default {
         return false;
       }
     },
-    // eslint-disable-next-line vue/return-in-computed-property
     stepperText() {
-      if (this.$store.getters.getStepperText) {
-        return this.$store.getters.getStepperText;
-      }
+      return this.$store.getters.getStepperText;
     },
     menuIndex: {
       get: function() {

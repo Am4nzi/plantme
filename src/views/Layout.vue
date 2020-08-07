@@ -51,10 +51,6 @@ export default {
       }
     }
   },
-  beforeMount() {
-    //Handle refresh safely
-    this.$router.push({ name: "PlantSizeMenu" });
-  },
   methods: {
     getCurrentRoute() {
       const { name } = this.$route;

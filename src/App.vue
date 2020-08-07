@@ -37,7 +37,11 @@ export default {
     this.$store.dispatch("updateMenuLightLevel");
     this.$store.dispatch("updateMenuEaseOfCare");
     this.$store.dispatch("updateMenuPetSafe");
-  }
+  },
+  beforeMount() {
+    //Handle refresh safely
+    this.$router.push({ name: "PlantSizeMenu" });
+  },
 };
 </script>
 <style>

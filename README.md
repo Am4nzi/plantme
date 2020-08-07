@@ -20,6 +20,10 @@ Currently, only the menu selection is complete, with the results page still to b
 
 - An expansion panel is used to hide extra information so as to note impact the simple, minimal UI. The user can open this panel upon request.
 
+## Demo
+
+[http://plantme.herokuapp.com](http://plantme.herokuapp.com/)
+
 ## Technology used
 
 ### Front-end
@@ -57,8 +61,4 @@ Currently, only the menu selection is complete, with the results page still to b
 
 - Develop results page
 - Enable text compression to improve performance
-- Use PurgeCSS unused Vuetify CSS which is bloating load speeds 
-- Move all data to a database, possibly use noSQL instead of Postgres for easier object-orientated structuring
-
-## Bugs
-- Getters call Vuex store before it's populated, need to implement logic to handle asyc behaviour
+- Use PurgeCSS unused Vuetify CSS which is bloating load speeds

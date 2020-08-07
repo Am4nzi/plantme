@@ -153,6 +153,9 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
+    updateInitialMenuTitle({ commit }, initialMenuTitle) {
+      commit("setMenuTitle", initialMenuTitle);
+    },
     updateGuideTitles: context => {
       Vue.axios
         .get(`${dataBaseUrl}/guideTitles`)

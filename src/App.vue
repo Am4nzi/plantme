@@ -14,6 +14,7 @@ import VueAxios from "vue-axios";
 import guideText from "./mixins/getGuideTitles";
 import menuIndex from "./mixins/menuIndex";
 import selectItem from "./mixins/selectItem";
+const mapGetters = require("vuex")["mapGetters"];
 
 Vue.mixin(guideText);
 Vue.mixin(menuIndex);
@@ -23,11 +24,14 @@ Vue.use(VueAxios, axios);
 
 export default {
   name: "App",
+  computed: {
+    ...mapGetters(["getMenuTitles"]),
+  },
   created() {
     this.$store.dispatch("updateMenuTitles");
     this.$store.dispatch("updateMenuPlantSize");
     this.$store.commit("setMenuIndex", 1);
-    this.$store.commit("setMenuTitle", "Select Plant Size");
+    this.$store.dispatch("updateInitialMenuTitle", this.getMenuTitles[0].menutitle);
     this.$store.dispatch("updateGuideTitles");
     this.$store.dispatch("updateStepperText");
     this.$store.dispatch("updateMenuLightLevel");

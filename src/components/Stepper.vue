@@ -67,9 +67,6 @@ export default {
       },
     };
   },
-  mounted() {
-    console.log('getMenuTitles: ', this.getMenuTitles[0].menutitle);
-  },
   computed: {
     ...mapGetters(["getMenuData"]),
     ...mapGetters(["getMenuTitles"]),

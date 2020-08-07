@@ -13,7 +13,7 @@
           :complete="menuIndex > 1"
           @click="navigateToPlantSizeMenu"
         >
-          {{ stepperText[0].text }}
+          {{ getStepperText[0].text }}
         </v-stepper-step>
         <v-divider
           :color="toggleLightLevelEditable ? 'grey' : false"
@@ -25,7 +25,7 @@
           :complete="menuIndex > 2"
           @click="navigateToLightLevelMenu"
         >
-          {{ stepperText[1].text }}
+          {{ getStepperText[1].text }}
         </v-stepper-step>
         <v-divider
           :color="toggleEaseOfCareEditable ? 'grey' : false"
@@ -37,7 +37,7 @@
           :complete="menuIndex > 3"
           @click="navigateToEaseOfCareMenu"
         >
-          {{ stepperText[2].text }}
+          {{ getStepperText[2].text }}
         </v-stepper-step>
         <v-divider :color="togglePetSafeEditable ? 'grey' : false"></v-divider>
         <v-stepper-step
@@ -47,7 +47,7 @@
           :complete="menuIndex > 4"
           @click="navigateToPetSafeMenu"
         >
-          {{ stepperText[3].text }}
+          {{ getStepperText[3].text }}
         </v-stepper-step>
       </v-stepper-header>
     </v-stepper>
@@ -70,6 +70,7 @@ export default {
   computed: {
     ...mapGetters(["getMenuData"]),
     ...mapGetters(["getMenuTitles"]),
+    ...mapGetters(["getStepperText"]),
     menuIndexNumber() {
       return this.$store.getters.getMenuIndexNumber;
     },
@@ -97,9 +98,6 @@ export default {
       } else {
         return false;
       }
-    },
-    stepperText() {
-      return this.$store.getters.getStepperText;
     },
     menuIndex: {
       get: function() {

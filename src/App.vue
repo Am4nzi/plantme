@@ -27,19 +27,19 @@ export default {
   computed: {
     ...mapGetters(["getMenuTitles"])
   },
-  created() {
-    this.$store.dispatch("updateMenuTitles");
-    this.$store.commit("setMenuIndex", 1);
-    this.$store.dispatch(
+  async mounted() {
+    await this.$store.dispatch("updateMenuTitles");
+    await this.$store.commit("setMenuIndex", 1);
+    await this.$store.dispatch(
       "updateInitialMenuTitle",
       this.getMenuTitles[0].menutitle
     );
-    this.$store.dispatch("updateGuideTitles");
-    this.$store.dispatch("updateStepperText");
-    this.$store.dispatch("updateMenuPlantSize");
-    this.$store.dispatch("updateMenuLightLevel");
-    this.$store.dispatch("updateMenuEaseOfCare");
-    this.$store.dispatch("updateMenuPetSafe");
+    await this.$store.dispatch("updateGuideTitles");
+    await this.$store.dispatch("updateStepperText");
+    await this.$store.dispatch("updateMenuPlantSize");
+    await this.$store.dispatch("updateMenuLightLevel");
+    await this.$store.dispatch("updateMenuEaseOfCare");
+    await this.$store.dispatch("updateMenuPetSafe");
   },
   beforeMount() {
     //Handle refresh safely

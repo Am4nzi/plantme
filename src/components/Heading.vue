@@ -1,6 +1,6 @@
 <template>
   <div :class="{ addMargin: hasScrolled }">
-    <h1 class="grey--text text--darken-3">{{ TitleText }}</h1>
+    <h1 class="grey--text text--darken-3">{{ getMenuTitle }}</h1>
   </div>
 </template>
 
@@ -10,9 +10,6 @@ export default {
   name: "Heading",
   computed: {
     ...mapGetters(["getMenuTitle"]),
-    TitleText() {
-      return this.$store.getters.getMenuTitle;
-    },
     hasScrolled() {
       return this.$store.getters.getHasScrolled;
     }

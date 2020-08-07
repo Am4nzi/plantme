@@ -2,6 +2,7 @@
   <div>
     <!--    Stepper component documentation: https://vuetifyjs.com/en/components/steppers/-->
     <v-stepper
+      v-if="getStepperText[0]"
       class="white elevation-0 rounded-tl-sm rounded-t4-sm rounded-bl-0 rounded-br-0 lighten-5"
       v-model="menuIndex"
     >

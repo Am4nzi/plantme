@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="getMenuData.guideTitles[0]">
     <v-card-actions>
       <v-spacer></v-spacer>
       <v-btn icon @click="show = !show">

@@ -92,16 +92,11 @@ export default new Vuex.Store({
     updateHasScrolled({ commit }, scrollStatus) {
       commit("setHasScrolled", scrollStatus);
     },
-    updateMenuEaseOfCare: context => {
-      Vue.axios
-        .get(`${dataBaseUrl}/easeofcaremenudata`)
-        .then(response => {
-          let easeOfCareData = response.data;
-          context.commit("setEaseOfCareMenu", easeOfCareData);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+    async updateMenuEaseOfCare(context) {
+      let easeOfCareData = await Vue.axios.get(
+        `${dataBaseUrl}/easeofcaremenudata`
+      );
+      context.commit("setEaseOfCareMenu", easeOfCareData.data);
     },
     updateMenuHeadingText({ commit }, headingText) {
       commit("setMenuHeadingText", headingText);
@@ -109,74 +104,34 @@ export default new Vuex.Store({
     updateMenuIndex: context => {
       context.commit("setMenuIndex", 1);
     },
-    updateMenuLightLevel: context => {
-      Vue.axios
-        .get(`${dataBaseUrl}/lightlevelmenudata`)
-        .then(response => {
-          let lightLevelData = response.data;
-          context.commit("setLightLevelMenu", lightLevelData);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+    async updateMenuLightLevel(context) {
+      let lightLevelData = await Vue.axios.get(
+        `${dataBaseUrl}/lightlevelmenudata`
+      );
+      context.commit("setLightLevelMenu", lightLevelData.data);
     },
-    updateMenuPetSafe: context => {
-      Vue.axios
-        .get(`${dataBaseUrl}/petsafemenudata`)
-        .then(response => {
-          let petSafeData = response.data;
-          context.commit("setPetSafeMenu", petSafeData);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+    async updateMenuPetSafe(context) {
+      let petSafeData = await Vue.axios.get(`${dataBaseUrl}/petsafemenudata`);
+      context.commit("setPetSafeMenu", petSafeData.data);
     },
-    updateMenuPlantSize: context => {
-      Vue.axios
-        .get(`${dataBaseUrl}/sizemenudata`)
-        .then(response => {
-          let plantSizeData = response.data;
-          context.commit("setPlantSizeMenu", plantSizeData);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+    async updateMenuPlantSize(context) {
+      let plantSizeData = await Vue.axios.get(`${dataBaseUrl}/sizemenudata`);
+      context.commit("setPlantSizeMenu", plantSizeData.data);
     },
-    updateMenuTitles: context => {
-      Vue.axios
-        .get(`${dataBaseUrl}/menutitles`)
-        .then(response => {
-          let menuTitles = response.data;
-          context.commit("setMenuTitles", menuTitles);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+    async updateMenuTitles(context) {
+      let menuTitles = await Vue.axios.get(`${dataBaseUrl}/menutitles`);
+      context.commit("setMenuTitles", menuTitles.data);
     },
     updateInitialMenuTitle({ commit }, initialMenuTitle) {
       commit("setMenuTitle", initialMenuTitle);
     },
-    updateGuideTitles: context => {
-      Vue.axios
-        .get(`${dataBaseUrl}/guideTitles`)
-        .then(response => {
-          let guideTitles = response.data;
-          context.commit("setGuideTitles", guideTitles);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+    async updateGuideTitles(context) {
+      let guideTitles = await Vue.axios.get(`${dataBaseUrl}/guideTitles`);
+      context.commit("setGuideTitles", guideTitles.data);
     },
-    updateStepperText: context => {
-      Vue.axios
-        .get(`${dataBaseUrl}/steppertext`)
-        .then(response => {
-          let stepperText = response.data;
-          context.commit("setStepperText", stepperText);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
+    async updateStepperText(context) {
+      let stepperText = await Vue.axios.get(`${dataBaseUrl}/steppertext`);
+      context.commit("setStepperText", stepperText.data);
     }
   },
   modules: {

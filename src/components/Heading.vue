@@ -5,9 +5,11 @@
 </template>
 
 <script>
+const mapGetters = require("vuex")["mapGetters"];
 export default {
   name: "Heading",
   computed: {
+    ...mapGetters(["getMenuTitle"]),
     TitleText() {
       return this.$store.getters.getMenuTitle;
     },

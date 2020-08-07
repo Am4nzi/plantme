@@ -51,13 +51,26 @@ export default {
       }
     }
   },
-  mounted() {
-    if (this.getMenuIndex === 1) {
-      this.$store.commit("setMenuTitle", this.getMenuTitles[0].menutitle);
-      this.$router.push({ name: "PlantSizeMenu" });
-    }
+  beforeMount() {
+    //Handle refresh safely
+    this.$router.push({ name: "PlantSizeMenu" });
   },
   methods: {
+    getCurrentRoute() {
+      const { name } = this.$route;
+      switch (name) {
+        case "PlantSizeMenu":
+          return "PlantSizeMenu";
+        case "LightLevelMenu":
+          return "LightLevelMenu";
+        case "EaseOfCareMenu":
+          return "EaseOfCareMenu";
+        case "PetSafeMenu":
+          return "PetSafeMenu";
+        default:
+          return "PlantSizeMenu";
+      }
+    },
     getNextRoute() {
       const { name } = this.$route;
       switch (name) {

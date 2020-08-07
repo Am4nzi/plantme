@@ -98,8 +98,11 @@ export default {
         return false;
       }
     },
+    // eslint-disable-next-line vue/return-in-computed-property
     stepperText() {
-      return this.$store.getters.getStepperText;
+      if (this.$store.getters.getStepperText) {
+        return this.$store.getters.getStepperText;
+      }
     },
     menuIndex: {
       get: function() {

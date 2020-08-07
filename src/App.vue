@@ -25,13 +25,16 @@ Vue.use(VueAxios, axios);
 export default {
   name: "App",
   computed: {
-    ...mapGetters(["getMenuTitles"]),
+    ...mapGetters(["getMenuTitles"])
   },
   created() {
     this.$store.dispatch("updateMenuTitles");
     this.$store.dispatch("updateMenuPlantSize");
     this.$store.commit("setMenuIndex", 1);
-    this.$store.dispatch("updateInitialMenuTitle", this.getMenuTitles[0].menutitle);
+    this.$store.dispatch(
+      "updateInitialMenuTitle",
+      this.getMenuTitles[0].menutitle
+    );
     this.$store.dispatch("updateGuideTitles");
     this.$store.dispatch("updateStepperText");
     this.$store.dispatch("updateMenuLightLevel");
@@ -40,8 +43,10 @@ export default {
   },
   beforeMount() {
     //Handle refresh safely
-    this.$router.push({ name: "PlantSizeMenu" });
-  },
+    if (this.$router.currentRoute.name !== "PlantSizeMenu") {
+      this.$router.push({ name: "PlantSizeMenu" });
+    }
+  }
 };
 </script>
 <style>

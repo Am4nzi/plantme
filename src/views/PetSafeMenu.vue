@@ -6,10 +6,11 @@
       fill-height
       class="pl-xl-16
             pr-xl-16
+            pb-xl-6
             pl-lg-16
             pr-lg-16"
     >
-      <v-row class="justify-space-around mt-4 mb-4">
+      <v-row class="justify-space-around mb-4">
         <Heading />
       </v-row>
       <v-row
@@ -35,7 +36,7 @@
         >
           <v-item v-slot:default="{ active, toggle }">
             <v-card
-              :color="active ? 'green darken-2' : ''"
+              :color="active ? '#fcc7b8' : ''"
               outlined
               class="mx-auto"
               max-width="300"
@@ -45,10 +46,7 @@
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
-              <v-card-title
-                :class="active ? 'white--text' : ''"
-                style="word-break: keep-all;"
-              >
+              <v-card-title style="word-break: keep-all;">
                 {{ item.cardtitle }}
               </v-card-title>
               <v-scroll-y-transition>

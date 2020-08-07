@@ -1,6 +1,6 @@
 <template>
   <!--  <v-app style="background-color: #E8F5E9;" class="bg">-->
-  <v-app class="bg">
+  <v-app class="background">
     <v-main>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
@@ -12,7 +12,7 @@
                 <v-btn
                   @click="nextStep"
                   x-large
-                  color="#e4beb7"
+                  color="#fcc7b8"
                   class="black--text mr-n1 rounded"
                   :disabled="toggleActivateButton"
                   >Next</v-btn
@@ -93,22 +93,30 @@ export default {
 </script>
 
 <style>
-.bg {
-  height: 100vh;
-  width: 100vw;
-  position: relative;
-  overflow: hidden;
+@media (min-width: 600px) {
+  .background {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .background:before {
+    content: "";
+    display: block;
+    width: 905px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0px 0px 1033px 595px;
+    border-color: transparent transparent #c4f5e1 transparent;
+    position: absolute;
+    right: 0px;
+  }
 }
 
-.bg:before {
-  content: "";
-  display: block;
-  width: 905px;
-  height: 0px;
-  border-style: solid;
-  border-width: 0px 0px 1033px 595px;
-  border-color: transparent transparent #C4F5E1 transparent;
-  position: absolute;
-  right: 0px;
+@media (max-width: 600px) {
+  .background {
+    background-color: #c4f5e1 !important;
+  }
 }
 </style>

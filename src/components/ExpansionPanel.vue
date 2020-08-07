@@ -14,7 +14,7 @@
         <v-divider></v-divider>
         <!--        Conditionally render different elements depending on current view-->
         <v-card-text>
-          <h2 class="teal--text">
+          <h2 class="grey--text text--darken-3">
             {{ getGuideTitles }}
           </h2>
           <v-row class="justify-left">

@@ -27,7 +27,7 @@ export default {
     this.$store.dispatch("updateMenuTitles");
     this.$store.dispatch("updateMenuPlantSize");
     this.$store.commit("setMenuIndex", 1);
-    this.$store.commit("setMenuTitle", "Plant Size");
+    this.$store.commit("setMenuTitle", "Select Plant Size");
     this.$store.dispatch("updateGuideTitles");
     this.$store.dispatch("updateStepperText");
     this.$store.dispatch("updateMenuLightLevel");

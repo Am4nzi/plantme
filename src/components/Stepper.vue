@@ -65,16 +65,14 @@ export default {
         easeOfCare: false,
         petSafe: false
       },
-      menuHeadingText: {
-        plantSize: "Plant Size",
-        lightLevel: "Light Level",
-        easeOfCare: "Ease of Care",
-        petSafe: "Pet Safe?"
-      }
     };
+  },
+  mounted() {
+    console.log('getMenuTitles: ', this.getMenuTitles[0].menutitle);
   },
   computed: {
     ...mapGetters(["getMenuData"]),
+    ...mapGetters(["getMenuTitles"]),
     menuIndexNumber() {
       return this.$store.getters.getMenuIndexNumber;
     },
@@ -118,14 +116,14 @@ export default {
   methods: {
     navigateToPlantSizeMenu() {
       this.$store.commit("setMenuIndex", 1);
-      this.$store.commit("setMenuTitle", this.menuHeadingText.plantSize);
+      this.$store.commit("setMenuTitle", this.getMenuTitles[0].menutitle);
       this.$router.push("plant-size");
     },
     navigateToLightLevelMenu() {
       if (this.$store.state.menuSelections.menuSelection.plantSize[0]) {
         this.toggleEnableEditSteps.lightLevel = true;
         this.$store.commit("setMenuIndex", 2);
-        this.$store.commit("setMenuTitle", this.menuHeadingText.lightLevel);
+        this.$store.commit("setMenuTitle", this.getMenuTitles[1].menutitle);
         this.$router.push("light-level");
       }
     },
@@ -133,7 +131,7 @@ export default {
       if (this.$store.state.menuSelections.menuSelection.lightLevel[0]) {
         this.toggleEnableEditSteps.easeOfCare = true;
         this.$store.commit("setMenuIndex", 3);
-        this.$store.commit("setMenuTitle", this.menuHeadingText.easeOfCare);
+        this.$store.commit("setMenuTitle", this.getMenuTitles[2].menutitle);
         this.$router.push("ease-of-care");
       }
     },
@@ -141,7 +139,7 @@ export default {
       if (this.$store.state.menuSelections.menuSelection.easeOfCare[0]) {
         this.toggleEnableEditSteps.petSafe = true;
         this.$store.commit("setMenuIndex", 4);
-        this.$store.commit("setMenuTitle", this.menuHeadingText.petSafe);
+        this.$store.commit("setMenuTitle", this.getMenuTitles[3].menutitle);
         this.$router.push("pet-safe-menu");
       }
     }

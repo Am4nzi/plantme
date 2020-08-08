@@ -47,7 +47,7 @@
             >
               <v-img :src="item.image" class="card-image"></v-img>
 
-              <v-card-title style="word-break: keep-all;">
+              <v-card-title class="card-title">
                 {{ item.cardtitle }}
                 <v-tooltip right>
                   <template v-slot:activator="{ on, attrs }">

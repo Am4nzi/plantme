@@ -47,7 +47,7 @@
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
-              <v-card-title style="word-break: keep-all;">
+              <v-card-title class="card-title" style="word-break: keep-all;">
                 {{ item.cardtitle }}
               </v-card-title>
               <v-scroll-y-transition>

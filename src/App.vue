@@ -74,5 +74,8 @@ div {
   p {
     text-align: left !important;
   }
+  .card-title {
+    font-size: 1.12rem !important;
+  }
 }
 </style>

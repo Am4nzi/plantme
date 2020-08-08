@@ -59,9 +59,5 @@ export default {
     width: 100%;
     height: 130px !important;
   }
-
-  .card-title {
-    height: 95px;
-  }
 }
 </style>

@@ -71,7 +71,7 @@ export default {
   data: () => ({
     mandatory: false,
     multiple: true,
-    selected: null,
+    selected: [],
     activeItem: null,
     menu: {
       easeOfCareData: []

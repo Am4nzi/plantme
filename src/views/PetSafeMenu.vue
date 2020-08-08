@@ -71,7 +71,7 @@ export default {
   },
   data: () => ({
     mandatory: false,
-    selected: null,
+    selected: [],
     activeItem: null,
     menu: {
       petSafeData: []

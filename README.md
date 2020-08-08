@@ -59,7 +59,10 @@ Currently, only the menu selection is complete, with the results page still to b
 
 ## Todos
 
-- Add ability to select multiple cards from menus
 - Develop results page
 - Enable text compression to improve performance
 - Use PurgeCSS unused Vuetify CSS which is bloating load speeds
+
+## Bugs
+
+- Stepper component sometimes gets half hidden behind the top of the browser when the `position: sticky` CSS rule is applied.

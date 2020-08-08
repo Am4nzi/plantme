@@ -25,7 +25,6 @@ export default new Vuex.Store({
       lightLevel: [],
       easeOfCare: [],
       petSafe: [],
-      guideText: [],
       guideTitles: []
     },
     stepperText: []
@@ -60,17 +59,11 @@ export default new Vuex.Store({
     setHasScrolled(state, scrollStatus) {
       state.hasScrolled = scrollStatus;
     },
-    setGuideText(state, guideText) {
-      state.menus.guideText = guideText;
-    },
     setGuideTitles(state, guideTitles) {
       state.menus.guideTitles = guideTitles;
     },
     setLightLevelMenu(state, lightLevelData) {
       state.menus.lightLevel = lightLevelData;
-    },
-    setMenuHeadingText(state, headingText) {
-      state.menus.headingText = headingText;
     },
     setMenuTitles(state, menuTitles) {
       state.menu.menuTitles = menuTitles;
@@ -86,52 +79,34 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    updateGuideText({ commit }, guideText) {
-      commit("setGuideText", guideText);
+    updateHasScrolled(context, scrollStatus) {
+      context.commit("setHasScrolled", scrollStatus);
     },
-    updateHasScrolled({ commit }, scrollStatus) {
-      commit("setHasScrolled", scrollStatus);
+    updateInitialMenuTitle(context, initialMenuTitle) {
+      context.commit("setMenuTitle", initialMenuTitle);
     },
-    async updateMenuEaseOfCare(context) {
-      let easeOfCareData = await Vue.axios.get(
-        `${dataBaseUrl}/easeofcaremenudata`
-      );
-      context.commit("setEaseOfCareMenu", easeOfCareData.data);
-    },
-    updateMenuHeadingText({ commit }, headingText) {
-      commit("setMenuHeadingText", headingText);
-    },
-    updateMenuIndex: context => {
+    async updateInitialViewData(context) {
       context.commit("setMenuIndex", 1);
+      let plantSizeData = await Vue.axios.get(`${dataBaseUrl}/sizemenudata`);
+      context.commit("setPlantSizeMenu", plantSizeData.data);
+      let menuTitles = await Vue.axios.get(`${dataBaseUrl}/menutitles`);
+      context.commit("setMenuTitles", menuTitles.data);
+      let guideTitles = await Vue.axios.get(`${dataBaseUrl}/guideTitles`);
+      context.commit("setGuideTitles", guideTitles.data);
+      let stepperText = await Vue.axios.get(`${dataBaseUrl}/steppertext`);
+      context.commit("setStepperText", stepperText.data);
     },
-    async updateMenuLightLevel(context) {
+    async updateRemainingViewsData(context) {
       let lightLevelData = await Vue.axios.get(
         `${dataBaseUrl}/lightlevelmenudata`
       );
       context.commit("setLightLevelMenu", lightLevelData.data);
-    },
-    async updateMenuPetSafe(context) {
+      let easeOfCareData = await Vue.axios.get(
+        `${dataBaseUrl}/easeofcaremenudata`
+      );
+      context.commit("setEaseOfCareMenu", easeOfCareData.data);
       let petSafeData = await Vue.axios.get(`${dataBaseUrl}/petsafemenudata`);
       context.commit("setPetSafeMenu", petSafeData.data);
-    },
-    async updateMenuPlantSize(context) {
-      let plantSizeData = await Vue.axios.get(`${dataBaseUrl}/sizemenudata`);
-      context.commit("setPlantSizeMenu", plantSizeData.data);
-    },
-    async updateMenuTitles(context) {
-      let menuTitles = await Vue.axios.get(`${dataBaseUrl}/menutitles`);
-      context.commit("setMenuTitles", menuTitles.data);
-    },
-    updateInitialMenuTitle({ commit }, initialMenuTitle) {
-      commit("setMenuTitle", initialMenuTitle);
-    },
-    async updateGuideTitles(context) {
-      let guideTitles = await Vue.axios.get(`${dataBaseUrl}/guideTitles`);
-      context.commit("setGuideTitles", guideTitles.data);
-    },
-    async updateStepperText(context) {
-      let stepperText = await Vue.axios.get(`${dataBaseUrl}/steppertext`);
-      context.commit("setStepperText", stepperText.data);
     }
   },
   modules: {

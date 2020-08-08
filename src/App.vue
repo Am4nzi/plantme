@@ -28,18 +28,12 @@ export default {
     ...mapGetters(["getMenuTitles"])
   },
   async mounted() {
-    await this.$store.dispatch("updateMenuTitles");
-    await this.$store.commit("setMenuIndex", 1);
+    await this.$store.dispatch("updateInitialViewData");
     await this.$store.dispatch(
       "updateInitialMenuTitle",
       this.getMenuTitles[0].menutitle
     );
-    await this.$store.dispatch("updateGuideTitles");
-    await this.$store.dispatch("updateStepperText");
-    await this.$store.dispatch("updateMenuPlantSize");
-    await this.$store.dispatch("updateMenuLightLevel");
-    await this.$store.dispatch("updateMenuEaseOfCare");
-    await this.$store.dispatch("updateMenuPetSafe");
+    await this.$store.dispatch("updateRemainingViewsData");
   },
   beforeMount() {
     //Handle refresh safely

@@ -1,6 +1,6 @@
 <template>
   <!--    v-item-group component documentation: https://vuetifyjs.com/en/components/item-groups//-->
-  <v-item-group v-model="selected" :mandatory="mandatory">
+  <v-item-group v-model="selected" :mandatory="mandatory" :multiple="multiple">
     <v-container
       fluid
       fill-height
@@ -70,6 +70,7 @@ export default {
   },
   data: () => ({
     mandatory: false,
+    multiple: true,
     selected: null,
     activeItem: null,
     menu: {
@@ -80,11 +81,20 @@ export default {
     ...mapGetters(["getMenuData"]),
     ...mapGetters(["getPreviousMenuSelection"])
   },
+  watch: {
+    multiple(val) {
+      this.selected = val
+        ? this.selected >= 0
+          ? [this.selected]
+          : []
+        : this.selected.pop();
+    }
+  },
   mounted() {
     this.menu.easeOfCareData = this.getMenuData.easeOfCare;
     //Previous selection remains active if user navigates to a view they've already visited
-    if (this.getPreviousMenuSelection.easeOfCare) {
-      this.selected = this.getPreviousMenuSelection.easeOfCare[1];
+    if (this.getPreviousMenuSelection.easeOfCare.indexes.length) {
+      this.selected = this.getPreviousMenuSelection.easeOfCare.indexes;
     }
   }
 };

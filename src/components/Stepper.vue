@@ -72,6 +72,7 @@ export default {
     ...mapGetters(["getMenuData"]),
     ...mapGetters(["getMenuTitles"]),
     ...mapGetters(["getStepperText"]),
+    ...mapGetters(["getPreviousMenuSelection"]),
     menuIndexNumber() {
       return this.$store.getters.getMenuIndexNumber;
     },
@@ -116,7 +117,7 @@ export default {
       this.$router.push("plant-size");
     },
     navigateToLightLevelMenu() {
-      if (this.$store.state.menuSelections.menuSelection.plantSize[0]) {
+      if (this.getPreviousMenuSelection.lightLevel.indexes.length) {
         this.toggleEnableEditSteps.lightLevel = true;
         this.$store.commit("setMenuIndex", 2);
         this.$store.commit("setMenuTitle", this.getMenuTitles[1].menutitle);
@@ -124,7 +125,7 @@ export default {
       }
     },
     navigateToEaseOfCareMenu() {
-      if (this.$store.state.menuSelections.menuSelection.lightLevel[0]) {
+      if (this.getPreviousMenuSelection.easeOfCare.indexes.length) {
         this.toggleEnableEditSteps.easeOfCare = true;
         this.$store.commit("setMenuIndex", 3);
         this.$store.commit("setMenuTitle", this.getMenuTitles[2].menutitle);
@@ -132,7 +133,7 @@ export default {
       }
     },
     navigateToPetSafeMenu() {
-      if (this.$store.state.menuSelections.menuSelection.easeOfCare[0]) {
+      if (this.getPreviousMenuSelection.petSafe.indexes.length) {
         this.toggleEnableEditSteps.petSafe = true;
         this.$store.commit("setMenuIndex", 4);
         this.$store.commit("setMenuTitle", this.getMenuTitles[3].menutitle);

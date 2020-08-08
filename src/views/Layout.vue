@@ -39,13 +39,13 @@ export default {
       const { name } = this.$route;
       switch (name) {
         case "PlantSizeMenu":
-          return Boolean(!this.getPreviousMenuSelection.plantSize[0]);
+          return Boolean(!this.getPreviousMenuSelection.plantSize.indexes.length);
         case "LightLevelMenu":
-          return Boolean(!this.getPreviousMenuSelection.lightLevel[0]);
+          return Boolean(!this.getPreviousMenuSelection.lightLevel.indexes.length);
         case "EaseOfCareMenu":
-          return Boolean(!this.getPreviousMenuSelection.easeOfCare[0]);
+          return Boolean(!this.getPreviousMenuSelection.easeOfCare.indexes.length);
         case "PetSafeMenu":
-          return Boolean(!this.getPreviousMenuSelection.petSafe[0]);
+          return Boolean(!this.getPreviousMenuSelection.petSafe.indexes.length);
         default:
           return "Error in toggleActivateButton /Layout.vue";
       }

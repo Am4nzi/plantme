@@ -68,7 +68,7 @@ CREATE TABLE petSafeMenu (
 );
 
 INSERT INTO petSafeMenu (cardTitle, image) VALUES ('Safe', 'https://storage.googleapis.com/plant-me/pet_safe-safe.jpg');
-INSERT INTO petSafeMenu (cardTitle, image) VALUES ('Doesn''t Matter', 'https://storage.googleapis.com/plant-me/pet_safe-not_important.jpg');
+INSERT INTO petSafeMenu (cardTitle, image) VALUES ('Not Important', 'https://storage.googleapis.com/plant-me/pet_safe-not_important.jpg');
 
 CREATE TABLE stepperText (
     id SERIAL primary key,

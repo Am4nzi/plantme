@@ -1,27 +1,32 @@
 const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
-const cors = require('cors')
+const cors = require("cors");
+
 const db = require("./queries");
 
-const app = express();
+app.use(express.static(__dirname + "/dist/"));
 
-app.use(cors())
+app.use(cors());
 
 app.use(bodyParser.json());
 
-app.get("/sizemenudata", db.getSizeMenuData);
+app.get("/api/menutitles", db.getMenuTitles);
 
-app.get("/lightlevelmenudata", db.getLightLevelMenuData);
+app.get("/api/guidetitles", db.getGuideTitles);
 
-app.get("/easeofcaremenudata", db.getEaseOfCareMenuData);
+app.get("/api/sizemenudata", db.getSizeMenuData);
 
-app.get("/petsafemenudata", db.getPetSafeMenuData);
+app.get("/api/lightlevelmenudata", db.getLightLevelMenuData);
 
-app.get("/", (request, response) => {
-  response.json({ info: "Node.js, Express, and Postgres API" });
-});
+app.get("/api/easeofcaremenudata", db.getEaseOfCareMenuData);
+
+app.get("/api/petsafemenudata", db.getPetSafeMenuData);
+
+app.get("/api/steppertext", db.getStepperText);
 
 const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });

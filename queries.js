@@ -1,67 +1,103 @@
 const Pool = require("pg").Pool;
-const pool = new Pool({
-  user: "garethsmith",
+
+let connection;
+
+connection = new Pool({
+  user: process.env.USER,
   host: "localhost",
   database: "plantsdb",
-  password: "password",
-  port: 5432
+  password: process.env.PWD,
+  port: 5432,
+  ssl: process.env.DATABASE_URL ? true : false
 });
 
-const getPlantsData = (request, response) => {
-  pool.query("SELECT * FROM plants ORDER BY id ASC", (error, results) => {
-    if (error) {
-      throw error;
+// Comment out above and uncomment below if uploading to Heroku
+// const { Client } = require("pg");
+// connection = new Client({
+//   connectionString: process.env.DATABASE_URL,
+//   ssl: {
+//     rejectUnauthorized: false
+//   }
+// });
+
+// connection.connect();
+
+const getMenuTitles = (request, response) => {
+  connection.query(
+    "SELECT * FROM menuTitles ORDER BY id ASC",
+    (err, results) => {
+      if (err) throw err;
+      response.status(200).json(results.rows);
     }
-    response.status(200).json(results.rows);
-  });
+  );
+};
+
+const getGuideTitles = (request, response) => {
+  connection.query(
+    "SELECT * FROM guideTitles ORDER BY id ASC",
+    (err, results) => {
+      if (err) throw err;
+      response.status(200).json(results.rows);
+    }
+  );
 };
 
 const getSizeMenuData = (request, response) => {
-  pool.query(
-    "SELECT * FROM plantSizeMenu ORDER BY id ASC",
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
+  connection.query(
+    "SELECT * FROM plantsizemenu ORDER BY id ASC",
+    (err, results) => {
+      if (err) throw err;
       response.status(200).json(results.rows);
     }
   );
 };
 
 const getLightLevelMenuData = (request, response) => {
-  pool.query(
+  connection.query(
     "SELECT * FROM lightlevelmenu ORDER BY id ASC",
-    (error, results) => {
-      if (error) {
-        throw error;
-      }
+    (err, results) => {
+      if (err) throw err;
       response.status(200).json(results.rows);
     }
   );
 };
 
 const getEaseOfCareMenuData = (request, response) => {
-  pool.query("SELECT * FROM easeofcare ORDER BY id ASC", (error, results) => {
-    if (error) {
-      throw error;
+  connection.query(
+    "SELECT * FROM easeOfCareMenu ORDER BY id ASC",
+    (err, results) => {
+      if (err) throw err;
+      response.status(200).json(results.rows);
     }
-    response.status(200).json(results.rows);
-  });
+  );
 };
 
 const getPetSafeMenuData = (request, response) => {
-  pool.query("SELECT * FROM petsafe ORDER BY id ASC", (error, results) => {
-    if (error) {
-      throw error;
+  connection.query(
+    "SELECT * FROM petSafeMenu ORDER BY id ASC",
+    (err, results) => {
+      if (err) throw err;
+      response.status(200).json(results.rows);
     }
-    response.status(200).json(results.rows);
-  });
+  );
+};
+
+const getStepperText = (request, response) => {
+  connection.query(
+    "SELECT * FROM stepperText ORDER BY id ASC",
+    (err, results) => {
+      if (err) throw err;
+      response.status(200).json(results.rows);
+    }
+  );
 };
 
 module.exports = {
-  getPlantsData,
+  getMenuTitles,
+  getGuideTitles,
   getSizeMenuData,
   getLightLevelMenuData,
   getEaseOfCareMenuData,
-  getPetSafeMenuData
+  getPetSafeMenuData,
+  getStepperText
 };

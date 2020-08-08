@@ -1,33 +1,67 @@
 <template>
-  <v-card class="elevation-12">
-    <Stepper />
-    <v-card-text>
-      <v-item-group mandatory>
-        <router-view/>
-      </v-item-group>
-    </v-card-text>
-    <ExpandTransition :text="menu.expandInfo.plantSize" />
+  <v-card elevation="14" class="pb-sm-4">
+    <Stepper :class="{ fixed: hasScrolled }" />
+    <!--    Menu views-->
+    <router-view/>
+    <ExpansionPanel v-if="getMenuIndex < 3" class="d-sm-none" />
   </v-card>
 </template>
 
 <script>
-import ExpandTransition from "../components/ExpandTransition";
+import ExpansionPanel from "./ExpansionPanel";
 import Stepper from "../components/Stepper";
 export default {
   name: "Card",
-  props: ['menuIndex'],
   components: {
-    ExpandTransition,
+    ExpansionPanel,
     Stepper
   },
-  data: () => ({
-    menu: {
-      expandInfo: {
-        plantSize: "Dummy Text"
-      },
-    },
-  }),
+  mounted() {
+    this.scroll();
+  },
   methods: {
+    scroll() {
+      window.onscroll = () => {
+        if (window.pageYOffset > 25) {
+          this.$store.dispatch("updateHasScrolled", true);
+        }
+
+        if (window.pageYOffset < 25) {
+          this.$store.dispatch("updateHasScrolled", false);
+        }
+      };
+    }
+  },
+  computed: {
+    hasScrolled() {
+      return this.$store.getters.getHasScrolled;
+    }
   }
 };
 </script>
+
+<style>
+.card-image {
+  width: 100%;
+  height: 200px !important;
+}
+
+@media (max-width: 600px) {
+  .fixed {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 130px !important;
+  }
+
+  .card-title {
+    height: 95px;
+  }
+}
+</style>

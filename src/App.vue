@@ -1,41 +1,78 @@
 <template>
-  <v-app>
-    <!--    <Layout.vue />-->
-    <router-view />
-  </v-app>
+  <div>
+    <v-app>
+      <!--    <Layout.vue />-->
+      <router-view />
+    </v-app>
+  </div>
 </template>
 
 <script>
+import Vue from "vue";
+const axios = require("axios");
+import VueAxios from "vue-axios";
+import guideText from "./mixins/getGuideTitles";
+import menuIndex from "./mixins/menuIndex";
+import selectItem from "./mixins/selectItem";
+const mapGetters = require("vuex")["mapGetters"];
+
+Vue.mixin(guideText);
+Vue.mixin(menuIndex);
+Vue.mixin(selectItem);
+
+Vue.use(VueAxios, axios);
+
 export default {
   name: "App",
-  // Set Vuex menu state values from plantsdb
-  created() {
-    fetch("http://localhost:3000/sizemenudata")
-      .then(response => response.json())
-      .then(data => {
-        this.$store.dispatch("updatePlantSizeMenu", data);
-        this.$store.dispatch("updateCurrentMenu", data);
-      })
-      .catch(error => console.error(error));
-    fetch("http://localhost:3000/lightlevelmenudata")
-      .then(response => response.json())
-      .then(data => {
-        this.$store.dispatch("updateLightLevelMenu", data);
-      })
-      .catch(error => console.error(error));
-    fetch("http://localhost:3000/easeofcaremenudata")
-      .then(response => response.json())
-      .then(data => {
-        this.$store.dispatch("updateEaseOfCareMenu", data);
-      })
-      .catch(error => console.error(error));
-    fetch("http://localhost:3000/petsafemenudata")
-      .then(response => response.json())
-      .then(data => {
-        this.$store.dispatch("updatePetSafeMenu", data);
-      })
-      .catch(error => console.error(error));
-    this.$store.dispatch("updateMenuHeadingText", this.menuHeadingText);
+  computed: {
+    ...mapGetters(["getMenuTitles"])
+  },
+  async mounted() {
+    await this.$store.dispatch("updateInitialViewData");
+    await this.$store.dispatch(
+      "updateInitialMenuTitle",
+      this.getMenuTitles[0].menutitle
+    );
+  },
+  beforeMount() {
+    //Handle refresh safely
+    if (this.$router.currentRoute.name !== "PlantSizeMenu") {
+      this.$router.push({ name: "PlantSizeMenu" });
+    }
   }
 };
 </script>
+<style>
+/*Import roc-grotesk and sofia-pro from adobe fonts*/
+@import url("https://use.typekit.net/qso6ymh.css");
+
+h1 {
+  font-family: operetta-12, serif;
+  font-weight: 700;
+  font-size: 3.6rem;
+}
+h2 {
+  font-family: operetta-12, serif;
+  font-size: 2rem;
+  font-weight: 600;
+}
+ul,
+p,
+div {
+  font-family: sofia-pro, sans-serif;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2.4rem;
+    line-height: 1.3;
+  }
+  h2 {
+    line-height: 1.1;
+  }
+  p {
+    text-align: left !important;
+  }
+}
+</style>

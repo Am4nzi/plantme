@@ -81,21 +81,24 @@ export default {
           return "PetSafeMenu";
       }
     },
-    nextStep() {
+    async nextStep() {
       const nextRoute = this.getNextRoute();
       if (nextRoute === "LightLevelMenu") {
+        await this.$store.dispatch("updateViewLightLevelMenu");
         this.$store.commit("setMenuTitle", this.getMenuTitles[1].menutitle);
         this.$store.commit("setMenuIndex", 2);
       }
       if (nextRoute === "EaseOfCareMenu") {
+        await this.$store.dispatch("updateViewEaseOfCareMenu");
         this.$store.commit("setMenuTitle", this.getMenuTitles[2].menutitle);
         this.$store.commit("setMenuIndex", 3);
       }
       if (nextRoute === "PetSafeMenu") {
+        await this.$store.dispatch("updateViewPetSafeMenu");
         this.$store.commit("setMenuTitle", this.getMenuTitles[3].menutitle);
         this.$store.commit("setMenuIndex", 4);
       }
-      this.$router.push({ name: nextRoute });
+      await this.$router.push({ name: nextRoute });
     }
   }
 };

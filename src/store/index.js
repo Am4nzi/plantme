@@ -96,15 +96,19 @@ export default new Vuex.Store({
       let stepperText = await Vue.axios.get(`${dataBaseUrl}/steppertext`);
       context.commit("setStepperText", stepperText.data);
     },
-    async updateRemainingViewsData(context) {
+    async updateViewLightLevelMenu(context) {
       let lightLevelData = await Vue.axios.get(
         `${dataBaseUrl}/lightlevelmenudata`
       );
       context.commit("setLightLevelMenu", lightLevelData.data);
+    },
+    async updateViewEaseOfCareMenu(context) {
       let easeOfCareData = await Vue.axios.get(
         `${dataBaseUrl}/easeofcaremenudata`
       );
       context.commit("setEaseOfCareMenu", easeOfCareData.data);
+    },
+    async updateViewPetSafeMenu(context) {
       let petSafeData = await Vue.axios.get(`${dataBaseUrl}/petsafemenudata`);
       context.commit("setPetSafeMenu", petSafeData.data);
     }

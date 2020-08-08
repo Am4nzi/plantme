@@ -33,7 +33,6 @@ export default {
       "updateInitialMenuTitle",
       this.getMenuTitles[0].menutitle
     );
-    await this.$store.dispatch("updateRemainingViewsData");
   },
   beforeMount() {
     //Handle refresh safely

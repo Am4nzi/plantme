@@ -68,6 +68,10 @@ export default {
       }
     };
   },
+  mounted() {
+    console.log('this.getPreviousMenuSelection.lightLevel: ', this.getPreviousMenuSelection.lightLevel);
+    console.log('this.getPreviousMenuSelection.petSafe: ', this.getPreviousMenuSelection.petSafe);
+  },
   computed: {
     ...mapGetters(["getMenuData"]),
     ...mapGetters(["getMenuTitles"]),
@@ -133,7 +137,7 @@ export default {
       }
     },
     navigateToPetSafeMenu() {
-      if (this.getPreviousMenuSelection.petSafe.indexes.length) {
+      if (this.getPreviousMenuSelection.petSafe.titles[0]) {
         this.toggleEnableEditSteps.petSafe = true;
         this.$store.commit("setMenuIndex", 4);
         this.$store.commit("setMenuTitle", this.getMenuTitles[3].menutitle);

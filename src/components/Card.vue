@@ -2,7 +2,7 @@
   <v-card elevation="14" class="pb-sm-4">
     <Stepper :class="{ fixed: hasScrolled }" />
     <!--    Menu views-->
-    <router-view/>
+    <router-view />
     <ExpansionPanel v-if="getMenuIndex < 3" class="d-sm-none" />
   </v-card>
 </template>
@@ -25,7 +25,6 @@ export default {
         if (window.pageYOffset > 25) {
           this.$store.dispatch("updateHasScrolled", true);
         }
-
         if (window.pageYOffset < 25) {
           this.$store.dispatch("updateHasScrolled", false);
         }
@@ -48,7 +47,8 @@ export default {
 
 @media (max-width: 600px) {
   .fixed {
-    position: fixed;
+    position: sticky;
+    position: -webkit-sticky;
     z-index: 10;
     width: 100%;
     top: 0;

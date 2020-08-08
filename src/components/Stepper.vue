@@ -68,10 +68,6 @@ export default {
       }
     };
   },
-  mounted() {
-    console.log('this.getPreviousMenuSelection.lightLevel: ', this.getPreviousMenuSelection.lightLevel);
-    console.log('this.getPreviousMenuSelection.petSafe: ', this.getPreviousMenuSelection.petSafe);
-  },
   computed: {
     ...mapGetters(["getMenuData"]),
     ...mapGetters(["getMenuTitles"]),

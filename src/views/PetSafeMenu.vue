@@ -6,7 +6,8 @@
       fill-height
       class="pl-xl-16
             pr-xl-16
-            pb-xl-6
+            pb-xl-7
+            pb-lg-7
             pl-lg-16
             pr-lg-16"
     >

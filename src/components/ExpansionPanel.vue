@@ -1,10 +1,10 @@
 <template>
   <div v-if="getMenuData.guideTitles[0]">
-    <v-card-actions>
-      <v-spacer></v-spacer>
+    <v-card-actions class="justify-end pr-6">
+<!--      <v-spacer></v-spacer>-->
       <v-btn icon @click="show = !show">
         Guide
-        <v-icon class="mr-12">{{
+        <v-icon>{{
           show ? "mdi-chevron-up" : "mdi-chevron-down"
         }}</v-icon>
       </v-btn>

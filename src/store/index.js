@@ -27,6 +27,9 @@ export default new Vuex.Store({
       petSafe: [],
       guideTitles: []
     },
+    modal: {
+      isActive: true
+    },
     stepperText: []
   },
   getters: {
@@ -51,9 +54,9 @@ export default new Vuex.Store({
     getStepperText: function(state) {
       return state.stepperText;
     },
-    getResultsPageActive: function(state) {
-      return state.resultsPage.isActive;
-    },
+    getModalStatus: function(state) {
+      return state.modal.isActive;
+    }
   },
   mutations: {
     setEaseOfCareMenu(state, easeOfCareData) {
@@ -79,6 +82,9 @@ export default new Vuex.Store({
     },
     setStepperText(state, stepperText) {
       state.stepperText = stepperText;
+    },
+    setModalActive(state, modalStatus) {
+      state.modal.isActive = modalStatus;
     }
   },
   actions: {
@@ -87,6 +93,9 @@ export default new Vuex.Store({
     },
     updateInitialMenuTitle(context, initialMenuTitle) {
       context.commit("setMenuTitle", initialMenuTitle);
+    },
+    updateModalActive(context, modalStatus) {
+      context.commit("setModalActive", modalStatus);
     },
     async updateInitialViewData(context) {
       context.commit("setMenuIndex", 1);

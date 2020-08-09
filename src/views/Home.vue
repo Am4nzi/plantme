@@ -30,7 +30,7 @@
     </v-app-bar>
 
     <v-main>
-      <v-dialog v-model="dialog" fullscreen>
+      <v-dialog v-model="getModalStatus" fullscreen persistent transition="false">
         <router-view />
       </v-dialog>
       <v-container fluid class="fill-height">
@@ -89,13 +89,13 @@
 </template>
 
 <script>
+const mapGetters = require("vuex")["mapGetters"];
 export default {
   name: "Home",
   props: {
     source: String
   },
   data: () => ({
-    dialog: true,
     drawer: null,
     mandatory: false,
     multiple: true,
@@ -107,6 +107,7 @@ export default {
     }
   }),
   computed: {
+    ...mapGetters(["getModalStatus"]),
     getMenuData() {
       return this.$store.getters.getMenuData;
     }

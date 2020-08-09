@@ -1,8 +1,8 @@
 <template>
-    <v-app>
-      <!--    <Layout.vue />-->
-      <router-view />
-    </v-app>
+  <v-app>
+    <!--    <Layout.vue />-->
+    <router-view />
+  </v-app>
 </template>
 
 <script>
@@ -26,6 +26,7 @@ export default {
     ...mapGetters(["getMenuTitles"])
   },
   async mounted() {
+    await this.$store.dispatch("updateModalActive", true);
     await this.$store.dispatch("updateInitialViewData");
     await this.$store.dispatch(
       "updateInitialMenuTitle",

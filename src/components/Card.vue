@@ -90,20 +90,18 @@ export default {
         await this.$store.dispatch("updateViewLightLevelMenu");
         this.$store.commit("setMenuTitle", this.getMenuTitles[1].menutitle);
         this.$store.commit("setMenuIndex", 2);
-      }
-      if (nextRoute === "EaseOfCareMenu") {
+      } else if (nextRoute === "EaseOfCareMenu") {
         await this.$store.dispatch("updateViewEaseOfCareMenu");
         this.$store.commit("setMenuTitle", this.getMenuTitles[2].menutitle);
         this.$store.commit("setMenuIndex", 3);
-      }
-      if (nextRoute === "PetSafeMenu") {
+      } else if (nextRoute === "PetSafeMenu") {
         await this.$store.dispatch("updateViewPetSafeMenu");
         this.$store.commit("setMenuTitle", this.getMenuTitles[3].menutitle);
         this.$store.commit("setMenuIndex", 4);
+      } else {
+        await this.$store.dispatch("updateModalActive", false);
       }
-      if (nextRoute === "Results") {
-        await this.$store.dispatch("updateResultsPageActive", false);
-      }
+      console.log("nextRoute: ", nextRoute);
       await this.$router.push({ name: nextRoute });
     }
   },
@@ -130,9 +128,7 @@ export default {
             !this.getPreviousMenuSelection.easeOfCare.indexes.length
           );
         case "PetSafeMenu":
-          return Boolean(
-            !this.getPreviousMenuSelection.petSafe.petSafe.titles[0]
-          );
+          return Boolean(!this.getPreviousMenuSelection.petSafe.titles[0]);
         default:
           return "Error in toggleActivateButton /Layout.vue";
       }

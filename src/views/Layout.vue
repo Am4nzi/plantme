@@ -7,7 +7,7 @@
           <v-col cols="12" sm="12" md="11" lg="11" xl="10">
             <!--    <Card.vue />-->
             <router-view />
-            <v-row align="center" justify="end">
+            <v-row v-if="!getResultsPageActive" align="center" justify="end">
               <div class="mt-6 mr-4">
                 <v-btn
                   @click="nextStep"
@@ -34,6 +34,7 @@ export default {
   computed: {
     ...mapGetters(["getPreviousMenuSelection"]),
     ...mapGetters(["getMenuTitles"]),
+    ...mapGetters(["getResultsPageActive"]),
     //If no user selection for current view exists in store, function returns false and button is disabled
     toggleActivateButton() {
       const { name } = this.$route;

@@ -27,7 +27,10 @@ export default new Vuex.Store({
       petSafe: [],
       guideTitles: []
     },
-    stepperText: []
+    stepperText: [],
+    resultsPage: {
+      isActive: false
+    }
   },
   getters: {
     getHasScrolled: function(state) {
@@ -50,7 +53,10 @@ export default new Vuex.Store({
     },
     getStepperText: function(state) {
       return state.stepperText;
-    }
+    },
+    getResultsPageActive: function(state) {
+      return state.resultsPage.isActive;
+    },
   },
   mutations: {
     setEaseOfCareMenu(state, easeOfCareData) {

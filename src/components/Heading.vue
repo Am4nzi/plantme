@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ addMargin: hasScrolled }">
+  <div>
     <h1 class="grey--text text--darken-3">{{ getMenuTitle }}</h1>
   </div>
 </template>
@@ -20,9 +20,5 @@ export default {
 <style>
 h1 {
   text-align: center;
-}
-
-.addMargin {
-  margin-top: 76px;
 }
 </style>

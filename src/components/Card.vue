@@ -19,6 +19,9 @@ export default {
   mounted() {
     this.scroll();
   },
+  created() {
+    this.$store.dispatch("updateHasScrolled", false);
+  },
   methods: {
     scroll() {
       window.onscroll = () => {

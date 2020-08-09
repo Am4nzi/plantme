@@ -27,10 +27,7 @@ export default new Vuex.Store({
       petSafe: [],
       guideTitles: []
     },
-    stepperText: [],
-    resultsPage: {
-      isActive: false
-    }
+    stepperText: []
   },
   getters: {
     getHasScrolled: function(state) {

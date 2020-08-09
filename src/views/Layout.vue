@@ -1,107 +1,15 @@
 <template>
-  <!--  <v-app style="background-color: #E8F5E9;" class="bg">-->
   <v-app class="background">
     <v-main>
-      <v-container class="fill-height" fluid>
-        <v-row align="center" justify="center">
-          <v-col cols="12" sm="12" md="11" lg="11" xl="10">
-            <!--    <Card.vue />-->
-            <router-view />
-            <v-row v-if="!getResultsPageActive" align="center" justify="end">
-              <div class="mt-6 mr-4">
-                <v-btn
-                  @click="nextStep"
-                  x-large
-                  color="#fcc7b8"
-                  class="black--text mr-n1 rounded"
-                  :disabled="toggleActivateButton"
-                  >Next</v-btn
-                >
-              </div>
-              <div></div>
-            </v-row>
-          </v-col>
-        </v-row>
-      </v-container>
+      <!--    <Card.vue />-->
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-const mapGetters = require("vuex")["mapGetters"];
 export default {
-  name: "Layout",
-  computed: {
-    ...mapGetters(["getPreviousMenuSelection"]),
-    ...mapGetters(["getMenuTitles"]),
-    ...mapGetters(["getResultsPageActive"]),
-    //If no user selection for current view exists in store, function returns false and button is disabled
-    toggleActivateButton() {
-      const { name } = this.$route;
-      switch (name) {
-        case "PlantSizeMenu":
-          return Boolean(!this.getPreviousMenuSelection.plantSize.indexes.length);
-        case "LightLevelMenu":
-          return Boolean(!this.getPreviousMenuSelection.lightLevel.indexes.length);
-        case "EaseOfCareMenu":
-          return Boolean(!this.getPreviousMenuSelection.easeOfCare.indexes.length);
-        case "PetSafeMenu":
-          return Boolean(!this.getPreviousMenuSelection.petSafe.indexes.length);
-        default:
-          return "Error in toggleActivateButton /Layout.vue";
-      }
-    }
-  },
-  methods: {
-    getCurrentRoute() {
-      const { name } = this.$route;
-      switch (name) {
-        case "PlantSizeMenu":
-          return "PlantSizeMenu";
-        case "LightLevelMenu":
-          return "LightLevelMenu";
-        case "EaseOfCareMenu":
-          return "EaseOfCareMenu";
-        case "PetSafeMenu":
-          return "PetSafeMenu";
-        default:
-          return "PlantSizeMenu";
-      }
-    },
-    getNextRoute() {
-      const { name } = this.$route;
-      switch (name) {
-        case "PlantSizeMenu":
-          return "LightLevelMenu";
-        case "LightLevelMenu":
-          return "EaseOfCareMenu";
-        case "EaseOfCareMenu":
-          return "PetSafeMenu";
-        default:
-          alert("Note from developer: Results page is still in development.");
-          return "PetSafeMenu";
-      }
-    },
-    async nextStep() {
-      const nextRoute = this.getNextRoute();
-      if (nextRoute === "LightLevelMenu") {
-        await this.$store.dispatch("updateViewLightLevelMenu");
-        this.$store.commit("setMenuTitle", this.getMenuTitles[1].menutitle);
-        this.$store.commit("setMenuIndex", 2);
-      }
-      if (nextRoute === "EaseOfCareMenu") {
-        await this.$store.dispatch("updateViewEaseOfCareMenu");
-        this.$store.commit("setMenuTitle", this.getMenuTitles[2].menutitle);
-        this.$store.commit("setMenuIndex", 3);
-      }
-      if (nextRoute === "PetSafeMenu") {
-        await this.$store.dispatch("updateViewPetSafeMenu");
-        this.$store.commit("setMenuTitle", this.getMenuTitles[3].menutitle);
-        this.$store.commit("setMenuIndex", 4);
-      }
-      await this.$router.push({ name: nextRoute });
-    }
-  }
+  name: "Layout"
 };
 </script>
 

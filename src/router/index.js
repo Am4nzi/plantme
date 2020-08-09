@@ -6,6 +6,7 @@ import PlantSizeMenu from "../views/PlantSizeMenu";
 import LightLevelMenu from "../views/LightLevelMenu";
 import EaseOfCareMenu from "../views/EaseOfCareMenu";
 import PetSafeMenu from "../views/PetSafeMenu";
+import Results from "../views/Results";
 
 Vue.use(VueRouter);
 
@@ -43,6 +44,11 @@ const routes = [
             component: PetSafeMenu
           }
         ]
+      },
+      {
+        path: "/results",
+        name: "Results",
+        component: Results
       }
     ]
   }

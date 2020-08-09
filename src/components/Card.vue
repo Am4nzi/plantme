@@ -1,13 +1,33 @@
 <template>
-  <v-card elevation="14" class="pb-sm-4">
-    <Stepper :class="{ fixed: hasScrolled }" />
-    <!--    Menu views-->
-    <router-view />
-    <ExpansionPanel v-if="getMenuIndex < 3" class="d-sm-none" />
-  </v-card>
+  <v-container class="fill-height" fluid>
+    <v-row align="center" justify="center">
+      <v-col cols="12" sm="12" md="11" lg="11" xl="10">
+        <v-card elevation="14" class="pb-sm-4">
+          <Stepper :class="{ fixed: hasScrolled }" />
+          <!--    Menu views-->
+          <router-view />
+          <ExpansionPanel v-if="getMenuIndex < 3" class="d-sm-none" />
+        </v-card>
+        <v-row align="center" justify="end">
+          <div class="mt-6 mr-4">
+            <v-btn
+              @click="nextStep"
+              x-large
+              color="#fcc7b8"
+              class="black--text mr-n1 rounded"
+              :disabled="toggleActivateButton"
+              >Next</v-btn
+            >
+          </div>
+          <div></div>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
+const mapGetters = require("vuex")["mapGetters"];
 import ExpansionPanel from "./ExpansionPanel";
 import Stepper from "../components/Stepper";
 export default {
@@ -32,11 +52,90 @@ export default {
           this.$store.dispatch("updateHasScrolled", false);
         }
       };
+    },
+    getCurrentRoute() {
+      const { name } = this.$route;
+      switch (name) {
+        case "PlantSizeMenu":
+          return "PlantSizeMenu";
+        case "LightLevelMenu":
+          return "LightLevelMenu";
+        case "EaseOfCareMenu":
+          return "EaseOfCareMenu";
+        case "PetSafeMenu":
+          return "PetSafeMenu";
+        default:
+          return "PlantSizeMenu";
+      }
+    },
+    getNextRoute() {
+      const { name } = this.$route;
+      switch (name) {
+        case "PlantSizeMenu":
+          return "LightLevelMenu";
+        case "LightLevelMenu":
+          return "EaseOfCareMenu";
+        case "EaseOfCareMenu":
+          return "PetSafeMenu";
+        case "PetSafeMenu":
+          return "Results";
+        default:
+          alert("Note from developer: Results page is still in development.");
+          return "PetSafeMenu";
+      }
+    },
+    async nextStep() {
+      const nextRoute = this.getNextRoute();
+      if (nextRoute === "LightLevelMenu") {
+        await this.$store.dispatch("updateViewLightLevelMenu");
+        this.$store.commit("setMenuTitle", this.getMenuTitles[1].menutitle);
+        this.$store.commit("setMenuIndex", 2);
+      }
+      if (nextRoute === "EaseOfCareMenu") {
+        await this.$store.dispatch("updateViewEaseOfCareMenu");
+        this.$store.commit("setMenuTitle", this.getMenuTitles[2].menutitle);
+        this.$store.commit("setMenuIndex", 3);
+      }
+      if (nextRoute === "PetSafeMenu") {
+        await this.$store.dispatch("updateViewPetSafeMenu");
+        this.$store.commit("setMenuTitle", this.getMenuTitles[3].menutitle);
+        this.$store.commit("setMenuIndex", 4);
+      }
+      if (nextRoute === "Results") {
+        await this.$store.dispatch("updateResultsPageActive", false);
+      }
+      await this.$router.push({ name: nextRoute });
     }
   },
   computed: {
+    ...mapGetters(["getPreviousMenuSelection"]),
+    ...mapGetters(["getMenuTitles"]),
+    ...mapGetters(["getResultsPageActive"]),
     hasScrolled() {
       return this.$store.getters.getHasScrolled;
+    },
+    toggleActivateButton() {
+      const { name } = this.$route;
+      switch (name) {
+        case "PlantSizeMenu":
+          return Boolean(
+            !this.getPreviousMenuSelection.plantSize.indexes.length
+          );
+        case "LightLevelMenu":
+          return Boolean(
+            !this.getPreviousMenuSelection.lightLevel.indexes.length
+          );
+        case "EaseOfCareMenu":
+          return Boolean(
+            !this.getPreviousMenuSelection.easeOfCare.indexes.length
+          );
+        case "PetSafeMenu":
+          return Boolean(
+            !this.getPreviousMenuSelection.petSafe.petSafe.titles[0]
+          );
+        default:
+          return "Error in toggleActivateButton /Layout.vue";
+      }
     }
   }
 };

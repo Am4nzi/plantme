@@ -65,7 +65,8 @@ div {
 
 @media (max-width: 600px) {
   h1 {
-    font-size: 2.4rem;
+    font-size: 2.25rem;
+    letter-spacing: -0.4px;
     line-height: 1.3;
   }
   h2 {

@@ -1,10 +1,8 @@
 <template>
-  <div>
     <v-app>
       <!--    <Layout.vue />-->
       <router-view />
     </v-app>
-  </div>
 </template>
 
 <script>

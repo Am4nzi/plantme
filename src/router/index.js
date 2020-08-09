@@ -6,7 +6,7 @@ import PlantSizeMenu from "../views/PlantSizeMenu";
 import LightLevelMenu from "../views/LightLevelMenu";
 import EaseOfCareMenu from "../views/EaseOfCareMenu";
 import PetSafeMenu from "../views/PetSafeMenu";
-import Results from "../views/Results";
+import Home from "../views/Home";
 
 Vue.use(VueRouter);
 
@@ -17,38 +17,40 @@ const routes = [
     children: [
       {
         path: "/",
-        component: Card,
+        component: Home,
         children: [
           {
             path: "/",
-            redirect: "/plant-size"
-          },
-          {
-            path: "/plant-size",
-            name: "PlantSizeMenu",
-            component: PlantSizeMenu
-          },
-          {
-            path: "/light-level",
-            name: "LightLevelMenu",
-            component: LightLevelMenu
-          },
-          {
-            path: "/ease-of-Care",
-            name: "EaseOfCareMenu",
-            component: EaseOfCareMenu
-          },
-          {
-            path: "/pet-safe-menu",
-            name: "PetSafeMenu",
-            component: PetSafeMenu
+            component: Card,
+            children: [
+              {
+                path: "/plant-size",
+                name: "PlantSizeMenu",
+                component: PlantSizeMenu
+              },
+              {
+                path: "/light-level",
+                name: "LightLevelMenu",
+                component: LightLevelMenu
+              },
+              {
+                path: "/ease-of-Care",
+                name: "EaseOfCareMenu",
+                component: EaseOfCareMenu
+              },
+              {
+                path: "/pet-safe-menu",
+                name: "PetSafeMenu",
+                component: PetSafeMenu
+              }
+            ]
           }
         ]
       },
       {
-        path: "/results",
-        name: "Results",
-        component: Results
+        path: "/home",
+        name: "Home",
+        component: Home
       }
     ]
   }

@@ -1,5 +1,5 @@
 <template>
-  <v-container class="fill-height" fluid>
+  <v-container fluid class="fill-height modal">
     <v-row align="center" justify="center">
       <v-col cols="12" sm="12" md="11" lg="11" xl="10">
         <v-card elevation="14" class="pb-sm-4">
@@ -78,7 +78,7 @@ export default {
         case "EaseOfCareMenu":
           return "PetSafeMenu";
         case "PetSafeMenu":
-          return "Results";
+          return "Home";
         default:
           alert("Note from developer: Results page is still in development.");
           return "PetSafeMenu";
@@ -145,6 +145,10 @@ export default {
 .card-image {
   width: 100%;
   height: 200px !important;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 600px) {

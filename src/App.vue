@@ -26,7 +26,7 @@ export default {
     ...mapGetters(["getMenuTitles"])
   },
   async mounted() {
-    await this.$store.dispatch("updateModalActive", false);
+    await this.$store.dispatch("updateModalActive", true);
     await this.$store.dispatch("updateInitialViewData");
     await this.$store.dispatch(
       "updateInitialMenuTitle",

@@ -59,19 +59,19 @@
               :class="{ active: plant === activeItem }"
               cols="12"
               xs="12"
-              :sm="[windowSize.x <= 695 ? '12' : '6']"
+              :sm="imageColSMLayout"
               md="6"
-              :lg="[drawer ? '4' : '4']"
-              :xl="[drawer ? '4' : '3']"
+              lg="4"
+              :xl="imageColXLLayout"
             >
               <v-item v-slot:default="{ active, toggle }">
                 <v-card
-                        elevation="0"
+                  elevation="0"
                   v-resize="onResize"
                   :color="active ? '#fcc7b8' : ''"
                   tile
                   class="mx-auto"
-                  :max-width="[imageWidth]"
+                  :max-width="imageWidth"
                   height="[385"
                   @click="
                     toggle();
@@ -109,7 +109,7 @@ const mapGetters = require("vuex")["mapGetters"];
 export default {
   name: "Home",
   props: {
-    source: String
+    source: String,
   },
   data: () => ({
     drawer: null,
@@ -150,6 +150,16 @@ export default {
       } else if (this.windowSize.x <= 740 && this.windowSize.x >= 695) {
         return 300;
       } else return 385;
+    },
+    imageColXLLayout() {
+      if (this.drawer) {
+        return "4";
+      } else return "3";
+    },
+    imageColSMLayout() {
+      if (this.windowSize.x <= 695) {
+        return "12";
+      } else return "6";
     }
   },
   watch: {

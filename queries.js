@@ -93,7 +93,7 @@ const getStepperText = (request, response) => {
 };
 
 const getPlantsData = (request, response) => {
-  connection.query("SELECT * FROM plants ORDER BY id ASC", (err, results) => {
+  connection.query("SELECT * FROM plants ORDER BY name ASC", (err, results) => {
     if (err) throw err;
     response.status(200).json(results.rows);
   });

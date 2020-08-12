@@ -25,7 +25,7 @@ INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VAL
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Devil''s Ivy', '{1, 2, 3}', '{1, 2, 3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Devil''s%20Ivy.jpg');
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Swiss Cheese Plant', '{1, 2, 3}', '{1, 2, 3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Monstera%20Deliciosa.jpg');
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Cast Iron Plant', '{1}', '{3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Cast%20Iron%20Plant.jpg');
-INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Chinese Money Plant', '{1}', '{3}', 2, 'Y', 'https://storage.googleapis.com/plant-me/plants/Chinese%20Evergreen.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Chinese Money Plant', '{1}', '{3}', 2, 'Y', 'https://storage.googleapis.com/plant-me/plants/Chinese%20Money%20Plant.jpg');
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Pony Tail Palm', '{1, 2}', '{4, 5}', 1, 'Y', 'https://storage.googleapis.com/plant-me/plants/Pony%20Tail%20Palm.jpg');
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Wandering Plant', '{1}', '{4}', 3, 'N', 'https://storage.googleapis.com/plant-me/plants/Wondering%20Plant.jpg');
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Marble Queen', '{1}', '{4}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Marble%20Queen.jpg');
@@ -36,6 +36,24 @@ INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VAL
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Zebra Plant', '{1}', '{2, 3, 4}', 2, 'Y', 'https://storage.googleapis.com/plant-me/plants/Zebra%20Plant.jpg');
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Chinese Evergreen', '{1, 2}', '{1, 2, 3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Chinese%20Evergreen.jpg');
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Rattlesnake Plant', '{1, 2}', '{1, 2, 3}', 2, 'Y', 'https://storage.googleapis.com/plant-me/plants/Rattlesnake%20Plant.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Kentia Palm', '{1, 2}', '{2, 3, 4}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Kentia%20Palm.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Peacock Plant', '{2}', '{2, 3}', 2, 'Y', 'https://storage.googleapis.com/plant-me/plants/Peacock%20Plant.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Umbrella Plant', '{3}', '{2, 3, 4}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Umbrella%20Plant.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Spotted Begonia', '{2}', '{3}', 2, 'N', 'https://storage.googleapis.com/plant-me/plants/Spotted%20Begonia.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Croton Iceton', '{2, 3}', '{3, 4}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Croton%20Iceton.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Dumb Cane', '{2, 3}', '{3, 4}', 2, 'N', 'https://storage.googleapis.com/plant-me/plants/Dumb%20Cane.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Wax Flower', '{1, 2}', '{3}', 1, 'Y', 'https://storage.googleapis.com/plant-me/plants/Wax%20Flower.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('String of Beads', '{2, 3}', '{3}', 2, 'N', 'https://storage.googleapis.com/plant-me/plants/String%20of%20Beads.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Areca Palm', '{2, 3}', '{3, 4, 5}', 2, 'Y', 'https://storage.googleapis.com/plant-me/plants/Areca%20Palm.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Fiddle Leaf Fig', '{2, 3}', '{4}', 2, 'N', 'https://storage.googleapis.com/plant-me/plants/Fiddle%20Leaf%20Fig.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('ZZ Plant', '{2, 3}', '{2, 3, 4}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/ZZ%20Plant.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Satin Pothos', '{1, 2, 3}', '{4}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Satin%20Pothos.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Cereus Cactus', '{1}', '{4, 5}', 1, 'Y', 'https://storage.googleapis.com/plant-me/plants/Cereus%20Cactus.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Boston Fern', '{1,2}', '{2, 3}', 1, 'Y', 'https://storage.googleapis.com/plant-me/plants/Boston%20Fern.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Aloe Aristata', '{1}', '{4}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Aloe%20Aristata.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Azalea', '{2, 3}', '{2, 3}', 3, 'N', 'https://storage.googleapis.com/plant-me/plants/Azalea.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Poinsettia', '{1}', '{4}', 2, 'N', 'https://storage.googleapis.com/plant-me/plants/Poinsettia.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Dragon Tree', '{2, 3}', '{3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Dragon%20Tree.jpg');
 
 CREATE TABLE menuTitles (
 		id SERIAL primary key,

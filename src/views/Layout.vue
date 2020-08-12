@@ -1,7 +1,7 @@
 <template>
-    <v-container class="fill-height" fluid>
-      <router-view />
-    </v-container>
+  <v-container class="fill-height" fluid>
+    <router-view />
+  </v-container>
 </template>
 
 <script>

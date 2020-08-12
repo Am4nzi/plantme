@@ -25,6 +25,8 @@ app.get("/api/petsafemenudata", db.getPetSafeMenuData);
 
 app.get("/api/steppertext", db.getStepperText);
 
+app.get("/api/plantsdata", db.getPlantsData);
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {

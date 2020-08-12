@@ -92,6 +92,13 @@ const getStepperText = (request, response) => {
   );
 };
 
+const getPlantsData = (request, response) => {
+  connection.query("SELECT * FROM plants ORDER BY id ASC", (err, results) => {
+    if (err) throw err;
+    response.status(200).json(results.rows);
+  });
+};
+
 module.exports = {
   getMenuTitles,
   getGuideTitles,
@@ -99,5 +106,6 @@ module.exports = {
   getLightLevelMenuData,
   getEaseOfCareMenuData,
   getPetSafeMenuData,
-  getStepperText
+  getStepperText,
+  getPlantsData
 };

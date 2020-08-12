@@ -26,12 +26,13 @@ export default {
     ...mapGetters(["getMenuTitles"])
   },
   async mounted() {
-    await this.$store.dispatch("updateModalActive", true);
+    await this.$store.dispatch("updateModalActive", false);
     await this.$store.dispatch("updateInitialViewData");
     await this.$store.dispatch(
       "updateInitialMenuTitle",
       this.getMenuTitles[0].menutitle
     );
+    await this.$store.dispatch("updatePlantData");
   },
   beforeMount() {
     //Handle refresh safely
@@ -54,6 +55,11 @@ h2 {
   font-family: operetta-12, serif;
   font-size: 2rem;
   font-weight: 600;
+}
+h6 {
+  font-family: sofia-pro, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 ul,
 p,

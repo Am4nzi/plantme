@@ -30,7 +30,12 @@
     </v-app-bar>
 
     <v-main>
-      <v-dialog v-model="getModalStatus" fullscreen persistent transition="false">
+      <v-dialog
+        v-model="getModalStatus"
+        fullscreen
+        persistent
+        transition="false"
+      >
         <router-view />
       </v-dialog>
       <v-container fluid class="fill-height">
@@ -41,10 +46,10 @@
         >
           <v-row>
             <v-col
-              v-for="item in getMenuData.plantSize"
-              :key="item.id"
-              class="d-flex"
-              :class="{ active: item === activeItem }"
+              v-for="plant in getPlantsData"
+              :key="plant.id"
+              class="d-flex flex-column"
+              :class="{ active: plant === activeItem }"
               cols="6"
               xs="12"
               sm="6"
@@ -62,20 +67,23 @@
                   height="385"
                   @click="
                     toggle();
-                    selectItem(item, 'setPlantSizeMenuSelection');
+                    selectItem(plant, 'setPlantSizeMenuSelection');
                   "
                 >
                   <v-hover v-slot:default="{ hover }">
-                    <v-img :src="item.image" height="385" class="align-end">
+                    <v-img :src="plant.image" height="385" class="align-end">
                       <v-card color="#fcc7b8" tile>
                         <v-card-title v-if="hover">
-                          Plant Name
+                          {{ plant.name }}
                         </v-card-title>
                       </v-card>
                     </v-img>
                   </v-hover>
                 </v-card>
               </v-item>
+              <h6 class="text-center mt-2">
+                {{ plant.name }}
+              </h6>
             </v-col>
           </v-row>
         </v-item-group>
@@ -108,6 +116,7 @@ export default {
   }),
   computed: {
     ...mapGetters(["getModalStatus"]),
+    ...mapGetters(["getPlantsData"]),
     getMenuData() {
       return this.$store.getters.getMenuData;
     }
@@ -120,6 +129,9 @@ export default {
           : []
         : this.selected.pop();
     }
+  },
+  mounted() {
+    console.log("plantsdata: ", this.getPlantsData);
   }
 };
 </script>

@@ -7,6 +7,25 @@ DROP TABLE IF EXISTS menuTitles;
 DROP TABLE IF EXISTS guideTitles;
 DROP TABLE IF EXISTS stepperText;
 
+CREATE TABLE plants (
+		id SERIAL primary key,
+		name VARCHAR(255) not null,
+		plantSize INTEGER[] NOT NULL,
+		lightLevel INTEGER[] NOT NULL,
+		easeOfCare INTEGER NOT NULL,
+		petSafe VARCHAR(255) not null,
+		image VARCHAR not null
+);
+
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Spider Plant', '{1, 2}', '{1, 2, 3, 4}', 1, 'Y', 'https://storage.googleapis.com/plant-me/plants/Spider%20Plant.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Peace Lily', '{1, 2, 3}', '{1, 2, 3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Peace%20Lily.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Sweetheart Plant', '{1, 2, 3}', '{1, 2}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Sweetheart%20Plant.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Hot Lips', '{1}', '{1, 2, 3, 4, 5}', 2, 'Y', 'https://storage.googleapis.com/plant-me/plants/Hot%20Lips.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Echeveria', '{1}', '{4, 5}', 1, 'Y', 'https://storage.googleapis.com/plant-me/plants/Echeveria.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Devil''s Ivy', '{1, 2, 3}', '{1, 2, 3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Devil''s%20Ivy.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Swiss Cheese Plant', '{1, 2, 3}', '{1, 2, 3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Monstera%20Deliciosa.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Cast Iron Plant', '{1}', '{3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Cast%20Iron%20Plant.jpg');
+
 CREATE TABLE menuTitles (
 		id SERIAL primary key,
 		menuTitle VARCHAR(255) not null

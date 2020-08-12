@@ -30,6 +30,7 @@ export default new Vuex.Store({
     modal: {
       isActive: true
     },
+    plantsData: [],
     stepperText: []
   },
   getters: {
@@ -56,6 +57,9 @@ export default new Vuex.Store({
     },
     getModalStatus: function(state) {
       return state.modal.isActive;
+    },
+    getPlantsData: function(state) {
+      return state.plantsData;
     }
   },
   mutations: {
@@ -85,6 +89,9 @@ export default new Vuex.Store({
     },
     setModalActive(state, modalStatus) {
       state.modal.isActive = modalStatus;
+    },
+    setPlantsData(state, plantsData) {
+      state.plantsData = plantsData;
     }
   },
   actions: {
@@ -96,6 +103,10 @@ export default new Vuex.Store({
     },
     updateModalActive(context, modalStatus) {
       context.commit("setModalActive", modalStatus);
+    },
+    async updatePlantData(context) {
+      let plantsData = await Vue.axios.get(`${dataBaseUrl}/plantsdata`);
+      context.commit("setPlantsData", plantsData.data);
     },
     async updateInitialViewData(context) {
       context.commit("setMenuIndex", 1);

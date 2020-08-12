@@ -25,6 +25,17 @@ INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VAL
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Devil''s Ivy', '{1, 2, 3}', '{1, 2, 3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Devil''s%20Ivy.jpg');
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Swiss Cheese Plant', '{1, 2, 3}', '{1, 2, 3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Monstera%20Deliciosa.jpg');
 INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Cast Iron Plant', '{1}', '{3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Cast%20Iron%20Plant.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Chinese Money Plant', '{1}', '{3}', 2, 'Y', 'https://storage.googleapis.com/plant-me/plants/Chinese%20Evergreen.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Pony Tail Palm', '{1, 2}', '{4, 5}', 1, 'Y', 'https://storage.googleapis.com/plant-me/plants/Pony%20Tail%20Palm.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Wandering Plant', '{1}', '{4}', 3, 'N', 'https://storage.googleapis.com/plant-me/plants/Wondering%20Plant.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Marble Queen', '{1}', '{4}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Marble%20Queen.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Rubber Plant', '{1, 2}', '{3, 4}', 2, 'Y', 'https://storage.googleapis.com/plant-me/plants/Rubber%20Plant.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Mini Monstera', '{1}', '{4}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Mini%20Monstera.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Snake Plant', '{1}', '{4}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Snake%20Plant.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Prickly Pear', '{1}', '{5}', 1, 'Y', 'https://storage.googleapis.com/plant-me/plants/Prickly%20Pear.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Zebra Plant', '{1}', '{2, 3, 4}', 2, 'Y', 'https://storage.googleapis.com/plant-me/plants/Zebra%20Plant.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Chinese Evergreen', '{1, 2}', '{1, 2, 3}', 1, 'N', 'https://storage.googleapis.com/plant-me/plants/Chinese%20Evergreen.jpg');
+INSERT INTO plants (name, plantSize, lightLevel, easeOfCare, petSafe, image) VALUES ('Rattlesnake Plant', '{1, 2}', '{1, 2, 3}', 2, 'Y', 'https://storage.googleapis.com/plant-me/plants/Rattlesnake%20Plant.jpg');
 
 CREATE TABLE menuTitles (
 		id SERIAL primary key,

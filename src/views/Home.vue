@@ -53,7 +53,7 @@
             dense
           >
             <v-col
-              v-for="plant in getPlantsData"
+              v-for="plant in getFilteredSelection"
               :key="plant.id"
               class="d-flex flex-column pl-xl-16 pr-xl-16"
               :class="{ active: plant === activeItem }"
@@ -129,6 +129,7 @@ export default {
   computed: {
     ...mapGetters(["getModalStatus"]),
     ...mapGetters(["getPlantsData"]),
+    ...mapGetters(["getFilteredSelection"]),
     getMenuData() {
       return this.$store.getters.getMenuData;
     },

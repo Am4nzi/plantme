@@ -36,8 +36,23 @@ export default {
     ExpansionPanel,
     Stepper
   },
+  data: () => ({
+    newObj: {}
+  }),
   mounted() {
     this.scroll();
+    if (this.getPreviousMenuSelection.plantSize.titles.includes("Medium")) {
+      for (const property in this.getPlantsData) {
+        if (
+          `${this.getPlantsData[property].plantsize}`.includes("2") === true
+        ) {
+          this.newObj[property] = this.getPlantsData[property];
+        }
+      }
+    }
+    this.$store.dispatch("updateInitialViewData");
+    console.log("this.newObj: ", this.newObj);
+    this.$store.dispatch("updateFilteredSelection", this.newObj);
   },
   created() {
     this.$store.dispatch("updateHasScrolled", false);
@@ -101,14 +116,13 @@ export default {
       } else {
         await this.$store.dispatch("updateModalActive", false);
       }
-      console.log("nextRoute: ", nextRoute);
       await this.$router.push({ name: nextRoute });
     }
   },
   computed: {
     ...mapGetters(["getPreviousMenuSelection"]),
     ...mapGetters(["getMenuTitles"]),
-    ...mapGetters(["getResultsPageActive"]),
+    ...mapGetters(["getPlantsData"]),
     hasScrolled() {
       return this.$store.getters.getHasScrolled;
     },

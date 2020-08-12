@@ -27,11 +27,12 @@ export default new Vuex.Store({
       petSafe: [],
       guideTitles: []
     },
+    stepperText: [],
     modal: {
       isActive: true
     },
     plantsData: [],
-    stepperText: []
+    filteredSelection: {},
   },
   getters: {
     getHasScrolled: function(state) {
@@ -60,7 +61,10 @@ export default new Vuex.Store({
     },
     getPlantsData: function(state) {
       return state.plantsData;
-    }
+    },
+    getFilteredSelection: function(state) {
+      return state.filteredSelection;
+    },
   },
   mutations: {
     setEaseOfCareMenu(state, easeOfCareData) {
@@ -92,6 +96,10 @@ export default new Vuex.Store({
     },
     setPlantsData(state, plantsData) {
       state.plantsData = plantsData;
+    },
+    setFilteredSelection(state, filteredSelection) {
+      console.log('filteredSelection in mutations: ', filteredSelection);
+      state.filteredSelection = filteredSelection;
     }
   },
   actions: {
@@ -103,6 +111,9 @@ export default new Vuex.Store({
     },
     updateModalActive(context, modalStatus) {
       context.commit("setModalActive", modalStatus);
+    },
+    updateFilteredSelection(context, filteredSelection) {
+      context.commit("setFilteredSelection", filteredSelection);
     },
     async updatePlantData(context) {
       let plantsData = await Vue.axios.get(`${dataBaseUrl}/plantsdata`);

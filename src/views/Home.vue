@@ -38,33 +38,41 @@
       >
         <router-view />
       </v-dialog>
-      <v-container fluid class="fill-height">
+      <v-container fluid class="fill-height pl-xl-16 pr-xl-16">
         <v-item-group
           v-model="selected"
           :mandatory="mandatory"
           :multiple="multiple"
         >
-          <v-row>
+          <v-row
+            class="justify-xl-start
+        justify-lg-start
+        justify-md-start
+        justify-sm-start
+        justify-xs-start"
+            dense
+          >
             <v-col
               v-for="plant in getPlantsData"
               :key="plant.id"
-              class="d-flex flex-column"
+              class="d-flex flex-column pl-xl-16 pr-xl-16"
               :class="{ active: plant === activeItem }"
-              cols="6"
+              cols="12"
               xs="12"
-              sm="6"
+              :sm="[windowSize.x <= 695 ? '12' : '6']"
               md="6"
-              lg="6"
-              xl="6"
+              :lg="[drawer ? '4' : '4']"
+              :xl="[drawer ? '4' : '3']"
             >
               <v-item v-slot:default="{ active, toggle }">
                 <v-card
+                        elevation="0"
+                  v-resize="onResize"
                   :color="active ? '#fcc7b8' : ''"
-                  outlined
                   tile
                   class="mx-auto"
-                  max-width="385"
-                  height="385"
+                  :max-width="[imageWidth]"
+                  height="[385"
                   @click="
                     toggle();
                     selectItem(plant, 'setPlantSizeMenuSelection');
@@ -81,7 +89,7 @@
                   </v-hover>
                 </v-card>
               </v-item>
-              <h6 class="text-center mt-2">
+              <h6 class="text-center mt-2 mb-8">
                 {{ plant.name }}
               </h6>
             </v-col>
@@ -105,6 +113,10 @@ export default {
   },
   data: () => ({
     drawer: null,
+    windowSize: {
+      x: 0,
+      y: 0
+    },
     mandatory: false,
     multiple: true,
     selected: [],
@@ -119,6 +131,25 @@ export default {
     ...mapGetters(["getPlantsData"]),
     getMenuData() {
       return this.$store.getters.getMenuData;
+    },
+    imageWidth() {
+      if (this.windowSize.x <= 1620 && this.windowSize.x >= 1500) {
+        return 385;
+      } else if (this.windowSize.x <= 1500 && this.windowSize.x >= 1410) {
+        return 340;
+      } else if (this.windowSize.x <= 1410 && this.windowSize.x >= 1340) {
+        return 330;
+      } else if (this.windowSize.x <= 1340 && this.windowSize.x >= 1264) {
+        return 300;
+      } else if (this.windowSize.x <= 1264 && this.windowSize.x >= 960) {
+        return 375;
+      } else if (this.windowSize.x <= 969 && this.windowSize.x >= 865) {
+        return 385;
+      } else if (this.windowSize.x <= 865 && this.windowSize.x >= 740) {
+        return 330;
+      } else if (this.windowSize.x <= 740 && this.windowSize.x >= 695) {
+        return 300;
+      } else return 385;
     }
   },
   watch: {
@@ -131,7 +162,12 @@ export default {
     }
   },
   mounted() {
-    console.log("plantsdata: ", this.getPlantsData);
+    this.onResize();
+  },
+  methods: {
+    onResize() {
+      this.windowSize = { x: window.innerWidth, y: window.innerHeight };
+    }
   }
 };
 </script>

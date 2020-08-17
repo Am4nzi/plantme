@@ -31,8 +31,11 @@ export default new Vuex.Store({
     modal: {
       isActive: true
     },
-    plantsData: [],
-    filteredSelection: {},
+    plantsData: {},
+    plantsDataSingleArray: {
+      name: ""
+    },
+    filteredSelection: {}
   },
   getters: {
     getHasScrolled: function(state) {
@@ -50,6 +53,9 @@ export default new Vuex.Store({
     getMenuTitles: function(state) {
       return state.menu.menuTitles;
     },
+    getAllMenuSelections: function(state) {
+      return state.menuSelections.menuSelection.allSelectionsList;
+    },
     getPreviousMenuSelection: function(state) {
       return state.menuSelections.menuSelection;
     },
@@ -64,7 +70,7 @@ export default new Vuex.Store({
     },
     getFilteredSelection: function(state) {
       return state.filteredSelection;
-    },
+    }
   },
   mutations: {
     setEaseOfCareMenu(state, easeOfCareData) {
@@ -98,7 +104,6 @@ export default new Vuex.Store({
       state.plantsData = plantsData;
     },
     setFilteredSelection(state, filteredSelection) {
-      console.log('filteredSelection in mutations: ', filteredSelection);
       state.filteredSelection = filteredSelection;
     }
   },

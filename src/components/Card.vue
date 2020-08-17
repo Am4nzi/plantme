@@ -37,22 +37,12 @@ export default {
     Stepper
   },
   data: () => ({
-    newObj: {}
+    filtered: {},
+    userSelections: []
   }),
   mounted() {
     this.scroll();
-    if (this.getPreviousMenuSelection.plantSize.titles.includes("Medium")) {
-      for (const property in this.getPlantsData) {
-        if (
-          `${this.getPlantsData[property].plantsize}`.includes("2") === true
-        ) {
-          this.newObj[property] = this.getPlantsData[property];
-        }
-      }
-    }
     this.$store.dispatch("updateInitialViewData");
-    console.log("this.newObj: ", this.newObj);
-    this.$store.dispatch("updateFilteredSelection", this.newObj);
   },
   created() {
     this.$store.dispatch("updateHasScrolled", false);
@@ -114,6 +104,28 @@ export default {
         this.$store.commit("setMenuTitle", this.getMenuTitles[3].menutitle);
         this.$store.commit("setMenuIndex", 4);
       } else {
+        for (const property in this.getPlantsData) {
+          if (
+            this.getPlantsData[property].properties.some(
+              sizeProperty =>
+                this.getPreviousMenuSelection.plantSize.titles.indexOf(sizeProperty) >= 0
+            ) &&
+            this.getPlantsData[property].properties.some(
+              lightLevelProperty =>
+                this.getPreviousMenuSelection.lightLevel.titles.indexOf(lightLevelProperty) >= 0
+            ) &&
+            this.getPlantsData[property].properties.some(
+              easeOfCareProperty =>
+                this.getPreviousMenuSelection.easeOfCare.titles.indexOf(easeOfCareProperty) >= 0
+            ) &&
+            this.getPlantsData[property].properties.some(
+              petSafeProperty => this.getPreviousMenuSelection.petSafe.titles.indexOf(petSafeProperty) >= 0
+            )
+          ) {
+            this.filtered[property] = this.getPlantsData[property];
+          }
+        }
+        await this.$store.dispatch("updateFilteredSelection", this.filtered);
         await this.$store.dispatch("updateModalActive", false);
       }
       await this.$router.push({ name: nextRoute });
@@ -121,6 +133,7 @@ export default {
   },
   computed: {
     ...mapGetters(["getPreviousMenuSelection"]),
+    ...mapGetters(["getAllMenuSelections"]),
     ...mapGetters(["getMenuTitles"]),
     ...mapGetters(["getPlantsData"]),
     hasScrolled() {

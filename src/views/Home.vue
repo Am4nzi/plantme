@@ -18,6 +18,9 @@
             <v-list-item-title>Contact</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <div class="my-2">
+          <v-btn @click="resetMenuSelection" small>Reset Menu Selection</v-btn>
+        </div>
       </v-list>
     </v-navigation-drawer>
 
@@ -64,7 +67,7 @@
               lg="4"
               :xl="imageColXLLayout"
             >
-              <v-item v-slot:default="{ active, toggle }">
+              <v-item v-slot:default="{ active }">
                 <v-card
                   elevation="0"
                   v-resize="onResize"
@@ -72,11 +75,7 @@
                   tile
                   class="mx-auto"
                   :max-width="imageWidth"
-                  height="[385"
-                  @click="
-                    toggle();
-                    selectItem(plant, 'setPlantSizeMenuSelection');
-                  "
+                  height="[385]"
                 >
                   <v-hover v-slot:default="{ hover }">
                     <v-img :src="plant.image" height="385" class="align-end">
@@ -109,7 +108,7 @@ const mapGetters = require("vuex")["mapGetters"];
 export default {
   name: "Home",
   props: {
-    source: String,
+    source: String
   },
   data: () => ({
     drawer: null,
@@ -178,6 +177,9 @@ export default {
   methods: {
     onResize() {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight };
+    },
+    resetMenuSelection() {
+      this.$store.commit("setClearMenuSelections");
     }
   }
 };

@@ -2,20 +2,25 @@
   <div>
     <v-navigation-drawer v-model="drawer" app>
       <v-list dense>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-action>
+        <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
+            <h2>Filter</h2>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
+            <h6>
+              Plant Size
+            </h6>
             <v-row justify="start">
               <v-col>
-                <v-chip-group multiple mandatory column active-class="primary--text">
-                  <v-chip v-for="item in getMenuData.plantSize" :key="item.id">
+                <v-chip-group
+                  multiple
+                  mandatory
+                  column
+                  active-class="pink--text lighten-4"
+                >
+                  <v-chip outlined v-for="item in getMenuData.plantSize" :key="item.id">
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>
@@ -25,10 +30,19 @@
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
+            <h6>
+              Light Level
+            </h6>
             <v-row justify="start">
               <v-col>
-                <v-chip-group multiple mandatory column active-class="primary--text">
-                  <v-chip v-for="item in getMenuData.lightLevel" :key="item.id">
+                <v-chip-group
+                  multiple
+                  mandatory
+                  column
+                  active-class="pink--text lighten-4"
+
+                >
+                  <v-chip outlined v-for="item in getMenuData.lightLevel" :key="item.id">
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>
@@ -38,10 +52,13 @@
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
+            <h6>
+              Ease of Care
+            </h6>
             <v-row justify="start">
               <v-col>
-                <v-chip-group multiple mandatory active-class="primary--text">
-                  <v-chip v-for="item in getMenuData.easeOfCare" :key="item.id">
+                <v-chip-group multiple mandatory column active-class="pink--text lighten-4">
+                  <v-chip outlined v-for="item in getMenuData.easeOfCare" :key="item.id">
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>
@@ -51,10 +68,13 @@
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
+            <h6>
+              Pet Safe?
+            </h6>
             <v-row justify="start">
               <v-col>
-                <v-chip-group multiple mandatory active-class="primary--text">
-                  <v-chip v-for="item in getMenuData.petSafe" :key="item.id">
+                <v-chip-group multiple mandatory column active-class="pink--text lighten-4">
+                  <v-chip outlined v-for="item in getMenuData.petSafe" :key="item.id">
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>

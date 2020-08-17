@@ -10,12 +10,56 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-email</v-icon>
-          </v-list-item-action>
+        <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
+            <v-row justify="start">
+              <v-col>
+                <v-chip-group multiple mandatory column active-class="primary--text">
+                  <v-chip v-for="item in getMenuData.plantSize" :key="item.id">
+                    {{ item.cardtitle }}
+                  </v-chip>
+                </v-chip-group>
+              </v-col>
+            </v-row>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-row justify="start">
+              <v-col>
+                <v-chip-group multiple mandatory column active-class="primary--text">
+                  <v-chip v-for="item in getMenuData.lightLevel" :key="item.id">
+                    {{ item.cardtitle }}
+                  </v-chip>
+                </v-chip-group>
+              </v-col>
+            </v-row>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-row justify="start">
+              <v-col>
+                <v-chip-group multiple mandatory active-class="primary--text">
+                  <v-chip v-for="item in getMenuData.easeOfCare" :key="item.id">
+                    {{ item.cardtitle }}
+                  </v-chip>
+                </v-chip-group>
+              </v-col>
+            </v-row>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-row justify="start">
+              <v-col>
+                <v-chip-group multiple mandatory active-class="primary--text">
+                  <v-chip v-for="item in getMenuData.petSafe" :key="item.id">
+                    {{ item.cardtitle }}
+                  </v-chip>
+                </v-chip-group>
+              </v-col>
+            </v-row>
           </v-list-item-content>
         </v-list-item>
         <div class="my-2">
@@ -111,6 +155,17 @@ export default {
     source: String
   },
   data: () => ({
+    tags: [
+      "Work",
+      "Home Improvement",
+      "Vacation",
+      "Food",
+      "Drawers",
+      "Shopping",
+      "Art",
+      "Tech",
+      "Creative Writing"
+    ],
     drawer: null,
     windowSize: {
       x: 0,
@@ -173,6 +228,7 @@ export default {
   },
   mounted() {
     this.onResize();
+    console.log("this.getMenuData: ", this.getMenuData.plantSize[0].cardtitle);
   },
   methods: {
     onResize() {

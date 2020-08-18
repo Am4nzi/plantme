@@ -233,17 +233,37 @@ export default {
     ...mapGetters(["getModalStatus"]),
     ...mapGetters(["getPlantsData"]),
     ...mapGetters(["getFilteredSelection"]),
-    currentMenuSelectionPlantSize() {
-      return this.$store.getters.getPreviousMenuSelection.plantSize.indexes;
+    currentMenuSelectionPlantSize: {
+      get: function() {
+        return this.$store.getters.getPreviousMenuSelection.plantSize.indexes;
+      },
+      set: function(indexNumber) {
+        return indexNumber;
+      }
     },
-    currentMenuSelectionLightLevel() {
-      return this.$store.getters.getPreviousMenuSelection.lightLevel.indexes;
+    currentMenuSelectionLightLevel: {
+      get: function() {
+        return this.$store.getters.getPreviousMenuSelection.lightLevel.indexes;
+      },
+      set: function(indexNumber) {
+        return indexNumber;
+      }
     },
-    currentMenuSelectionEaseOfCare() {
-      return this.$store.getters.getPreviousMenuSelection.easeOfCare.indexes;
+    currentMenuSelectionEaseOfCare: {
+      get: function() {
+        return this.$store.getters.getPreviousMenuSelection.easeOfCare.indexes;
+      },
+      set: function(indexNumber) {
+        return indexNumber;
+      }
     },
-    currentMenuSelectionPetSafe() {
-      return this.$store.getters.getPreviousMenuSelection.petSafe.indexes;
+    currentMenuSelectionPetSafe: {
+      get: function() {
+        return this.$store.getters.getPreviousMenuSelection.petSafe.indexes;
+      },
+      set: function(indexNumber) {
+        return indexNumber;
+      }
     },
     getMenuData() {
       return this.$store.getters.getMenuData;
@@ -286,12 +306,6 @@ export default {
           : []
         : this.selected.pop();
     }
-  },
-  beforeMount() {
-    this.selected.chipGroupPlantSize = this.getPreviousMenuSelection.plantSize.indexes;
-    this.selected.chipGroupLightLevel = this.getPreviousMenuSelection.lightLevel.indexes;
-    this.selected.chipGroupPlantSize = this.getPreviousMenuSelection.easeOfCare.indexes;
-    this.selected.chipGroupPetSafe = this.getPreviousMenuSelection.petSafe.indexes;
   },
   mounted() {
     this.onResize();

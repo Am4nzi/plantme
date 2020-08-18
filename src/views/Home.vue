@@ -15,18 +15,18 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group
-                  v-model="currentMenuSelectionPlantSize"
+                  v-model="newSelected"
                   multiple
                   mandatory
                   column
                   active-class="highlight--text"
                 >
                   <v-chip
+                    v-for="item in getMenuData.plantSize"
+                    :key="item.id"
                     outlined
                     label
                     large
-                    v-for="item in getMenuData.plantSize"
-                    :key="item.id"
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -212,6 +212,7 @@ export default {
     source: String
   },
   data: () => ({
+    newValue: [],
     drawer: null,
     windowSize: {
       x: 0,
@@ -220,7 +221,8 @@ export default {
     mandatory: false,
     multiple: true,
     selected: {
-      itemGroup: []
+      itemGroup: [],
+      plantSize: []
     },
     plantSizeSelected: [],
     activeItem: null,
@@ -233,12 +235,20 @@ export default {
     ...mapGetters(["getModalStatus"]),
     ...mapGetters(["getPlantsData"]),
     ...mapGetters(["getFilteredSelection"]),
+    newSelected: {
+      get() {
+        return this.$store.state.selected;
+      },
+      set(value) {
+        this.$store.commit("updateSelected", value);
+      }
+    },
     currentMenuSelectionPlantSize: {
       get: function() {
         return this.$store.getters.getPreviousMenuSelection.plantSize.indexes;
       },
-      set: function(indexNumber) {
-        return indexNumber;
+      set: function(value) {
+        this.$store.commit("setDummy", value);
       }
     },
     currentMenuSelectionLightLevel: {
@@ -309,14 +319,7 @@ export default {
   },
   mounted() {
     this.onResize();
-    console.log(
-      "this.currentMenuSelectionLightLevel: ",
-      this.currentMenuSelectionLightLevel
-    );
-    console.log(
-      "this.currentMenuSelectionEaseOfCare: ",
-      this.currentMenuSelectionEaseOfCare
-    );
+    this.selected.plantSize = this.currentMenuSelectionPlantSize;
   },
   methods: {
     onResize() {

@@ -1,6 +1,10 @@
 <template>
   <!--    v-item-group component documentation: https://vuetifyjs.com/en/components/item-groups//-->
-  <v-item-group v-model="selected" :mandatory="mandatory" :multiple="multiple">
+  <v-item-group
+    v-model="newSelected"
+    :mandatory="mandatory"
+    :multiple="multiple"
+  >
     <v-container
       fluid
       fill-height
@@ -74,6 +78,7 @@
 </template>
 
 <script>
+const mapGetters = require("vuex")["mapGetters"];
 import Heading from "../components/Heading";
 export default {
   name: "PlantSizeMenu",
@@ -83,7 +88,6 @@ export default {
   data: () => ({
     mandatory: false,
     multiple: true,
-    selected: [],
     activeItem: null,
     menu: {
       plantSizeData: [],
@@ -91,6 +95,18 @@ export default {
     }
   }),
   computed: {
+    ...mapGetters(["getModalClosedOnce"]),
+    newSelected: {
+      get() {
+        if (!this.getModalClosedOnce) {
+          return [];
+        } else
+        return this.$store.state.selected;
+      },
+      set(value) {
+        this.$store.commit("updateSelected", value);
+      }
+    },
     getMenuData() {
       return this.$store.getters.getMenuData;
     },
@@ -100,11 +116,11 @@ export default {
   },
   watch: {
     multiple(val) {
-      this.selected = val
-        ? this.selected >= 0
-          ? [this.selected]
+      this.newSelected = val
+        ? this.newSelected >= 0
+          ? [this.newSelected]
           : []
-        : this.selected.pop();
+        : this.newSelected.pop();
     }
   },
   mounted() {

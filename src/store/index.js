@@ -18,6 +18,7 @@ if (window.location.href.includes("localhost")) {
 
 export default new Vuex.Store({
   state: {
+    selected: [],
     hasScrolled: null,
     menus: {
       currentMenu: [],
@@ -29,7 +30,8 @@ export default new Vuex.Store({
     },
     stepperText: [],
     modal: {
-      isActive: true
+      isActive: true,
+      closedOnce: false
     },
     plantsData: {},
     plantsDataSingleArray: {
@@ -38,6 +40,9 @@ export default new Vuex.Store({
     filteredSelection: {}
   },
   getters: {
+    getSelected: function(state) {
+      return state.selected;
+    },
     getHasScrolled: function(state) {
       return state.hasScrolled;
     },
@@ -65,6 +70,9 @@ export default new Vuex.Store({
     getModalStatus: function(state) {
       return state.modal.isActive;
     },
+    getModalClosedOnce: function(state) {
+      return state.modal.closedOnce;
+    },
     getPlantsData: function(state) {
       return state.plantsData;
     },
@@ -73,6 +81,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    updateSelected(state, selectedStatus) {
+      state.selected = selectedStatus;
+    },
     setEaseOfCareMenu(state, easeOfCareData) {
       state.menus.easeOfCare = easeOfCareData;
     },
@@ -100,6 +111,9 @@ export default new Vuex.Store({
     setModalActive(state, modalStatus) {
       state.modal.isActive = modalStatus;
     },
+    setModalClosedOnce(state, modalStatus) {
+      state.modal.closedOnce = modalStatus;
+    },
     setPlantsData(state, plantsData) {
       state.plantsData = plantsData;
     },
@@ -116,6 +130,9 @@ export default new Vuex.Store({
     },
     updateModalActive(context, modalStatus) {
       context.commit("setModalActive", modalStatus);
+    },
+    updateModalClosedOnce(context, modalStatus) {
+      context.commit("setModalClosedOnce", modalStatus);
     },
     updateFilteredSelection(context, filteredSelection) {
       context.commit("setFilteredSelection", filteredSelection);

@@ -136,6 +136,7 @@ export default {
         }
         await this.$store.dispatch("updateFilteredSelection", this.filtered);
         await this.$store.dispatch("updateModalActive", false);
+        await this.$store.dispatch("updateModalClosedOnce", true);
       }
       await this.$router.push({ name: nextRoute });
     }
@@ -145,6 +146,7 @@ export default {
     ...mapGetters(["getAllMenuSelections"]),
     ...mapGetters(["getMenuTitles"]),
     ...mapGetters(["getPlantsData"]),
+    ...mapGetters(["getSelected"]),
     hasScrolled() {
       return this.$store.getters.getHasScrolled;
     },
@@ -152,9 +154,7 @@ export default {
       const { name } = this.$route;
       switch (name) {
         case "PlantSizeMenu":
-          return Boolean(
-            !this.getPreviousMenuSelection.plantSize.indexes.length
-          );
+          return Boolean(!this.getSelected);
         case "LightLevelMenu":
           return Boolean(
             !this.getPreviousMenuSelection.lightLevel.indexes.length

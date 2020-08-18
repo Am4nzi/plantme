@@ -9,7 +9,6 @@
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
-            <div style="width: 250px; height: 45px; background-color: #fcc7b8"></div>
             <h6>
               Plant Size
             </h6>
@@ -21,7 +20,13 @@
                   column
                   active-class="highlight--text"
                 >
-                  <v-chip outlined label large v-for="item in getMenuData.plantSize" :key="item.id">
+                  <v-chip
+                    outlined
+                    label
+                    large
+                    v-for="item in getMenuData.plantSize"
+                    :key="item.id"
+                  >
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>
@@ -41,9 +46,14 @@
                   mandatory
                   column
                   active-class="highlight--text"
-
                 >
-                  <v-chip outlined large label v-for="item in getMenuData.lightLevel" :key="item.id">
+                  <v-chip
+                    outlined
+                    large
+                    label
+                    v-for="item in getMenuData.lightLevel"
+                    :key="item.id"
+                  >
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>
@@ -58,8 +68,19 @@
             </h6>
             <v-row justify="start">
               <v-col>
-                <v-chip-group multiple mandatory column active-class="highlight--text">
-                  <v-chip outlined label large v-for="item in getMenuData.easeOfCare" :key="item.id">
+                <v-chip-group
+                  multiple
+                  mandatory
+                  column
+                  active-class="highlight--text"
+                >
+                  <v-chip
+                    outlined
+                    label
+                    large
+                    v-for="item in getMenuData.easeOfCare"
+                    :key="item.id"
+                  >
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>
@@ -74,8 +95,19 @@
             </h6>
             <v-row justify="start">
               <v-col>
-                <v-chip-group multiple mandatory column active-class="highlight--text">
-                  <v-chip outlined label large v-for="item in getMenuData.petSafe" :key="item.id">
+                <v-chip-group
+                  multiple
+                  mandatory
+                  column
+                  active-class="highlight--text"
+                >
+                  <v-chip
+                    outlined
+                    label
+                    large
+                    v-for="item in getMenuData.petSafe"
+                    :key="item.id"
+                  >
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>

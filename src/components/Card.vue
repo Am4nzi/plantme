@@ -43,7 +43,6 @@ export default {
   mounted() {
     this.scroll();
     this.$store.dispatch("updateInitialViewData");
-    console.log('getHasSelectedStatus: ', this.getHasSelectedStatus.plantSize);
   },
   created() {
     this.$store.dispatch("updateHasScrolled", false);
@@ -160,15 +159,11 @@ export default {
         case "PlantSizeMenu":
           return Boolean(!this.getHasSelectedStatus.plantSize);
         case "LightLevelMenu":
-          return Boolean(
-            !this.getPreviousMenuSelection.lightLevel.indexes.length
-          );
+          return Boolean(!this.getHasSelectedStatus.lightLevel);
         case "EaseOfCareMenu":
-          return Boolean(
-            !this.getPreviousMenuSelection.easeOfCare.indexes.length
-          );
+          return Boolean(!this.getHasSelectedStatus.easeOfCare);
         case "PetSafeMenu":
-          return Boolean(!this.getPreviousMenuSelection.petSafe.titles[0]);
+          return Boolean(!this.getHasSelectedStatus.petSafe);
         default:
           return "Error in toggleActivateButton /Layout.vue";
       }

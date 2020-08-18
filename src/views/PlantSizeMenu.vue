@@ -1,7 +1,7 @@
 <template>
   <!--    v-item-group component documentation: https://vuetifyjs.com/en/components/item-groups//-->
   <v-item-group
-    v-model="newSelected"
+    v-model="plantSizeMenuSelection"
     :mandatory="mandatory"
     :multiple="multiple"
   >
@@ -46,7 +46,7 @@
               max-width="300"
               @click="
                 toggle();
-                selectItem(item, 'setPlantSizeMenuSelection');
+                selectItem(item, 'plantSize', 'setPlantSizeMenuSelection');
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
@@ -96,15 +96,15 @@ export default {
   }),
   computed: {
     ...mapGetters(["getModalClosedOnce"]),
-    newSelected: {
+    plantSizeMenuSelection: {
       get() {
         if (!this.getModalClosedOnce) {
           return [];
         } else
-        return this.$store.state.selected;
+        return this.$store.state.selected.plantSizeMenu;
       },
       set(value) {
-        this.$store.commit("updateSelected", value);
+        this.$store.commit("updateSelectedPlantSize", value);
       }
     },
     getMenuData() {
@@ -116,11 +116,11 @@ export default {
   },
   watch: {
     multiple(val) {
-      this.newSelected = val
-        ? this.newSelected >= 0
-          ? [this.newSelected]
+      this.plantMenuSelection = val
+        ? this.plantMenuSelection >= 0
+          ? [this.plantMenuSelection]
           : []
-        : this.newSelected.pop();
+        : this.plantMenuSelection.pop();
     }
   },
   mounted() {

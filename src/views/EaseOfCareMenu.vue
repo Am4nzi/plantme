@@ -1,6 +1,10 @@
 <template>
   <!--    v-item-group component documentation: https://vuetifyjs.com/en/components/item-groups//-->
-  <v-item-group v-model="selected" :mandatory="mandatory" :multiple="multiple">
+  <v-item-group
+    v-model="easeOfCareMenuSelection"
+    :mandatory="mandatory"
+    :multiple="multiple"
+  >
     <v-container
       fluid
       fill-height
@@ -42,7 +46,7 @@
               max-width="300"
               @click="
                 toggle();
-                selectItem(item, 'setEaseOfCareMenuSelection');
+                selectItem(item, 'easeOfCare', 'setEaseOfCareMenuSelection');
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
@@ -79,15 +83,27 @@ export default {
   }),
   computed: {
     ...mapGetters(["getMenuData"]),
-    ...mapGetters(["getPreviousMenuSelection"])
+    ...mapGetters(["getPreviousMenuSelection"]),
+    ...mapGetters(["getModalClosedOnce"]),
+    easeOfCareMenuSelection: {
+      get() {
+        if (!this.getModalClosedOnce) {
+          return [];
+        } else
+        return this.$store.state.selected.easeOfCareMenu;
+      },
+      set(value) {
+        this.$store.commit("updateSelectedEaseOfCare", value);
+      }
+    }
   },
   watch: {
     multiple(val) {
-      this.selected = val
-        ? this.selected >= 0
-          ? [this.selected]
+      this.easeOfCareMenuSelection = val
+        ? this.easeOfCareMenuSelection >= 0
+          ? [this.easeOfCareMenuSelection]
           : []
-        : this.selected.pop();
+        : this.easeOfCareMenuSelection.pop();
     }
   },
   mounted() {

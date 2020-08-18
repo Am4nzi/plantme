@@ -1,6 +1,10 @@
 <template>
   <!--    v-item-group component documentation: https://vuetifyjs.com/en/components/item-groups//-->
-  <v-item-group v-model="selected" :mandatory="mandatory" :multiple="multiple">
+  <v-item-group
+    v-model="lightLevelMenuSelection"
+    :mandatory="mandatory"
+    :multiple="multiple"
+  >
     <v-container
       fluid
       fill-height
@@ -42,7 +46,7 @@
               max-width="300"
               @click="
                 toggle();
-                selectItem(item, 'setLightLevelMenuSelection');
+                selectItem(item, 'lightLevel', 'setLightLevelMenuSelection');
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
@@ -91,15 +95,26 @@ export default {
   }),
   computed: {
     ...mapGetters(["getMenuData"]),
-    ...mapGetters(["getPreviousMenuSelection"])
+    ...mapGetters(["getPreviousMenuSelection"]),
+    ...mapGetters(["getModalClosedOnce"]),
+    lightLevelMenuSelection: {
+      get() {
+        if (!this.getModalClosedOnce) {
+          return [];
+        } else return this.$store.state.selected.lightLevelMenu;
+      },
+      set(value) {
+        this.$store.commit("updateSelectedLightLevel", value);
+      }
+    }
   },
   watch: {
     multiple(val) {
-      this.selected = val
-        ? this.selected >= 0
-          ? [this.selected]
+      this.lightLevelMenuSelection = val
+        ? this.lightLevelMenuSelection >= 0
+          ? [this.lightLevelMenuSelection]
           : []
-        : this.selected.pop();
+        : this.lightLevelMenuSelection.pop();
     }
   },
   mounted() {

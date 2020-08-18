@@ -18,7 +18,12 @@ if (window.location.href.includes("localhost")) {
 
 export default new Vuex.Store({
   state: {
-    selected: [],
+    selected: {
+      plantSizeMenu: [],
+      lightLevelMenu: [],
+      easeOfCareMenu: [],
+      petSafeMenu: null
+    },
     hasScrolled: null,
     hasSelected: {
       plantSize: false,
@@ -90,8 +95,17 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    updateSelected(state, selectedStatus) {
-      state.selected = selectedStatus;
+    updateSelectedPlantSize(state, selectedStatus) {
+      state.selected.plantSizeMenu = selectedStatus;
+    },
+    updateSelectedLightLevel(state, selectedStatus) {
+      state.selected.lightLevelMenu = selectedStatus;
+    },
+    updateSelectedEaseOfCare(state, selectedStatus) {
+      state.selected.easeOfCareMenu = selectedStatus;
+    },
+    updateSelectedPetSafe(state, selectedStatus) {
+      state.selected.petSafeMenu = selectedStatus;
     },
     setEaseOfCareMenu(state, easeOfCareData) {
       state.menus.easeOfCare = easeOfCareData;
@@ -99,8 +113,17 @@ export default new Vuex.Store({
     setHasScrolled(state, scrollStatus) {
       state.hasScrolled = scrollStatus;
     },
-    setHasSelectedStatus(state, hasSelectedStatus) {
+    setHasSelectedPlantSize(state, hasSelectedStatus) {
       state.hasSelected.plantSize = hasSelectedStatus;
+    },
+    setHasSelectedLightLevel(state, hasSelectedStatus) {
+      state.hasSelected.lightLevel = hasSelectedStatus;
+    },
+    setHasSelectedEaseOfCare(state, hasSelectedStatus) {
+      state.hasSelected.easeOfCare = hasSelectedStatus;
+    },
+    setHasSelectedPetSafe(state, hasSelectedStatus) {
+      state.hasSelected.petSafe = hasSelectedStatus;
     },
     setGuideTitles(state, guideTitles) {
       state.menus.guideTitles = guideTitles;
@@ -138,7 +161,18 @@ export default new Vuex.Store({
       context.commit("setHasScrolled", scrollStatus);
     },
     updateHasSelected(context, hasSelectedStatus) {
-      context.commit("setHasSelectedStatus", hasSelectedStatus)
+      if (hasSelectedStatus === "plantSize") {
+        context.commit("setHasSelectedPlantSize", hasSelectedStatus);
+      }
+      if (hasSelectedStatus === "lightLevel") {
+        context.commit("setHasSelectedLightLevel", hasSelectedStatus);
+      }
+      if (hasSelectedStatus === "easeOfCare") {
+        context.commit("setHasSelectedEaseOfCare", hasSelectedStatus);
+      }
+      if (hasSelectedStatus === "petSafe") {
+        context.commit("setHasSelectedPetSafe", hasSelectedStatus);
+      }
     },
     updateInitialMenuTitle(context, initialMenuTitle) {
       context.commit("setMenuTitle", initialMenuTitle);

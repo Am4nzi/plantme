@@ -1,6 +1,6 @@
 <template>
   <!--    v-item-group component documentation: https://vuetifyjs.com/en/components/item-groups//-->
-  <v-item-group v-model="selected" :mandatory="mandatory">
+  <v-item-group v-model="petSafeMenuSelection" :mandatory="mandatory">
     <v-container
       fluid
       fill-height
@@ -43,7 +43,7 @@
               max-width="300"
               @click="
                 toggle();
-                selectItem(item, 'setPetSafeMenuSelection');
+                selectItem(item, 'petSafe', 'setPetSafeMenuSelection');
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
@@ -79,12 +79,24 @@ export default {
   }),
   computed: {
     ...mapGetters(["getMenuData"]),
-    ...mapGetters(["getPreviousMenuSelection"])
+    ...mapGetters(["getPreviousMenuSelection"]),
+    ...mapGetters(["getModalClosedOnce"]),
+    petSafeMenuSelection: {
+      get() {
+        if (!this.getModalClosedOnce) {
+          return null;
+        } else
+          return this.$store.state.selected.petSafeMenu;
+      },
+      set(value) {
+        this.$store.commit("updateSelectedPetSafe", value);
+      }
+    }
   },
   mounted() {
     this.menu.petSafeData = this.getMenuData.petSafe;
-    //Previous selection remains active if user navigates to a view they've already visited
-    this.selected = this.getPreviousMenuSelection.petSafe.index;
+    // //Previous selection remains active if user navigates to a view they've already visited
+    // this.selected = this.getPreviousMenuSelection.petSafe.index;
   }
 };
 </script>

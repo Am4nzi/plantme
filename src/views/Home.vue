@@ -15,7 +15,7 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group
-                  v-model="newSelected"
+                  v-model="plantSizeMenuSelection"
                   multiple
                   mandatory
                   column
@@ -43,7 +43,7 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group
-                  v-model="currentMenuSelectionLightLevel"
+                  v-model="lightLevelMenuSelection"
                   multiple
                   mandatory
                   column
@@ -71,7 +71,7 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group
-                  v-model="currentMenuSelectionEaseOfCare"
+                  v-model="easeOfCareMenuSelection"
                   multiple
                   mandatory
                   column
@@ -99,8 +99,7 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group
-                  v-model="currentMenuSelectionPetSafe"
-                  multiple
+                  v-model="petSafeMenuSelection"
                   mandatory
                   column
                   active-class="highlight--text"
@@ -235,44 +234,36 @@ export default {
     ...mapGetters(["getModalStatus"]),
     ...mapGetters(["getPlantsData"]),
     ...mapGetters(["getFilteredSelection"]),
-    newSelected: {
+    plantSizeMenuSelection: {
       get() {
-        return this.$store.state.selected;
+        return this.$store.state.selected.plantSizeMenu;
       },
       set(value) {
-        this.$store.commit("updateSelected", value);
+        this.$store.commit("updateSelectedPlantSize", value);
       }
     },
-    currentMenuSelectionPlantSize: {
-      get: function() {
-        return this.$store.getters.getPreviousMenuSelection.plantSize.indexes;
+    lightLevelMenuSelection: {
+      get() {
+        return this.$store.state.selected.lightLevelMenu;
       },
-      set: function(value) {
-        this.$store.commit("setDummy", value);
+      set(value) {
+        this.$store.commit("updateSelectedLightLevel", value);
       }
     },
-    currentMenuSelectionLightLevel: {
-      get: function() {
-        return this.$store.getters.getPreviousMenuSelection.lightLevel.indexes;
+    easeOfCareMenuSelection: {
+      get() {
+        return this.$store.state.selected.easeOfCareMenu;
       },
-      set: function(indexNumber) {
-        return indexNumber;
+      set(value) {
+        this.$store.commit("updateSelectedEaseOfCare", value);
       }
     },
-    currentMenuSelectionEaseOfCare: {
-      get: function() {
-        return this.$store.getters.getPreviousMenuSelection.easeOfCare.indexes;
+    petSafeMenuSelection: {
+      get() {
+        return this.$store.state.selected.petSafeMenu;
       },
-      set: function(indexNumber) {
-        return indexNumber;
-      }
-    },
-    currentMenuSelectionPetSafe: {
-      get: function() {
-        return this.$store.getters.getPreviousMenuSelection.petSafe.indexArray;
-      },
-      set: function(indexNumber) {
-        return indexNumber;
+      set(value) {
+        this.$store.commit("updateSelectedPetSafe", value);
       }
     },
     getMenuData() {
@@ -319,7 +310,6 @@ export default {
   },
   mounted() {
     this.onResize();
-    this.selected.plantSize = this.currentMenuSelectionPlantSize;
   },
   methods: {
     onResize() {

@@ -10,7 +10,8 @@ const state = {
     },
     petSafe: {
       titles: [],
-      indexes: []
+      indexes: null,
+      indexArray: []
     },
     plantSize: {
       titles: [],
@@ -34,7 +35,7 @@ const mutations = {
       },
       petSafe: {
         titles: [],
-        indexes: []
+        index: null,
       },
       plantSize: {
         titles: [],
@@ -90,7 +91,12 @@ const mutations = {
     state.menuSelection.allSelectionsList.unshift(value[0]);
   },
   setPetSafeMenuSelection(state, value) {
-    state.menuSelection.petSafe.indexes = value[1];
+    //Handle v-model of chips in nav drawer in Home.vue which requires an array type
+    state.menuSelection.petSafe.indexArray.pop(state.menuSelection.petSafe.indexArray[0]);
+    state.menuSelection.petSafe.indexArray.push(value[1]);
+
+    //Handle v-model of chips in nav drawer in Home.vue which requires a number type
+    state.menuSelection.petSafe.index = value[1];
     if (state.menuSelection.petSafe.titles.includes(value[0])) {
       state.menuSelection.petSafe.titles.splice(
         state.menuSelection.petSafe.titles.indexOf(value[0]),

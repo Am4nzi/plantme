@@ -24,7 +24,7 @@
         dense
       >
         <v-col
-          v-for="item in this.menu.lightLevelData"
+          v-for="item in menu.lightLevelData"
           :key="item.id"
           :class="{ active: item === activeItem }"
           cols="6"

@@ -259,7 +259,7 @@ export default {
     },
     currentMenuSelectionPetSafe: {
       get: function() {
-        return this.$store.getters.getPreviousMenuSelection.petSafe.indexes;
+        return this.$store.getters.getPreviousMenuSelection.petSafe.indexArray;
       },
       set: function(indexNumber) {
         return indexNumber;

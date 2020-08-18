@@ -84,9 +84,7 @@ export default {
   mounted() {
     this.menu.petSafeData = this.getMenuData.petSafe;
     //Previous selection remains active if user navigates to a view they've already visited
-    if (this.getPreviousMenuSelection.petSafe) {
-      this.selected = this.getPreviousMenuSelection.petSafe[1];
-    }
+    this.selected = this.getPreviousMenuSelection.petSafe.index;
   }
 };
 </script>

@@ -71,13 +71,13 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group
+                  v-model="currentMenuSelectionEaseOfCare"
                   multiple
                   mandatory
                   column
                   active-class="highlight--text"
                 >
                   <v-chip
-                    v-model="currentMenuSelectionEaseOfCare"
                     outlined
                     label
                     large
@@ -198,7 +198,7 @@
       </v-container>
     </v-main>
 
-    <v-footer color="secondary" app>
+    <v-footer color="white" app>
       <span class="grey--text">&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </div>
@@ -309,6 +309,14 @@ export default {
   },
   mounted() {
     this.onResize();
+    console.log(
+      "this.currentMenuSelectionLightLevel: ",
+      this.currentMenuSelectionLightLevel
+    );
+    console.log(
+      "this.currentMenuSelectionEaseOfCare: ",
+      this.currentMenuSelectionEaseOfCare
+    );
   },
   methods: {
     onResize() {

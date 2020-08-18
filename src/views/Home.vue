@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" width="300" app>
       <v-list dense>
         <v-list-item>
           <v-list-item-content>
@@ -21,7 +21,7 @@
                   column
                   active-class="highlight--text"
                 >
-                  <v-chip outlined label v-for="item in getMenuData.plantSize" :key="item.id">
+                  <v-chip outlined label large v-for="item in getMenuData.plantSize" :key="item.id">
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>
@@ -43,7 +43,7 @@
                   active-class="highlight--text"
 
                 >
-                  <v-chip outlined label v-for="item in getMenuData.lightLevel" :key="item.id">
+                  <v-chip outlined large label v-for="item in getMenuData.lightLevel" :key="item.id">
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>
@@ -59,7 +59,7 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group multiple mandatory column active-class="highlight--text">
-                  <v-chip outlined label v-for="item in getMenuData.easeOfCare" :key="item.id">
+                  <v-chip outlined label large v-for="item in getMenuData.easeOfCare" :key="item.id">
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>
@@ -75,7 +75,7 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group multiple mandatory column active-class="highlight--text">
-                  <v-chip outlined label v-for="item in getMenuData.petSafe" :key="item.id">
+                  <v-chip outlined label large v-for="item in getMenuData.petSafe" :key="item.id">
                     {{ item.cardtitle }}
                   </v-chip>
                 </v-chip-group>

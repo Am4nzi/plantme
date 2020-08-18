@@ -20,6 +20,12 @@ export default new Vuex.Store({
   state: {
     selected: [],
     hasScrolled: null,
+    hasSelected: {
+      plantSize: false,
+      lightLevel: false,
+      easeOfCare: false,
+      petSafe: false
+    },
     menus: {
       currentMenu: [],
       plantSize: [],
@@ -45,6 +51,9 @@ export default new Vuex.Store({
     },
     getHasScrolled: function(state) {
       return state.hasScrolled;
+    },
+    getHasSelected: function(state) {
+      return state.hasSelected;
     },
     getMenuData: function(state) {
       return state.menus;
@@ -90,6 +99,9 @@ export default new Vuex.Store({
     setHasScrolled(state, scrollStatus) {
       state.hasScrolled = scrollStatus;
     },
+    setHasSelectedStatus(state, hasSelectedStatus) {
+      state.hasSelected.plantSize = hasSelectedStatus;
+    },
     setGuideTitles(state, guideTitles) {
       state.menus.guideTitles = guideTitles;
     },
@@ -124,6 +136,9 @@ export default new Vuex.Store({
   actions: {
     updateHasScrolled(context, scrollStatus) {
       context.commit("setHasScrolled", scrollStatus);
+    },
+    updateHasSelected(context, hasSelectedStatus) {
+      context.commit("setHasSelectedStatus", hasSelectedStatus)
     },
     updateInitialMenuTitle(context, initialMenuTitle) {
       context.commit("setMenuTitle", initialMenuTitle);

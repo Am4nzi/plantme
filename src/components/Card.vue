@@ -43,6 +43,7 @@ export default {
   mounted() {
     this.scroll();
     this.$store.dispatch("updateInitialViewData");
+    console.log('getHasSelectedStatus: ', this.getHasSelectedStatus.plantSize);
   },
   created() {
     this.$store.dispatch("updateHasScrolled", false);
@@ -150,11 +151,14 @@ export default {
     hasScrolled() {
       return this.$store.getters.getHasScrolled;
     },
+    getHasSelectedStatus() {
+      return this.$store.getters.getHasSelected;
+    },
     toggleActivateButton() {
       const { name } = this.$route;
       switch (name) {
         case "PlantSizeMenu":
-          return Boolean(!this.getSelected);
+          return Boolean(!this.getHasSelectedStatus.plantSize);
         case "LightLevelMenu":
           return Boolean(
             !this.getPreviousMenuSelection.lightLevel.indexes.length

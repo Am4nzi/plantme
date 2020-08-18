@@ -15,6 +15,7 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group
+                  v-model="currentMenuSelectionPlantSize"
                   multiple
                   mandatory
                   column
@@ -42,6 +43,7 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group
+                  v-model="currentMenuSelectionLightLevel"
                   multiple
                   mandatory
                   column
@@ -75,6 +77,7 @@
                   active-class="highlight--text"
                 >
                   <v-chip
+                    v-model="currentMenuSelectionEaseOfCare"
                     outlined
                     label
                     large
@@ -96,6 +99,7 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group
+                  v-model="currentMenuSelectionPetSafe"
                   multiple
                   mandatory
                   column
@@ -140,7 +144,7 @@
       </v-dialog>
       <v-container fluid class="fill-height pl-xl-16 pr-xl-16">
         <v-item-group
-          v-model="selected"
+          v-model="selected.itemGroup"
           :mandatory="mandatory"
           :multiple="multiple"
         >
@@ -215,7 +219,10 @@ export default {
     },
     mandatory: false,
     multiple: true,
-    selected: [],
+    selected: {
+      itemGroup: []
+    },
+    plantSizeSelected: [],
     activeItem: null,
     menu: {
       plantSizeData: [],
@@ -226,6 +233,18 @@ export default {
     ...mapGetters(["getModalStatus"]),
     ...mapGetters(["getPlantsData"]),
     ...mapGetters(["getFilteredSelection"]),
+    currentMenuSelectionPlantSize() {
+      return this.$store.getters.getPreviousMenuSelection.plantSize.indexes;
+    },
+    currentMenuSelectionLightLevel() {
+      return this.$store.getters.getPreviousMenuSelection.lightLevel.indexes;
+    },
+    currentMenuSelectionEaseOfCare() {
+      return this.$store.getters.getPreviousMenuSelection.easeOfCare.indexes;
+    },
+    currentMenuSelectionPetSafe() {
+      return this.$store.getters.getPreviousMenuSelection.petSafe.indexes;
+    },
     getMenuData() {
       return this.$store.getters.getMenuData;
     },
@@ -268,9 +287,14 @@ export default {
         : this.selected.pop();
     }
   },
+  beforeMount() {
+    this.selected.chipGroupPlantSize = this.getPreviousMenuSelection.plantSize.indexes;
+    this.selected.chipGroupLightLevel = this.getPreviousMenuSelection.lightLevel.indexes;
+    this.selected.chipGroupPlantSize = this.getPreviousMenuSelection.easeOfCare.indexes;
+    this.selected.chipGroupPetSafe = this.getPreviousMenuSelection.petSafe.indexes;
+  },
   mounted() {
     this.onResize();
-    console.log("this.getMenuData: ", this.getMenuData.plantSize[0].cardtitle);
   },
   methods: {
     onResize() {

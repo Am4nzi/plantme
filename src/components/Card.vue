@@ -13,11 +13,11 @@
             <v-btn
               @click="nextStep"
               x-large
-              color="#fcc7b8"
+              color="primary"
               class="black--text mr-n1 rounded"
               :disabled="toggleActivateButton"
-              >Next</v-btn
-            >
+              >Next
+            </v-btn>
           </div>
           <div></div>
         </v-row>
@@ -108,18 +108,27 @@ export default {
           if (
             this.getPlantsData[property].properties.some(
               sizeProperty =>
-                this.getPreviousMenuSelection.plantSize.titles.indexOf(sizeProperty) >= 0
+                this.getPreviousMenuSelection.plantSize.titles.indexOf(
+                  sizeProperty
+                ) >= 0
             ) &&
             this.getPlantsData[property].properties.some(
               lightLevelProperty =>
-                this.getPreviousMenuSelection.lightLevel.titles.indexOf(lightLevelProperty) >= 0
+                this.getPreviousMenuSelection.lightLevel.titles.indexOf(
+                  lightLevelProperty
+                ) >= 0
             ) &&
             this.getPlantsData[property].properties.some(
               easeOfCareProperty =>
-                this.getPreviousMenuSelection.easeOfCare.titles.indexOf(easeOfCareProperty) >= 0
+                this.getPreviousMenuSelection.easeOfCare.titles.indexOf(
+                  easeOfCareProperty
+                ) >= 0
             ) &&
             this.getPlantsData[property].properties.some(
-              petSafeProperty => this.getPreviousMenuSelection.petSafe.titles.indexOf(petSafeProperty) >= 0
+              petSafeProperty =>
+                this.getPreviousMenuSelection.petSafe.titles.indexOf(
+                  petSafeProperty
+                ) >= 0
             )
           ) {
             this.filtered[property] = this.getPlantsData[property];

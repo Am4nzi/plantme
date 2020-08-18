@@ -37,7 +37,7 @@
         >
           <v-item v-slot:default="{ active, toggle }">
             <v-card
-              :color="active ? '#fcc7b8' : ''"
+              :color="active ? 'primary' : ''"
               outlined
               class="mx-auto"
               max-width="300"

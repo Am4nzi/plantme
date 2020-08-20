@@ -115,7 +115,7 @@ export default {
     ...mapGetters(["getMenuSelection"]),
     ...mapGetters(["getMenuTitles"]),
     ...mapGetters(["getPlantsData"]),
-    ...mapGetters(["getSelected"]),
+    ...mapGetters(["getUserSelectionsForFilter"]),
     hasScrolled() {
       return this.$store.getters.getHasScrolled;
     },

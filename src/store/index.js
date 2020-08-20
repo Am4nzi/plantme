@@ -62,7 +62,7 @@ export default new Vuex.Store({
   getters: {
     initialViewDataLoaded: state => state.initialViewDataLoaded,
     getMenuTitles: state => state.menuTitleStore.menuTitles,
-    getSelected: function(state) {
+    getUserSelectionsForFilter: function(state) {
       return state.selected;
     },
     getHasScrolled: function(state) {

@@ -113,14 +113,13 @@ export default {
   },
   methods: {
     navigateToPlantSizeMenu() {
-      this.$store.commit("setMenuTitle", this.getMenuTitles[0].menutitle);
+      this.$store.commit("setMenuIndex", 1);
       this.$router.push("plant-size");
     },
     navigateToLightLevelMenu() {
       if (this.getStepperHasActivated.lightLevel) {
         this.toggleEnableEditSteps.lightLevel = true;
         this.$store.commit("setMenuIndex", 2);
-        this.$store.commit("setMenuTitle", this.getMenuTitles[1].menutitle);
         this.$router.push("light-level");
       }
     },
@@ -128,7 +127,6 @@ export default {
       if (this.getStepperHasActivated.easeOfCare) {
         this.toggleEnableEditSteps.easeOfCare = true;
         this.$store.commit("setMenuIndex", 3);
-        this.$store.commit("setMenuTitle", this.getMenuTitles[2].menutitle);
         this.$router.push("ease-of-care");
       }
     },
@@ -136,7 +134,6 @@ export default {
       if (this.getStepperHasActivated.petSafe) {
         this.toggleEnableEditSteps.petSafe = true;
         this.$store.commit("setMenuIndex", 4);
-        this.$store.commit("setMenuTitle", this.getMenuTitles[3].menutitle);
         this.$router.push("pet-safe-menu");
       }
     }

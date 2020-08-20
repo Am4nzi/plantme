@@ -13,7 +13,6 @@ import guideText from "./mixins/getGuideTitles";
 import menuIndex from "./mixins/menuIndex";
 import selectItem from "./mixins/selectItem";
 import filterResults from "./mixins/filterResults";
-const mapGetters = require("vuex")["mapGetters"];
 
 Vue.mixin(guideText);
 Vue.mixin(menuIndex);
@@ -24,15 +23,8 @@ Vue.use(VueAxios, axios);
 
 export default {
   name: "App",
-  computed: {
-    ...mapGetters(["getMenuTitles"])
-  },
   async mounted() {
     await this.$store.dispatch("updateInitialViewData");
-    await this.$store.dispatch(
-      "updateInitialMenuTitle",
-      this.getMenuTitles[0].menutitle
-    );
   },
   beforeMount() {
     //Handle refresh safely

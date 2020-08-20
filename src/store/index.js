@@ -5,8 +5,8 @@ import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
 
 //Data that requires persistence is stored separately in below modules
-import menu from "./modules/menu";
 import menuSelections from "./modules/menuSelections";
+import menuTitleStore from "./modules/menuTitleStore";
 
 Vue.use(Vuex);
 
@@ -18,6 +18,7 @@ if (window.location.href.includes("localhost")) {
 
 export default new Vuex.Store({
   state: {
+    initialViewDataLoaded: false,
     selected: {
       plantSizeMenu: [],
       lightLevelMenu: [],
@@ -43,6 +44,8 @@ export default new Vuex.Store({
       lightLevel: [],
       easeOfCare: [],
       petSafe: [],
+      indexNumber: 1,
+      menuTitles: [],
       guideTitles: []
     },
     stepperText: [],
@@ -57,6 +60,8 @@ export default new Vuex.Store({
     filteredSelection: {}
   },
   getters: {
+    initialViewDataLoaded: state => state.initialViewDataLoaded,
+    getMenuTitles: state => state.menuTitleStore.menuTitles,
     getSelected: function(state) {
       return state.selected;
     },
@@ -73,13 +78,7 @@ export default new Vuex.Store({
       return state.menus;
     },
     getMenuIndexNumber: function(state) {
-      return state.menu.indexNumber;
-    },
-    getMenuTitle: function(state) {
-      return state.menu.menuTitle;
-    },
-    getMenuTitles: function(state) {
-      return state.menu.menuTitles;
+      return state.menus.indexNumber;
     },
     getPreviousMenuSelection: function(state) {
       return state.menuSelections.menuSelection;
@@ -104,6 +103,9 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    setInitialViewDataLoaded(state, status) {
+      Vue.set(state, 'initialViewDataLoaded', status);
+    },
     updateSelectedPlantSize(state, selectedStatus) {
       state.selected.plantSizeMenu = selectedStatus;
     },
@@ -118,6 +120,9 @@ export default new Vuex.Store({
     },
     setEaseOfCareMenu(state, easeOfCareData) {
       state.menus.easeOfCare = easeOfCareData;
+    },
+    setMenuIndex(state, value) {
+      state.menus.indexNumber = value;
     },
     setHasScrolled(state, scrollStatus) {
       state.hasScrolled = scrollStatus;
@@ -153,7 +158,7 @@ export default new Vuex.Store({
       state.menus.lightLevel = lightLevelData;
     },
     setMenuTitles(state, menuTitles) {
-      state.menu.menuTitles = menuTitles;
+      state.menuTitleStore.menuTitles = menuTitles;
     },
     setPetSafeMenu(state, petSafeData) {
       state.menus.petSafe = petSafeData;
@@ -273,9 +278,6 @@ export default new Vuex.Store({
         context.commit("setHasSelectedPetSafe", hasSelectedStatus);
       }
     },
-    updateInitialMenuTitle(context, initialMenuTitle) {
-      context.commit("setMenuTitle", initialMenuTitle);
-    },
     updateModalActive(context, modalStatus) {
       context.commit("setModalActive", modalStatus);
     },
@@ -298,6 +300,7 @@ export default new Vuex.Store({
       context.commit("setGuideTitles", guideTitles.data);
       let stepperText = await Vue.axios.get(`${dataBaseUrl}/steppertext`);
       context.commit("setStepperText", stepperText.data);
+      context.commit('setInitialViewDataLoaded', true);
     },
     async updateViewLightLevelMenu(context) {
       let lightLevelData = await Vue.axios.get(
@@ -317,8 +320,8 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    menu,
-    menuSelections
+    menuSelections,
+    menuTitleStore
   },
   plugins: [createPersistedState()]
 });

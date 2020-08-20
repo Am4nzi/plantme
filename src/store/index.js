@@ -109,8 +109,18 @@ export default new Vuex.Store({
     setUserSelectionsPetSafe(state, selectedStatus) {
       state.selected.petSafeMenu = selectedStatus;
     },
+    //TODO Rename these e.g. setPlantSizeMenuSelectionOptions
+    setPlantSizeMenu(state, plantSizeData) {
+      state.menus.plantSize = plantSizeData;
+    },
+    setLightLevelMenu(state, lightLevelData) {
+      state.menus.lightLevel = lightLevelData;
+    },
     setEaseOfCareMenu(state, easeOfCareData) {
       state.menus.easeOfCare = easeOfCareData;
+    },
+    setPetSafeMenu(state, petSafeData) {
+      state.menus.petSafe = petSafeData;
     },
     setMenuIndex(state, value) {
       state.menus.indexNumber = value;
@@ -133,17 +143,8 @@ export default new Vuex.Store({
     setGuideTitles(state, guideTitles) {
       state.menus.guideTitles = guideTitles;
     },
-    setLightLevelMenu(state, lightLevelData) {
-      state.menus.lightLevel = lightLevelData;
-    },
     setMenuTitles(state, menuTitles) {
       state.menuTitleStore.menuTitles = menuTitles;
-    },
-    setPetSafeMenu(state, petSafeData) {
-      state.menus.petSafe = petSafeData;
-    },
-    setPlantSizeMenu(state, plantSizeData) {
-      state.menus.plantSize = plantSizeData;
     },
     setStepperText(state, stepperText) {
       state.stepperText = stepperText;

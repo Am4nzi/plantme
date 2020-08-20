@@ -109,17 +109,16 @@ export default new Vuex.Store({
     setUserSelectionsPetSafe(state, selectedStatus) {
       state.selected.petSafeMenu = selectedStatus;
     },
-    //TODO Rename these e.g. setPlantSizeMenuSelectionOptions
-    setPlantSizeMenu(state, plantSizeData) {
+    setPlantSizeMenuSelectionOptions(state, plantSizeData) {
       state.menus.plantSize = plantSizeData;
     },
-    setLightLevelMenu(state, lightLevelData) {
+    setLightLevelmenuSelectionOptions(state, lightLevelData) {
       state.menus.lightLevel = lightLevelData;
     },
-    setEaseOfCareMenu(state, easeOfCareData) {
+    setEaseOfCareMenuSelectionOptions(state, easeOfCareData) {
       state.menus.easeOfCare = easeOfCareData;
     },
-    setPetSafeMenu(state, petSafeData) {
+    setPetSafeMenuSelectionOptions(state, petSafeData) {
       state.menus.petSafe = petSafeData;
     },
     setMenuIndex(state, value) {
@@ -259,7 +258,7 @@ export default new Vuex.Store({
     },
     async updateInitialViewData(context) {
       let plantSizeData = await Vue.axios.get(`${dataBaseUrl}/sizemenudata`);
-      context.commit("setPlantSizeMenu", plantSizeData.data);
+      context.commit("setPlantSizeMenuSelectionOptions", plantSizeData.data);
       let menuTitles = await Vue.axios.get(`${dataBaseUrl}/menutitles`);
       context.commit("setMenuTitles", menuTitles.data);
       let guideTitles = await Vue.axios.get(`${dataBaseUrl}/guideTitles`);
@@ -272,17 +271,17 @@ export default new Vuex.Store({
       let lightLevelData = await Vue.axios.get(
         `${dataBaseUrl}/lightlevelmenudata`
       );
-      context.commit("setLightLevelMenu", lightLevelData.data);
+      context.commit("setLightLevelmenuSelectionOptions", lightLevelData.data);
     },
     async updateViewEaseOfCareMenu(context) {
       let easeOfCareData = await Vue.axios.get(
         `${dataBaseUrl}/easeofcaremenudata`
       );
-      context.commit("setEaseOfCareMenu", easeOfCareData.data);
+      context.commit("setEaseOfCareMenuSelectionOptions", easeOfCareData.data);
     },
     async updateViewPetSafeMenu(context) {
       let petSafeData = await Vue.axios.get(`${dataBaseUrl}/petsafemenudata`);
-      context.commit("setPetSafeMenu", petSafeData.data);
+      context.commit("setPetSafeMenuSelectionOptions", petSafeData.data);
     }
   },
   modules: {

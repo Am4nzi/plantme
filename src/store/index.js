@@ -31,6 +31,12 @@ export default new Vuex.Store({
       easeOfCare: false,
       petSafe: false
     },
+    stepperHasActivated: {
+      plantSize: false,
+      lightLevel: false,
+      easeOfCare: false,
+      petSafe: false
+    },
     menus: {
       currentMenu: [],
       plantSize: [],
@@ -60,6 +66,9 @@ export default new Vuex.Store({
     getHasSelected: function(state) {
       return state.hasSelected;
     },
+    getStepperHasActivated: function(state) {
+      return state.stepperHasActivated;
+    },
     getMenuData: function(state) {
       return state.menus;
     },
@@ -72,10 +81,10 @@ export default new Vuex.Store({
     getMenuTitles: function(state) {
       return state.menu.menuTitles;
     },
-    getAllMenuSelections: function(state) {
-      return state.menuSelections.menuSelection.allSelectionsList;
-    },
     getPreviousMenuSelection: function(state) {
+      return state.menuSelections.menuSelection;
+    },
+    getMenuSelection: function(state) {
       return state.menuSelections.menuSelection;
     },
     getStepperText: function(state) {
@@ -125,6 +134,18 @@ export default new Vuex.Store({
     setHasSelectedPetSafe(state, hasSelectedStatus) {
       state.hasSelected.petSafe = hasSelectedStatus;
     },
+    setStepperHasActivatedPlantSize(state, stepperActiveStatus) {
+      state.stepperHasActivated.plantSize = stepperActiveStatus;
+    },
+    setStepperHasActivatedLightLevel(state, stepperActiveStatus) {
+      state.stepperHasActivated.lightLevel = stepperActiveStatus;
+    },
+    setStepperHasActivatedEaseOfCare(state, stepperActiveStatus) {
+      state.stepperHasActivated.easeOfCare = stepperActiveStatus;
+    },
+    setStepperHasActivatedPetSafe(state, stepperActiveStatus) {
+      state.stepperHasActivated.petSafe = stepperActiveStatus;
+    },
     setGuideTitles(state, guideTitles) {
       state.menus.guideTitles = guideTitles;
     },
@@ -154,11 +175,89 @@ export default new Vuex.Store({
     },
     setFilteredSelection(state, filteredSelection) {
       state.filteredSelection = filteredSelection;
+    },
+    setPlantSizeMenuSelection(state) {
+      let newArr = [];
+      state.selected.plantSizeMenu.sort();
+      state.selected.plantSizeMenu.forEach(element => {
+        if (element === 0) {
+          newArr.push("Small");
+        }
+        if (element === 1) {
+          newArr.push("Medium");
+        }
+        if (element === 2) {
+          newArr.push("Large");
+        }
+      });
+      state.menuSelections.menuSelection.plantSize.titles = newArr;
+    },
+    setLightLevelMenuSelection(state) {
+      let newArr = [];
+      state.selected.lightLevelMenu.sort();
+      state.selected.lightLevelMenu.forEach(element => {
+        if (element === 0) {
+          newArr.push("Minimal Light");
+        }
+        if (element === 1) {
+          newArr.push("Shade");
+        }
+        if (element === 2) {
+          newArr.push("Indirect Light");
+        }
+        if (element === 3) {
+          newArr.push("Bright Indirect");
+        }
+        if (element === 4) {
+          newArr.push("Bright Direct");
+        }
+      });
+      state.menuSelections.menuSelection.lightLevel.titles = newArr;
+    },
+    setEaseOfCareMenuSelection(state) {
+      let newArr = [];
+      state.selected.easeOfCareMenu.sort();
+      state.selected.easeOfCareMenu.forEach(element => {
+        if (element === 0) {
+          newArr.push("Easy");
+        }
+        if (element === 1) {
+          newArr.push("Medium");
+        }
+        if (element === 2) {
+          newArr.push("Difficult");
+        }
+      });
+      state.menuSelections.menuSelection.easeOfCare.titles = newArr;
+    },
+    setPetSafeMenuSelection(state) {
+      let newArr = [];
+      if (state.selected.petSafeMenu === 0) {
+        newArr.push("Safe");
+      }
+      if (state.selected.petSafeMenu === 1) {
+        newArr.push("Not Important");
+      }
+      state.menuSelections.menuSelection.petSafe.titles = newArr;
     }
   },
   actions: {
     updateHasScrolled(context, scrollStatus) {
       context.commit("setHasScrolled", scrollStatus);
+    },
+    updateStepperHasActivated(context, stepperActiveStatus) {
+      if (stepperActiveStatus === "plantSize") {
+        context.commit("setStepperHasActivatedPlantSize", stepperActiveStatus);
+      }
+      if (stepperActiveStatus === "lightLevel") {
+        context.commit("setStepperHasActivatedLightLevel", stepperActiveStatus);
+      }
+      if (stepperActiveStatus === "easeOfCare") {
+        context.commit("setStepperHasActivatedEaseOfCare", stepperActiveStatus);
+      }
+      if (stepperActiveStatus === "petSafe") {
+        context.commit("setStepperHasActivatedPetSafe", stepperActiveStatus);
+      }
     },
     updateHasSelected(context, hasSelectedStatus) {
       if (hasSelectedStatus === "plantSize") {

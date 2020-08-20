@@ -99,9 +99,7 @@ export default {
     ...mapGetters(["getModalClosedOnce"]),
     lightLevelMenuSelection: {
       get() {
-        if (!this.getModalClosedOnce) {
-          return [];
-        } else return this.$store.state.selected.lightLevelMenu;
+        return this.$store.state.selected.lightLevelMenu;
       },
       set(value) {
         this.$store.commit("updateSelectedLightLevel", value);

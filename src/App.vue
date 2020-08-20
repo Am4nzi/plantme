@@ -12,11 +12,13 @@ import VueAxios from "vue-axios";
 import guideText from "./mixins/getGuideTitles";
 import menuIndex from "./mixins/menuIndex";
 import selectItem from "./mixins/selectItem";
+import filterResults from "./mixins/filterResults";
 const mapGetters = require("vuex")["mapGetters"];
 
 Vue.mixin(guideText);
 Vue.mixin(menuIndex);
 Vue.mixin(selectItem);
+Vue.mixin(filterResults);
 
 Vue.use(VueAxios, axios);
 
@@ -32,7 +34,6 @@ export default {
       "updateInitialMenuTitle",
       this.getMenuTitles[0].menutitle
     );
-    await this.$store.dispatch("updatePlantData");
   },
   beforeMount() {
     //Handle refresh safely

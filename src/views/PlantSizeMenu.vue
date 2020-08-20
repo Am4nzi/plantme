@@ -98,9 +98,6 @@ export default {
     ...mapGetters(["getModalClosedOnce"]),
     plantSizeMenuSelection: {
       get() {
-        if (!this.getModalClosedOnce) {
-          return [];
-        } else
         return this.$store.state.selected.plantSizeMenu;
       },
       set(value) {

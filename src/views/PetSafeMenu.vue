@@ -83,10 +83,7 @@ export default {
     ...mapGetters(["getModalClosedOnce"]),
     petSafeMenuSelection: {
       get() {
-        if (!this.getModalClosedOnce) {
-          return null;
-        } else
-          return this.$store.state.selected.petSafeMenu;
+        return this.$store.state.selected.petSafeMenu;
       },
       set(value) {
         this.$store.commit("updateSelectedPetSafe", value);

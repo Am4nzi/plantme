@@ -16,8 +16,8 @@
               <v-col>
                 <v-chip-group
                   v-model="plantSizeMenuSelection"
+                  :mandatory="mandatory"
                   multiple
-                  mandatory
                   column
                   active-class="highlight--text"
                 >
@@ -27,6 +27,9 @@
                     outlined
                     label
                     large
+                    @click="
+                      selectItemChip('setPlantSizeMenuSelection');
+                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -43,9 +46,9 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group
-                  v-model="lightLevelMenuSelection"
+                  v-model="chipLightLevelMenuSelection"
                   multiple
-                  mandatory
+                  :mandatory="mandatory"
                   column
                   active-class="highlight--text"
                 >
@@ -55,6 +58,9 @@
                     label
                     v-for="item in getMenuData.lightLevel"
                     :key="item.id"
+                    @click="
+                      selectItemChip('setLightLevelMenuSelection');
+                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -73,7 +79,7 @@
                 <v-chip-group
                   v-model="easeOfCareMenuSelection"
                   multiple
-                  mandatory
+                  :mandatory="mandatory"
                   column
                   active-class="highlight--text"
                 >
@@ -83,6 +89,9 @@
                     large
                     v-for="item in getMenuData.easeOfCare"
                     :key="item.id"
+                    @click="
+                      selectItemChip('setEaseOfCareMenuSelection');
+                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -100,7 +109,7 @@
               <v-col>
                 <v-chip-group
                   v-model="petSafeMenuSelection"
-                  mandatory
+                  :mandatory="mandatory"
                   column
                   active-class="highlight--text"
                 >
@@ -110,6 +119,9 @@
                     large
                     v-for="item in getMenuData.petSafe"
                     :key="item.id"
+                    @click="
+                      selectItemChip('setPetSafeMenuSelection');
+                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -120,6 +132,9 @@
         </v-list-item>
         <div class="my-2">
           <v-btn @click="resetMenuSelection" small>Reset Menu Selection</v-btn>
+        </div>
+        <div class="my-2">
+          <v-btn @click="activateFilterResults" small>Filter Results</v-btn>
         </div>
       </v-list>
     </v-navigation-drawer>
@@ -211,6 +226,7 @@ export default {
     source: String
   },
   data: () => ({
+    filteredHome: {},
     newValue: [],
     drawer: null,
     windowSize: {
@@ -231,6 +247,7 @@ export default {
     }
   }),
   computed: {
+    ...mapGetters(["getMenuSelection"]),
     ...mapGetters(["getModalStatus"]),
     ...mapGetters(["getPlantsData"]),
     ...mapGetters(["getFilteredSelection"]),
@@ -242,11 +259,12 @@ export default {
         this.$store.commit("updateSelectedPlantSize", value);
       }
     },
-    lightLevelMenuSelection: {
+    chipLightLevelMenuSelection: {
       get() {
         return this.$store.state.selected.lightLevelMenu;
       },
       set(value) {
+        console.log('what value?: ', value);
         this.$store.commit("updateSelectedLightLevel", value);
       }
     },
@@ -301,11 +319,11 @@ export default {
   },
   watch: {
     multiple(val) {
-      this.selected = val
-        ? this.selected >= 0
-          ? [this.selected]
+      this.plantSizeMenuSelection = val
+        ? this.plantSizeMenuSelection >= 0
+          ? [this.plantSizeMenuSelection]
           : []
-        : this.selected.pop();
+        : this.plantSizeMenuSelection.pop();
     }
   },
   mounted() {
@@ -317,6 +335,9 @@ export default {
     },
     resetMenuSelection() {
       this.$store.commit("setClearMenuSelections");
+    },
+    async activateFilterResults() {
+      await this.filterResults();
     }
   }
 };

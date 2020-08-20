@@ -87,9 +87,6 @@ export default {
     ...mapGetters(["getModalClosedOnce"]),
     easeOfCareMenuSelection: {
       get() {
-        if (!this.getModalClosedOnce) {
-          return [];
-        } else
         return this.$store.state.selected.easeOfCareMenu;
       },
       set(value) {

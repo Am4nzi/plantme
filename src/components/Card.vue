@@ -37,13 +37,12 @@ export default {
     Stepper
   },
   data: () => ({
-    filtered: {},
     userSelections: []
   }),
   mounted() {
     this.scroll();
-    this.$store.dispatch("updateInitialViewData");
   },
+  //TODO this can be set to false by default in the store
   created() {
     this.$store.dispatch("updateHasScrolled", false);
   },
@@ -91,50 +90,27 @@ export default {
     },
     async nextStep() {
       const nextRoute = this.getNextRoute();
+      //TODO combine these into fewer dispatches
       if (nextRoute === "LightLevelMenu") {
         await this.$store.dispatch("updateViewLightLevelMenu");
+        await this.$store.dispatch("updateStepperHasActivated", 'lightLevel');
         this.$store.commit("setMenuTitle", this.getMenuTitles[1].menutitle);
         this.$store.commit("setMenuIndex", 2);
       } else if (nextRoute === "EaseOfCareMenu") {
         await this.$store.dispatch("updateViewEaseOfCareMenu");
+        await this.$store.dispatch("updateStepperHasActivated", 'easeOfCare');
         this.$store.commit("setMenuTitle", this.getMenuTitles[2].menutitle);
         this.$store.commit("setMenuIndex", 3);
       } else if (nextRoute === "PetSafeMenu") {
         await this.$store.dispatch("updateViewPetSafeMenu");
+        await this.$store.dispatch("updateStepperHasActivated", 'petSafe');
         this.$store.commit("setMenuTitle", this.getMenuTitles[3].menutitle);
         this.$store.commit("setMenuIndex", 4);
       } else {
-        for (const property in this.getPlantsData) {
-          if (
-            this.getPlantsData[property].properties.some(
-              sizeProperty =>
-                this.getPreviousMenuSelection.plantSize.titles.indexOf(
-                  sizeProperty
-                ) >= 0
-            ) &&
-            this.getPlantsData[property].properties.some(
-              lightLevelProperty =>
-                this.getPreviousMenuSelection.lightLevel.titles.indexOf(
-                  lightLevelProperty
-                ) >= 0
-            ) &&
-            this.getPlantsData[property].properties.some(
-              easeOfCareProperty =>
-                this.getPreviousMenuSelection.easeOfCare.titles.indexOf(
-                  easeOfCareProperty
-                ) >= 0
-            ) &&
-            this.getPlantsData[property].properties.some(
-              petSafeProperty =>
-                this.getPreviousMenuSelection.petSafe.titles.indexOf(
-                  petSafeProperty
-                ) >= 0
-            )
-          ) {
-            this.filtered[property] = this.getPlantsData[property];
-          }
-        }
-        await this.$store.dispatch("updateFilteredSelection", this.filtered);
+        //TODO Only dispatch this once
+        await this.$store.dispatch("updatePlantData");
+        //mixin filterResults.js
+        await this.filterResults();
         await this.$store.dispatch("updateModalActive", false);
         await this.$store.dispatch("updateModalClosedOnce", true);
       }
@@ -143,7 +119,7 @@ export default {
   },
   computed: {
     ...mapGetters(["getPreviousMenuSelection"]),
-    ...mapGetters(["getAllMenuSelections"]),
+    ...mapGetters(["getMenuSelection"]),
     ...mapGetters(["getMenuTitles"]),
     ...mapGetters(["getPlantsData"]),
     ...mapGetters(["getSelected"]),

@@ -46,7 +46,7 @@
               max-width="300"
               @click="
                 toggle();
-                selectItem(item, 'lightLevel', 'setLightLevelMenuSelection');
+                selectItem(item, 'lightLevel', 'setLightLevelMenuUserSelectionTitles');
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>

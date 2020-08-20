@@ -46,7 +46,7 @@
               max-width="300"
               @click="
                 toggle();
-                selectItem(item, 'plantSize', 'setPlantSizeMenuSelection');
+                selectItem(item, 'plantSize', 'setPlantSizeMenuUserSelectionTitles');
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>

@@ -46,7 +46,7 @@
               max-width="300"
               @click="
                 toggle();
-                selectItem(item, 'easeOfCare', 'setEaseOfCareMenuSelection');
+                selectItem(item, 'easeOfCare', 'setEaseOfCareMenuUserSelectionTitles');
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>

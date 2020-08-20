@@ -27,7 +27,7 @@
                     outlined
                     label
                     large
-                    @click="selectItemChip('setPlantSizeMenuSelection')"
+                    @click="selectItemChip('setPlantSizeMenuUserSelectionTitles')"
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -56,7 +56,7 @@
                     label
                     v-for="item in getMenuData.lightLevel"
                     :key="item.id"
-                    @click="selectItemChip('setLightLevelMenuSelection')"
+                    @click="selectItemChip('setLightLevelMenuUserSelectionTitles')"
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -85,7 +85,7 @@
                     large
                     v-for="item in getMenuData.easeOfCare"
                     :key="item.id"
-                    @click="selectItemChip('setEaseOfCareMenuSelection')"
+                    @click="selectItemChip('setEaseOfCareMenuUserSelectionTitles')"
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -113,7 +113,7 @@
                     large
                     v-for="item in getMenuData.petSafe"
                     :key="item.id"
-                    @click="selectItemChip('setPetSafeMenuSelection')"
+                    @click="selectItemChip('setPetSafeMenuUserSelectionTitles')"
                   >
                     {{ item.cardtitle }}
                   </v-chip>

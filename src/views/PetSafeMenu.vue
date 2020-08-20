@@ -83,10 +83,10 @@ export default {
     ...mapGetters(["getModalClosedOnce"]),
     petSafeMenuSelection: {
       get() {
-        return this.$store.state.selected.petSafeMenu;
+        return this.$store.state.userSelectionIndexes.petSafeMenu;
       },
       set(value) {
-        this.$store.commit("setUserSelectionsPetSafe", value);
+        this.$store.commit("setPetSafeUserSelectionIndexes", value);
       }
     }
   },

@@ -19,7 +19,7 @@ if (window.location.href.includes("localhost")) {
 export default new Vuex.Store({
   state: {
     initialViewDataLoaded: false,
-    selected: {
+    userSelectionIndexes: {
       plantSizeMenu: [],
       lightLevelMenu: [],
       easeOfCareMenu: [],
@@ -57,7 +57,7 @@ export default new Vuex.Store({
     initialViewDataLoaded: state => state.initialViewDataLoaded,
     getMenuTitles: state => state.menuTitleStore.menuTitles,
     getUserSelectionsForFilter: function(state) {
-      return state.selected;
+      return state.userSelectionIndexes;
     },
     getHasScrolled: function(state) {
       return state.hasScrolled;
@@ -97,17 +97,17 @@ export default new Vuex.Store({
     setInitialViewDataLoaded(state, status) {
       Vue.set(state, "initialViewDataLoaded", status);
     },
-    setUserSelectionsPlantSize(state, selectedStatus) {
-      state.selected.plantSizeMenu = selectedStatus;
+    setPlantSizeMenuUserSelectionIndexes(state, selectedStatus) {
+      state.userSelectionIndexes.plantSizeMenu = selectedStatus;
     },
-    setUserSelectionsLightLevel(state, selectedStatus) {
-      state.selected.lightLevelMenu = selectedStatus;
+    setLightLevelUserSelectionIndexes(state, selectedStatus) {
+      state.userSelectionIndexes.lightLevelMenu = selectedStatus;
     },
-    setUserSelectionsEaseOfCare(state, selectedStatus) {
-      state.selected.easeOfCareMenu = selectedStatus;
+    setEaseOfCareUserSelectionIndexes(state, selectedStatus) {
+      state.userSelectionIndexes.easeOfCareMenu = selectedStatus;
     },
-    setUserSelectionsPetSafe(state, selectedStatus) {
-      state.selected.petSafeMenu = selectedStatus;
+    setPetSafeUserSelectionIndexes(state, selectedStatus) {
+      state.userSelectionIndexes.petSafeMenu = selectedStatus;
     },
     setPlantSizeMenuSelectionOptions(state, plantSizeData) {
       state.menus.plantSize = plantSizeData;
@@ -162,8 +162,8 @@ export default new Vuex.Store({
     },
     setPlantSizeMenuSelection(state) {
       let newArr = [];
-      state.selected.plantSizeMenu.sort();
-      state.selected.plantSizeMenu.forEach(element => {
+      state.userSelectionIndexes.plantSizeMenu.sort();
+      state.userSelectionIndexes.plantSizeMenu.forEach(element => {
         if (element === 0) {
           newArr.push("Small");
         }
@@ -178,8 +178,8 @@ export default new Vuex.Store({
     },
     setLightLevelMenuSelection(state) {
       let newArr = [];
-      state.selected.lightLevelMenu.sort();
-      state.selected.lightLevelMenu.forEach(element => {
+      state.userSelectionIndexes.lightLevelMenu.sort();
+      state.userSelectionIndexes.lightLevelMenu.forEach(element => {
         if (element === 0) {
           newArr.push("Minimal Light");
         }
@@ -200,8 +200,8 @@ export default new Vuex.Store({
     },
     setEaseOfCareMenuSelection(state) {
       let newArr = [];
-      state.selected.easeOfCareMenu.sort();
-      state.selected.easeOfCareMenu.forEach(element => {
+      state.userSelectionIndexes.easeOfCareMenu.sort();
+      state.userSelectionIndexes.easeOfCareMenu.forEach(element => {
         if (element === 0) {
           newArr.push("Easy");
         }
@@ -216,10 +216,10 @@ export default new Vuex.Store({
     },
     setPetSafeMenuSelection(state) {
       let newArr = [];
-      if (state.selected.petSafeMenu === 0) {
+      if (state.userSelectionIndexes.petSafeMenu === 0) {
         newArr.push("Safe");
       }
-      if (state.selected.petSafeMenu === 1) {
+      if (state.userSelectionIndexes.petSafeMenu === 1) {
         newArr.push("Not Important");
       }
       state.menuSelections.menuSelection.petSafe.titles = newArr;

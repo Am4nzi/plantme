@@ -240,34 +240,34 @@ export default {
     ...mapGetters(["getFilteredSelection"]),
     plantSizeMenuSelection: {
       get() {
-        return this.$store.state.selected.plantSizeMenu;
+        return this.$store.state.userSelectionIndexes.plantSizeMenu;
       },
       set(value) {
-        this.$store.commit("setUserSelectionsPlantSize", value);
+        this.$store.commit("setPlantSizeMenuUserSelectionIndexes", value);
       }
     },
     lightLevelMenuSelection: {
       get() {
-        return this.$store.state.selected.lightLevelMenu;
+        return this.$store.state.userSelectionIndexes.lightLevelMenu;
       },
       set(value) {
-        this.$store.commit("setUserSelectionsLightLevel", value);
+        this.$store.commit("setLightLevelUserSelectionIndexes", value);
       }
     },
     easeOfCareMenuSelection: {
       get() {
-        return this.$store.state.selected.easeOfCareMenu;
+        return this.$store.state.userSelectionIndexes.easeOfCareMenu;
       },
       set(value) {
-        this.$store.commit("setUserSelectionsEaseOfCare", value);
+        this.$store.commit("setEaseOfCareUserSelectionIndexes", value);
       }
     },
     petSafeMenuSelection: {
       get() {
-        return this.$store.state.selected.petSafeMenu;
+        return this.$store.state.userSelectionIndexes.petSafeMenu;
       },
       set(value) {
-        this.$store.commit("setUserSelectionsPetSafe", value);
+        this.$store.commit("setPetSafeUserSelectionIndexes", value);
       }
     },
     getMenuData() {

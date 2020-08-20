@@ -98,10 +98,10 @@ export default {
     ...mapGetters(["getModalClosedOnce"]),
     plantSizeMenuSelection: {
       get() {
-        return this.$store.state.selected.plantSizeMenu;
+        return this.$store.state.userSelectionIndexes.plantSizeMenu;
       },
       set(value) {
-        this.$store.commit("setUserSelectionsPlantSize", value);
+        this.$store.commit("setPlantSizeMenuUserSelectionIndexes", value);
       }
     },
     getMenuData() {

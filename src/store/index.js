@@ -290,7 +290,6 @@ export default new Vuex.Store({
       context.commit("setPlantsData", plantsData.data);
     },
     async updateInitialViewData(context) {
-      context.commit("setMenuIndex", 1);
       let plantSizeData = await Vue.axios.get(`${dataBaseUrl}/sizemenudata`);
       context.commit("setPlantSizeMenu", plantSizeData.data);
       let menuTitles = await Vue.axios.get(`${dataBaseUrl}/menutitles`);

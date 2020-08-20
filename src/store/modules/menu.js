@@ -1,5 +1,5 @@
 const state = {
-  indexNumber: null,
+  indexNumber: 1,
   menuTitle: "",
   menuTitles: []
 };

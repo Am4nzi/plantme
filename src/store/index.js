@@ -161,68 +161,68 @@ export default new Vuex.Store({
       state.filteredSelection = filteredSelection;
     },
     setPlantSizeMenuUserSelectionTitles(state) {
-      let newArr = [];
+      let plantSizeMenuTitles = [];
       state.userSelectionIndexes.plantSizeMenu.sort();
       state.userSelectionIndexes.plantSizeMenu.forEach(element => {
         if (element === 0) {
-          newArr.push("Small");
+          plantSizeMenuTitles.push("Small");
         }
         if (element === 1) {
-          newArr.push("Medium");
+          plantSizeMenuTitles.push("Medium");
         }
         if (element === 2) {
-          newArr.push("Large");
+          plantSizeMenuTitles.push("Large");
         }
       });
-      state.menuSelections.menuSelection.plantSize.titles = newArr;
+      state.menuSelections.menuSelection.plantSize.titles = plantSizeMenuTitles;
     },
     setLightLevelMenuUserSelectionTitles(state) {
-      let newArr = [];
+      let lightLevelMenuTitles = [];
       state.userSelectionIndexes.lightLevelMenu.sort();
       state.userSelectionIndexes.lightLevelMenu.forEach(element => {
         if (element === 0) {
-          newArr.push("Minimal Light");
+          lightLevelMenuTitles.push("Minimal Light");
         }
         if (element === 1) {
-          newArr.push("Shade");
+          lightLevelMenuTitles.push("Shade");
         }
         if (element === 2) {
-          newArr.push("Indirect Light");
+          lightLevelMenuTitles.push("Indirect Light");
         }
         if (element === 3) {
-          newArr.push("Bright Indirect");
+          lightLevelMenuTitles.push("Bright Indirect");
         }
         if (element === 4) {
-          newArr.push("Bright Direct");
+          lightLevelMenuTitles.push("Bright Direct");
         }
       });
-      state.menuSelections.menuSelection.lightLevel.titles = newArr;
+      state.menuSelections.menuSelection.lightLevel.titles = lightLevelMenuTitles;
     },
     setEaseOfCareMenuUserSelectionTitles(state) {
-      let newArr = [];
+      let easeOfCareMenuTitles = [];
       state.userSelectionIndexes.easeOfCareMenu.sort();
       state.userSelectionIndexes.easeOfCareMenu.forEach(element => {
         if (element === 0) {
-          newArr.push("Easy");
+          easeOfCareMenuTitles.push("Easy");
         }
         if (element === 1) {
-          newArr.push("Medium");
+          easeOfCareMenuTitles.push("Medium");
         }
         if (element === 2) {
-          newArr.push("Difficult");
+          easeOfCareMenuTitles.push("Difficult");
         }
       });
-      state.menuSelections.menuSelection.easeOfCare.titles = newArr;
+      state.menuSelections.menuSelection.easeOfCare.titles = easeOfCareMenuTitles;
     },
     setPetSafeMenuUserSelectionTitles(state) {
-      let newArr = [];
+      let petSafeMenuTitles = [];
       if (state.userSelectionIndexes.petSafeMenu === 0) {
-        newArr.push("Safe");
+        petSafeMenuTitles.push("Safe");
       }
       if (state.userSelectionIndexes.petSafeMenu === 1) {
-        newArr.push("Not Important");
+        petSafeMenuTitles.push("Not Important");
       }
-      state.menuSelections.menuSelection.petSafe.titles = newArr;
+      state.menuSelections.menuSelection.petSafe.titles = petSafeMenuTitles;
     }
   },
   actions: {

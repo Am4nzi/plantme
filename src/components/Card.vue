@@ -41,10 +41,6 @@ export default {
   }),
   mounted() {
     this.scroll();
-    console.log(
-      "this.getUserSelectionsForFilter.petSafeMenu: ",
-      this.getUserSelectionsForFilter.petSafeMenu
-    );
   },
   methods: {
     scroll() {
@@ -139,7 +135,6 @@ export default {
           break;
         case "EaseOfCareMenu":
           if (!this.getUserSelectionsForFilter.easeOfCareMenu.length > 0) {
-            console.log("I'm here");
             return true;
           }
           break;

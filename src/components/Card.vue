@@ -41,6 +41,10 @@ export default {
   }),
   mounted() {
     this.scroll();
+    console.log(
+      "this.getUserSelectionsForFilter.petSafeMenu: ",
+      this.getUserSelectionsForFilter.petSafeMenu
+    );
   },
   methods: {
     scroll() {
@@ -89,15 +93,15 @@ export default {
       //TODO combine these into fewer dispatches
       if (nextRoute === "LightLevelMenu") {
         await this.$store.dispatch("updateViewLightLevelMenu");
-        await this.$store.dispatch("updateStepperHasActivated", 'lightLevel');
+        await this.$store.dispatch("updateStepperHasActivated", "lightLevel");
         this.$store.commit("setMenuIndex", 2);
       } else if (nextRoute === "EaseOfCareMenu") {
         await this.$store.dispatch("updateViewEaseOfCareMenu");
-        await this.$store.dispatch("updateStepperHasActivated", 'easeOfCare');
+        await this.$store.dispatch("updateStepperHasActivated", "easeOfCare");
         this.$store.commit("setMenuIndex", 3);
       } else if (nextRoute === "PetSafeMenu") {
         await this.$store.dispatch("updateViewPetSafeMenu");
-        await this.$store.dispatch("updateStepperHasActivated", 'petSafe');
+        await this.$store.dispatch("updateStepperHasActivated", "petSafe");
         this.$store.commit("setMenuIndex", 4);
       } else {
         //TODO Only dispatch this once
@@ -119,20 +123,31 @@ export default {
     hasScrolled() {
       return this.$store.getters.getHasScrolled;
     },
-    getHasSelectedStatus() {
-      return this.$store.getters.getHasSelected;
-    },
+    // eslint-disable-next-line vue/return-in-computed-property
     toggleActivateButton() {
       const { name } = this.$route;
       switch (name) {
         case "PlantSizeMenu":
-          return Boolean(!this.getHasSelectedStatus.plantSize);
+          if (!this.getUserSelectionsForFilter.plantSizeMenu.length > 0) {
+            return true;
+          }
+          break;
         case "LightLevelMenu":
-          return Boolean(!this.getHasSelectedStatus.lightLevel);
+          if (!this.getUserSelectionsForFilter.lightLevelMenu.length > 0) {
+            return true;
+          }
+          break;
         case "EaseOfCareMenu":
-          return Boolean(!this.getHasSelectedStatus.easeOfCare);
+          if (!this.getUserSelectionsForFilter.easeOfCareMenu.length > 0) {
+            console.log("I'm here");
+            return true;
+          }
+          break;
         case "PetSafeMenu":
-          return Boolean(!this.getHasSelectedStatus.petSafe);
+          if (!this.getUserSelectionsForFilter.petSafeMenu > 0) {
+            return true;
+          }
+          break;
         default:
           return "Error in toggleActivateButton /Layout.vue";
       }

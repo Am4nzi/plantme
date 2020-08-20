@@ -26,12 +26,6 @@ export default new Vuex.Store({
       petSafeMenu: null
     },
     hasScrolled: false,
-    hasSelected: {
-      plantSize: false,
-      lightLevel: false,
-      easeOfCare: false,
-      petSafe: false
-    },
     stepperHasActivated: {
       plantSize: false,
       lightLevel: false,
@@ -67,9 +61,6 @@ export default new Vuex.Store({
     },
     getHasScrolled: function(state) {
       return state.hasScrolled;
-    },
-    getHasSelected: function(state) {
-      return state.hasSelected;
     },
     getStepperHasActivated: function(state) {
       return state.stepperHasActivated;
@@ -126,18 +117,6 @@ export default new Vuex.Store({
     },
     setHasScrolled(state, scrollStatus) {
       state.hasScrolled = scrollStatus;
-    },
-    setHasSelectedPlantSize(state, hasSelectedStatus) {
-      state.hasSelected.plantSize = hasSelectedStatus;
-    },
-    setHasSelectedLightLevel(state, hasSelectedStatus) {
-      state.hasSelected.lightLevel = hasSelectedStatus;
-    },
-    setHasSelectedEaseOfCare(state, hasSelectedStatus) {
-      state.hasSelected.easeOfCare = hasSelectedStatus;
-    },
-    setHasSelectedPetSafe(state, hasSelectedStatus) {
-      state.hasSelected.petSafe = hasSelectedStatus;
     },
     setStepperHasActivatedPlantSize(state, stepperActiveStatus) {
       state.stepperHasActivated.plantSize = stepperActiveStatus;
@@ -262,20 +241,6 @@ export default new Vuex.Store({
       }
       if (stepperActiveStatus === "petSafe") {
         context.commit("setStepperHasActivatedPetSafe", stepperActiveStatus);
-      }
-    },
-    updateHasSelected(context, hasSelectedStatus) {
-      if (hasSelectedStatus === "plantSize") {
-        context.commit("setHasSelectedPlantSize", hasSelectedStatus);
-      }
-      if (hasSelectedStatus === "lightLevel") {
-        context.commit("setHasSelectedLightLevel", hasSelectedStatus);
-      }
-      if (hasSelectedStatus === "easeOfCare") {
-        context.commit("setHasSelectedEaseOfCare", hasSelectedStatus);
-      }
-      if (hasSelectedStatus === "petSafe") {
-        context.commit("setHasSelectedPetSafe", hasSelectedStatus);
       }
     },
     updateModalActive(context, modalStatus) {

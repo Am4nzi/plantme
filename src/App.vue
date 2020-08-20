@@ -24,6 +24,7 @@ Vue.use(VueAxios, axios);
 export default {
   name: "App",
   async mounted() {
+    await this.$store.dispatch("updateModalActive", true);
     await this.$store.dispatch("updateInitialViewData");
   },
   beforeMount() {

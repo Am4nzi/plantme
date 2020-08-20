@@ -24,7 +24,7 @@ export default new Vuex.Store({
       easeOfCareMenu: [],
       petSafeMenu: null
     },
-    hasScrolled: null,
+    hasScrolled: false,
     hasSelected: {
       plantSize: false,
       lightLevel: false,

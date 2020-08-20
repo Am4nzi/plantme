@@ -42,10 +42,6 @@ export default {
   mounted() {
     this.scroll();
   },
-  //TODO this can be set to false by default in the store
-  created() {
-    this.$store.dispatch("updateHasScrolled", false);
-  },
   methods: {
     scroll() {
       window.onscroll = () => {

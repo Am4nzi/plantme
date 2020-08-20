@@ -101,7 +101,7 @@ export default {
         this.$store.commit("setMenuIndex", 4);
       } else {
         //TODO Only dispatch this once
-        await this.$store.dispatch("updatePlantData");
+        await this.$store.dispatch("updatePlantLibraryData");
         //mixin filterResults.js
         await this.filterResults();
         await this.$store.dispatch("updateModalActive", false);

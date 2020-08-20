@@ -154,7 +154,7 @@ export default new Vuex.Store({
     setModalClosedOnce(state, modalStatus) {
       state.modal.closedOnce = modalStatus;
     },
-    setPlantsData(state, plantsData) {
+    setPlantLibraryData(state, plantsData) {
       state.plantsData = plantsData;
     },
     setFilteredSelection(state, filteredSelection) {
@@ -252,9 +252,9 @@ export default new Vuex.Store({
     updateFilteredSelection(context, filteredSelection) {
       context.commit("setFilteredSelection", filteredSelection);
     },
-    async updatePlantData(context) {
+    async updatePlantLibraryData(context) {
       let plantsData = await Vue.axios.get(`${dataBaseUrl}/plantsdata`);
-      context.commit("setPlantsData", plantsData.data);
+      context.commit("setPlantLibraryData", plantsData.data);
     },
     async updateInitialViewData(context) {
       let plantSizeData = await Vue.axios.get(`${dataBaseUrl}/sizemenudata`);

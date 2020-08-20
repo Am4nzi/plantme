@@ -90,7 +90,7 @@ export default {
         return this.$store.state.selected.easeOfCareMenu;
       },
       set(value) {
-        this.$store.commit("setSelectedEaseOfCare", value);
+        this.$store.commit("setUserSelectionsEaseOfCare", value);
       }
     }
   },

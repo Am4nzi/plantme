@@ -243,7 +243,7 @@ export default {
         return this.$store.state.selected.plantSizeMenu;
       },
       set(value) {
-        this.$store.commit("setSelectedPlantSize", value);
+        this.$store.commit("setUserSelectionsPlantSize", value);
       }
     },
     lightLevelMenuSelection: {
@@ -251,7 +251,7 @@ export default {
         return this.$store.state.selected.lightLevelMenu;
       },
       set(value) {
-        this.$store.commit("setSelectedLightLevel", value);
+        this.$store.commit("setUserSelectionsLightLevel", value);
       }
     },
     easeOfCareMenuSelection: {
@@ -259,7 +259,7 @@ export default {
         return this.$store.state.selected.easeOfCareMenu;
       },
       set(value) {
-        this.$store.commit("setSelectedEaseOfCare", value);
+        this.$store.commit("setUserSelectionsEaseOfCare", value);
       }
     },
     petSafeMenuSelection: {
@@ -267,7 +267,7 @@ export default {
         return this.$store.state.selected.petSafeMenu;
       },
       set(value) {
-        this.$store.commit("setSelectedPetSafe", value);
+        this.$store.commit("setUserSelectionsPetSafe", value);
       }
     },
     getMenuData() {

@@ -106,16 +106,16 @@ export default new Vuex.Store({
     setInitialViewDataLoaded(state, status) {
       Vue.set(state, "initialViewDataLoaded", status);
     },
-    setSelectedPlantSize(state, selectedStatus) {
+    setUserSelectionsPlantSize(state, selectedStatus) {
       state.selected.plantSizeMenu = selectedStatus;
     },
-    setSelectedLightLevel(state, selectedStatus) {
+    setUserSelectionsLightLevel(state, selectedStatus) {
       state.selected.lightLevelMenu = selectedStatus;
     },
-    setSelectedEaseOfCare(state, selectedStatus) {
+    setUserSelectionsEaseOfCare(state, selectedStatus) {
       state.selected.easeOfCareMenu = selectedStatus;
     },
-    setSelectedPetSafe(state, selectedStatus) {
+    setUserSelectionsPetSafe(state, selectedStatus) {
       state.selected.petSafeMenu = selectedStatus;
     },
     setEaseOfCareMenu(state, easeOfCareData) {

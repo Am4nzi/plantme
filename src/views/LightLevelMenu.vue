@@ -102,7 +102,7 @@ export default {
         return this.$store.state.selected.lightLevelMenu;
       },
       set(value) {
-        this.$store.commit("setSelectedLightLevel", value);
+        this.$store.commit("setUserSelectionsLightLevel", value);
       }
     }
   },

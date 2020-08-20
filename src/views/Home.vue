@@ -44,7 +44,7 @@
             <v-row justify="start">
               <v-col>
                 <v-chip-group
-                  v-model="chipLightLevelMenuSelection"
+                  v-model="lightLevelMenuSelection"
                   multiple
                   :mandatory="mandatory"
                   column
@@ -246,7 +246,7 @@ export default {
         this.$store.commit("setSelectedPlantSize", value);
       }
     },
-    chipLightLevelMenuSelection: {
+    lightLevelMenuSelection: {
       get() {
         return this.$store.state.selected.lightLevelMenu;
       },

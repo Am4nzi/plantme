@@ -104,7 +104,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setInitialViewDataLoaded(state, status) {
-      Vue.set(state, 'initialViewDataLoaded', status);
+      Vue.set(state, "initialViewDataLoaded", status);
     },
     setSelectedPlantSize(state, selectedStatus) {
       state.selected.plantSizeMenu = selectedStatus;
@@ -300,7 +300,7 @@ export default new Vuex.Store({
       context.commit("setGuideTitles", guideTitles.data);
       let stepperText = await Vue.axios.get(`${dataBaseUrl}/steppertext`);
       context.commit("setStepperText", stepperText.data);
-      context.commit('setInitialViewDataLoaded', true);
+      context.commit("setInitialViewDataLoaded", true);
     },
     async updateViewLightLevelMenu(context) {
       let lightLevelData = await Vue.axios.get(

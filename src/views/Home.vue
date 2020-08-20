@@ -130,12 +130,7 @@
             </v-row>
           </v-list-item-content>
         </v-list-item>
-        <div class="my-2">
-          <v-btn @click="resetMenuSelection" small>Reset Menu Selection</v-btn>
-        </div>
-        <div class="my-2">
           <v-btn @click="activateFilterResults" small>Filter Results</v-btn>
-        </div>
       </v-list>
     </v-navigation-drawer>
 
@@ -332,9 +327,6 @@ export default {
   methods: {
     onResize() {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight };
-    },
-    resetMenuSelection() {
-      this.$store.commit("setClearMenuSelections");
     },
     async activateFilterResults() {
       await this.filterResults();

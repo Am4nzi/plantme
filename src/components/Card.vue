@@ -105,7 +105,9 @@ export default {
         //mixin filterResults.js
         await this.filterResults();
         await this.$store.dispatch("updateModalActive", false);
-        await this.$store.dispatch("updateModalClosedOnce", true);
+        if (this.getModalClosedOnce === false ) {
+          await this.$store.dispatch("updateModalClosedOnce", true);
+        }
       }
       await this.$router.push({ name: nextRoute });
     }
@@ -116,6 +118,7 @@ export default {
     ...mapGetters(["getMenuTitles"]),
     ...mapGetters(["getPlantsData"]),
     ...mapGetters(["getUserSelectionsForFilter"]),
+    ...mapGetters(["getModalClosedOnce"]),
     hasScrolled() {
       return this.$store.getters.getHasScrolled;
     },

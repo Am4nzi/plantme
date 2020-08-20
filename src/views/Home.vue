@@ -27,9 +27,7 @@
                     outlined
                     label
                     large
-                    @click="
-                      selectItemChip('setPlantSizeMenuSelection');
-                    "
+                    @click="selectItemChip('setPlantSizeMenuSelection')"
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -58,9 +56,7 @@
                     label
                     v-for="item in getMenuData.lightLevel"
                     :key="item.id"
-                    @click="
-                      selectItemChip('setLightLevelMenuSelection');
-                    "
+                    @click="selectItemChip('setLightLevelMenuSelection')"
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -89,9 +85,7 @@
                     large
                     v-for="item in getMenuData.easeOfCare"
                     :key="item.id"
-                    @click="
-                      selectItemChip('setEaseOfCareMenuSelection');
-                    "
+                    @click="selectItemChip('setEaseOfCareMenuSelection')"
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -119,9 +113,7 @@
                     large
                     v-for="item in getMenuData.petSafe"
                     :key="item.id"
-                    @click="
-                      selectItemChip('setPetSafeMenuSelection');
-                    "
+                    @click="selectItemChip('setPetSafeMenuSelection')"
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -130,7 +122,7 @@
             </v-row>
           </v-list-item-content>
         </v-list-item>
-          <v-btn @click="activateFilterResults" small>Filter Results</v-btn>
+        <v-btn @click="activateFilterResults" small>Filter Results</v-btn>
       </v-list>
     </v-navigation-drawer>
 
@@ -251,7 +243,7 @@ export default {
         return this.$store.state.selected.plantSizeMenu;
       },
       set(value) {
-        this.$store.commit("updateSelectedPlantSize", value);
+        this.$store.commit("setSelectedPlantSize", value);
       }
     },
     chipLightLevelMenuSelection: {
@@ -259,8 +251,7 @@ export default {
         return this.$store.state.selected.lightLevelMenu;
       },
       set(value) {
-        console.log('what value?: ', value);
-        this.$store.commit("updateSelectedLightLevel", value);
+        this.$store.commit("setSelectedLightLevel", value);
       }
     },
     easeOfCareMenuSelection: {
@@ -268,7 +259,7 @@ export default {
         return this.$store.state.selected.easeOfCareMenu;
       },
       set(value) {
-        this.$store.commit("updateSelectedEaseOfCare", value);
+        this.$store.commit("setSelectedEaseOfCare", value);
       }
     },
     petSafeMenuSelection: {
@@ -276,7 +267,7 @@ export default {
         return this.$store.state.selected.petSafeMenu;
       },
       set(value) {
-        this.$store.commit("updateSelectedPetSafe", value);
+        this.$store.commit("setSelectedPetSafe", value);
       }
     },
     getMenuData() {

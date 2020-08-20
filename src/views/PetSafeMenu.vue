@@ -86,7 +86,7 @@ export default {
         return this.$store.state.selected.petSafeMenu;
       },
       set(value) {
-        this.$store.commit("updateSelectedPetSafe", value);
+        this.$store.commit("setSelectedPetSafe", value);
       }
     }
   },

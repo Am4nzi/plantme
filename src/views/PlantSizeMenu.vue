@@ -101,7 +101,7 @@ export default {
         return this.$store.state.selected.plantSizeMenu;
       },
       set(value) {
-        this.$store.commit("updateSelectedPlantSize", value);
+        this.$store.commit("setSelectedPlantSize", value);
       }
     },
     getMenuData() {

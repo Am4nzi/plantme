@@ -94,32 +94,117 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    setInitialViewDataLoaded(state, status) {
-      Vue.set(state, "initialViewDataLoaded", status);
+    //Data set on initial loadS********************************
+    setModalActive: (state, modalStatus) =>
+      Vue.set(state, "modal.isActive", modalStatus),
+    setMenuTitles: (state, menuTitles) =>
+      (state.menuTitleStore.menuTitles = menuTitles),
+    setGuideTitles: (state, guideTitles) =>
+      Vue.set(state, "menus.guideTitles", guideTitles),
+    setStepperText: (state, stepperText) =>
+      Vue.set(state, "stepperText", stepperText),
+    setInitialViewDataLoaded: (state, status) =>
+      Vue.set(state, "initialViewDataLoaded", status),
+    //Set Menu Selection OPTIONS********************************
+    setPlantSizeMenuSelectionOptions: (state, plantSizeData) =>
+      (state.menus.plantSize = plantSizeData),
+    setLightLevelMenuSelectionOptions: (state, lightLevelData) =>
+      (state.menus.lightLevel = lightLevelData),
+    setEaseOfCareMenuSelectionOptions: (state, easeOfCareData) =>
+      (state.menus.easeOfCare = easeOfCareData),
+    setPetSafeMenuSelectionOptions: (state, petSafeData) =>
+      (state.menus.petSafe = petSafeData),
+    //Set Menu User Selection INDEXES****************************
+    setPlantSizeMenuUserSelectionIndexes: (state, selectionIndexes) =>
+      (state.userSelectionIndexes.plantSizeMenu = selectionIndexes),
+    setLightLevelUserSelectionIndexes: (state, selectionIndexes) =>
+      (state.userSelectionIndexes.lightLevelMenu = selectionIndexes),
+    setEaseOfCareUserSelectionIndexes: (state, selectionIndexes) =>
+      (state.userSelectionIndexes.easeOfCareMenu = selectionIndexes),
+    setPetSafeUserSelectionIndexes: (state, selectionIndexes) =>
+      (state.userSelectionIndexes.petSafeMenu = selectionIndexes),
+    //Set Menu User Selection TITLES****************************
+    //Titles are linked to index numbers to keep two-way data binding (item-groups and chip-groups) in sync.
+    //TODO Reduce code repetition
+    setPlantSizeMenuUserSelectionTitles: state => {
+      let plantSizeMenuTitles = [];
+      state.userSelectionIndexes.plantSizeMenu.sort();
+      state.userSelectionIndexes.plantSizeMenu.forEach(indexNumber => {
+        switch (indexNumber) {
+          case 0:
+            plantSizeMenuTitles.push(state.menus.plantSize[0].cardtitle);
+            break;
+          case 1:
+            plantSizeMenuTitles.push(state.menus.plantSize[1].cardtitle);
+            break;
+          case 2:
+            plantSizeMenuTitles.push(state.menus.plantSize[2].cardtitle);
+            break;
+          default:
+            return "Error in setPlantSizeMenuUserSelectionTitles";
+        }
+      });
+      state.menuSelections.menuSelection.plantSize.titles = plantSizeMenuTitles;
     },
-    setPlantSizeMenuUserSelectionIndexes(state, selectedStatus) {
-      state.userSelectionIndexes.plantSizeMenu = selectedStatus;
+    setLightLevelMenuUserSelectionTitles: state => {
+      let lightLevelMenuTitles = [];
+      state.userSelectionIndexes.lightLevelMenu.sort();
+      state.userSelectionIndexes.lightLevelMenu.forEach(indexNumber => {
+        switch (indexNumber) {
+          case 0:
+            lightLevelMenuTitles.push(state.menus.lightLevel[0].cardtitle);
+            break;
+          case 1:
+            lightLevelMenuTitles.push(state.menus.lightLevel[1].cardtitle);
+            break;
+          case 2:
+            lightLevelMenuTitles.push(state.menus.lightLevel[2].cardtitle);
+            break;
+          case 3:
+            lightLevelMenuTitles.push(state.menus.lightLevel[3].cardtitle);
+            break;
+          case 4:
+            lightLevelMenuTitles.push(state.menus.lightLevel[4].cardtitle);
+            break;
+          default:
+            return "Error in setPlantSizeMenuUserSelectionTitles";
+        }
+      });
+      state.menuSelections.menuSelection.lightLevel.titles = lightLevelMenuTitles;
     },
-    setLightLevelUserSelectionIndexes(state, selectedStatus) {
-      state.userSelectionIndexes.lightLevelMenu = selectedStatus;
+    setEaseOfCareMenuUserSelectionTitles: state => {
+      let easeOfCareMenuTitles = [];
+      state.userSelectionIndexes.easeOfCareMenu.sort();
+      state.userSelectionIndexes.easeOfCareMenu.forEach(indexNumber => {
+        switch (indexNumber) {
+          case 0:
+            easeOfCareMenuTitles.push(state.menus.easeOfCare[0].cardtitle);
+            break;
+          case 1:
+            easeOfCareMenuTitles.push(state.menus.easeOfCare[1].cardtitle);
+            break;
+          case 2:
+            easeOfCareMenuTitles.push(state.menus.easeOfCare[2].cardtitle);
+            break;
+          default:
+            return "Error in setPlantSizeMenuUserSelectionTitles";
+        }
+      });
+      state.menuSelections.menuSelection.easeOfCare.titles = easeOfCareMenuTitles;
     },
-    setEaseOfCareUserSelectionIndexes(state, selectedStatus) {
-      state.userSelectionIndexes.easeOfCareMenu = selectedStatus;
-    },
-    setPetSafeUserSelectionIndexes(state, selectedStatus) {
-      state.userSelectionIndexes.petSafeMenu = selectedStatus;
-    },
-    setPlantSizeMenuSelectionOptions(state, plantSizeData) {
-      state.menus.plantSize = plantSizeData;
-    },
-    setLightLevelmenuSelectionOptions(state, lightLevelData) {
-      state.menus.lightLevel = lightLevelData;
-    },
-    setEaseOfCareMenuSelectionOptions(state, easeOfCareData) {
-      state.menus.easeOfCare = easeOfCareData;
-    },
-    setPetSafeMenuSelectionOptions(state, petSafeData) {
-      state.menus.petSafe = petSafeData;
+    setPetSafeMenuUserSelectionTitles: state => {
+      let petSafeMenuTitles = [];
+      switch (state.userSelectionIndexes.petSafeMenu) {
+        case 0:
+          petSafeMenuTitles.push(state.menus.petSafe[0].cardtitle);
+          break;
+        case 1:
+          petSafeMenuTitles.push(state.menus.petSafe[1].cardtitle);
+          break;
+        default:
+          return "Error in setPlantSizeMenuUserSelectionTitles";
+      }
+      state.menuSelections.menuSelection.petSafe.titles = petSafeMenuTitles;
     },
     setMenuIndex(state, value) {
       state.menus.indexNumber = value;
@@ -139,18 +224,6 @@ export default new Vuex.Store({
     setStepperHasActivatedPetSafe(state, stepperActiveStatus) {
       state.stepperHasActivated.petSafe = stepperActiveStatus;
     },
-    setGuideTitles(state, guideTitles) {
-      state.menus.guideTitles = guideTitles;
-    },
-    setMenuTitles(state, menuTitles) {
-      state.menuTitleStore.menuTitles = menuTitles;
-    },
-    setStepperText(state, stepperText) {
-      state.stepperText = stepperText;
-    },
-    setModalActive(state, modalStatus) {
-      state.modal.isActive = modalStatus;
-    },
     setModalClosedOnce(state, modalStatus) {
       state.modal.closedOnce = modalStatus;
     },
@@ -159,70 +232,6 @@ export default new Vuex.Store({
     },
     setFilteredSelection(state, filteredSelection) {
       state.filteredSelection = filteredSelection;
-    },
-    setPlantSizeMenuUserSelectionTitles(state) {
-      let plantSizeMenuTitles = [];
-      state.userSelectionIndexes.plantSizeMenu.sort();
-      state.userSelectionIndexes.plantSizeMenu.forEach(element => {
-        if (element === 0) {
-          plantSizeMenuTitles.push("Small");
-        }
-        if (element === 1) {
-          plantSizeMenuTitles.push("Medium");
-        }
-        if (element === 2) {
-          plantSizeMenuTitles.push("Large");
-        }
-      });
-      state.menuSelections.menuSelection.plantSize.titles = plantSizeMenuTitles;
-    },
-    setLightLevelMenuUserSelectionTitles(state) {
-      let lightLevelMenuTitles = [];
-      state.userSelectionIndexes.lightLevelMenu.sort();
-      state.userSelectionIndexes.lightLevelMenu.forEach(element => {
-        if (element === 0) {
-          lightLevelMenuTitles.push("Minimal Light");
-        }
-        if (element === 1) {
-          lightLevelMenuTitles.push("Shade");
-        }
-        if (element === 2) {
-          lightLevelMenuTitles.push("Indirect Light");
-        }
-        if (element === 3) {
-          lightLevelMenuTitles.push("Bright Indirect");
-        }
-        if (element === 4) {
-          lightLevelMenuTitles.push("Bright Direct");
-        }
-      });
-      state.menuSelections.menuSelection.lightLevel.titles = lightLevelMenuTitles;
-    },
-    setEaseOfCareMenuUserSelectionTitles(state) {
-      let easeOfCareMenuTitles = [];
-      state.userSelectionIndexes.easeOfCareMenu.sort();
-      state.userSelectionIndexes.easeOfCareMenu.forEach(element => {
-        if (element === 0) {
-          easeOfCareMenuTitles.push("Easy");
-        }
-        if (element === 1) {
-          easeOfCareMenuTitles.push("Medium");
-        }
-        if (element === 2) {
-          easeOfCareMenuTitles.push("Difficult");
-        }
-      });
-      state.menuSelections.menuSelection.easeOfCare.titles = easeOfCareMenuTitles;
-    },
-    setPetSafeMenuUserSelectionTitles(state) {
-      let petSafeMenuTitles = [];
-      if (state.userSelectionIndexes.petSafeMenu === 0) {
-        petSafeMenuTitles.push("Safe");
-      }
-      if (state.userSelectionIndexes.petSafeMenu === 1) {
-        petSafeMenuTitles.push("Not Important");
-      }
-      state.menuSelections.menuSelection.petSafe.titles = petSafeMenuTitles;
     }
   },
   actions: {
@@ -257,21 +266,21 @@ export default new Vuex.Store({
       context.commit("setPlantLibraryData", plantsData.data);
     },
     async updateInitialViewData(context) {
-      let plantSizeData = await Vue.axios.get(`${dataBaseUrl}/sizemenudata`);
-      context.commit("setPlantSizeMenuSelectionOptions", plantSizeData.data);
       let menuTitles = await Vue.axios.get(`${dataBaseUrl}/menutitles`);
       context.commit("setMenuTitles", menuTitles.data);
       let guideTitles = await Vue.axios.get(`${dataBaseUrl}/guideTitles`);
       context.commit("setGuideTitles", guideTitles.data);
       let stepperText = await Vue.axios.get(`${dataBaseUrl}/steppertext`);
       context.commit("setStepperText", stepperText.data);
+      let plantSizeData = await Vue.axios.get(`${dataBaseUrl}/sizemenudata`);
+      context.commit("setPlantSizeMenuSelectionOptions", plantSizeData.data);
       context.commit("setInitialViewDataLoaded", true);
     },
     async updateViewLightLevelMenu(context) {
       let lightLevelData = await Vue.axios.get(
         `${dataBaseUrl}/lightlevelmenudata`
       );
-      context.commit("setLightLevelmenuSelectionOptions", lightLevelData.data);
+      context.commit("setLightLevelMenuSelectionOptions", lightLevelData.data);
     },
     async updateViewEaseOfCareMenu(context) {
       let easeOfCareData = await Vue.axios.get(

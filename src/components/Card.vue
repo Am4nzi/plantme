@@ -136,28 +136,34 @@ export default {
         this.getMenuIndexNumber + 1
       );
       this.getStepperActiveStep = this.getMenuIndexNumber + 1;
+
       const nextRoute = this.getNextRoute();
       //TODO combine these into fewer dispatches
       //TODO convert to switch statement
-      if (nextRoute === "LightLevelMenu") {
-        this.$store.commit("setMenuIndexNumber", 1);
-        await this.$store.dispatch("updateViewLightLevelMenu");
-      } else if (nextRoute === "EaseOfCareMenu") {
-        this.$store.commit("setMenuIndexNumber", 2);
-        await this.$store.dispatch("updateViewEaseOfCareMenu");
-      } else if (nextRoute === "PetSafeMenu") {
-        this.$store.commit("setMenuIndexNumber", 3);
-        await this.$store.dispatch("updateViewPetSafeMenu");
-      } else {
-        //TODO Only dispatch this once
-        await this.$store.dispatch("updatePlantLibraryData");
-        //mixin filterResults.js
-        await this.filterResults();
-        await this.$store.dispatch("updateModalActive", false);
-        if (this.getModalClosedOnce === false) {
-          await this.$store.dispatch("updateModalClosedOnce", true);
-        }
+      switch (nextRoute) {
+        case "LightLevelMenu":
+          this.$store.commit("setMenuIndexNumber", 1);
+          await this.$store.dispatch("updateViewLightLevelMenu");
+          break;
+        case "EaseOfCareMenu":
+          this.$store.commit("setMenuIndexNumber", 2);
+          await this.$store.dispatch("updateViewEaseOfCareMenu");
+          break;
+        case "PetSafeMenu":
+          this.$store.commit("setMenuIndexNumber", 3);
+          await this.$store.dispatch("updateViewPetSafeMenu");
+          break;
+        default:
+          //TODO Only dispatch this once
+          await this.$store.dispatch("updatePlantLibraryData");
+          //mixin filterResults.js
+          await this.filterResults();
+          await this.$store.dispatch("updateModalActive", false);
+          if (this.getModalClosedOnce === false) {
+            await this.$store.dispatch("updateModalClosedOnce", true);
+          }
       }
+
       await this.$router.push({ name: nextRoute });
     }
   }

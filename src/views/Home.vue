@@ -27,7 +27,9 @@
                     outlined
                     label
                     large
-                    @click="selectItemChip('setPlantSizeMenuUserSelectionTitles')"
+                    @click="
+                      selectItemChip('setPlantSizeMenuUserSelectionTitles')
+                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -56,7 +58,9 @@
                     label
                     v-for="item in getMenuData.lightLevel"
                     :key="item.id"
-                    @click="selectItemChip('setLightLevelMenuUserSelectionTitles')"
+                    @click="
+                      selectItemChip('setLightLevelMenuUserSelectionTitles')
+                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -85,7 +89,9 @@
                     large
                     v-for="item in getMenuData.easeOfCare"
                     :key="item.id"
-                    @click="selectItemChip('setEaseOfCareMenuUserSelectionTitles')"
+                    @click="
+                      selectItemChip('setEaseOfCareMenuUserSelectionTitles')
+                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -179,15 +185,8 @@
                   :max-width="imageWidth"
                   height="[385]"
                 >
-                  <v-hover v-slot:default="{ hover }">
-                    <v-img :src="plant.image" height="385" class="align-end">
-                      <v-card color="primary" tile>
-                        <v-card-title v-if="hover">
-                          {{ plant.name }}
-                        </v-card-title>
-                      </v-card>
-                    </v-img>
-                  </v-hover>
+                  <v-img :src="plant.image" height="385" class="align-end">
+                  </v-img>
                 </v-card>
               </v-item>
               <h6 class="text-center mt-2 mb-8">

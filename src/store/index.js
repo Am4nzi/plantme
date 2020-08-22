@@ -45,9 +45,6 @@ export default new Vuex.Store({
       closedOnce: false
     },
     plantsData: {},
-    plantsDataSingleArray: {
-      name: ""
-    },
     stepperActiveStep: 1,
     stepperStepNumber: 4,
     stepperText: [],

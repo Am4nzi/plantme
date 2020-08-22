@@ -5,8 +5,8 @@ export default {
       for (const property in this.getPlantsData) {
         if (
           this.getPlantsData[property].properties.some(
-            sizeProperty =>
-              this.getMenuSelection.plantSize.titles.indexOf(sizeProperty) >= 0
+            plantSizeProperty =>
+              this.getMenuSelection.plantSize.titles.indexOf(plantSizeProperty) >= 0
           ) &&
           this.getPlantsData[property].properties.some(
             lightLevelProperty =>
@@ -22,7 +22,9 @@ export default {
           ) &&
           this.getPlantsData[property].properties.some(
             petSafeProperty =>
-              this.getMenuSelection.petSafe.titles.indexOf(petSafeProperty) >= 0
+              this.getMenuSelection.petSafe.titles.indexOf(
+                  petSafeProperty
+              ) >= 0
           )
         ) {
           filtered[property] = this.getPlantsData[property];

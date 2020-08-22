@@ -208,7 +208,7 @@ export default new Vuex.Store({
     },
     setPetSafeMenuUserSelectionTitles: state => {
       let petSafeMenuTitles = [];
-      switch (state.userSelections.indexes.petSafe) {
+      switch (state.userSelections.indexes.petSafeMenu) {
         case 0:
           petSafeMenuTitles.push(state.menuData.petSafe[0].cardtitle);
           break;

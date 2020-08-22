@@ -33,25 +33,13 @@ export default new Vuex.Store({
         easeOfCareMenu: [],
         petSafeMenu: null
       },
-      easeOfCare: {
-        titles: [],
-        indexes: []
+      titles: {
+        plantSizeMenu: [],
+        lightLevelMenu: [],
+        easeOfCareMenu: [],
+        petSafeMenu: []
       },
-      lightLevel: {
-        titles: [],
-        indexes: []
-      },
-      petSafe: {
-        titles: [],
-        indexes: null,
-        indexArray: []
-      },
-      plantSize: {
-        titles: [],
-        indexes: []
-      }
     },
-    menuTitles: [],
     modal: {
       isActive: true,
       closedOnce: false
@@ -82,7 +70,7 @@ export default new Vuex.Store({
     getMenuIndexNumber: function(state) {
       return state.menuData.indexNumber;
     },
-    getMenuSelection: function(state) {
+      getUserSelections: function(state) {
       return state.userSelections;
     },
     getStepperActiveStep: function(state) {
@@ -158,7 +146,7 @@ export default new Vuex.Store({
             return "Error in setPlantSizeMenuUserSelectionTitles";
         }
       });
-      state.userSelections.plantSize.titles = plantSizeMenuTitles;
+      state.userSelections.titles.plantSizeMenu = plantSizeMenuTitles;
     },
     setLightLevelMenuUserSelectionTitles: state => {
       let lightLevelMenuTitles = [];
@@ -184,7 +172,7 @@ export default new Vuex.Store({
             return "Error in setPlantSizeMenuUserSelectionTitles";
         }
       });
-      state.userSelections.lightLevel.titles = lightLevelMenuTitles;
+      state.userSelections.titles.lightLevelMenu = lightLevelMenuTitles;
     },
     setEaseOfCareMenuUserSelectionTitles: state => {
       let easeOfCareMenuTitles = [];
@@ -204,7 +192,7 @@ export default new Vuex.Store({
             return "Error in setPlantSizeMenuUserSelectionTitles";
         }
       });
-      state.userSelections.easeOfCare.titles = easeOfCareMenuTitles;
+      state.userSelections.titles.easeOfCareMenu = easeOfCareMenuTitles;
     },
     setPetSafeMenuUserSelectionTitles: state => {
       let petSafeMenuTitles = [];
@@ -218,7 +206,7 @@ export default new Vuex.Store({
         default:
           return "Error in setPlantSizeMenuUserSelectionTitles";
       }
-      state.userSelections.petSafe.titles = petSafeMenuTitles;
+      state.userSelections.titles.petSafeMenu = petSafeMenuTitles;
     },
     setMenuIndexNumber: (state, indexNumber) => {
       state.menuData.indexNumber = indexNumber;

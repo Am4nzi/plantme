@@ -40,7 +40,7 @@ export default {
     userSelections: []
   }),
   computed: {
-    ...mapGetters(["getMenuSelection"]),
+    ...mapGetters(["getUserSelections"]),
     ...mapGetters(["getMenuTitles"]),
     ...mapGetters(["getPlantsData"]),
     ...mapGetters(["getUserSelectionsForFilter"]),

@@ -96,7 +96,7 @@ export default {
   }),
   computed: {
     ...mapGetters(["getModalClosedOnce"]),
-    ...mapGetters(["getMenuSelection"]),
+    ...mapGetters(["getUserSelections"]),
     plantSizeMenuSelection: {
       get() {
         return this.$store.state.userSelections.indexes.plantSizeMenu;

@@ -78,7 +78,7 @@ export default {
   }),
   computed: {
     ...mapGetters(["getMenuData"]),
-    ...mapGetters(["getMenuSelection"]),
+    ...mapGetters(["getUserSelections"]),
     ...mapGetters(["getModalClosedOnce"]),
     petSafeMenuSelection: {
       get() {

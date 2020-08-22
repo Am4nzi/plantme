@@ -6,24 +6,26 @@ export default {
         if (
           this.getPlantsData[property].properties.some(
             plantSizeProperty =>
-              this.getMenuSelection.plantSize.titles.indexOf(plantSizeProperty) >= 0
+              this.getUserSelections.titles.plantSizeMenu.indexOf(
+                plantSizeProperty
+              ) >= 0
           ) &&
           this.getPlantsData[property].properties.some(
             lightLevelProperty =>
-              this.getMenuSelection.lightLevel.titles.indexOf(
+              this.getUserSelections.titles.lightLevelMenu.indexOf(
                 lightLevelProperty
               ) >= 0
           ) &&
           this.getPlantsData[property].properties.some(
             easeOfCareProperty =>
-              this.getMenuSelection.easeOfCare.titles.indexOf(
+              this.getUserSelections.titles.easeOfCareMenu.indexOf(
                 easeOfCareProperty
               ) >= 0
           ) &&
           this.getPlantsData[property].properties.some(
             petSafeProperty =>
-              this.getMenuSelection.petSafe.titles.indexOf(
-                  petSafeProperty
+              this.getUserSelections.titles.petSafeMenu.indexOf(
+                petSafeProperty
               ) >= 0
           )
         ) {

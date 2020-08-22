@@ -86,7 +86,7 @@ export default {
     ...mapGetters(["getModalClosedOnce"]),
     easeOfCareMenuSelection: {
       get() {
-        return this.$store.state.userSelectionIndexes.easeOfCareMenu;
+        return this.$store.state.userSelections.indexes.easeOfCareMenu;
       },
       set(value) {
         this.$store.commit("setEaseOfCareUserSelectionIndexes", value);

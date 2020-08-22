@@ -98,7 +98,7 @@ export default {
     ...mapGetters(["getModalClosedOnce"]),
     lightLevelMenuSelection: {
       get() {
-        return this.$store.state.userSelectionIndexes.lightLevelMenu;
+        return this.$store.state.userSelections.indexes.lightLevelMenu;
       },
       set(value) {
         this.$store.commit("setLightLevelUserSelectionIndexes", value);

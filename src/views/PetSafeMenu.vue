@@ -82,7 +82,7 @@ export default {
     ...mapGetters(["getModalClosedOnce"]),
     petSafeMenuSelection: {
       get() {
-        return this.$store.state.userSelectionIndexes.petSafeMenu;
+        return this.$store.state.userSelections.indexes.petSafeMenu;
       },
       set(value) {
         this.$store.commit("setPetSafeUserSelectionIndexes", value);

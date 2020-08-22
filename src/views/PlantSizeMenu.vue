@@ -99,7 +99,7 @@ export default {
     ...mapGetters(["getMenuSelection"]),
     plantSizeMenuSelection: {
       get() {
-        return this.$store.state.userSelectionIndexes.plantSizeMenu;
+        return this.$store.state.userSelections.indexes.plantSizeMenu;
       },
       set(value) {
         this.$store.commit("setPlantSizeMenuUserSelectionIndexes", value);

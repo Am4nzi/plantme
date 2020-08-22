@@ -26,7 +26,13 @@ export default new Vuex.Store({
       menuTitles: [],
       guideTitles: []
     },
-    menuSelections: {
+    userSelections: {
+      indexes: {
+        plantSizeMenu: [],
+        lightLevelMenu: [],
+        easeOfCareMenu: [],
+        petSafeMenu: null
+      },
       easeOfCare: {
         titles: [],
         indexes: []
@@ -57,21 +63,15 @@ export default new Vuex.Store({
     stepperActiveStep: 1,
     stepperStepNumber: 4,
     stepperText: [],
-    userSelectionIndexes: {
-      plantSizeMenu: [],
-      lightLevelMenu: [],
-      easeOfCareMenu: [],
-      petSafeMenu: null
-    },
   },
   getters: {
     initialViewDataLoaded: state => state.initialViewDataLoaded,
     getMenuTitles: state => state.menuData.menuTitles,
     getUserSelectionsForFilter: function(state) {
-      return state.userSelectionIndexes;
+      return state.userSelections.indexes;
     },
     getUserSelectionIndexes: function(state) {
-      return state.userSelectionIndexes;
+      return state.userSelections.indexes;
     },
     getHasScrolled: function(state) {
       return state.hasScrolled;
@@ -83,7 +83,7 @@ export default new Vuex.Store({
       return state.menuData.indexNumber;
     },
     getMenuSelection: function(state) {
-      return state.menuSelections;
+      return state.userSelections;
     },
     getStepperActiveStep: function(state) {
       return state.stepperActiveStep;
@@ -130,20 +130,20 @@ export default new Vuex.Store({
       (state.menuData.petSafe = petSafeData),
     //Set Menu User Selection INDEXES****************************
     setPlantSizeMenuUserSelectionIndexes: (state, selectionIndexes) =>
-      (state.userSelectionIndexes.plantSizeMenu = selectionIndexes),
+      (state.userSelections.indexes.plantSizeMenu = selectionIndexes),
     setLightLevelUserSelectionIndexes: (state, selectionIndexes) =>
-      (state.userSelectionIndexes.lightLevelMenu = selectionIndexes),
+      (state.userSelections.indexes.lightLevelMenu = selectionIndexes),
     setEaseOfCareUserSelectionIndexes: (state, selectionIndexes) =>
-      (state.userSelectionIndexes.easeOfCareMenu = selectionIndexes),
+      (state.userSelections.indexes.easeOfCareMenu = selectionIndexes),
     setPetSafeUserSelectionIndexes: (state, selectionIndexes) =>
-      (state.userSelectionIndexes.petSafeMenu = selectionIndexes),
+      (state.userSelections.indexes.petSafeMenu = selectionIndexes),
     //Set Menu User Selection TITLES****************************
     //Titles are linked to index numbers to keep two-way data binding (item-groups and chip-groups) in sync.
     //TODO Reduce code repetition
     setPlantSizeMenuUserSelectionTitles: state => {
       let plantSizeMenuTitles = [];
-      state.userSelectionIndexes.plantSizeMenu.sort();
-      state.userSelectionIndexes.plantSizeMenu.forEach(indexNumber => {
+      state.userSelections.indexes.plantSizeMenu.sort();
+      state.userSelections.indexes.plantSizeMenu.forEach(indexNumber => {
         switch (indexNumber) {
           case 0:
             plantSizeMenuTitles.push(state.menuData.plantSize[0].cardtitle);
@@ -158,12 +158,12 @@ export default new Vuex.Store({
             return "Error in setPlantSizeMenuUserSelectionTitles";
         }
       });
-      state.menuSelections.plantSize.titles = plantSizeMenuTitles;
+      state.userSelections.plantSize.titles = plantSizeMenuTitles;
     },
     setLightLevelMenuUserSelectionTitles: state => {
       let lightLevelMenuTitles = [];
-      state.userSelectionIndexes.lightLevelMenu.sort();
-      state.userSelectionIndexes.lightLevelMenu.forEach(indexNumber => {
+      state.userSelections.indexes.lightLevelMenu.sort();
+      state.userSelections.indexes.lightLevelMenu.forEach(indexNumber => {
         switch (indexNumber) {
           case 0:
             lightLevelMenuTitles.push(state.menuData.lightLevel[0].cardtitle);
@@ -184,12 +184,12 @@ export default new Vuex.Store({
             return "Error in setPlantSizeMenuUserSelectionTitles";
         }
       });
-      state.menuSelections.lightLevel.titles = lightLevelMenuTitles;
+      state.userSelections.lightLevel.titles = lightLevelMenuTitles;
     },
     setEaseOfCareMenuUserSelectionTitles: state => {
       let easeOfCareMenuTitles = [];
-      state.userSelectionIndexes.easeOfCareMenu.sort();
-      state.userSelectionIndexes.easeOfCareMenu.forEach(indexNumber => {
+      state.userSelections.indexes.easeOfCareMenu.sort();
+      state.userSelections.indexes.easeOfCareMenu.forEach(indexNumber => {
         switch (indexNumber) {
           case 0:
             easeOfCareMenuTitles.push(state.menuData.easeOfCare[0].cardtitle);
@@ -204,11 +204,11 @@ export default new Vuex.Store({
             return "Error in setPlantSizeMenuUserSelectionTitles";
         }
       });
-      state.menuSelections.easeOfCare.titles = easeOfCareMenuTitles;
+      state.userSelections.easeOfCare.titles = easeOfCareMenuTitles;
     },
     setPetSafeMenuUserSelectionTitles: state => {
       let petSafeMenuTitles = [];
-      switch (state.userSelectionIndexes.petSafeMenu) {
+      switch (state.userSelections.indexes.petSafe) {
         case 0:
           petSafeMenuTitles.push(state.menuData.petSafe[0].cardtitle);
           break;
@@ -218,7 +218,7 @@ export default new Vuex.Store({
         default:
           return "Error in setPlantSizeMenuUserSelectionTitles";
       }
-      state.menuSelections.petSafe.titles = petSafeMenuTitles;
+      state.userSelections.petSafe.titles = petSafeMenuTitles;
     },
     setMenuIndexNumber: (state, indexNumber) => {
       state.menuData.indexNumber = indexNumber;

@@ -313,6 +313,7 @@ export default {
     }
   },
   mounted() {
+    console.log('getModalStatus:, ', this.getModalStatus);
     this.onResize();
   },
   methods: {

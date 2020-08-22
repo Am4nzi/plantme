@@ -96,7 +96,7 @@ export default new Vuex.Store({
   mutations: {
     //Data set on initial loadS********************************
     setModalActive: (state, modalStatus) =>
-      Vue.set(state, "modal.isActive", modalStatus),
+      (state.modal.isActive = modalStatus),
     setMenuTitles: (state, menuTitles) =>
       (state.menuTitleStore.menuTitles = menuTitles),
     setGuideTitles: (state, guideTitles) =>

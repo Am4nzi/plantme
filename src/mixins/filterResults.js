@@ -28,7 +28,7 @@ export default {
           filtered[property] = this.getPlantsData[property];
         }
       }
-      await this.$store.dispatch("updateFilteredSelection", filtered);
+      await this.$store.dispatch("updateFilteredResults", filtered);
     }
   }
 };

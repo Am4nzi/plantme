@@ -17,8 +17,7 @@ export default new Vuex.Store({
     filteredResults: {},
     hasScrolled: false,
     initialViewDataLoaded: false,
-    menus: {
-      currentMenu: [],
+    menuData: {
       plantSize: [],
       lightLevel: [],
       easeOfCare: [],
@@ -67,7 +66,7 @@ export default new Vuex.Store({
   },
   getters: {
     initialViewDataLoaded: state => state.initialViewDataLoaded,
-    getMenuTitles: state => state.menuTitleStore.menuTitles,
+    getMenuTitles: state => state.menuData.menuTitles,
     getUserSelectionsForFilter: function(state) {
       return state.userSelectionIndexes;
     },
@@ -78,10 +77,10 @@ export default new Vuex.Store({
       return state.hasScrolled;
     },
     getMenuData: function(state) {
-      return state.menus;
+      return state.menuData;
     },
     getMenuIndexNumber: function(state) {
-      return state.menus.indexNumber;
+      return state.menuData.indexNumber;
     },
     getMenuSelection: function(state) {
       return state.menuSelections;
@@ -113,7 +112,7 @@ export default new Vuex.Store({
     setModalActive: (state, modalStatus) =>
       (state.modal.isActive = modalStatus),
     setMenuTitles: (state, menuTitles) =>
-      (state.menuTitleStore.menuTitles = menuTitles),
+      (state.menuData.menuTitles = menuTitles),
     setGuideTitles: (state, guideTitles) =>
       Vue.set(state, "menus.guideTitles", guideTitles),
     setStepperText: (state, stepperText) =>
@@ -122,13 +121,13 @@ export default new Vuex.Store({
       Vue.set(state, "initialViewDataLoaded", status),
     //Set Menu Selection OPTIONS********************************
     setPlantSizeMenuSelectionOptions: (state, plantSizeData) =>
-      (state.menus.plantSize = plantSizeData),
+      (state.menuData.plantSize = plantSizeData),
     setLightLevelMenuSelectionOptions: (state, lightLevelData) =>
-      (state.menus.lightLevel = lightLevelData),
+      (state.menuData.lightLevel = lightLevelData),
     setEaseOfCareMenuSelectionOptions: (state, easeOfCareData) =>
-      (state.menus.easeOfCare = easeOfCareData),
+      (state.menuData.easeOfCare = easeOfCareData),
     setPetSafeMenuSelectionOptions: (state, petSafeData) =>
-      (state.menus.petSafe = petSafeData),
+      (state.menuData.petSafe = petSafeData),
     //Set Menu User Selection INDEXES****************************
     setPlantSizeMenuUserSelectionIndexes: (state, selectionIndexes) =>
       (state.userSelectionIndexes.plantSizeMenu = selectionIndexes),
@@ -147,13 +146,13 @@ export default new Vuex.Store({
       state.userSelectionIndexes.plantSizeMenu.forEach(indexNumber => {
         switch (indexNumber) {
           case 0:
-            plantSizeMenuTitles.push(state.menus.plantSize[0].cardtitle);
+            plantSizeMenuTitles.push(state.menuData.plantSize[0].cardtitle);
             break;
           case 1:
-            plantSizeMenuTitles.push(state.menus.plantSize[1].cardtitle);
+            plantSizeMenuTitles.push(state.menuData.plantSize[1].cardtitle);
             break;
           case 2:
-            plantSizeMenuTitles.push(state.menus.plantSize[2].cardtitle);
+            plantSizeMenuTitles.push(state.menuData.plantSize[2].cardtitle);
             break;
           default:
             return "Error in setPlantSizeMenuUserSelectionTitles";
@@ -167,19 +166,19 @@ export default new Vuex.Store({
       state.userSelectionIndexes.lightLevelMenu.forEach(indexNumber => {
         switch (indexNumber) {
           case 0:
-            lightLevelMenuTitles.push(state.menus.lightLevel[0].cardtitle);
+            lightLevelMenuTitles.push(state.menuData.lightLevel[0].cardtitle);
             break;
           case 1:
-            lightLevelMenuTitles.push(state.menus.lightLevel[1].cardtitle);
+            lightLevelMenuTitles.push(state.menuData.lightLevel[1].cardtitle);
             break;
           case 2:
-            lightLevelMenuTitles.push(state.menus.lightLevel[2].cardtitle);
+            lightLevelMenuTitles.push(state.menuData.lightLevel[2].cardtitle);
             break;
           case 3:
-            lightLevelMenuTitles.push(state.menus.lightLevel[3].cardtitle);
+            lightLevelMenuTitles.push(state.menuData.lightLevel[3].cardtitle);
             break;
           case 4:
-            lightLevelMenuTitles.push(state.menus.lightLevel[4].cardtitle);
+            lightLevelMenuTitles.push(state.menuData.lightLevel[4].cardtitle);
             break;
           default:
             return "Error in setPlantSizeMenuUserSelectionTitles";
@@ -193,13 +192,13 @@ export default new Vuex.Store({
       state.userSelectionIndexes.easeOfCareMenu.forEach(indexNumber => {
         switch (indexNumber) {
           case 0:
-            easeOfCareMenuTitles.push(state.menus.easeOfCare[0].cardtitle);
+            easeOfCareMenuTitles.push(state.menuData.easeOfCare[0].cardtitle);
             break;
           case 1:
-            easeOfCareMenuTitles.push(state.menus.easeOfCare[1].cardtitle);
+            easeOfCareMenuTitles.push(state.menuData.easeOfCare[1].cardtitle);
             break;
           case 2:
-            easeOfCareMenuTitles.push(state.menus.easeOfCare[2].cardtitle);
+            easeOfCareMenuTitles.push(state.menuData.easeOfCare[2].cardtitle);
             break;
           default:
             return "Error in setPlantSizeMenuUserSelectionTitles";
@@ -211,10 +210,10 @@ export default new Vuex.Store({
       let petSafeMenuTitles = [];
       switch (state.userSelectionIndexes.petSafeMenu) {
         case 0:
-          petSafeMenuTitles.push(state.menus.petSafe[0].cardtitle);
+          petSafeMenuTitles.push(state.menuData.petSafe[0].cardtitle);
           break;
         case 1:
-          petSafeMenuTitles.push(state.menus.petSafe[1].cardtitle);
+          petSafeMenuTitles.push(state.menuData.petSafe[1].cardtitle);
           break;
         default:
           return "Error in setPlantSizeMenuUserSelectionTitles";
@@ -222,7 +221,7 @@ export default new Vuex.Store({
       state.menuSelections.petSafe.titles = petSafeMenuTitles;
     },
     setMenuIndexNumber: (state, indexNumber) => {
-      state.menus.indexNumber = indexNumber;
+      state.menuData.indexNumber = indexNumber;
     },
     setStepperActiveStep: (state, stepNumber) => {
       state.stepperActiveStep = stepNumber;

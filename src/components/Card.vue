@@ -154,10 +154,14 @@ export default {
           await this.$store.dispatch("updateViewPetSafeMenu");
           break;
         default:
-          //TODO Only dispatch this once
-          await this.$store.dispatch("updatePlantLibraryData");
+
+          if (!this.getModalClosedOnce) {
+            await this.$store.dispatch("updatePlantLibraryData");
+          }
+
           //mixin filterResults.js
           await this.filterResults();
+
           await this.$store.dispatch("updateModalActive", false);
           if (this.getModalClosedOnce === false) {
             await this.$store.dispatch("updateModalClosedOnce", true);

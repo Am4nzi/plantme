@@ -221,7 +221,7 @@ export default new Vuex.Store({
       Vue.set(state, "plantsData", plantsData);
     },
     setModalClosedOnce: (state, modalStatus) => {
-      Vue.set(state, "modal.closedOnce", modalStatus);
+      state.modal.closedOnce = modalStatus;
     },
     setFilteredResults: (state, filteredResults) => {
       Vue.set(state, "filteredResults", filteredResults);

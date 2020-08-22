@@ -42,9 +42,10 @@ export default {
   },
 
   methods: {
-    async navigateToMenu(n) {
-      await this.$store.dispatch("updateMenuIndexNumber", n - 1);
-      switch (n) {
+    async navigateToMenu(stepNumber) {
+      //-1 because Vuetify index starts at 1 but menu index number starts at 0
+      await this.$store.dispatch("updateMenuIndexNumber", stepNumber - 1);
+      switch (stepNumber) {
         case 1:
           await this.$store.dispatch("updateViewPlantSizeMenu");
           await this.$router.push("plant-size");

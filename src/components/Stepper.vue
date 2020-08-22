@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-stepper v-model="getStepperActiveStep">
+    <v-stepper v-model="getStepperActiveStep" class="elevation-0">
       <v-stepper-header>
         <template v-for="stepNumber in getStepperStepNumber">
           <v-stepper-step

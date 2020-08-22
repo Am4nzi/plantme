@@ -4,10 +4,6 @@ import Vuex from "vuex";
 //createPersistedState preserves state on refresh
 import createPersistedState from "vuex-persistedstate";
 
-//Data that requires persistence is stored separately in below modules
-import menuSelections from "./modules/menuSelections";
-import menuTitleStore from "./modules/menuTitleStore";
-
 Vue.use(Vuex);
 
 let dataBaseUrl = "";
@@ -18,17 +14,9 @@ if (window.location.href.includes("localhost")) {
 
 export default new Vuex.Store({
   state: {
-    initialViewDataLoaded: false,
-    userSelectionIndexes: {
-      plantSizeMenu: [],
-      lightLevelMenu: [],
-      easeOfCareMenu: [],
-      petSafeMenu: null
-    },
+    filteredSelection: {},
     hasScrolled: false,
-    stepperText: [],
-    stepperActiveStep: 1,
-    stepperStepNumber: 4,
+    initialViewDataLoaded: false,
     menus: {
       currentMenu: [],
       plantSize: [],
@@ -39,6 +27,26 @@ export default new Vuex.Store({
       menuTitles: [],
       guideTitles: []
     },
+    menuSelections: {
+      easeOfCare: {
+        titles: [],
+        indexes: []
+      },
+      lightLevel: {
+        titles: [],
+        indexes: []
+      },
+      petSafe: {
+        titles: [],
+        indexes: null,
+        indexArray: []
+      },
+      plantSize: {
+        titles: [],
+        indexes: []
+      }
+    },
+    menuTitles: [],
     modal: {
       isActive: true,
       closedOnce: false
@@ -47,7 +55,15 @@ export default new Vuex.Store({
     plantsDataSingleArray: {
       name: ""
     },
-    filteredSelection: {}
+    stepperActiveStep: 1,
+    stepperStepNumber: 4,
+    stepperText: [],
+    userSelectionIndexes: {
+      plantSizeMenu: [],
+      lightLevelMenu: [],
+      easeOfCareMenu: [],
+      petSafeMenu: null
+    },
   },
   getters: {
     initialViewDataLoaded: state => state.initialViewDataLoaded,
@@ -274,10 +290,6 @@ export default new Vuex.Store({
       let petSafeData = await Vue.axios.get(`${dataBaseUrl}/petsafemenudata`);
       context.commit("setPetSafeMenuSelectionOptions", petSafeData.data);
     }
-  },
-  modules: {
-    menuSelections,
-    menuTitleStore
   },
   plugins: [createPersistedState()]
 });

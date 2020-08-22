@@ -49,6 +49,7 @@ export default new Vuex.Store({
     stepperStepNumber: 4,
     stepperText: []
   },
+
   getters: {
     initialViewDataLoaded: state => state.initialViewDataLoaded,
     getMenuTitles: state => state.menuData.menuTitles,
@@ -92,6 +93,7 @@ export default new Vuex.Store({
       return state.filteredResults;
     }
   },
+
   mutations: {
     //Data set on initial loadS********************************
     setModalActive: (state, modalStatus) =>
@@ -228,6 +230,7 @@ export default new Vuex.Store({
       state.hasScrolled = scrollStatus;
     }
   },
+
   actions: {
     updateHasScrolled(context, scrollStatus) {
       context.commit("setHasScrolled", scrollStatus);

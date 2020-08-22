@@ -51,44 +51,20 @@ export default new Vuex.Store({
   },
 
   getters: {
-    initialViewDataLoaded: state => state.initialViewDataLoaded,
+    getFilteredResults: state => state.filteredResults,
+    getHasScrolled: state => state.hasScrolled,
+    getMenuData: state => state.menuData,
+    getMenuIndexNumber: state => state.menuData.indexNumber,
     getMenuTitles: state => state.menuData.menuTitles,
-    getUserSelectionIndexes: function(state) {
-      return state.userSelections.indexes;
-    },
-    getHasScrolled: function(state) {
-      return state.hasScrolled;
-    },
-    getMenuData: function(state) {
-      return state.menuData;
-    },
-    getMenuIndexNumber: function(state) {
-      return state.menuData.indexNumber;
-    },
-    getUserSelections: function(state) {
-      return state.userSelections;
-    },
-    getStepperActiveStep: function(state) {
-      return state.stepperActiveStep;
-    },
-    getStepperStepNumber: function(state) {
-      return state.stepperStepNumber;
-    },
-    getStepperText: function(state) {
-      return state.stepperText;
-    },
-    getModalStatus: function(state) {
-      return state.modal.isActive;
-    },
-    getModalClosedOnce: function(state) {
-      return state.modal.closedOnce;
-    },
-    getPlantsData: function(state) {
-      return state.plantsData;
-    },
-    getFilteredResults: function(state) {
-      return state.filteredResults;
-    }
+    getModalClosedOnce: state => state.modal.closedOnce,
+    getModalStatus: state => state.modal.isActive,
+    getPlantsData: state => state.plantsData,
+    getStepperActiveStep: state => state.stepperActiveStep,
+    getStepperStepNumber: state => state.stepperStepNumber,
+    getStepperText: state => state.stepperText,
+    getUserSelectionIndexes: state => state.userSelections.indexes,
+    getUserSelections: state => state.userSelections,
+    initialViewDataLoaded: state => state.initialViewDataLoaded
   },
 
   mutations: {

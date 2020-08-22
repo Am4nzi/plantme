@@ -11,7 +11,7 @@
           color="grey darken-3"
           editable
           step="1"
-          :complete="menuIndex > 1"
+          :complete="menuIndex > 0"
           @click="navigateToPlantSizeMenu"
         >
           {{ getStepperText[0].text }}
@@ -23,7 +23,7 @@
           color="grey darken-3"
           :editable="toggleLightLevelEditable ? true : false"
           step="2"
-          :complete="menuIndex > 2"
+          :complete="menuIndex > 1"
           @click="navigateToLightLevelMenu"
         >
           {{ getStepperText[1].text }}
@@ -35,7 +35,7 @@
           color="grey darken-3"
           :editable="toggleEaseOfCareEditable ? true : false"
           step="3"
-          :complete="menuIndex > 3"
+          :complete="menuIndex > 2"
           @click="navigateToEaseOfCareMenu"
         >
           {{ getStepperText[2].text }}
@@ -45,7 +45,7 @@
           color="grey darken-3"
           :editable="togglePetSafeEditable ? true : false"
           step="4"
-          :complete="menuIndex > 4"
+          :complete="menuIndex > 3"
           @click="navigateToPetSafeMenu"
         >
           {{ getStepperText[3].text }}
@@ -78,24 +78,25 @@ export default {
     },
     toggleLightLevelEditable() {
       if (
+        this.menuIndexNumber === 1 ||
         this.menuIndexNumber === 2 ||
-        this.menuIndexNumber === 3 ||
-        this.menuIndexNumber === 4
+        this.menuIndexNumber === 3
       ) {
+        console.log('GOT HERE!');
         return true;
       } else {
         return false;
       }
     },
     toggleEaseOfCareEditable() {
-      if (this.menuIndexNumber === 3 || this.menuIndexNumber === 4) {
+      if (this.menuIndexNumber === 2 || this.menuIndexNumber === 3) {
         return true;
       } else {
         return false;
       }
     },
     togglePetSafeEditable() {
-      if (this.menuIndexNumber === 4) {
+      if (this.menuIndexNumber === 3) {
         return true;
       } else {
         return false;

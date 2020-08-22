@@ -38,7 +38,7 @@ export default new Vuex.Store({
       lightLevel: [],
       easeOfCare: [],
       petSafe: [],
-      indexNumber: 0,
+      indexNumber: 0  ,
       menuTitles: [],
       guideTitles: []
     },

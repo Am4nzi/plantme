@@ -21,13 +21,13 @@ export default {
     menuTitle() {
       if (this.initialViewDataLoaded) {
         switch (this.getMenuIndexNumber) {
-          case 1:
+          case 0:
             return this.getMenuTitles[0].menutitle;
-          case 2:
+          case 1:
             return this.getMenuTitles[1].menutitle;
-          case 3:
+          case 2:
             return this.getMenuTitles[2].menutitle;
-          case 4:
+          case 3:
             return this.getMenuTitles[3].menutitle;
           default:
             return "Error in menuTitle";

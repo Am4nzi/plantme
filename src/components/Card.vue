@@ -90,15 +90,15 @@ export default {
       if (nextRoute === "LightLevelMenu") {
         await this.$store.dispatch("updateViewLightLevelMenu");
         await this.$store.dispatch("updateStepperHasActivated", "lightLevel");
-        this.$store.commit("setMenuIndex", 2);
+        this.$store.commit("setMenuIndexNumber", 1);
       } else if (nextRoute === "EaseOfCareMenu") {
         await this.$store.dispatch("updateViewEaseOfCareMenu");
         await this.$store.dispatch("updateStepperHasActivated", "easeOfCare");
-        this.$store.commit("setMenuIndex", 3);
+        this.$store.commit("setMenuIndexNumber", 2);
       } else if (nextRoute === "PetSafeMenu") {
         await this.$store.dispatch("updateViewPetSafeMenu");
         await this.$store.dispatch("updateStepperHasActivated", "petSafe");
-        this.$store.commit("setMenuIndex", 4);
+        this.$store.commit("setMenuIndexNumber", 3);
       } else {
         //TODO Only dispatch this once
         await this.$store.dispatch("updatePlantLibraryData");

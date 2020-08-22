@@ -38,7 +38,7 @@ export default new Vuex.Store({
       lightLevel: [],
       easeOfCare: [],
       petSafe: [],
-      indexNumber: 1,
+      indexNumber: 0,
       menuTitles: [],
       guideTitles: []
     },
@@ -203,8 +203,8 @@ export default new Vuex.Store({
       }
       state.menuSelections.petSafe.titles = petSafeMenuTitles;
     },
-    setMenuIndex: (state, indexNumber) => {
-      Vue.set(state, "menus.indexNumber", indexNumber);
+    setMenuIndexNumber: (state, indexNumber) => {
+      (state.menus.indexNumber = indexNumber);
     },
     setStepperHasActivatedPlantSize: (state, stepperActiveStatus) => {
       state.stepperHasActivated.plantSize = stepperActiveStatus;

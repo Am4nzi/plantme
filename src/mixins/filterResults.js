@@ -1,7 +1,7 @@
-let filtered = {};
 export default {
   methods: {
     async filterResults() {
+      let filtered = {};
       for (const property in this.getPlantsData) {
         if (
           this.getPlantsData[property].properties.some(

@@ -129,6 +129,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-btn @click="activateFilterResults" small>Filter Results</v-btn>
+        <v-btn  @click="openModal"> Open Modal </v-btn>
       </v-list>
     </v-navigation-drawer>
 
@@ -320,6 +321,10 @@ export default {
     },
     async activateFilterResults() {
       await this.filterResults();
+    },
+    openModal() {
+      this.$store.dispatch("updateModalActive", true);
+      this.$router.push({ name: "PetSafeMenu" });
     }
   }
 };

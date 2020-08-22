@@ -119,9 +119,6 @@ export default {
           return "PetSafeMenu";
         case "PetSafeMenu":
           return "Home";
-        default:
-          alert("Note from developer: Results page is still in development.");
-          return "PetSafeMenu";
       }
     },
     async nextStep() {
@@ -138,8 +135,7 @@ export default {
       this.getStepperActiveStep = this.getMenuIndexNumber + 1;
 
       const nextRoute = this.getNextRoute();
-      //TODO combine these into fewer dispatches
-      //TODO convert to switch statement
+
       switch (nextRoute) {
         case "LightLevelMenu":
           this.$store.commit("setMenuIndexNumber", 1);

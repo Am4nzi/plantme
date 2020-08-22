@@ -53,9 +53,6 @@ export default new Vuex.Store({
   getters: {
     initialViewDataLoaded: state => state.initialViewDataLoaded,
     getMenuTitles: state => state.menuData.menuTitles,
-    getUserSelectionsForFilter: function(state) {
-      return state.userSelections.indexes;
-    },
     getUserSelectionIndexes: function(state) {
       return state.userSelections.indexes;
     },

@@ -43,7 +43,7 @@ export default {
     ...mapGetters(["getUserSelections"]),
     ...mapGetters(["getMenuTitles"]),
     ...mapGetters(["getPlantsData"]),
-    ...mapGetters(["getUserSelectionsForFilter"]),
+    ...mapGetters(["getUserSelectionIndexes"]),
     ...mapGetters(["getModalClosedOnce"]),
     ...mapGetters(["getStepperStepNumber"]),
     ...mapGetters(["getMenuIndexNumber"]),
@@ -55,22 +55,22 @@ export default {
       const { name } = this.$route;
       switch (name) {
         case "PlantSizeMenu":
-          if (!this.getUserSelectionsForFilter.plantSizeMenu.length > 0) {
+          if (!this.getUserSelectionIndexes.plantSizeMenu.length > 0) {
             return true;
           }
           break;
         case "LightLevelMenu":
-          if (!this.getUserSelectionsForFilter.lightLevelMenu.length > 0) {
+          if (!this.getUserSelectionIndexes.lightLevelMenu.length > 0) {
             return true;
           }
           break;
         case "EaseOfCareMenu":
-          if (!this.getUserSelectionsForFilter.easeOfCareMenu.length > 0) {
+          if (!this.getUserSelectionIndexes.easeOfCareMenu.length > 0) {
             return true;
           }
           break;
         case "PetSafeMenu":
-          if (!this.getUserSelectionsForFilter.petSafeMenu > 0) {
+          if (!this.getUserSelectionIndexes.petSafeMenu > 0) {
             return true;
           }
           break;

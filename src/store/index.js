@@ -72,10 +72,10 @@ export default new Vuex.Store({
       return state.menus.indexNumber;
     },
     getPreviousMenuSelection: function(state) {
-      return state.menuSelections.menuSelection;
+      return state.menuSelections;
     },
     getMenuSelection: function(state) {
-      return state.menuSelections.menuSelection;
+      return state.menuSelections;
     },
     getStepperText: function(state) {
       return state.stepperText;
@@ -144,7 +144,7 @@ export default new Vuex.Store({
             return "Error in setPlantSizeMenuUserSelectionTitles";
         }
       });
-      state.menuSelections.menuSelection.plantSize.titles = plantSizeMenuTitles;
+      state.menuSelections.plantSize.titles = plantSizeMenuTitles;
     },
     setLightLevelMenuUserSelectionTitles: state => {
       let lightLevelMenuTitles = [];
@@ -170,7 +170,7 @@ export default new Vuex.Store({
             return "Error in setPlantSizeMenuUserSelectionTitles";
         }
       });
-      state.menuSelections.menuSelection.lightLevel.titles = lightLevelMenuTitles;
+      state.menuSelections.lightLevel.titles = lightLevelMenuTitles;
     },
     setEaseOfCareMenuUserSelectionTitles: state => {
       let easeOfCareMenuTitles = [];
@@ -190,7 +190,7 @@ export default new Vuex.Store({
             return "Error in setPlantSizeMenuUserSelectionTitles";
         }
       });
-      state.menuSelections.menuSelection.easeOfCare.titles = easeOfCareMenuTitles;
+      state.menuSelections.easeOfCare.titles = easeOfCareMenuTitles;
     },
     setPetSafeMenuUserSelectionTitles: state => {
       let petSafeMenuTitles = [];
@@ -204,7 +204,7 @@ export default new Vuex.Store({
         default:
           return "Error in setPlantSizeMenuUserSelectionTitles";
       }
-      state.menuSelections.menuSelection.petSafe.titles = petSafeMenuTitles;
+      state.menuSelections.petSafe.titles = petSafeMenuTitles;
     },
     setMenuIndex: (state, indexNumber) => {
       Vue.set(state, "menus.indexNumber", indexNumber);

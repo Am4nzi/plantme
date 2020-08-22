@@ -75,7 +75,6 @@ export default {
   data: () => ({
     mandatory: false,
     multiple: true,
-    selected: [],
     activeItem: null,
     menu: {
       easeOfCareData: []
@@ -83,7 +82,7 @@ export default {
   }),
   computed: {
     ...mapGetters(["getMenuData"]),
-    ...mapGetters(["getPreviousMenuSelection"]),
+    ...mapGetters(["getMenuSelection"]),
     ...mapGetters(["getModalClosedOnce"]),
     easeOfCareMenuSelection: {
       get() {
@@ -105,10 +104,6 @@ export default {
   },
   mounted() {
     this.menu.easeOfCareData = this.getMenuData.easeOfCare;
-    //Previous selection remains active if user navigates to a view they've already visited
-    if (this.getPreviousMenuSelection.easeOfCare.indexes.length) {
-      this.selected = this.getPreviousMenuSelection.easeOfCare.indexes;
-    }
   }
 };
 </script>

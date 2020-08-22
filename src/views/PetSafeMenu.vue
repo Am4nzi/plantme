@@ -71,7 +71,6 @@ export default {
   },
   data: () => ({
     mandatory: false,
-    selected: [],
     activeItem: null,
     menu: {
       petSafeData: []
@@ -79,7 +78,7 @@ export default {
   }),
   computed: {
     ...mapGetters(["getMenuData"]),
-    ...mapGetters(["getPreviousMenuSelection"]),
+    ...mapGetters(["getMenuSelection"]),
     ...mapGetters(["getModalClosedOnce"]),
     petSafeMenuSelection: {
       get() {
@@ -92,8 +91,6 @@ export default {
   },
   mounted() {
     this.menu.petSafeData = this.getMenuData.petSafe;
-    // //Previous selection remains active if user navigates to a view they've already visited
-    // this.selected = this.getPreviousMenuSelection.petSafe.index;
   }
 };
 </script>

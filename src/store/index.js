@@ -71,9 +71,6 @@ export default new Vuex.Store({
     getMenuIndexNumber: function(state) {
       return state.menus.indexNumber;
     },
-    getPreviousMenuSelection: function(state) {
-      return state.menuSelections;
-    },
     getMenuSelection: function(state) {
       return state.menuSelections;
     },

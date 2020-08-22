@@ -96,6 +96,7 @@ export default {
   }),
   computed: {
     ...mapGetters(["getModalClosedOnce"]),
+    ...mapGetters(["getMenuSelection"]),
     plantSizeMenuSelection: {
       get() {
         return this.$store.state.userSelectionIndexes.plantSizeMenu;
@@ -107,9 +108,6 @@ export default {
     getMenuData() {
       return this.$store.getters.getMenuData;
     },
-    getPreviousMenuSelection() {
-      return this.$store.getters.getPreviousMenuSelection;
-    }
   },
   watch: {
     multiple(val) {
@@ -119,10 +117,6 @@ export default {
           : []
         : this.plantMenuSelection.pop();
     }
-  },
-  mounted() {
-    //Previous selection remains active if user navigates to a view they've already visited
-    this.selected = this.getPreviousMenuSelection.plantSize.indexes;
   }
 };
 </script>

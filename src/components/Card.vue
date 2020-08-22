@@ -113,7 +113,6 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(["getPreviousMenuSelection"]),
     ...mapGetters(["getMenuSelection"]),
     ...mapGetters(["getMenuTitles"]),
     ...mapGetters(["getPlantsData"]),

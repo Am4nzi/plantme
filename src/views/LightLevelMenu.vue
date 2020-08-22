@@ -87,7 +87,6 @@ export default {
   data: () => ({
     mandatory: false,
     multiple: true,
-    selected: [],
     activeItem: null,
     menu: {
       lightLevelData: []
@@ -95,7 +94,7 @@ export default {
   }),
   computed: {
     ...mapGetters(["getMenuData"]),
-    ...mapGetters(["getPreviousMenuSelection"]),
+    ...mapGetters(["getMenuSelection"]),
     ...mapGetters(["getModalClosedOnce"]),
     lightLevelMenuSelection: {
       get() {
@@ -117,10 +116,6 @@ export default {
   },
   mounted() {
     this.menu.lightLevelData = this.getMenuData.lightLevel;
-    //Previous selection remains active if user navigates to a view they've already visited
-    if (this.getPreviousMenuSelection.lightLevel.indexes.length) {
-      this.selected = this.getPreviousMenuSelection.lightLevel.indexes;
-    }
   }
 };
 </script>

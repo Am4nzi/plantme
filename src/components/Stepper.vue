@@ -72,7 +72,6 @@ export default {
     ...mapGetters(["getMenuData"]),
     ...mapGetters(["getMenuTitles"]),
     ...mapGetters(["getStepperText"]),
-    ...mapGetters(["getPreviousMenuSelection"]),
     ...mapGetters(["getStepperHasActivated"]),
     menuIndexNumber() {
       return this.$store.getters.getMenuIndexNumber;

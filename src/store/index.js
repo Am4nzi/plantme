@@ -14,7 +14,7 @@ if (window.location.href.includes("localhost")) {
 
 export default new Vuex.Store({
   state: {
-    filteredSelection: {},
+    filteredResults: {},
     hasScrolled: false,
     initialViewDataLoaded: false,
     menus: {
@@ -104,8 +104,8 @@ export default new Vuex.Store({
     getPlantsData: function(state) {
       return state.plantsData;
     },
-    getFilteredSelection: function(state) {
-      return state.filteredSelection;
+    getFilteredResults: function(state) {
+      return state.filteredResults;
     }
   },
   mutations: {
@@ -233,8 +233,8 @@ export default new Vuex.Store({
     setModalClosedOnce: (state, modalStatus) => {
       Vue.set(state, "modal.closedOnce", modalStatus);
     },
-    setFilteredSelection: (state, filteredSelection) => {
-      Vue.set(state, "filteredSelection", filteredSelection);
+    setFilteredResults: (state, filteredResults) => {
+      Vue.set(state, "filteredResults", filteredResults);
     },
     setHasScrolled: (state, scrollStatus) => {
       state.hasScrolled = scrollStatus;
@@ -256,8 +256,8 @@ export default new Vuex.Store({
     updateModalClosedOnce(context, modalStatus) {
       context.commit("setModalClosedOnce", modalStatus);
     },
-    updateFilteredSelection(context, filteredSelection) {
-      context.commit("setFilteredSelection", filteredSelection);
+    updateFilteredResults(context, filteredResults) {
+      context.commit("setFilteredResults", filteredResults);
     },
     async updatePlantLibraryData(context) {
       let plantsData = await Vue.axios.get(`${dataBaseUrl}/plantsdata`);

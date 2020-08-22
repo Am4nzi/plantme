@@ -158,7 +158,7 @@
             dense
           >
             <v-col
-              v-for="plant in getFilteredSelection"
+              v-for="plant in getFilteredResults"
               :key="plant.id"
               class="d-flex flex-column pl-xl-16 pr-xl-16"
               :class="{ active: plant === activeItem }"
@@ -237,7 +237,7 @@ export default {
     ...mapGetters(["getMenuSelection"]),
     ...mapGetters(["getModalStatus"]),
     ...mapGetters(["getPlantsData"]),
-    ...mapGetters(["getFilteredSelection"]),
+    ...mapGetters(["getFilteredResults"]),
     plantSizeMenuSelection: {
       get() {
         return this.$store.state.userSelectionIndexes.plantSizeMenu;

@@ -59,15 +59,6 @@
 const mapGetters = require("vuex")["mapGetters"];
 export default {
   name: "Stepper",
-  data() {
-    return {
-      toggleEnableEditSteps: {
-        lightLevel: false,
-        easeOfCare: false,
-        petSafe: false
-      }
-    };
-  },
   computed: {
     ...mapGetters(["getMenuData"]),
     ...mapGetters(["getMenuTitles"]),
@@ -77,26 +68,21 @@ export default {
       return this.$store.getters.getMenuIndexNumber;
     },
     toggleLightLevelEditable() {
-      if (
-        this.menuIndexNumber === 1 ||
-        this.menuIndexNumber === 2 ||
-        this.menuIndexNumber === 3
-      ) {
-        console.log('GOT HERE!');
+      if (this.getStepperHasActivated.lightLevel) {
         return true;
       } else {
         return false;
       }
     },
     toggleEaseOfCareEditable() {
-      if (this.menuIndexNumber === 2 || this.menuIndexNumber === 3) {
+      if (this.getStepperHasActivated.easeOfCare) {
         return true;
       } else {
         return false;
       }
     },
     togglePetSafeEditable() {
-      if (this.menuIndexNumber === 3) {
+      if (this.getStepperHasActivated.petSafe) {
         return true;
       } else {
         return false;
@@ -118,21 +104,18 @@ export default {
     },
     navigateToLightLevelMenu() {
       if (this.getStepperHasActivated.lightLevel) {
-        this.toggleEnableEditSteps.lightLevel = true;
         this.$store.commit("setMenuIndexNumber", 1);
         this.$router.push("light-level");
       }
     },
     navigateToEaseOfCareMenu() {
       if (this.getStepperHasActivated.easeOfCare) {
-        this.toggleEnableEditSteps.easeOfCare = true;
         this.$store.commit("setMenuIndexNumber", 2);
         this.$router.push("ease-of-care");
       }
     },
     navigateToPetSafeMenu() {
       if (this.getStepperHasActivated.petSafe) {
-        this.toggleEnableEditSteps.petSafe = true;
         this.$store.commit("setMenuIndexNumber", 3);
         this.$router.push("pet-safe-menu");
       }

@@ -26,23 +26,19 @@ export default new Vuex.Store({
       petSafeMenu: null
     },
     hasScrolled: false,
-    stepperHasActivated: {
-      plantSize: false,
-      lightLevel: false,
-      easeOfCare: false,
-      petSafe: false
-    },
+    stepperText: [],
+    stepperActiveStep: 1,
+    stepperStepNumber: 4,
     menus: {
       currentMenu: [],
       plantSize: [],
       lightLevel: [],
       easeOfCare: [],
       petSafe: [],
-      indexNumber: 0  ,
+      indexNumber: 0,
       menuTitles: [],
       guideTitles: []
     },
-    stepperText: [],
     modal: {
       isActive: true,
       closedOnce: false
@@ -59,11 +55,11 @@ export default new Vuex.Store({
     getUserSelectionsForFilter: function(state) {
       return state.userSelectionIndexes;
     },
+    getUserSelectionIndexes: function(state) {
+      return state.userSelectionIndexes;
+    },
     getHasScrolled: function(state) {
       return state.hasScrolled;
-    },
-    getStepperHasActivated: function(state) {
-      return state.stepperHasActivated;
     },
     getMenuData: function(state) {
       return state.menus;
@@ -73,6 +69,12 @@ export default new Vuex.Store({
     },
     getMenuSelection: function(state) {
       return state.menuSelections;
+    },
+    getStepperActiveStep: function(state) {
+      return state.stepperActiveStep;
+    },
+    getStepperStepNumber: function(state) {
+      return state.stepperStepNumber;
     },
     getStepperText: function(state) {
       return state.stepperText;
@@ -204,19 +206,10 @@ export default new Vuex.Store({
       state.menuSelections.petSafe.titles = petSafeMenuTitles;
     },
     setMenuIndexNumber: (state, indexNumber) => {
-      (state.menus.indexNumber = indexNumber);
+      state.menus.indexNumber = indexNumber;
     },
-    setStepperHasActivatedPlantSize: (state, stepperActiveStatus) => {
-      state.stepperHasActivated.plantSize = stepperActiveStatus;
-    },
-    setStepperHasActivatedLightLevel: (state, stepperActiveStatus) => {
-      state.stepperHasActivated.lightLevel = stepperActiveStatus;
-    },
-    setStepperHasActivatedEaseOfCare: (state, stepperActiveStatus) => {
-      state.stepperHasActivated.easeOfCare = stepperActiveStatus;
-    },
-    setStepperHasActivatedPetSafe: (state, stepperActiveStatus) => {
-      state.stepperHasActivated.petSafe = stepperActiveStatus;
+    setStepperActiveStep: (state, stepNumber) => {
+      state.stepperActiveStep = stepNumber;
     },
     setPlantLibraryData: (state, plantsData) => {
       Vue.set(state, "plantsData", plantsData);
@@ -235,22 +228,14 @@ export default new Vuex.Store({
     updateHasScrolled(context, scrollStatus) {
       context.commit("setHasScrolled", scrollStatus);
     },
-    updateStepperHasActivated(context, stepperActiveStatus) {
-      if (stepperActiveStatus === "plantSize") {
-        context.commit("setStepperHasActivatedPlantSize", stepperActiveStatus);
-      }
-      if (stepperActiveStatus === "lightLevel") {
-        context.commit("setStepperHasActivatedLightLevel", stepperActiveStatus);
-      }
-      if (stepperActiveStatus === "easeOfCare") {
-        context.commit("setStepperHasActivatedEaseOfCare", stepperActiveStatus);
-      }
-      if (stepperActiveStatus === "petSafe") {
-        context.commit("setStepperHasActivatedPetSafe", stepperActiveStatus);
-      }
-    },
     updateModalActive(context, modalStatus) {
       context.commit("setModalActive", modalStatus);
+    },
+    updateMenuIndexNumber(context, indexNumber) {
+      context.commit("setMenuIndexNumber", indexNumber);
+    },
+    updateStepperActiveStep(context, indexNumber) {
+      context.commit("setStepperActiveStep", indexNumber);
     },
     updateModalClosedOnce(context, modalStatus) {
       context.commit("setModalClosedOnce", modalStatus);

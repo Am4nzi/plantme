@@ -1,55 +1,24 @@
-<template class="fixed">
+<template>
   <div>
-    <!--    Stepper component documentation: https://vuetifyjs.com/en/components/steppers/-->
-    <v-stepper
-      v-if="getStepperText[0]"
-      class="white elevation-0 rounded-tl-sm rounded-t4-sm rounded-bl-0 rounded-br-0 lighten-5"
-      v-model="menuIndex"
-    >
+    <v-stepper v-model="getStepperActiveStep">
       <v-stepper-header>
-        <v-stepper-step
-          color="grey darken-3"
-          editable
-          step="1"
-          :complete="menuIndex > 0"
-          @click="navigateToPlantSizeMenu"
-        >
-          {{ getStepperText[0].text }}
-        </v-stepper-step>
-        <v-divider
-          :color="toggleLightLevelEditable ? 'grey' : false"
-        ></v-divider>
-        <v-stepper-step
-          color="grey darken-3"
-          :editable="toggleLightLevelEditable ? true : false"
-          step="2"
-          :complete="menuIndex > 1"
-          @click="navigateToLightLevelMenu"
-        >
-          {{ getStepperText[1].text }}
-        </v-stepper-step>
-        <v-divider
-          :color="toggleEaseOfCareEditable ? 'grey' : false"
-        ></v-divider>
-        <v-stepper-step
-          color="grey darken-3"
-          :editable="toggleEaseOfCareEditable ? true : false"
-          step="3"
-          :complete="menuIndex > 2"
-          @click="navigateToEaseOfCareMenu"
-        >
-          {{ getStepperText[2].text }}
-        </v-stepper-step>
-        <v-divider :color="togglePetSafeEditable ? 'grey' : false"></v-divider>
-        <v-stepper-step
-          color="grey darken-3"
-          :editable="togglePetSafeEditable ? true : false"
-          step="4"
-          :complete="menuIndex > 3"
-          @click="navigateToPetSafeMenu"
-        >
-          {{ getStepperText[3].text }}
-        </v-stepper-step>
+        <template v-for="stepNumber in getStepperStepNumber">
+          <v-stepper-step
+            color="grey darken-3"
+            :key="`${stepNumber}-step`"
+            :complete="getStepperActiveStep > stepNumber"
+            :step="stepNumber"
+            editable
+            @click="navigateToMenu(stepNumber)"
+          >
+            Step {{ stepNumber }}
+          </v-stepper-step>
+
+          <v-divider
+            v-if="stepNumber !== getStepperStepNumber"
+            :key="stepNumber"
+          ></v-divider>
+        </template>
       </v-stepper-header>
     </v-stepper>
   </div>
@@ -58,66 +27,42 @@
 <script>
 const mapGetters = require("vuex")["mapGetters"];
 export default {
-  name: "Stepper",
   computed: {
-    ...mapGetters(["getMenuData"]),
-    ...mapGetters(["getMenuTitles"]),
-    ...mapGetters(["getStepperText"]),
-    ...mapGetters(["getStepperHasActivated"]),
-    menuIndexNumber() {
-      return this.$store.getters.getMenuIndexNumber;
-    },
-    toggleLightLevelEditable() {
-      if (this.getStepperHasActivated.lightLevel) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-    toggleEaseOfCareEditable() {
-      if (this.getStepperHasActivated.easeOfCare) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-    togglePetSafeEditable() {
-      if (this.getStepperHasActivated.petSafe) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-    menuIndex: {
-      get: function() {
-        return this.menuIndexNumber;
-      },
-      set: function(indexNumber) {
-        return indexNumber;
+    ...mapGetters(["getStepperStepNumber"]),
+    ...mapGetters(["getMenuIndexNumber"]),
+    ...mapGetters(["getStepperActiveStep"])
+  },
+
+  watch: {
+    getStepperStepNumber(val) {
+      if (this.getStepperActiveStep > val) {
+        this.getStepperActiveStep = val;
       }
     }
   },
+
   methods: {
-    navigateToPlantSizeMenu() {
-      this.$store.commit("setMenuIndexNumber", 0);
-      this.$router.push("plant-size");
-    },
-    navigateToLightLevelMenu() {
-      if (this.getStepperHasActivated.lightLevel) {
-        this.$store.commit("setMenuIndexNumber", 1);
-        this.$router.push("light-level");
-      }
-    },
-    navigateToEaseOfCareMenu() {
-      if (this.getStepperHasActivated.easeOfCare) {
-        this.$store.commit("setMenuIndexNumber", 2);
-        this.$router.push("ease-of-care");
-      }
-    },
-    navigateToPetSafeMenu() {
-      if (this.getStepperHasActivated.petSafe) {
-        this.$store.commit("setMenuIndexNumber", 3);
-        this.$router.push("pet-safe-menu");
+    async navigateToMenu(n) {
+      await this.$store.dispatch("updateMenuIndexNumber", n - 1);
+      switch (n) {
+        case 1:
+          await this.$store.dispatch("updateViewPlantSizeMenu");
+          await this.$router.push("plant-size");
+          break;
+        case 2:
+          await this.$store.dispatch("updateViewLightLevelMenu");
+          await this.$router.push("light-level");
+          break;
+        case 3:
+          await this.$store.dispatch("updateViewEaseOfCareMenu");
+          await this.$router.push("ease-of-Care");
+          break;
+        case 4:
+          await this.$store.dispatch("updateViewPetSafeMenu");
+          await this.$router.push("pet-safe-menu");
+          break;
+        default:
+          return "Error in setPlantSizeMenuUserSelectionTitles";
       }
     }
   }

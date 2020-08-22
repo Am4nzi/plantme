@@ -29,7 +29,7 @@
 <script>
 const mapGetters = require("vuex")["mapGetters"];
 import ExpansionPanel from "./ExpansionPanel";
-import Stepper from "../components/Stepper";
+import Stepper from "./Stepper";
 export default {
   name: "Card",
   components: {
@@ -39,6 +39,46 @@ export default {
   data: () => ({
     userSelections: []
   }),
+  computed: {
+    ...mapGetters(["getMenuSelection"]),
+    ...mapGetters(["getMenuTitles"]),
+    ...mapGetters(["getPlantsData"]),
+    ...mapGetters(["getUserSelectionsForFilter"]),
+    ...mapGetters(["getModalClosedOnce"]),
+    ...mapGetters(["getStepperStepNumber"]),
+    ...mapGetters(["getMenuIndexNumber"]),
+    hasScrolled() {
+      return this.$store.getters.getHasScrolled;
+    },
+    // eslint-disable-next-line vue/return-in-computed-property
+    toggleActivateButton() {
+      const { name } = this.$route;
+      switch (name) {
+        case "PlantSizeMenu":
+          if (!this.getUserSelectionsForFilter.plantSizeMenu.length > 0) {
+            return true;
+          }
+          break;
+        case "LightLevelMenu":
+          if (!this.getUserSelectionsForFilter.lightLevelMenu.length > 0) {
+            return true;
+          }
+          break;
+        case "EaseOfCareMenu":
+          if (!this.getUserSelectionsForFilter.easeOfCareMenu.length > 0) {
+            return true;
+          }
+          break;
+        case "PetSafeMenu":
+          if (!this.getUserSelectionsForFilter.petSafeMenu > 0) {
+            return true;
+          }
+          break;
+        default:
+          return "Error in toggleActivateButton /Layout.vue";
+      }
+    }
+  },
   mounted() {
     this.scroll();
   },
@@ -85,69 +125,40 @@ export default {
       }
     },
     async nextStep() {
+      if (this.getMenuIndexNumber < 3) {
+        await this.$store.dispatch(
+          "updateMenuIndexNumber",
+          this.getMenuIndexNumber + 1
+        );
+      }
+      await this.$store.dispatch(
+        "updateStepperActiveStep",
+        this.getMenuIndexNumber + 1
+      );
+      this.getStepperActiveStep = this.getMenuIndexNumber + 1;
       const nextRoute = this.getNextRoute();
       //TODO combine these into fewer dispatches
+      //TODO convert to switch statement
       if (nextRoute === "LightLevelMenu") {
-        await this.$store.dispatch("updateViewLightLevelMenu");
-        await this.$store.dispatch("updateStepperHasActivated", "lightLevel");
         this.$store.commit("setMenuIndexNumber", 1);
+        await this.$store.dispatch("updateViewLightLevelMenu");
       } else if (nextRoute === "EaseOfCareMenu") {
-        await this.$store.dispatch("updateViewEaseOfCareMenu");
-        await this.$store.dispatch("updateStepperHasActivated", "easeOfCare");
         this.$store.commit("setMenuIndexNumber", 2);
+        await this.$store.dispatch("updateViewEaseOfCareMenu");
       } else if (nextRoute === "PetSafeMenu") {
-        await this.$store.dispatch("updateViewPetSafeMenu");
-        await this.$store.dispatch("updateStepperHasActivated", "petSafe");
         this.$store.commit("setMenuIndexNumber", 3);
+        await this.$store.dispatch("updateViewPetSafeMenu");
       } else {
         //TODO Only dispatch this once
         await this.$store.dispatch("updatePlantLibraryData");
         //mixin filterResults.js
         await this.filterResults();
         await this.$store.dispatch("updateModalActive", false);
-        if (this.getModalClosedOnce === false ) {
+        if (this.getModalClosedOnce === false) {
           await this.$store.dispatch("updateModalClosedOnce", true);
         }
       }
       await this.$router.push({ name: nextRoute });
-    }
-  },
-  computed: {
-    ...mapGetters(["getMenuSelection"]),
-    ...mapGetters(["getMenuTitles"]),
-    ...mapGetters(["getPlantsData"]),
-    ...mapGetters(["getUserSelectionsForFilter"]),
-    ...mapGetters(["getModalClosedOnce"]),
-    hasScrolled() {
-      return this.$store.getters.getHasScrolled;
-    },
-    // eslint-disable-next-line vue/return-in-computed-property
-    toggleActivateButton() {
-      const { name } = this.$route;
-      switch (name) {
-        case "PlantSizeMenu":
-          if (!this.getUserSelectionsForFilter.plantSizeMenu.length > 0) {
-            return true;
-          }
-          break;
-        case "LightLevelMenu":
-          if (!this.getUserSelectionsForFilter.lightLevelMenu.length > 0) {
-            return true;
-          }
-          break;
-        case "EaseOfCareMenu":
-          if (!this.getUserSelectionsForFilter.easeOfCareMenu.length > 0) {
-            return true;
-          }
-          break;
-        case "PetSafeMenu":
-          if (!this.getUserSelectionsForFilter.petSafeMenu > 0) {
-            return true;
-          }
-          break;
-        default:
-          return "Error in toggleActivateButton /Layout.vue";
-      }
     }
   }
 };

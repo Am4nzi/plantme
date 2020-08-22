@@ -38,7 +38,7 @@ export default new Vuex.Store({
         lightLevelMenu: [],
         easeOfCareMenu: [],
         petSafeMenu: []
-      },
+      }
     },
     modal: {
       isActive: true,
@@ -47,7 +47,7 @@ export default new Vuex.Store({
     plantsData: {},
     stepperActiveStep: 1,
     stepperStepNumber: 4,
-    stepperText: [],
+    stepperText: []
   },
   getters: {
     initialViewDataLoaded: state => state.initialViewDataLoaded,
@@ -67,7 +67,7 @@ export default new Vuex.Store({
     getMenuIndexNumber: function(state) {
       return state.menuData.indexNumber;
     },
-      getUserSelections: function(state) {
+    getUserSelections: function(state) {
       return state.userSelections;
     },
     getStepperActiveStep: function(state) {
@@ -104,6 +104,7 @@ export default new Vuex.Store({
       Vue.set(state, "stepperText", stepperText),
     setInitialViewDataLoaded: (state, status) =>
       Vue.set(state, "initialViewDataLoaded", status),
+
     //Set Menu Selection OPTIONS********************************
     setPlantSizeMenuSelectionOptions: (state, plantSizeData) =>
       (state.menuData.plantSize = plantSizeData),
@@ -113,6 +114,7 @@ export default new Vuex.Store({
       (state.menuData.easeOfCare = easeOfCareData),
     setPetSafeMenuSelectionOptions: (state, petSafeData) =>
       (state.menuData.petSafe = petSafeData),
+
     //Set Menu User Selection INDEXES****************************
     setPlantSizeMenuUserSelectionIndexes: (state, selectionIndexes) =>
       (state.userSelections.indexes.plantSizeMenu = selectionIndexes),
@@ -122,6 +124,7 @@ export default new Vuex.Store({
       (state.userSelections.indexes.easeOfCareMenu = selectionIndexes),
     setPetSafeUserSelectionIndexes: (state, selectionIndexes) =>
       (state.userSelections.indexes.petSafeMenu = selectionIndexes),
+
     //Set Menu User Selection TITLES****************************
     //Titles are linked to index numbers to keep two-way data binding (item-groups and chip-groups) in sync.
     //TODO Reduce code repetition
@@ -205,6 +208,7 @@ export default new Vuex.Store({
       }
       state.userSelections.titles.petSafeMenu = petSafeMenuTitles;
     },
+
     setMenuIndexNumber: (state, indexNumber) => {
       state.menuData.indexNumber = indexNumber;
     },

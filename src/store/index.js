@@ -206,32 +206,32 @@ export default new Vuex.Store({
       }
       state.menuSelections.menuSelection.petSafe.titles = petSafeMenuTitles;
     },
-    setMenuIndex(state, value) {
-      state.menus.indexNumber = value;
+    setMenuIndex: (state, indexNumber) => {
+      Vue.set(state, "menus.indexNumber", indexNumber);
     },
-    setHasScrolled(state, scrollStatus) {
-      state.hasScrolled = scrollStatus;
-    },
-    setStepperHasActivatedPlantSize(state, stepperActiveStatus) {
+    setStepperHasActivatedPlantSize: (state, stepperActiveStatus) => {
       state.stepperHasActivated.plantSize = stepperActiveStatus;
     },
-    setStepperHasActivatedLightLevel(state, stepperActiveStatus) {
+    setStepperHasActivatedLightLevel: (state, stepperActiveStatus) => {
       state.stepperHasActivated.lightLevel = stepperActiveStatus;
     },
-    setStepperHasActivatedEaseOfCare(state, stepperActiveStatus) {
+    setStepperHasActivatedEaseOfCare: (state, stepperActiveStatus) => {
       state.stepperHasActivated.easeOfCare = stepperActiveStatus;
     },
-    setStepperHasActivatedPetSafe(state, stepperActiveStatus) {
+    setStepperHasActivatedPetSafe: (state, stepperActiveStatus) => {
       state.stepperHasActivated.petSafe = stepperActiveStatus;
     },
-    setModalClosedOnce(state, modalStatus) {
-      state.modal.closedOnce = modalStatus;
+    setPlantLibraryData: (state, plantsData) => {
+      Vue.set(state, "plantsData", plantsData);
     },
-    setPlantLibraryData(state, plantsData) {
-      state.plantsData = plantsData;
+    setModalClosedOnce: (state, modalStatus) => {
+      Vue.set(state, "modal.closedOnce", modalStatus);
     },
-    setFilteredSelection(state, filteredSelection) {
-      state.filteredSelection = filteredSelection;
+    setFilteredSelection: (state, filteredSelection) => {
+      Vue.set(state, "filteredSelection", filteredSelection);
+    },
+    setHasScrolled: (state, scrollStatus) => {
+      state.hasScrolled = scrollStatus;
     }
   },
   actions: {

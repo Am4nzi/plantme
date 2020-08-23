@@ -12,37 +12,35 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Layout",
-    component: Layout,
+    component: SelectionHelper,
     children: [
       {
-        path: "/",
-        component: SelectionHelper,
-        children: [
-          {
-            path: "/plant-size",
-            name: "PlantSizeMenu",
-            component: PlantSizeMenu
-          },
-          {
-            path: "/light-level",
-            name: "LightLevelMenu",
-            component: LightLevelMenu
-          },
-          {
-            path: "/ease-of-Care",
-            name: "EaseOfCareMenu",
-            component: EaseOfCareMenu
-          },
-          {
-            path: "/pet-safe-menu",
-            name: "PetSafeMenu",
-            component: PetSafeMenu
-          }
-        ]
+        path: "/plant-size",
+        name: "PlantSizeMenu",
+        component: PlantSizeMenu
+      },
+      {
+        path: "/light-level",
+        name: "LightLevelMenu",
+        component: LightLevelMenu
+      },
+      {
+        path: "/ease-of-Care",
+        name: "EaseOfCareMenu",
+        component: EaseOfCareMenu
+      },
+      {
+        path: "/pet-safe-menu",
+        name: "PetSafeMenu",
+        component: PetSafeMenu
       }
     ]
-  }
+  },
+  {
+    path: "/Layout",
+    name: "Layout",
+    component: Layout
+  },
 ];
 
 const router = new VueRouter({

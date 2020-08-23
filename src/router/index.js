@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Layout from "../views/Layout.vue";
-import Card from "../components/Card";
+import SelectionHelper from "../components/SelectionHelper";
 import PlantSizeMenu from "../views/PlantSizeMenu";
 import LightLevelMenu from "../views/LightLevelMenu";
 import EaseOfCareMenu from "../views/EaseOfCareMenu";
@@ -17,7 +17,7 @@ const routes = [
     children: [
       {
         path: "/",
-        component: Card,
+        component: SelectionHelper,
         children: [
           {
             path: "/plant-size",

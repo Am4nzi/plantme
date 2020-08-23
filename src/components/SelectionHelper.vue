@@ -70,7 +70,7 @@ export default {
           }
           break;
         case "PetSafeMenu":
-          if (!this.getUserSelectionIndexes.petSafeMenu > 0) {
+          if (!this.getUserSelections.titles.petSafeMenu.length > 0) {
             return true;
           }
           break;

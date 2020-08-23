@@ -161,7 +161,8 @@ export default {
 }
 
 .modal {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-image: url("https://images.unsplash.com/photo-1477554193778-9562c28588c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
+  background-size: cover;
 }
 
 @media (max-width: 600px) {

@@ -27,11 +27,6 @@
                     outlined
                     label
                     large
-                    @click="
-                      handleNavDrawerUserSelections(
-                        'setPlantSizeMenuUserSelectionTitles'
-                      )
-                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -60,11 +55,6 @@
                     label
                     v-for="item in getMenuData.lightLevel"
                     :key="item.id"
-                    @click="
-                      handleNavDrawerUserSelections(
-                        'setLightLevelMenuUserSelectionTitles'
-                      )
-                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -93,11 +83,6 @@
                     large
                     v-for="item in getMenuData.easeOfCare"
                     :key="item.id"
-                    @click="
-                      handleNavDrawerUserSelections(
-                        'setEaseOfCareMenuUserSelectionTitles'
-                      )
-                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -125,11 +110,6 @@
                     large
                     v-for="item in getMenuData.petSafe"
                     :key="item.id"
-                    @click="
-                      handleNavDrawerUserSelections(
-                        'setPetSafeMenuUserSelectionTitles'
-                      )
-                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -138,7 +118,7 @@
             </v-row>
           </v-list-item-content>
         </v-list-item>
-        <v-btn @click="activateFilterResults" small>Filter Results</v-btn>
+        <v-btn @click="filterResults" small>Filter Results</v-btn>
         <v-btn @click="openModal"> Open Modal </v-btn>
       </v-list>
     </v-navigation-drawer>
@@ -157,12 +137,13 @@ export default {
       itemGroup: [],
       plantSize: []
     },
-    activeItem: null,
+    activeItem: null
   }),
   computed: {
     ...mapGetters(["getUserSelections"]),
     ...mapGetters(["getModalStatus"]),
     ...mapGetters(["getFilteredResults"]),
+    ...mapGetters(["getPlantsData"]),
     navDrawerStatus: {
       get() {
         return this.$store.state.navDrawer.isActive;
@@ -177,6 +158,9 @@ export default {
       },
       set(value) {
         this.$store.commit("setPlantSizeMenuUserSelectionIndexes", value);
+        this.handleNavDrawerUserSelections(
+          "setPlantSizeMenuUserSelectionTitles"
+        );
       }
     },
     lightLevelMenuSelection: {
@@ -185,6 +169,9 @@ export default {
       },
       set(value) {
         this.$store.commit("setLightLevelUserSelectionIndexes", value);
+        this.handleNavDrawerUserSelections(
+          "setLightLevelMenuUserSelectionTitles"
+        );
       }
     },
     easeOfCareMenuSelection: {
@@ -193,6 +180,9 @@ export default {
       },
       set(value) {
         this.$store.commit("setEaseOfCareUserSelectionIndexes", value);
+        this.handleNavDrawerUserSelections(
+          "setEaseOfCareMenuUserSelectionTitles"
+        );
       }
     },
     petSafeMenuSelection: {
@@ -201,11 +191,12 @@ export default {
       },
       set(value) {
         this.$store.commit("setPetSafeUserSelectionIndexes", value);
+        this.handleNavDrawerUserSelections("setPetSafeMenuUserSelectionTitles");
       }
     },
     getMenuData() {
       return this.$store.getters.getMenuData;
-    },
+    }
   },
   watch: {
     multiple(val) {
@@ -217,9 +208,6 @@ export default {
     }
   },
   methods: {
-    async activateFilterResults() {
-      await this.filterResults();
-    },
     openModal() {
       this.$store.dispatch("updateModalActive", true);
       this.$router.push({ name: "PetSafeMenu" });

@@ -45,7 +45,7 @@ export default new Vuex.Store({
       closedOnce: false
     },
     navDrawer: {
-      isActive: true
+      isActive: false
     },
     plantsData: {},
     stepperActiveStep: 1,

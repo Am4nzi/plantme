@@ -5,7 +5,6 @@
         @click.stop="toggleNavDrawer"
         color="grey"
       ></v-app-bar-nav-icon>
-      <v-toolbar-title>UNDER CONSTRUCTION</v-toolbar-title>
     </v-app-bar>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="fill-height modal">
     <v-row align="center" justify="center">
-      <v-col cols="12" sm="12" md="11" lg="11" xl="10">
+      <v-col cols="12" sm="12" md="11" lg="10" xl="8">
         <v-card elevation="14" class="pb-sm-4">
           <Stepper :class="{ fixed: hasScrolled }" />
           <!--    Menu views-->

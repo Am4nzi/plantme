@@ -8,7 +8,7 @@
     <v-container
       fluid
       fill-height
-      class="pl-xl-8 
+      class="pl-xl-8
              pr-xl-8
              pb-xl-6
              pb-lg-6
@@ -20,8 +20,8 @@
         <Heading />
       </v-row>
       <v-row
-        class="justify-xl-space-around
-        justify-lg-space-around
+        class="justify-xl-center
+        justify-lg-center
         justify-md-start
         justify-sm-start
         justify-xs-start"
@@ -32,11 +32,11 @@
           :key="item.id"
           :class="{ active: item === activeItem }"
           cols="6"
-          xs="12"
+          xs="10"
           sm="4"
           md="4"
-          lg="2"
-          xl="2"
+          lg="3"
+          xl="3"
         >
           <v-item v-slot:default="{ active, toggle }">
             <v-card

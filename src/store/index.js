@@ -205,28 +205,18 @@ export default new Vuex.Store({
   },
 
   actions: {
-    updateHasScrolled(context, scrollStatus) {
-      context.commit("setHasScrolled", scrollStatus);
-    },
-    updateModalActive(context, modalStatus) {
-      context.commit("setModalActive", modalStatus);
-    },
-    updateMenuIndexNumber(context, indexNumber) {
-      context.commit("setMenuIndexNumber", indexNumber);
-    },
-    updateStepperActiveStep(context, indexNumber) {
-      context.commit("setStepperActiveStep", indexNumber);
-    },
-    updateModalClosedOnce(context, modalStatus) {
-      context.commit("setModalClosedOnce", modalStatus);
-    },
-    updateFilteredResults(context, filteredResults) {
-      context.commit("setFilteredResults", filteredResults);
-    },
-    async updatePlantLibraryData(context) {
-      let plantsData = await Vue.axios.get(`${dataBaseUrl}/plantsdata`);
-      context.commit("setPlantLibraryData", plantsData.data);
-    },
+    updateFilteredResults: (context, filteredResults) =>
+      context.commit("setFilteredResults", filteredResults),
+    updateHasScrolled: (context, scrollStatus) =>
+      context.commit("setHasScrolled", scrollStatus),
+    updateMenuIndexNumber: (context, indexNumber) =>
+      context.commit("setMenuIndexNumber", indexNumber),
+    updateModalActive: (context, modalStatus) =>
+      context.commit("setModalActive", modalStatus),
+    updateModalClosedOnce: (context, modalStatus) =>
+      context.commit("setModalClosedOnce", modalStatus),
+    updateStepperActiveStep: (context, indexNumber) =>
+      context.commit("setStepperActiveStep", indexNumber),
     async updateInitialViewData(context) {
       let menuTitles = await Vue.axios.get(`${dataBaseUrl}/menutitles`);
       context.commit("setMenuTitles", menuTitles.data);
@@ -238,17 +228,21 @@ export default new Vuex.Store({
       context.commit("setPlantSizeMenuSelectionOptions", plantSizeData.data);
       context.commit("setInitialViewDataLoaded", true);
     },
-    async updateViewLightLevelMenu(context) {
-      let lightLevelData = await Vue.axios.get(
-        `${dataBaseUrl}/lightlevelmenudata`
-      );
-      context.commit("setLightLevelMenuSelectionOptions", lightLevelData.data);
+    async updatePlantLibraryData(context) {
+      let plantsData = await Vue.axios.get(`${dataBaseUrl}/plantsdata`);
+      context.commit("setPlantLibraryData", plantsData.data);
     },
     async updateViewEaseOfCareMenu(context) {
       let easeOfCareData = await Vue.axios.get(
         `${dataBaseUrl}/easeofcaremenudata`
       );
       context.commit("setEaseOfCareMenuSelectionOptions", easeOfCareData.data);
+    },
+    async updateViewLightLevelMenu(context) {
+      let lightLevelData = await Vue.axios.get(
+        `${dataBaseUrl}/lightlevelmenudata`
+      );
+      context.commit("setLightLevelMenuSelectionOptions", lightLevelData.data);
     },
     async updateViewPetSafeMenu(context) {
       let petSafeData = await Vue.axios.get(`${dataBaseUrl}/petsafemenudata`);

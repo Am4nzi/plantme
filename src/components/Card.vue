@@ -118,7 +118,7 @@ export default {
         case "EaseOfCareMenu":
           return "PetSafeMenu";
         case "PetSafeMenu":
-          return "Home";
+          return "Layout";
       }
     },
     async nextStep() {

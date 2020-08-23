@@ -44,6 +44,9 @@ export default new Vuex.Store({
       isActive: true,
       closedOnce: false
     },
+    navDrawer: {
+      isActive: true
+    },
     plantsData: {},
     stepperActiveStep: 1,
     stepperStepNumber: 4,
@@ -58,6 +61,7 @@ export default new Vuex.Store({
     getMenuTitles: state => state.menuData.menuTitles,
     getModalClosedOnce: state => state.modal.closedOnce,
     getModalStatus: state => state.modal.isActive,
+    getNavDrawerStatus: state => state.navDrawer.isActive,
     getPlantsData: state => state.plantsData,
     getStepperActiveStep: state => state.stepperActiveStep,
     getStepperStepNumber: state => state.stepperStepNumber,
@@ -131,6 +135,9 @@ export default new Vuex.Store({
     },
     setHasScrolled: (state, scrollStatus) => {
       state.hasScrolled = scrollStatus;
+    },
+    setNavDrawerIsActive: (state, navDrawerStatus) => {
+      state.navDrawer.isActive = navDrawerStatus;
     }
   },
 
@@ -147,6 +154,8 @@ export default new Vuex.Store({
       context.commit("setModalClosedOnce", modalStatus),
     updateStepperActiveStep: (context, indexNumber) =>
       context.commit("setStepperActiveStep", indexNumber),
+    updateNavDrawerIsActive: (context, navDrawerStatus) =>
+      context.commit("setNavDrawerIsActive", navDrawerStatus),
     async updateInitialViewData(context) {
       let menuTitles = await Vue.axios.get(`${dataBaseUrl}/menutitles`);
       context.commit("setMenuTitles", menuTitles.data);

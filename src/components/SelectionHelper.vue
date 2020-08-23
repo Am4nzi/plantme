@@ -93,21 +93,6 @@ export default {
         }
       };
     },
-    getCurrentRoute() {
-      const { name } = this.$route;
-      switch (name) {
-        case "PlantSizeMenu":
-          return "PlantSizeMenu";
-        case "LightLevelMenu":
-          return "LightLevelMenu";
-        case "EaseOfCareMenu":
-          return "EaseOfCareMenu";
-        case "PetSafeMenu":
-          return "PetSafeMenu";
-        default:
-          return "PlantSizeMenu";
-      }
-    },
     getNextRoute() {
       const { name } = this.$route;
       switch (name) {

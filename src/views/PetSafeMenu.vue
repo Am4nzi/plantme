@@ -43,7 +43,10 @@
               max-width="300"
               @click="
                 toggle();
-                selectItem(item, 'petSafe', 'setPetSafeMenuUserSelectionTitles');
+                handleMenuUserSelections(
+                  item,
+                  'setPetSafeMenuUserSelectionTitles'
+                );
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>

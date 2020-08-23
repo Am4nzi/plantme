@@ -101,86 +101,16 @@ export default new Vuex.Store({
       (state.userSelections.indexes.petSafeMenu = selectionIndexes),
 
     //Set Menu User Selection TITLES****************************
-    //Titles are linked to index numbers to keep two-way data binding (item-groups and chip-groups) in sync.
-    //TODO Reduce code repetition
-    setPlantSizeMenuUserSelectionTitles: state => {
-      let plantSizeMenuTitles = [];
-      state.userSelections.indexes.plantSizeMenu.sort();
-      state.userSelections.indexes.plantSizeMenu.forEach(indexNumber => {
-        switch (indexNumber) {
-          case 0:
-            plantSizeMenuTitles.push(state.menuData.plantSize[0].cardtitle);
-            break;
-          case 1:
-            plantSizeMenuTitles.push(state.menuData.plantSize[1].cardtitle);
-            break;
-          case 2:
-            plantSizeMenuTitles.push(state.menuData.plantSize[2].cardtitle);
-            break;
-          default:
-            return "Error in setPlantSizeMenuUserSelectionTitles";
-        }
-      });
+    setPlantSizeMenuUserSelectionTitles: (state, plantSizeMenuTitles) => {
       state.userSelections.titles.plantSizeMenu = plantSizeMenuTitles;
     },
-    setLightLevelMenuUserSelectionTitles: state => {
-      let lightLevelMenuTitles = [];
-      state.userSelections.indexes.lightLevelMenu.sort();
-      state.userSelections.indexes.lightLevelMenu.forEach(indexNumber => {
-        switch (indexNumber) {
-          case 0:
-            lightLevelMenuTitles.push(state.menuData.lightLevel[0].cardtitle);
-            break;
-          case 1:
-            lightLevelMenuTitles.push(state.menuData.lightLevel[1].cardtitle);
-            break;
-          case 2:
-            lightLevelMenuTitles.push(state.menuData.lightLevel[2].cardtitle);
-            break;
-          case 3:
-            lightLevelMenuTitles.push(state.menuData.lightLevel[3].cardtitle);
-            break;
-          case 4:
-            lightLevelMenuTitles.push(state.menuData.lightLevel[4].cardtitle);
-            break;
-          default:
-            return "Error in setPlantSizeMenuUserSelectionTitles";
-        }
-      });
+    setLightLevelMenuUserSelectionTitles: (state, lightLevelMenuTitles) => {
       state.userSelections.titles.lightLevelMenu = lightLevelMenuTitles;
     },
-    setEaseOfCareMenuUserSelectionTitles: state => {
-      let easeOfCareMenuTitles = [];
-      state.userSelections.indexes.easeOfCareMenu.sort();
-      state.userSelections.indexes.easeOfCareMenu.forEach(indexNumber => {
-        switch (indexNumber) {
-          case 0:
-            easeOfCareMenuTitles.push(state.menuData.easeOfCare[0].cardtitle);
-            break;
-          case 1:
-            easeOfCareMenuTitles.push(state.menuData.easeOfCare[1].cardtitle);
-            break;
-          case 2:
-            easeOfCareMenuTitles.push(state.menuData.easeOfCare[2].cardtitle);
-            break;
-          default:
-            return "Error in setPlantSizeMenuUserSelectionTitles";
-        }
-      });
+    setEaseOfCareMenuUserSelectionTitles: (state, easeOfCareMenuTitles) => {
       state.userSelections.titles.easeOfCareMenu = easeOfCareMenuTitles;
     },
-    setPetSafeMenuUserSelectionTitles: state => {
-      let petSafeMenuTitles = [];
-      switch (state.userSelections.indexes.petSafeMenu) {
-        case 0:
-          petSafeMenuTitles.push(state.menuData.petSafe[0].cardtitle);
-          break;
-        case 1:
-          petSafeMenuTitles.push(state.menuData.petSafe[1].cardtitle);
-          break;
-        default:
-          return "Error in setPlantSizeMenuUserSelectionTitles";
-      }
+    setPetSafeMenuUserSelectionTitles: (state, petSafeMenuTitles) => {
       state.userSelections.titles.petSafeMenu = petSafeMenuTitles;
     },
 
@@ -247,6 +177,117 @@ export default new Vuex.Store({
     async updateViewPetSafeMenu(context) {
       let petSafeData = await Vue.axios.get(`${dataBaseUrl}/petsafemenudata`);
       context.commit("setPetSafeMenuSelectionOptions", petSafeData.data);
+    },
+    //Titles are linked to index numbers to keep two-way data binding (item-groups and chip-groups) in sync.
+    //TODO Reduce code repetition
+    async handleUserSelection(context, mutationName) {
+      let menuTitles = [];
+      switch (mutationName) {
+        case "setPlantSizeMenuUserSelectionTitles":
+          context.state.userSelections.indexes.plantSizeMenu.sort();
+          context.state.userSelections.indexes.plantSizeMenu.forEach(
+            indexNumber => {
+              switch (indexNumber) {
+                case 0:
+                  menuTitles.push(
+                    context.state.menuData.plantSize[0].cardtitle
+                  );
+                  break;
+                case 1:
+                  menuTitles.push(
+                    context.state.menuData.plantSize[1].cardtitle
+                  );
+                  break;
+                case 2:
+                  menuTitles.push(
+                    context.state.menuData.plantSize[2].cardtitle
+                  );
+                  break;
+                default:
+                  return "Error in setPlantSizeMenuUserSelectionTitles";
+              }
+            }
+          );
+          context.commit(mutationName, menuTitles);
+          break;
+        case "setLightLevelMenuUserSelectionTitles":
+          context.state.userSelections.indexes.lightLevelMenu.sort();
+          context.state.userSelections.indexes.lightLevelMenu.forEach(
+            indexNumber => {
+              switch (indexNumber) {
+                case 0:
+                  menuTitles.push(
+                    context.state.menuData.lightLevel[0].cardtitle
+                  );
+                  break;
+                case 1:
+                  menuTitles.push(
+                    context.state.menuData.lightLevel[1].cardtitle
+                  );
+                  break;
+                case 2:
+                  menuTitles.push(
+                    context.state.menuData.lightLevel[2].cardtitle
+                  );
+                  break;
+                case 3:
+                  menuTitles.push(
+                    context.state.menuData.lightLevel[3].cardtitle
+                  );
+                  break;
+                case 4:
+                  menuTitles.push(
+                    context.state.menuData.lightLevel[4].cardtitle
+                  );
+                  break;
+                default:
+                  return "Error in setPlantSizeMenuUserSelectionTitles";
+              }
+            }
+          );
+          context.commit(mutationName, menuTitles);
+          break;
+        case "setEaseOfCareMenuUserSelectionTitles":
+          context.state.userSelections.indexes.easeOfCareMenu.sort();
+          context.state.userSelections.indexes.easeOfCareMenu.forEach(
+            indexNumber => {
+              switch (indexNumber) {
+                case 0:
+                  menuTitles.push(
+                    context.state.menuData.easeOfCare[0].cardtitle
+                  );
+                  break;
+                case 1:
+                  menuTitles.push(
+                    context.state.menuData.easeOfCare[1].cardtitle
+                  );
+                  break;
+                case 2:
+                  menuTitles.push(
+                    context.state.menuData.easeOfCare[2].cardtitle
+                  );
+                  break;
+                default:
+                  return "Error in setPlantSizeMenuUserSelectionTitles";
+              }
+            }
+          );
+          context.commit(mutationName, menuTitles);
+          break;
+        case "setPetSafeMenuUserSelectionTitles":
+          switch (context.state.userSelections.indexes.petSafeMenu) {
+            case 0:
+              menuTitles.push(context.state.menuData.petSafe[0].cardtitle);
+              break;
+            case 1:
+              menuTitles.push(context.state.menuData.petSafe[1].cardtitle);
+              break;
+            default:
+              return "Error in setPlantSizeMenuUserSelectionTitles";
+          }
+          context.commit(mutationName, menuTitles);
+          break;
+      }
     }
   },
   plugins: [createPersistedState()]

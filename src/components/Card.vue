@@ -150,7 +150,6 @@ export default {
           await this.$store.dispatch("updateViewPetSafeMenu");
           break;
         default:
-
           if (!this.getModalClosedOnce) {
             await this.$store.dispatch("updatePlantLibraryData");
           }

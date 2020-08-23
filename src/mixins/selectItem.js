@@ -1,13 +1,13 @@
 export default {
   methods: {
-    async selectItem(cardSelection, menuName, commit) {
+    async handleMenuUserSelections(cardSelection, mutationName) {
       this.activeItem = cardSelection;
       this.mandatory = true;
-      this.$store.commit(commit);
+      await this.$store.dispatch("handleUserSelection", mutationName);
     },
-    async selectItemChip(commit) {
+    async handleNavDrawerUserSelections(mutationName) {
       this.mandatory = true;
-      this.$store.commit(commit);
+      await this.$store.dispatch("handleUserSelection", mutationName);
     }
   }
 };

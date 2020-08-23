@@ -28,7 +28,9 @@
                     label
                     large
                     @click="
-                      selectItemChip('setPlantSizeMenuUserSelectionTitles')
+                      handleNavDrawerUserSelections(
+                        'setPlantSizeMenuUserSelectionTitles'
+                      )
                     "
                   >
                     {{ item.cardtitle }}
@@ -59,7 +61,9 @@
                     v-for="item in getMenuData.lightLevel"
                     :key="item.id"
                     @click="
-                      selectItemChip('setLightLevelMenuUserSelectionTitles')
+                      handleNavDrawerUserSelections(
+                        'setLightLevelMenuUserSelectionTitles'
+                      )
                     "
                   >
                     {{ item.cardtitle }}
@@ -90,7 +94,9 @@
                     v-for="item in getMenuData.easeOfCare"
                     :key="item.id"
                     @click="
-                      selectItemChip('setEaseOfCareMenuUserSelectionTitles')
+                      handleNavDrawerUserSelections(
+                        'setEaseOfCareMenuUserSelectionTitles'
+                      )
                     "
                   >
                     {{ item.cardtitle }}
@@ -119,7 +125,11 @@
                     large
                     v-for="item in getMenuData.petSafe"
                     :key="item.id"
-                    @click="selectItemChip('setPetSafeMenuUserSelectionTitles')"
+                    @click="
+                      handleNavDrawerUserSelections(
+                        'setPetSafeMenuUserSelectionTitles'
+                      )
+                    "
                   >
                     {{ item.cardtitle }}
                   </v-chip>
@@ -129,7 +139,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-btn @click="activateFilterResults" small>Filter Results</v-btn>
-        <v-btn  @click="openModal"> Open Modal </v-btn>
+        <v-btn @click="openModal"> Open Modal </v-btn>
       </v-list>
     </v-navigation-drawer>
 

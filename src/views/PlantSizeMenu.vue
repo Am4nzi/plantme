@@ -46,7 +46,10 @@
               max-width="300"
               @click="
                 toggle();
-                selectItem(item, 'plantSize', 'setPlantSizeMenuUserSelectionTitles');
+                handleMenuUserSelections(
+                  item,
+                  'setPlantSizeMenuUserSelectionTitles'
+                );
               "
             >
               <v-img :src="item.image" class="card-image"></v-img>
@@ -107,7 +110,7 @@ export default {
     },
     getMenuData() {
       return this.$store.getters.getMenuData;
-    },
+    }
   },
   watch: {
     multiple(val) {

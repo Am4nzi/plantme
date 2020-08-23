@@ -9,7 +9,7 @@
       >
         <router-view />
       </v-dialog>
-      <v-container fluid class="fill-height pl-xl-16 pr-xl-16">
+      <v-container fluid class="fill-height pt-0">
         <v-item-group
           v-model="selected.itemGroup"
           :mandatory="mandatory"
@@ -26,7 +26,7 @@
             <v-col
               v-for="plant in getFilteredResults"
               :key="plant.id"
-              class="d-flex flex-column pl-xl-16 pr-xl-16"
+              class="d-flex flex-column"
               :class="{ active: plant === activeItem }"
               cols="12"
               xs="12"

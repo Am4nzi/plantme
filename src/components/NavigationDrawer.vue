@@ -1,12 +1,7 @@
 <template>
   <div>
     <v-navigation-drawer v-model="navDrawerStatus" width="300" app>
-      <v-list dense>
-        <v-list-item>
-          <v-list-item-content>
-            <h2>Filter</h2>
-          </v-list-item-content>
-        </v-list-item>
+      <v-list dense class="mt-2">
         <v-list-item>
           <v-list-item-content>
             <h6>
@@ -35,6 +30,7 @@
             </v-row>
           </v-list-item-content>
         </v-list-item>
+        <v-divider class="mx-4 mb-4"></v-divider>
         <v-list-item>
           <v-list-item-content>
             <h6>
@@ -63,6 +59,7 @@
             </v-row>
           </v-list-item-content>
         </v-list-item>
+        <v-divider class="mx-4 mb-4"></v-divider>
         <v-list-item>
           <v-list-item-content>
             <h6>
@@ -91,6 +88,7 @@
             </v-row>
           </v-list-item-content>
         </v-list-item>
+        <v-divider class="mx-4 mb-4"></v-divider>
         <v-list-item>
           <v-list-item-content>
             <h6>
@@ -118,8 +116,20 @@
             </v-row>
           </v-list-item-content>
         </v-list-item>
-        <v-btn @click="filterResults" small>Filter Results</v-btn>
-        <v-btn @click="openModal"> Open Modal </v-btn>
+        <v-divider class="mx-4 mb-4"></v-divider>
+        <v-list-item>
+          <v-list-item-content>
+            <v-btn
+              large
+              tile
+              color="#c2e4b7"
+              elevation="0"
+              class="grey--text text--darken-3"
+              @click="openModal"
+              >Reopen Selection Helper</v-btn
+            >
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
   </div>
@@ -161,6 +171,7 @@ export default {
         this.handleNavDrawerUserSelections(
           "setPlantSizeMenuUserSelectionTitles"
         );
+        this.filterResults();
       }
     },
     lightLevelMenuSelection: {
@@ -172,6 +183,7 @@ export default {
         this.handleNavDrawerUserSelections(
           "setLightLevelMenuUserSelectionTitles"
         );
+        this.filterResults();
       }
     },
     easeOfCareMenuSelection: {
@@ -183,6 +195,7 @@ export default {
         this.handleNavDrawerUserSelections(
           "setEaseOfCareMenuUserSelectionTitles"
         );
+        this.filterResults();
       }
     },
     petSafeMenuSelection: {
@@ -192,6 +205,7 @@ export default {
       set(value) {
         this.$store.commit("setPetSafeUserSelectionIndexes", value);
         this.handleNavDrawerUserSelections("setPetSafeMenuUserSelectionTitles");
+        this.filterResults();
       }
     },
     getMenuData() {
@@ -209,8 +223,9 @@ export default {
   },
   methods: {
     openModal() {
+      this.$store.commit("setMenuIndexNumber", 0);
+      this.$router.push({ name: "PlantSizeMenu" });
       this.$store.dispatch("updateModalActive", true);
-      this.$router.push({ name: "PetSafeMenu" });
     }
   }
 };

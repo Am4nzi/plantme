@@ -16,6 +16,7 @@
           :multiple="multiple"
         >
           <v-row
+            v-if="Object.keys(this.getFilteredResults).length > 0"
             class="justify-xl-start
         justify-lg-start
         justify-md-start
@@ -32,7 +33,7 @@
               xs="12"
               :sm="imageColSMLayout"
               md="6"
-              lg="4"
+              :lg="imageColLGLayout"
               :xl="imageColXLLayout"
             >
               <v-item v-slot:default="{ active }">
@@ -42,8 +43,7 @@
                   :color="active ? 'primary' : ''"
                   tile
                   class="mx-auto"
-                  :max-width="imageWidth"
-                  height="[385]"
+                  height="385"
                 >
                   <v-img :src="plant.image" height="385" class="align-end">
                   </v-img>
@@ -54,6 +54,14 @@
               </h6>
             </v-col>
           </v-row>
+          <v-col v-else>
+            <v-row>
+              <h2>No results found</h2>
+            </v-row>
+            <v-row>
+              <p>Please try a different search combination</p>
+            </v-row>
+          </v-col>
         </v-item-group>
       </v-container>
     </v-main>
@@ -128,34 +136,32 @@ export default {
     getMenuData() {
       return this.$store.getters.getMenuData;
     },
-    imageWidth() {
-      if (this.windowSize.x <= 1620 && this.windowSize.x >= 1500) {
-        return 385;
-      } else if (this.windowSize.x <= 1500 && this.windowSize.x >= 1410) {
-        return 340;
-      } else if (this.windowSize.x <= 1410 && this.windowSize.x >= 1340) {
-        return 330;
-      } else if (this.windowSize.x <= 1340 && this.windowSize.x >= 1264) {
-        return 300;
-      } else if (this.windowSize.x <= 1264 && this.windowSize.x >= 960) {
-        return 375;
-      } else if (this.windowSize.x <= 969 && this.windowSize.x >= 865) {
-        return 385;
-      } else if (this.windowSize.x <= 865 && this.windowSize.x >= 740) {
-        return 330;
-      } else if (this.windowSize.x <= 740 && this.windowSize.x >= 695) {
-        return 300;
-      } else return 385;
-    },
-    imageColXLLayout() {
-      if (this.drawer) {
-        return "4";
-      } else return "3";
-    },
     imageColSMLayout() {
       if (this.windowSize.x <= 695) {
         return "12";
       } else return "6";
+    },
+    imageColLGLayout() {
+      if (Object.keys(this.getFilteredResults).length === 1) {
+        return "12";
+      } else if (Object.keys(this.getFilteredResults).length === 2) {
+        return "6";
+      } else if (Object.keys(this.getFilteredResults).length === 3) {
+        return "5";
+      } else if (this.drawer) {
+        return "4";
+      } else return "4";
+    },
+    imageColXLLayout() {
+      if (Object.keys(this.getFilteredResults).length === 1) {
+        return "12";
+      } else if (Object.keys(this.getFilteredResults).length === 2) {
+        return "6";
+      } else if (Object.keys(this.getFilteredResults).length === 3) {
+        return "4";
+      } else if (this.drawer) {
+        return "4";
+      } else return "3";
     }
   },
   watch: {
@@ -169,13 +175,14 @@ export default {
   },
   mounted() {
     this.onResize();
+    console.log(
+      "Object.keys(this.getFilteredResults).length: ",
+      Object.keys(this.getFilteredResults).length
+    );
   },
   methods: {
     onResize() {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight };
-    },
-    async activateFilterResults() {
-      await this.filterResults();
     },
     openModal() {
       this.$store.dispatch("updateModalActive", true);

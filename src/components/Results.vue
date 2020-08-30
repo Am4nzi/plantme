@@ -57,10 +57,6 @@
         </v-item-group>
       </v-container>
     </v-main>
-
-    <v-footer color="white" app>
-      <span class="grey--text">&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
   </div>
 </template>
 

@@ -40,8 +40,9 @@ export default {
 
 h1 {
   font-family: operetta-12, serif;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 3.6rem;
+  line-height: 1.1;
 }
 h2 {
   font-family: operetta-12, serif;

@@ -45,7 +45,7 @@ export default new Vuex.Store({
       closedOnce: false
     },
     navDrawer: {
-      isActive: false
+      isActive: true
     },
     plantsData: {},
     stepperActiveStep: 1,
@@ -193,30 +193,19 @@ export default new Vuex.Store({
       let menuTitles = [];
       switch (mutationName) {
         case "setPlantSizeMenuUserSelectionTitles":
-          context.state.userSelections.indexes.plantSizeMenu.sort();
-          context.state.userSelections.indexes.plantSizeMenu.forEach(
-            indexNumber => {
-              switch (indexNumber) {
-                case 0:
-                  menuTitles.push(
-                    context.state.menuData.plantSize[0].cardtitle
-                  );
-                  break;
-                case 1:
-                  menuTitles.push(
-                    context.state.menuData.plantSize[1].cardtitle
-                  );
-                  break;
-                case 2:
-                  menuTitles.push(
-                    context.state.menuData.plantSize[2].cardtitle
-                  );
-                  break;
-                default:
-                  return "Error in setPlantSizeMenuUserSelectionTitles";
-              }
-            }
-          );
+          switch (context.state.userSelections.indexes.plantSizeMenu) {
+            case 0:
+              menuTitles.push(context.state.menuData.plantSize[0].cardtitle);
+              break;
+            case 1:
+              menuTitles.push(context.state.menuData.plantSize[1].cardtitle);
+              break;
+            case 2:
+              menuTitles.push(context.state.menuData.plantSize[2].cardtitle);
+              break;
+            default:
+              return "Error in setPlantSizeMenuUserSelectionTitles";
+          }
           context.commit(mutationName, menuTitles);
           break;
         case "setLightLevelMenuUserSelectionTitles":

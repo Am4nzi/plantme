@@ -12,7 +12,6 @@
                 <v-chip-group
                   v-model="plantSizeMenuSelection"
                   :mandatory="mandatory"
-                  multiple
                   column
                   active-class="highlight--text"
                 >

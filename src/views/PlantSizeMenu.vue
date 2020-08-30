@@ -3,7 +3,6 @@
   <v-item-group
     v-model="plantSizeMenuSelection"
     :mandatory="mandatory"
-    :multiple="multiple"
   >
     <v-container
       fluid
@@ -90,7 +89,6 @@ export default {
   },
   data: () => ({
     mandatory: false,
-    multiple: true,
     activeItem: null,
     menu: {
       plantSizeData: [],
@@ -112,14 +110,5 @@ export default {
       return this.$store.getters.getMenuData;
     }
   },
-  watch: {
-    multiple(val) {
-      this.plantMenuSelection = val
-        ? this.plantMenuSelection >= 0
-          ? [this.plantMenuSelection]
-          : []
-        : this.plantMenuSelection.pop();
-    }
-  }
 };
 </script>

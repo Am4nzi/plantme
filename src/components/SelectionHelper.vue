@@ -55,7 +55,7 @@ export default {
       const { name } = this.$route;
       switch (name) {
         case "PlantSizeMenu":
-          if (!this.getUserSelectionIndexes.plantSizeMenu.length > 0) {
+          if (!this.getUserSelections.titles.plantSizeMenu.length > 0) {
             return true;
           }
           break;

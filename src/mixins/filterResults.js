@@ -1,7 +1,8 @@
 export default {
   methods: {
     async filterResults() {
-      let plantsData = this.getPlantsData;
+      // Create deep copy of object
+      let plantsData = JSON.parse(JSON.stringify(this.getPlantsData));
 
       if (this.getUserSelections.titles.plantSizeMenu.includes("Small")) {
         for (const property in plantsData) {
@@ -22,10 +23,8 @@ export default {
         }
       }
 
-      console.log("plantsDataCopy: ", plantsData);
-
       let filtered = {};
-      for (const property in this.getPlantsData) {
+      for (const property in plantsData) {
         if (
           plantsData[property].properties.some(
             plantSizeProperty =>
@@ -55,7 +54,6 @@ export default {
           filtered[property] = plantsData[property];
         }
       }
-      console.log("filtered: ", filtered);
       await this.$store.dispatch("updateFilteredResults", filtered);
     }
   }

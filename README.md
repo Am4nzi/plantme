@@ -1,10 +1,10 @@
 # PlantMe
 
+WORK IN PROGRESS.
+
 "PlantMe" is an app I'm developing in my free time to help customers find their perfect houseplant, however, it could be used for almost any type of product.
 
 The concept is to take the confusion of using complicated filters away, and simplify the process by asking the users a few simple questions about their requirements, and providing options using a card-based layout.
-
-Currently, only the menu selection is complete, with the results page still to be developed.
 
 ---
 
@@ -14,11 +14,15 @@ Currently, only the menu selection is complete, with the results page still to b
 
 - A customised 'stepper' component which is always visible, and allows the user to keep track of their progress through the menus, and navigate back and forth between each one to make edits to their selections with ease.
 
-- Vuex is used for state management, with the [vuex-persist](https://www.npmjs.com/package/vuex-persist) package to store selections in local storage, to handle edge-cases where the page might be refreshed and state would otherwise be cleared.
+- Vuex is used for state management, with the [vuex-persist](https://www.npmjs.com/package/vuex-persist) package to store selections in local storage.
 
-- A [Postgres](https://www.postgresql.org/) databse is used to store static content, whilst dynamic content is generated within the app. All data is dispatched to the Vuex store to be used as a single source of truth.
+- A [Postgres](https://www.postgresql.org/) database is used to store static content, whilst dynamic content is generated within the app. All data is dispatched to the Vuex store to be used as a single source of truth.
 
-- An expansion panel is used to hide extra information so as to note impact the simple, minimal UI. The user can open this panel upon request.
+- Users can apply custom filters based on their unique requirements.
+
+- On the results page, a separate menu can be toggled on-and-off to allow the user to tweak their search filter, new results are fetched from the database upon each menu selection with speed, without the user having to click a 'search' button.
+
+- There are interfaces where users can filter their selections, two-way data-binding using Vuex and computed properties with setters are used to keep selections in sync across both interfaces.
 
 ## Demo
 
@@ -43,7 +47,6 @@ Currently, only the menu selection is complete, with the results page still to b
 
 -   [vuex-persistedstate](https://www.npmjs.com/package/vuex-persistedstate)
 
-
 ## Requirements
 
 - Postgres
@@ -59,10 +62,7 @@ Currently, only the menu selection is complete, with the results page still to b
 
 ## Todos
 
-- Develop results page
+- Improve layout/responsiveness of results page (mobile only)
+- Show the properties of each result when the user hovers and/or clicks on the result
 - Enable text compression to improve performance
 - Use PurgeCSS unused Vuetify CSS which is bloating load speeds
-
-## Bugs
-
-- Stepper component sometimes gets half hidden behind the top of the browser when the `position: sticky` CSS rule is applied.

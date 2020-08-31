@@ -55,7 +55,12 @@ INSERT INTO plants (name, properties, image) VALUES ('Orchid', '{"Small", "Indir
 INSERT INTO plants (name, properties, image) VALUES ('Maidenhair Fern', '{"Small", "Medium", "Indirect Light", "Bright Indirect", "Difficult", "Important"}', 'https://storage.googleapis.com/plant-me/plants/Maidenhair%20Fern.jpg');
 INSERT INTO plants (name, properties, image) VALUES ('African Violet', '{"Small", "Indirect Light", "Bright Indirect", "Difficult", "Important"}', 'https://storage.googleapis.com/plant-me/plants/Afrian%20Violet.jpg');
 INSERT INTO plants (name, properties, image) VALUES ('Staghorn Fern', '{"Small", "Medium", "Indirect Light", "Bright Indirect", "Difficult", "Important"}', 'https://storage.googleapis.com/plant-me/plants/Staghorn%20Fern.jpg');
-
+INSERT INTO plants (name, properties, image) VALUES ('Molded Wax Agave', '{"Small", "Bright Indirect", "Bright Direct", "Easy", "Important", "Not Important"}', 'https://storage.googleapis.com/plant-me/plants/Molded%20Wax%20Agave.jpg');
+INSERT INTO plants (name, properties, image) VALUES ('Venus Flytrap', '{"Small", "Bright Indirect", "Bright Direct", "Difficult", "Important", "Not Important"}', 'https://storage.googleapis.com/plant-me/plants/Venus%20Flytrap.jpg');
+INSERT INTO plants (name, properties, image) VALUES ('Peperomia Caperata', '{"Small", "Medium", "Indirect Light", "Bright Indirect", "Easy", "Important", "Not Important"}', 'https://storage.googleapis.com/plant-me/plants/Peperomia%20Caperata.jpg');
+INSERT INTO plants (name, properties, image) VALUES ('Miniature Roses', '{"Small", "Bright Indirect", "Bright Direct", "Difficult", "Important", "Not Important"}', 'https://storage.googleapis.com/plant-me/plants/Miniature%20Roses.jpg');
+INSERT INTO plants (name, properties, image) VALUES ('Polaskia Chichipe Cactus', '{"Medium", "Bright Indirect", "Bright Direct", "Easy", "Important", "Not Important"}', 'https://storage.googleapis.com/plant-me/plants/Polaskia%20Chichipe%20Cactus.jpg');
+INSERT INTO plants (name, properties, image) VALUES ('Peppermint', '{"Small", "Medium", "Bright Indirect", "Bright Direct", "Easy", "Important"}', 'https://storage.googleapis.com/plant-me/plants/Peppermint.jpg');
 CREATE TABLE menuTitles (
 		id SERIAL primary key,
 		menuTitle VARCHAR(255) not null

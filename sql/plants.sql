@@ -86,7 +86,7 @@ CREATE TABLE plantSizeMenu (
     guideInfo VARCHAR(255)
 );
 
-INSERT INTO plantSizeMenu (cardTitle, image, guideInfo) VALUES ('Small', 'https://storage.googleapis.com/plant-me/plant_size_menu/large.jpg', '0 - 80cm');
+INSERT INTO plantSizeMenu (cardTitle, image, guideInfo) VALUES ('Small', 'https://storage.googleapis.com/plant-me/plant_size_menu/small.jpg', '0 - 80cm');
 INSERT INTO plantSizeMenu (cardTitle, image, guideInfo) VALUES ('Medium', 'https://storage.googleapis.com/plant-me/plant_size_menu/medium.jpg', '60 - 150cm');
 INSERT INTO plantSizeMenu (cardTitle, image, guideInfo) VALUES ('Large', 'https://storage.googleapis.com/plant-me/plant_size_menu/large.jpg', '130 - 200cm');
 

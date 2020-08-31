@@ -69,12 +69,8 @@
 
 <script>
 const mapGetters = require("vuex")["mapGetters"];
-import Heading from "../components/Heading";
 export default {
   name: "EaseOfCareMenu",
-  components: {
-    Heading
-  },
   data: () => ({
     mandatory: false,
     multiple: true,

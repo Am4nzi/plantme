@@ -12,7 +12,6 @@
             pr-lg-16"
     >
       <v-row class="justify-space-around mb-4">
-        <Heading />
       </v-row>
       <v-row
         class="justify-xl-center
@@ -66,12 +65,8 @@
 
 <script>
 const mapGetters = require("vuex")["mapGetters"];
-import Heading from "../components/Heading";
 export default {
   name: "PetSafeMenu",
-  components: {
-    Heading
-  },
   data: () => ({
     mandatory: false,
     activeItem: null,

@@ -2,8 +2,9 @@
   <v-container fluid class="fill-height modal">
     <v-row align="center" justify="center">
       <v-col cols="12" sm="12" md="11" lg="10" xl="8">
-        <v-card elevation="14" class="pb-sm-4">
-          <Stepper :class="{ fixed: hasScrolled }" />
+        <v-card elevation="14" class="pb-8">
+          <Stepper :class="{ fixed: hasScrolled }" class="mb-4" />
+          <Heading class="mb-2"/>
           <!--    Menu views-->
           <router-view />
           <ExpansionPanel v-if="getMenuIndex < 3" class="d-sm-none" />
@@ -30,11 +31,13 @@
 const mapGetters = require("vuex")["mapGetters"];
 import ExpansionPanel from "./ExpansionPanel";
 import Stepper from "./Stepper";
+import Heading from "./Heading";
 export default {
   name: "Card",
   components: {
     ExpansionPanel,
-    Stepper
+    Stepper,
+    Heading
   },
   data: () => ({
     userSelections: []

@@ -16,9 +16,6 @@
             pa-sm-4
             pl-2 pr-2"
     >
-      <v-row class="justify-space-around mb-4">
-        <Heading />
-      </v-row>
       <v-row
         class="justify-xl-space-around
         justify-lg-space-around
@@ -81,12 +78,8 @@
 
 <script>
 const mapGetters = require("vuex")["mapGetters"];
-import Heading from "../components/Heading";
 export default {
   name: "LightLevelMenu",
-  components: {
-    Heading
-  },
   data: () => ({
     mandatory: false,
     multiple: true,

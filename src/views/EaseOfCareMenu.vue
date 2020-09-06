@@ -17,7 +17,6 @@
             pl-2 pr-2"
     >
       <v-row class="justify-space-around mb-4">
-        <Heading />
       </v-row>
       <v-row
         class="justify-xl-center

@@ -47,7 +47,6 @@ export default {
       await this.$store.dispatch("updateMenuIndexNumber", stepNumber - 1);
       switch (stepNumber) {
         case 1:
-          await this.$store.dispatch("updateViewPlantSizeMenu");
           await this.$router.push("plant-size");
           break;
         case 2:

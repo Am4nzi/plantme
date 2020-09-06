@@ -9,7 +9,7 @@
       >
         <router-view />
       </v-dialog>
-      <v-container fluid class="fill-height pt-0">
+      <v-container class="fill-height pt-0">
         <v-item-group
           v-model="selected.itemGroup"
           :mandatory="mandatory"
@@ -31,7 +31,7 @@
               :class="{ active: plant === activeItem }"
               cols="12"
               xs="12"
-              :sm="imageColSMLayout"
+              sm="imageColSMLayout"
               md="6"
               :lg="imageColLGLayout"
               :xl="imageColXLLayout"
@@ -175,10 +175,6 @@ export default {
   },
   mounted() {
     this.onResize();
-    console.log(
-      "Object.keys(this.getFilteredResults).length: ",
-      Object.keys(this.getFilteredResults).length
-    );
   },
   methods: {
     onResize() {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-main>
-      <v-container fluid class="fill-height pt-0">
+      <v-container fluid>
         <v-row>
           <v-col>
             <v-item-group

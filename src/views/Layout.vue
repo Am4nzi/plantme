@@ -1,10 +1,8 @@
 <template>
   <div>
-    <v-container class="fill-height" fluid>
-      <NavigationDrawer />
-      <Toolbar />
-      <Results />
-    </v-container>
+    <NavigationDrawer />
+    <Toolbar />
+    <Results />
     <Footer />
   </div>
 </template>

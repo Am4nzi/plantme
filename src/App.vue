@@ -1,7 +1,9 @@
 <template>
   <v-app>
-    <!--    <Layout.vue />-->
-    <router-view />
+    <v-content>
+      <!--    <Layout.vue />-->
+      <router-view />
+    </v-content>
   </v-app>
 </template>
 
